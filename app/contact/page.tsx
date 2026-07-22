@@ -30,11 +30,40 @@ export default function ContactPage() {
   }, []);
 
   // Form submission handler
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(
-      "Thank you for your message! Our team will respond within the same business day."
-    );
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      formSource: "contact",
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
+      projectType: formData.get("projectType"),
+      location: formData.get("location"),
+    };
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert(
+          "Thank you for your message! Our team will respond within the same business day."
+        );
+        form.reset();
+      } else {
+        alert("Something went wrong — please try again or call us directly.");
+      }
+    } catch {
+      alert("Something went wrong — please try again or call us directly.");
+    }
   };
 
   return (
@@ -165,6 +194,7 @@ export default function ContactPage() {
                     <input
                       type="text"
                       id="firstName"
+                      name="firstName"
                       className="form-input"
                       placeholder="John"
                       required
@@ -177,6 +207,7 @@ export default function ContactPage() {
                     <input
                       type="text"
                       id="lastName"
+                      name="lastName"
                       className="form-input"
                       placeholder="Doe"
                       required
@@ -192,6 +223,7 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       id="phone"
+                      name="phone"
                       className="form-input"
                       placeholder="(813) 555-1234"
                       required
@@ -204,6 +236,7 @@ export default function ContactPage() {
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       className="form-input"
                       placeholder="john@example.com"
                       required
@@ -216,7 +249,7 @@ export default function ContactPage() {
                     <label className="form-label" htmlFor="projectType">
                       Project Type <span className="required">*</span>
                     </label>
-                    <select id="projectType" className="form-select" required>
+                    <select id="projectType" name="projectType" className="form-select" required>
                       <option value="">Select a project type…</option>
                       <option value="new-construction">New Construction</option>
                       <option value="remodeling">Remodeling</option>
@@ -233,6 +266,7 @@ export default function ContactPage() {
                     <input
                       type="text"
                       id="location"
+                      name="location"
                       className="form-input"
                       placeholder="Hillsborough County, FL"
                     />
@@ -245,6 +279,7 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     className="form-textarea"
                     placeholder="Tell us about your project, timeline, and any specific requirements…"
                     required
