@@ -28,7 +28,7 @@
             --radius-md: 8px;
             --transition: 0.2s ease;
             --max-width: 1150px;
-            --header-height: 72px;
+            --header-height: 78px;
             --topbar-height: 40px;
         }
 
@@ -86,14 +86,17 @@
 }
 
 .header__inner {
+    width: calc(100% - 32px);
     max-width: var(--max-width);
     margin: 0 auto;
-    display: flex;
+    padding: 0;
+    display: grid;
+    grid-template-columns: minmax(235px, 1fr) auto minmax(126px, 1fr);
     align-items: center;
-    justify-content: space-between;
     height: var(--header-height);
-    gap: 16px;
-    position: relative; /* needed for desktop absolute centering */
+    column-gap: clamp(14px, 1.5vw, 24px);
+    position: relative;
+    box-sizing: border-box;
 }
 
 /* ---- LOGO (unchanged) ---- */
@@ -102,12 +105,14 @@
     align-items: center;
     text-decoration: none;
     flex-shrink: 0;
+    justify-self: start;
+    min-width: 0;
 }
 
 .logo__img {
-    width: auto;
-    height: 62px;
-    max-width: 200px;
+    width: 235px;
+    height: auto;
+    max-width: 100%;
     object-fit: contain;
     display: block;
     border: none;
@@ -117,13 +122,15 @@
 
 /* ---- HEADER RIGHT (holds nav + CTA) ---- */
 .header-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1; /* pushes CTA to the right on desktop */
+    display: contents;
 }
 
-/* ---- DESKTOP: MAIN CAPSULE NAV (centred absolutely) ---- */
+.header-right nav {
+    grid-column: 2;
+    justify-self: center;
+}
+
+/* ---- DESKTOP: MAIN CAPSULE NAV ---- */
 .nav {
     display: flex;
     align-items: center;
@@ -137,11 +144,7 @@
     border: 1px solid rgba(0, 0, 0, 0.03);
     transition: box-shadow 0.3s ease;
 
-    /* absolute centering (desktop only) */
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     white-space: nowrap;
     z-index: 5;
 }
@@ -153,7 +156,7 @@
 /* ---- NAV LINKS (pill style) ---- */
 .nav__link {
     display: inline-block;
-    padding: 6px 15px;
+    padding: 7px 11px;
     text-decoration: none;
     color: var(--color-text);
     font-size: 0.78rem;
@@ -317,9 +320,11 @@
     border-radius: var(--radius-md);
     white-space: nowrap;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    margin-left: 18px;
+    margin-left: 0;
     line-height: 1.2;
     flex-shrink: 0;
+    grid-column: 3;
+    justify-self: end;
 }
 
 .cta-button:hover {
@@ -337,6 +342,10 @@
     border: none;
     padding: 8px;
     z-index: 1002;
+    color: var(--color-navy);
+}
+.hamburger svg {
+    display: block;
 }
 .hamburger span {
     display: block;
@@ -362,11 +371,30 @@
 /* ============================================================
    RESPONSIVE (MOBILE) – FULLY FIXED + HAMBURGER ON RIGHT
    ============================================================ */
-@media (max-width: 900px) {
-    /* Show hamburger & push it to the far right */
-    .hamburger {
+@media (max-width: 1120px) {
+    .header__inner {
         display: flex;
-        margin-left: auto; /* pushes hamburger to the right edge */
+        width: 100%;
+        padding: 0 22px;
+    }
+
+    .logo__img {
+        width: 240px;
+    }
+
+    /* Show hamburger & push it to the far right */
+    .header__inner > .hamburger {
+        display: flex !important;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 0;
+        flex: 0 0 42px;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Hide the CTA button on mobile */
@@ -376,7 +404,8 @@
 
     /* Prevent .header-right from taking up space, so hamburger can sit on the right */
     .header-right {
-        flex: 0 0 auto; /* collapses to content width (0 because CTA is hidden) */
+        display: block;
+        flex: 0 0 auto;
     }
 
     /* Override desktop .nav styles completely */
@@ -386,8 +415,8 @@
         left: auto;               /* reset left:50% */
         right: -100%;             /* slide out */
         transform: none;          /* remove desktop centering transform */
-        width: 280px;
-        height: 100vh;
+        width: min(88vw, 340px);
+        height: 100dvh;
         background-color: var(--color-white);
         flex-direction: column;
         padding: 80px 24px 24px;
@@ -3775,28 +3804,46 @@
 }
 
 .sec10-footer-logo__img {
-    width: 70%;
-    height: 56px;
-    border-radius: 8px;
+    width: min(100%, 260px);
+    height: auto;
     object-fit: contain;
     display: block;
+}
+
+@media (max-width: 560px) {
+    .header__inner {
+        width: 100%;
+        padding: 0 14px;
+    }
+
+    .logo__img {
+        width: min(200px, calc(100vw - 92px));
+        height: auto;
+        max-width: none;
+    }
+
+    .nav {
+        width: min(90vw, 340px);
+        padding: 76px 18px 24px;
+    }
+
+    .header__inner > .hamburger {
+        right: 12px;
+    }
 }
 
 /* Badge */
 .sec10-footer-badge {
     display: flex;
-    gap: 12px;
     margin-bottom: 20px;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
-.sec10-footer-badge__bbb,
-.sec10-footer-badge__rating {
-    font-size: 0.75rem;
-    background: rgba(255, 255, 255, 0.12);
-    padding: 4px 10px;
-    border-radius: 30px;
-    font-weight: 500;
+.sec10-footer-badge__img {
+    width: min(100%, 170px);
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 /* Social Icons – real SVGs */
@@ -3945,23 +3992,27 @@
 
 /* Bottom Bar */
 .sec10-bottom-bar {
-    padding: 20px;
+    padding: 24px 20px;
     background-color: rgba(0, 0, 0, 0.2);
 }
 
 .sec10-bottom-bar__inner {
     max-width: var(--max-width);
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 0.8rem;
+    gap: 24px;
+    font-size: 0.95rem;
 }
 
-.sec10-bottom-bar__copyright {
+.sec10-bottom-bar__copyright,
+.sec10-bottom-bar__licenses {
     color: rgba(255, 255, 255, 0.7);
+}
+
+.sec10-bottom-bar__licenses {
+    text-align: center;
 }
 
 .sec10-bottom-bar__links {
@@ -3969,6 +4020,7 @@
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .sec10-bottom-bar__links a {
@@ -3998,7 +4050,7 @@
   }
 
   .sec10-footer-logo__img {
-    height: 100%;
+    height: auto;
     margin: 0 auto;
   }
 
@@ -4036,6 +4088,7 @@
   }
 
   .sec10-bottom-bar__inner {
+    display: flex;
     flex-direction: column;
     text-align: center;
     gap: 8px;

@@ -645,8 +645,8 @@ export default function AdaCompliancePage() {
             Request Free Estimate
           </a>
           <div className="ada-cta-section__contact ada-reveal ada-reveal-delay-3">
-            <a href="tel:+18133900000">
-              <i className="fas fa-phone"></i> 813-390-0000
+            <a href="tel:+18133950000">
+              <i className="fas fa-phone"></i> 813-395-0000
             </a>
             <span className="ada-sep">|</span>
             <a href="mailto:contact@keentelgeneralcontractors.com">

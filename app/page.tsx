@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import TrustStats from "@/components/TrustStats";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import RecentWorkSection from "@/components/RecentWorkSection";
@@ -16,7 +15,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TrustStats />
        <AboutSection />
       <ServicesSection />
       <RecentWorkSection />

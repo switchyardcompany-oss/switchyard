@@ -128,8 +128,8 @@ export default function SecureUnsafeStructuresPage() {
           <div className="su-top-bar__content">
             <i className="fas fa-exclamation-triangle su-top-bar__icon"></i>
             <span className="su-top-bar__label">EMERGENCY LINE:</span>
-            <a href="tel:+18133900000" className="su-top-bar__phone">
-              (813) 390-0000
+            <a href="tel:+18133950000" className="su-top-bar__phone">
+              (813) 395-0000
             </a>
             <span className="su-top-bar__divider">|</span>
             <span className="su-top-bar__availability">
@@ -644,7 +644,7 @@ export default function SecureUnsafeStructuresPage() {
             <i className="fas fa-exclamation-triangle"></i>
             <span>
               EMERGENCY LINE:{" "}
-              <a href="tel:+18133900000">(813) 390-0000</a> — Available 24 Hours, 7
+              <a href="tel:+18133950000">(813) 395-0000</a> — Available 24 Hours, 7
               Days a Week, 365 Days a Year
             </span>
           </div>
@@ -662,8 +662,8 @@ export default function SecureUnsafeStructuresPage() {
             Request Emergency Response
           </a>
           <div className="su-cta-section__contact su-reveal su-reveal-delay-3">
-            <a href="tel:+18133900000">
-              <i className="fas fa-phone"></i> 813-390-0000
+            <a href="tel:+18133950000">
+              <i className="fas fa-phone"></i> 813-395-0000
             </a>
             <span className="su-sep">|</span>
             <a href="mailto:contact@keentelgeneralcontractors.com">

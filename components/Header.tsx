@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
 
   const toggleMobileMenu = () => {
@@ -14,7 +14,6 @@ export default function Header() {
     document.body.style.overflow = !isMobileMenuOpen ? "hidden" : "";
     if (!isMobileMenuOpen) {
       setOpenDropdown(null);
-      setOpenSubmenu(null);
     }
   };
 
@@ -22,22 +21,16 @@ export default function Header() {
     setIsMobileMenuOpen(false);
     document.body.style.overflow = "";
     setOpenDropdown(null);
-    setOpenSubmenu(null);
   };
 
   const toggleDropdown = (name: string) => {
     if (!isMobileMenuOpen) return;
     setOpenDropdown(openDropdown === name ? null : name);
-    setOpenSubmenu(null);
-  };
-
-  const toggleSubmenu = (name: string) => {
-    setOpenSubmenu(openSubmenu === name ? null : name);
   };
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 900 && isMobileMenuOpen) {
+      if (window.innerWidth > 1120 && isMobileMenuOpen) {
         closeMobileMenu();
       }
     };
@@ -49,7 +42,15 @@ export default function Header() {
     <header className="header" role="banner" ref={headerRef}>
       <div className="header__inner">
         <Link href="/" className="logo" onClick={closeMobileMenu}>
-          <img src="/assets/logo.png" alt="Keentel logo" className="logo__img" width={44} height={44} />
+          <Image
+            src="/images/header-logo.webp"
+            alt="Keentel General Contractors"
+            className="logo__img"
+            width={1800}
+            height={288}
+            sizes="(max-width: 560px) 200px, 270px"
+            priority
+          />
         </Link>
 
         <button
@@ -58,7 +59,20 @@ export default function Header() {
           aria-label="Toggle navigation"
           aria-expanded={isMobileMenuOpen}
         >
-          <span></span><span></span><span></span>
+          <svg
+            viewBox="0 0 24 24"
+            width="26"
+            height="26"
+            aria-hidden="true"
+          >
+            <path
+              d={isMobileMenuOpen ? "M5 5l14 14M19 5L5 19" : "M3 6h18M3 12h18M3 18h18"}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
         </button>
 
         <div className="header-right">

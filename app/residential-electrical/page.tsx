@@ -635,8 +635,8 @@ export default function ResidentialElectricalPage() {
             Request Free Estimate
           </a>
           <div className="res-cta-section__contact res-reveal res-reveal-delay-3">
-            <a href="tel:+18133900000">
-              <i className="fas fa-phone"></i> 813-390-0000{" "}
+            <a href="tel:+18133950000">
+              <i className="fas fa-phone"></i> 813-395-0000{" "}
               <span style={{ fontWeight: 400, color: "var(--color-text-muted)" }}>
                 (24/7 Emergency Line)
               </span>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,7 +17,7 @@ export default function Hero() {
   }, []);
 
 
-  const videoSrc = "https://public-assets.content-platform.envatousercontent.com/0a82f3ca-22ac-4f86-8ae4-f51d648fe55f/1d0c12cd-22db-43ef-ac37-03a1d7c8e0c8/0a82f3ca-22ac-4f86-8ae4-f51d648fe55f/preview_540p_crf22_higher_quality.mp4";
+  const videoSrc = "/Video/home-hero.mp4";
 
   return (
     <>
@@ -75,9 +76,9 @@ export default function Hero() {
               >
                 Request a Consultation
               </a>
-              <a href="/services" className="btn btn--secondary">
+              <Link href="/services" className="btn btn--secondary">
                 <i className="fa-solid fa-building"></i>&nbsp; Explore Our Services
-              </a>
+              </Link>
             </div>
           </div>
         </div>

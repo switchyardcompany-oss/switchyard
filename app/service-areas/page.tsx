@@ -376,7 +376,7 @@ export default function ServiceAreasPage() {
           </nav>
           <div className="ktl-nav-cta">
             <span className="ktl-nav-phone">
-              <Icon name="phone" className="ktl-inline-icon" /> (800) 555-0143
+              <Icon name="phone" className="ktl-inline-icon" /> (813) 395-0000
             </span>
             <a href="#contact" className="ktl-btn ktl-btn--primary ktl-btn--sm">
               Get a Quote <Icon name="arrowRight" />
@@ -756,7 +756,7 @@ export default function ServiceAreasPage() {
                   <div className="ktl-contact-points">
                     <div className="ktl-contact-point">
                       <span className="ktl-contact-point-icon"><Icon name="phone" /></span>
-                      <div><strong>Call Us</strong><span>(800) 555-0143</span></div>
+                      <div><strong>Call Us</strong><span>(813) 395-0000</span></div>
                     </div>
                     <div className="ktl-contact-point">
                       <span className="ktl-contact-point-icon"><Icon name="mail" /></span>
@@ -798,7 +798,7 @@ export default function ServiceAreasPage() {
                       </div>
                       <div className="ktl-field">
                         <label htmlFor="phoneNum">Phone Number</label>
-                        <input id="phoneNum" type="tel" required placeholder="(800) 555-0143" />
+                        <input id="phoneNum" type="tel" required placeholder="(813) 555-1234" />
                       </div>
                     </div>
                     <div className="ktl-form-row">

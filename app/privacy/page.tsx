@@ -1,21 +1,96 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import styles from "./privacy-policy.module.css";
-import {
-  FaUser,
-  FaCogs,
-  FaCookieBite,
-  FaHandshake,
-  FaShieldAlt,
-  FaBalanceScale,
-  FaExternalLinkAlt,
-  FaSyncAlt,
-} from "react-icons/fa";
 
-const PrivacyPolicyPage = () => {
+type PolicySection = {
+  title: string;
+  paragraphs: string[];
+  bullets?: string[];
+};
+
+const policySections: PolicySection[] = [
+  {
+    title: "Information We Collect",
+    paragraphs: [
+      "We may collect the following types of information when you interact with our website, chat services, or marketing materials:",
+    ],
+    bullets: [
+      "Personal Information: This may include your name, email address, phone number, and any other contact details you voluntarily provide when scheduling consultations or engaging in our services.",
+      "Usage Data: Information related to your interaction with our website, such as IP addresses, browser type, device information, and the pages you visit on our website.",
+      "Cookies and Tracking Technologies: We may use cookies and similar tracking technologies to enhance user experience, analyze website usage, and deliver personalized content or ads.",
+    ],
+  },
+  {
+    title: "How We Use Your Information",
+    paragraphs: ["We use the information we collect for the following purposes:"],
+    bullets: [
+      "To provide and improve our services, including consultations and project discussions.",
+      "To respond to your inquiries or requests made via the website, chat services, or through marketing materials.",
+      "To communicate with you about updates, promotions, or other relevant information related to Keentel Engineering and Keentel Electrical Contractors.",
+      "To analyze website usage and improve user experience.",
+    ],
+  },
+  {
+    title: "How We Share Your Information",
+    paragraphs: [
+      "We respect your privacy and do not share your personal information with third parties, except in the following circumstances:",
+    ],
+    bullets: [
+      "Service Providers: We may share your information with trusted third-party service providers who assist in operating our website, conducting business operations, or providing marketing support.",
+      "Legal Compliance: We may disclose your information if required to do so by law, regulation, or in response to legal requests.",
+    ],
+  },
+  {
+    title: "Data Security",
+    paragraphs: [
+      "We take the security of your personal information seriously and employ reasonable technical and organizational measures to protect it from unauthorized access, alteration, or disclosure. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.",
+    ],
+  },
+  {
+    title: "Your Rights and Choices",
+    paragraphs: ["You have the right to:"],
+    bullets: [
+      "Access: Request access to the personal information we hold about you.",
+      "Correction: Request correction of any inaccurate or incomplete information.",
+      "Deletion: Request the deletion of your personal information, subject to legal obligations.",
+      "Opt-out of Marketing Communications: You may opt out of receiving marketing emails or communications from us by following the unsubscribe instructions provided in the communication.",
+    ],
+  },
+  {
+    title: "Third-Party Links",
+    paragraphs: [
+      "Our website or marketing materials may contain links to third-party websites. This Privacy Policy applies only to Keentel General Contractors and our subsidiaries, and we are not responsible for the privacy practices or content of third-party websites. We encourage you to read the privacy policies of any third-party sites you visit.",
+    ],
+  },
+  {
+    title: "Children’s Privacy",
+    paragraphs: [
+      "Our website and services are not directed to children under the age of 13, and we do not knowingly collect personal information from individuals under 13. If we learn that we have inadvertently collected such information, we will take steps to delete it as soon as possible.",
+    ],
+  },
+  {
+    title: "Changes to This Privacy Policy",
+    paragraphs: [
+      "Keentel General Contractors reserves the right to update or modify this Privacy Policy at any time. Any changes will be posted on this page with an updated effective date. We encourage you to review this Privacy Policy periodically to stay informed about how we protect your personal information.",
+    ],
+  },
+  {
+    title: "Contact Us",
+    paragraphs: [
+      "If you have any questions or concerns regarding this Privacy Policy or our privacy practices, please contact us:",
+      "Keentel General Contractors",
+      "Attn: Privacy Policy",
+      "Phone: 813-395-0000",
+      "Email 1: contact@keentelgeneralcontractors.com",
+      "Email 2: BD@keentelengineering.com",
+    ],
+  },
+];
+
+export default function PrivacyPolicyPage() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,115 +101,17 @@ const PrivacyPolicyPage = () => {
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
     const elements = document.querySelectorAll(`.${styles["kpp-reveal"]}`);
-    elements.forEach((el) => observer.observe(el));
-
+    elements.forEach((element) => observer.observe(element));
     return () => observer.disconnect();
   }, []);
 
-  const policySections = [
-    {
-      title: "Information We Collect",
-      icon: <FaUser />,
-      content: [
-        "Full Name",
-        "Company Name",
-        "Email Address",
-        "Phone Number",
-        "Property Address",
-        "Project Information",
-        "Any information submitted through contact forms",
-      ],
-      techContent: [
-        "IP Address",
-        "Browser Type",
-        "Device Information",
-        "Pages Visited",
-        "Website Usage Data",
-      ],
-    },
-    {
-      title: "How We Use Your Information",
-      icon: <FaCogs />,
-      content: [
-        "Respond to inquiries",
-        "Provide project estimates",
-        "Schedule consultations",
-        "Improve our services",
-        "Communicate project updates",
-        "Improve website performance",
-        "Meet legal obligations",
-      ],
-      techContent: [],
-    },
-    {
-      title: "Cookies",
-      icon: <FaCookieBite />,
-      content: [
-        "Our website may use cookies to improve user experience, analyze website traffic, and enhance website functionality.",
-        "You may disable cookies through your browser settings at any time.",
-      ],
-      techContent: [],
-    },
-    {
-      title: "Third-Party Services",
-      icon: <FaHandshake />,
-      content: [
-        "Google Analytics",
-        "Google Maps",
-        "Email Service Providers",
-        "CRM Platforms",
-        "Website Hosting Services",
-      ],
-      techContent: [
-        "These providers only receive information necessary to perform their services.",
-      ],
-    },
-    {
-      title: "Data Security",
-      icon: <FaShieldAlt />,
-      content: [
-        "We implement reasonable technical and organizational measures to protect your information against unauthorized access, disclosure, or misuse.",
-        "While no online transmission is completely secure, we continually work to maintain appropriate safeguards.",
-      ],
-      techContent: [],
-    },
-    {
-      title: "Your Rights",
-      icon: <FaBalanceScale />,
-      content: [
-        "Access your personal information",
-        "Correct inaccurate information",
-        "Request deletion of your information",
-        "Withdraw communication preferences",
-      ],
-      techContent: [],
-    },
-    {
-      title: "External Links",
-      icon: <FaExternalLinkAlt />,
-      content: [
-        "Our website may contain links to third-party websites. We are not responsible for their privacy practices or content.",
-      ],
-      techContent: [],
-    },
-    {
-      title: "Policy Updates",
-      icon: <FaSyncAlt />,
-      content: [
-        "We may update this Privacy Policy periodically. Changes will become effective immediately upon posting on this page.",
-      ],
-      techContent: [],
-    },
-  ];
-
   return (
-    <div className={styles["kpp-page"]}>
-      {/* Hero Section with Video Background */}
-      <section className={styles["kpp-hero"]} ref={heroRef}>
+    <main className={styles["kpp-page"]}>
+      <section className={styles["kpp-hero"]}>
         <video
           autoPlay
           muted
@@ -144,10 +121,9 @@ const PrivacyPolicyPage = () => {
             isVideoLoaded ? styles["kpp-hero-video-loaded"] : ""
           }`}
           onLoadedData={() => setIsVideoLoaded(true)}
-          poster="/images/privacy/hero-fallback.jpg"
+          poster="/assets/hero_bg.png"
         >
-          <source src="/videos/construction-bg.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          <source src="/Video/home-hero.mp4" type="video/mp4" />
         </video>
         <div className={styles["kpp-hero-overlay"]} />
         <div className={styles["kpp-hero-content"]}>
@@ -160,105 +136,72 @@ const PrivacyPolicyPage = () => {
             Keentel General Contractors respects your privacy and is committed
             to protecting the personal information you share with us.
           </p>
-          <div className={styles["kpp-hero-scroll"]}>
+          <a href="#privacy-content" className={styles["kpp-hero-scroll"]}>
             <span>Scroll to learn more</span>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              className={styles["kpp-bounce-icon"]}
-            >
-              <path
-                d="M12 5v14M5 12l7 7 7-7"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      {/* Policy Cards Section */}
-      <section className={styles["kpp-policy-grid"]}>
-        <div className={styles["kpp-container"]}>
-          <div className={styles["kpp-intro-text"]}>
-            <h2 className={styles["kpp-reveal"]}>
-              How We Handle Your Information
-            </h2>
-            <p className={styles["kpp-reveal"]}>
-              This Privacy Policy explains how we collect, use, disclose, and
-              safeguard your information when you visit our website or contact us
-              regarding our construction services.
-            </p>
-          </div>
-
-          <div className={styles["kpp-cards-wrapper"]}>
-            {policySections.map((section, idx) => (
-              <div
-                key={idx}
-                className={`${styles["kpp-card"]} ${styles["kpp-reveal"]}`}
-                style={{ transitionDelay: `${idx * 0.05}s` }}
-              >
-                <div className={styles["kpp-card-media"]}>
-                  <span className={styles["kpp-card-icon"]}>{section.icon}</span>
-                </div>
-                <div className={styles["kpp-card-body"]}>
-                  <h3>{section.title}</h3>
-                  <ul>
-                    {section.content.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                    {section.techContent.map((item, i) => (
-                      <li key={`tech-${i}`} className={styles["kpp-tech"]}>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                {/* decorative background image */}
-                <div
-                  className={styles["kpp-card-bg-img"]}
-                  style={{
-                    backgroundImage: `url(/images/privacy/card-bg-${(idx % 4) + 1}.jpg)`,
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Footer */}
-      <section className={styles["kpp-contact"]}>
-        <div className={`${styles["kpp-container"]} ${styles["kpp-reveal"]}`}>
-          <h2>Contact Us</h2>
-          <p>
-            If you have questions regarding this Privacy Policy, please contact
-            Keentel General Contractors through our Contact page.
-          </p>
-          <a href="/contact" className={styles["kpp-btn"]}>
-            <span>Get in Touch</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path
-                d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className={styles["kpp-bounce-icon"]}>
+              <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
         </div>
       </section>
 
-      {/* Background decorative shapes */}
-      <div className={styles["kpp-floating-shape-1"]} />
-      <div className={styles["kpp-floating-shape-2"]} />
-    </div>
-  );
-};
+      <section className={styles["kpp-policy-grid"]} id="privacy-content">
+        <div className={styles["kpp-container"]}>
+          <div className={styles["kpp-intro-text"]}>
+            <h2 className={styles["kpp-reveal"]}>How We Handle Your Information</h2>
+            <p className={styles["kpp-reveal"]}>
+              This Privacy Policy explains how we collect, use, disclose, and
+              safeguard your information when you visit our website or contact
+              us regarding our construction services.
+            </p>
+          </div>
 
-export default PrivacyPolicyPage;
+          <div className={styles["kpp-cards-wrapper"]}>
+            {policySections.map((section, index) => (
+              <article
+                key={section.title}
+                className={`${styles["kpp-card"]} ${styles["kpp-reveal"]}`}
+                style={{ transitionDelay: `${Math.min(index * 0.04, 0.24)}s` }}
+              >
+                <div className={styles["kpp-card-media"]} aria-hidden="true">
+                  <span className={styles["kpp-card-icon"]}>{index + 1}</span>
+                </div>
+                <div className={styles["kpp-card-body"]}>
+                  <h3>{section.title}</h3>
+                  <div className={styles["kpp-card-copy"]}>
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                    {section.bullets && (
+                      <ul>
+                        {section.bullets.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles["kpp-contact"]}>
+        <div className={`${styles["kpp-container"]} ${styles["kpp-reveal"]}`}>
+          <h2>Contact</h2>
+          <p>
+            If you have questions regarding this Privacy Policy, please contact
+            Keentel General Contractors through our Contact page.
+          </p>
+          <Link href="/contact" className={styles["kpp-btn"]}>
+            <span>Contact Us</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4.167 10h11.666M10 4.167L15.833 10 10 15.833" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
+}

@@ -169,6 +169,8 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
   font-size: 0.85rem;
   opacity: 0.8;
   animation: kpp-fadeInUp 1s ease 0.8s both;
@@ -216,10 +218,9 @@
   line-height: 1.7;
 }
 
-/* 4 columns, 2 rows layout */
 .kpp-cards-wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem; /* reduced from 2rem */
 }
 
@@ -251,14 +252,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem; /* icon size */
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--color-magenta);
+  flex: 0 0 auto;
 }
 
 .kpp-card-icon {
-  width: 32px;
-  height: 32px;
-  animation: kpp-float 4s ease-in-out infinite;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes kpp-float {
@@ -279,23 +282,37 @@
   font-weight: 600;
 }
 
-.kpp-card-body ul {
-  list-style: none;
-  padding: 0;
+.kpp-card-copy {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem; /* reduced */
+  gap: 0.85rem;
 }
 
-.kpp-card-body li {
+.kpp-card-copy p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.kpp-card-copy ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.kpp-card-copy li {
   position: relative;
   padding-left: 1.6rem;
-  font-size: 0.9rem; /* slightly smaller */
+  font-size: 0.95rem;
   color: var(--color-text);
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
-.kpp-card-body li::before {
+.kpp-card-copy li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -304,11 +321,6 @@
   height: 7px;
   background: var(--color-magenta);
   border-radius: 50%;
-}
-
-.kpp-card-body li.kpp-tech {
-  color: var(--color-text-muted);
-  font-style: italic;
 }
 
 .kpp-card-bg-img {
@@ -343,6 +355,11 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  width: calc(100% - 40px);
+  max-width: 1280px;
+  margin: 3rem auto 4rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 22px 50px rgba(18, 16, 110, 0.16);
 }
 
 .kpp-contact h2 {
@@ -424,7 +441,7 @@
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
   .kpp-cards-wrapper {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -443,6 +460,35 @@
     padding: 1.5rem;
   }
   .kpp-hero {
-    height: 70vh;
+    min-height: 560px;
+    height: calc(100svh - var(--header-height, 78px));
+  }
+  .kpp-contact {
+    width: calc(100% - 24px);
+    margin: 2rem auto 3rem;
+    border-radius: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpp-container {
+    padding: 0 1rem;
+  }
+
+  .kpp-policy-grid {
+    padding: 3rem 0;
+  }
+
+  .kpp-card {
+    padding: 1.35rem;
+    border-radius: 1.1rem;
+  }
+
+  .kpp-hero-content {
+    padding: 0 1rem;
+  }
+
+  .kpp-hero-subtitle {
+    font-size: 1rem;
   }
 }

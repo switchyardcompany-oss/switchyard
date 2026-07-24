@@ -55,30 +55,30 @@ export default function RecentWorkSection() {
           {/* Project 1 */}
           <div className="recent-card">
             <div className="recent-card-image">
-              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop" alt="Commercial construction site" loading="lazy" />
+              <img src="/images/recent-work/homeward-bound.jpeg" alt="Multi-family housing development under construction" loading="lazy" />
               <div className="recent-card-overlay">
-                <span className="recent-card-category">Commercial</span>
-                <h3 className="recent-card-title">Office Building</h3>
+                <span className="recent-card-category">Multi-Family</span>
+                <h3 className="recent-card-title">Housing Development</h3>
               </div>
             </div>
           </div>
           {/* Project 2 */}
           <div className="recent-card">
             <div className="recent-card-image">
-              <img src="https://www.autodesk.com/blogs/construction/wp-content/uploads/2024/06/cost-to-build-a-warehouse-construction.jpg" alt="Construction workers on site" loading="lazy" />
+              <img src="/images/recent-work/jonathans-place.jpeg" alt="Completed multi-family apartment building" loading="lazy" />
               <div className="recent-card-overlay">
-                <span className="recent-card-category">Build</span>
-                <h3 className="recent-card-title">Warehouse Facility</h3>
+                <span className="recent-card-category">Multi-Family</span>
+                <h3 className="recent-card-title">Apartment Community</h3>
               </div>
             </div>
           </div>
           {/* Project 3 */}
           <div className="recent-card">
             <div className="recent-card-image">
-              <img src="https://cdn.ezo.io/wp-content/uploads/2021/08/plant-asset-management.jpg" alt="Industrial construction" loading="lazy" />
+              <img src="/images/recent-work/multifamily-community.jpeg" alt="Multi-family housing foundation construction" loading="lazy" />
               <div className="recent-card-overlay">
-                <span className="recent-card-category">Industrial</span>
-                <h3 className="recent-card-title">Manufacturing Plant</h3>
+                <span className="recent-card-category">Multi-Family</span>
+                <h3 className="recent-card-title">Community Expansion</h3>
               </div>
             </div>
           </div>
@@ -95,10 +95,10 @@ export default function RecentWorkSection() {
           {/* Project 5 */}
           <div className="recent-card">
             <div className="recent-card-image">
-              <img src="https://www.investopedia.com/thmb/ufSCkKocZkeEG1jGNV8D-3jMR_o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-942487282-ae2da73b74aa4e868af3a6beac662e52.jpg" alt="Multi-family construction" loading="lazy" />
+              <img src="/images/recent-work/multifamily-aerial.jpeg" alt="Completed multi-family residential community" loading="lazy" />
               <div className="recent-card-overlay">
                 <span className="recent-card-category">Multi-Family</span>
-                <h3 className="recent-card-title">Apartment Complex</h3>
+                <h3 className="recent-card-title">Residential Community</h3>
               </div>
             </div>
           </div>

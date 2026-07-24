@@ -128,8 +128,8 @@ export default function FireStormFloodRestorationPage() {
           <div className="em-top-bar__content">
             <i className="fas fa-exclamation-triangle em-top-bar__icon"></i>
             <span className="em-top-bar__label">EMERGENCY LINE:</span>
-            <a href="tel:+18133900000" className="em-top-bar__phone">
-              (813) 390-0000
+            <a href="tel:+18133950000" className="em-top-bar__phone">
+              (813) 395-0000
             </a>
             <span className="em-top-bar__divider">|</span>
             <span className="em-top-bar__availability">
@@ -646,7 +646,7 @@ export default function FireStormFloodRestorationPage() {
             <i className="fas fa-exclamation-triangle"></i>
             <span>
               EMERGENCY LINE:{" "}
-              <a href="tel:+18133900000">(813) 390-0000</a> — Available 24 Hours, 7
+              <a href="tel:+18133950000">(813) 395-0000</a> — Available 24 Hours, 7
               Days a Week, 365 Days a Year
             </span>
           </div>
@@ -663,8 +663,8 @@ export default function FireStormFloodRestorationPage() {
             Request Emergency Response
           </a>
           <div className="em-cta-section__contact em-reveal em-reveal-delay-3">
-            <a href="tel:+18133900000">
-              <i className="fas fa-phone"></i> 813-390-0000
+            <a href="tel:+18133950000">
+              <i className="fas fa-phone"></i> 813-395-0000
             </a>
             <span className="em-sep">|</span>
             <a href="mailto:contact@keentelgeneralcontractors.com">

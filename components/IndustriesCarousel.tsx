@@ -33,7 +33,7 @@ export default function IndustriesCarousel() {
     { name: "Industrial & Manufacturing", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop" },
     { name: "Warehousing & Distribution", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop" },
     { name: "Retail & Mixed-Use", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop" },
-    { name: "Restaurants & Hospitality", img: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400&h=300&fit=crop" },
+    { name: "Restaurants & Hospitality", img: "/images/industries/restaurants-hospitality-v2.webp" },
     { name: "Healthcare", img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop" },
     { name: "Education & Institutional", img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=300&fit=crop" },
     { name: "Multi-Family", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&h=300&fit=crop" },
