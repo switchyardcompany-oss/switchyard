@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="sec10-main-footer">
         <div className="sec10-main-footer__inner">
           {/* Column 1: Branding & Trust */}
-          <div className="sec10-footer-col">
+          <div className="sec10-footer-col sec10-footer-col--brand">
             <div className="sec10-footer-logo">
               <img
                 src="/assets/keentel-logo-footer.png"
@@ -37,13 +37,19 @@ export default function Footer() {
                   className="sec10-footer-badge__img"
                 />
               </a>
+              <img
+                src="/images/genral%20contratcter.png"
+                alt="State of Florida Certified General Contractor"
+                className="sec10-footer-contractor-badge__img"
+                loading="lazy"
+              />
             </div>
             <div className="sec10-footer-social">
               {/* Facebook */}
               <a
-                href="https://www.facebook.com/keentelengineering"
+                href="https://www.facebook.com/keentelec"
                 className="sec10-footer-social__link"
-                aria-label="Keentel Engineering on Facebook"
+                aria-label="Keentel General Contractors on Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -53,9 +59,9 @@ export default function Footer() {
               </a>
               {/* YouTube */}
               <a
-                href="https://www.youtube.com/@KeentelEngineering"
+                href="https://www.youtube.com/@keentelec"
                 className="sec10-footer-social__link"
-                aria-label="Keentel Engineering on YouTube"
+                aria-label="Keentel General Contractors on YouTube"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -65,9 +71,9 @@ export default function Footer() {
               </a>
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/company/keentel-engineering/"
+                href="https://www.linkedin.com/company/keentel-general-contractors/"
                 className="sec10-footer-social__link"
-                aria-label="Keentel Engineering on LinkedIn"
+                aria-label="Keentel General Contractors on LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
               >

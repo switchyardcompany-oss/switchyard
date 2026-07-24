@@ -103,21 +103,30 @@ function TrustMarquee() {
     <section className="trust-marquee">
       <div className="trust-marquee__track">
         <div className="trust-marquee__content">
-          {[...items, ...items].map((item, i) => (
-            <span key={i} className="trust-marquee__item">
-              <svg
-                className="trust-marquee__icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              {item}
-            </span>
+          {[0, 1].map((groupIndex) => (
+            <div
+              key={groupIndex}
+              className="trust-marquee__group"
+              aria-hidden={groupIndex === 1 ? "true" : undefined}
+            >
+              {[...items, ...items].map((item, itemIndex) => (
+                <span key={`${item}-${itemIndex}`} className="trust-marquee__item">
+                  <svg
+                    className="trust-marquee__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  {item}
+                </span>
+              ))}
+            </div>
           ))}
         </div>
       </div>
