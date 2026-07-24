@@ -336,14 +336,10 @@ export default function IndustriesPage() {
               <div className="kgc-about__frame" />
               <img
                 className="kgc-about__image"
-                src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?w=1000&q=80&auto=format&fit=crop"
-                alt="Construction professionals reviewing plans on site"
+                src="/images/industries/aerial-view-new-constructions-development-site-with-diverse-team-engineers-architects-discussing-real-estate-projects-heavy-machinery-construction-workers-are-working-area%20(1).jpg"
+                alt="Aerial view of engineers and architects discussing an active construction development"
                 loading="lazy"
               />
-              <div className="kgc-about__badge">
-                <div className="kgc-about__badge-num">12+</div>
-                <div className="kgc-about__badge-label">Industries Served</div>
-              </div>
             </div>
             <div className="kgc-about__content kgc-reveal" style={{ transitionDelay: '0.1s' }}>
               <div className="kgc-eyebrow">About Our Industries</div>

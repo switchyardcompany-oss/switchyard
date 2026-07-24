@@ -1038,6 +1038,13 @@
     overflow: hidden;
 }
 
+/* Stats and counter strips are intentionally removed site-wide. */
+.trust_section,
+.about-stats,
+.tampa-stats-bar {
+    display: none !important;
+}
+
 /* Subtle top border accent */
 .trust_section::before {
     content: '';
@@ -3782,10 +3789,22 @@
     max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
     padding-bottom: 48px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sec10-footer-col--company {
+    order: 2;
+}
+
+.sec10-footer-col--services {
+    order: 3;
+}
+
+.sec10-footer-col--contact {
+    order: 4;
 }
 
 /* Footer Columns */
@@ -4000,19 +4019,20 @@
     max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 24px;
     font-size: 0.95rem;
 }
 
-.sec10-bottom-bar__copyright,
-.sec10-bottom-bar__licenses {
+.sec10-bottom-bar__copyright {
     color: rgba(255, 255, 255, 0.7);
 }
 
-.sec10-bottom-bar__licenses {
-    text-align: center;
+@media (max-width: 1100px) and (min-width: 769px) {
+    .sec10-main-footer__inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 .sec10-bottom-bar__links {
@@ -4039,6 +4059,10 @@
 
 /* ========== FOOTER – RESPONSIVE MOBILE & TABLET ========== */
 @media (max-width: 768px) {
+  .sec10-main-footer {
+    padding: 40px 16px 0;
+  }
+
   .sec10-main-footer__inner {
     grid-template-columns: 1fr;          /* single column */
     gap: 30px;
@@ -4068,6 +4092,12 @@
     text-align: center;
   }
 
+  .sec10-footer-contact__item a,
+  .sec10-footer-contact__item span {
+    max-width: calc(100% - 28px);
+    overflow-wrap: anywhere;
+  }
+
   .sec10-footer-links {
     text-align: center;
     padding-left: 0 !important;          /* override inline style on the list */
@@ -4092,6 +4122,10 @@
     flex-direction: column;
     text-align: center;
     gap: 8px;
+  }
+
+  .sec10-bottom-bar__links {
+    justify-content: center;
   }
 
   .sec10-bottom-bar__links {

@@ -25,11 +25,18 @@ export default function Footer() {
               />
             </div>
             <div className="sec10-footer-badge">
-              <img
-                src="/images/footer-logo.webp"
-                alt="BBB Accredited Business A+"
-                className="sec10-footer-badge__img"
-              />
+              <a
+                href="https://www.bbb.org/us/fl/tampa/profile/electrical-engineer/keentel-engineering-0653-90446480#licensing"
+                aria-label="View Keentel Engineering's BBB Accredited Business profile"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/images/footer-logo.webp"
+                  alt="BBB Accredited Business A+"
+                  className="sec10-footer-badge__img"
+                />
+              </a>
             </div>
             <div className="sec10-footer-social">
               {/* Facebook */}
@@ -71,8 +78,20 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Get in Touch */}
-          <div className="sec10-footer-col">
+          {/* Column 2: Company Links */}
+          <div className="sec10-footer-col sec10-footer-col--company">
+            <h3 className="sec10-footer-col__title">Company</h3>
+            <ul className="sec10-footer-links">
+              <li><Link href="/about">About Us</Link></li>
+              <li><Link href="/projects">Projects</Link></li>
+              <li><Link href="/industries">Industries</Link></li>
+              <li><Link href="/service-areas">Service Areas</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Get in Touch */}
+          <div className="sec10-footer-col sec10-footer-col--contact">
             <h3 className="sec10-footer-col__title">Get in Touch</h3>
             <ul className="sec10-footer-contact">
               <li className="sec10-footer-contact__item">
@@ -113,32 +132,44 @@ export default function Footer() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <span>400 North Ashley Drive, Suite 2600, Tampa, FL 33602</span>
+                <span>
+                  400 North Ashley Drive,
+                  <br />
+                  Suite 2600, Tampa, FL 33602
+                </span>
               </li>
-              {/* License line removed */}
+              <li className="sec10-footer-contact__item license">
+                <svg
+                  className="sec10-footer-contact__icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M12 3l7 3v5c0 4.6-2.9 8.5-7 10-4.1-1.5-7-5.4-7-10V6l7-3z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+                <span>
+                  Florida Licenses:
+                  <br />
+                  CGC1524228 &bull; EC13014476
+                </span>
+              </li>
             </ul>
           </div>
 
-          {/* Column 3: Company Links (updated) */}
-          <div className="sec10-footer-col">
-            <h3 className="sec10-footer-col__title" style={{ paddingLeft: "30px" }}>
-              General Contractor
-            </h3>
-            <ul className="sec10-footer-links" style={{ paddingLeft: "30px" }}>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/projects">Projects</Link></li>
-              <li><Link href="/industries">Industries</Link></li>
-              <li><Link href="/service-areas">Service Areas</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Legal (replaces newsletter) */}
-          <div className="sec10-footer-col">
-            <h3 className="sec10-footer-col__title">Legal</h3>
+          {/* Column 4: Services */}
+          <div className="sec10-footer-col sec10-footer-col--services">
+            <h3 className="sec10-footer-col__title">Services</h3>
             <ul className="sec10-footer-links">
-              <li><Link href="/privacy">Privacy Policy</Link></li>
-              <li><Link href="/terms">Terms & Conditions</Link></li>
+              <li><Link href="/services/pre-construction">Pre-Construction</Link></li>
+              <li><Link href="/services/design-build">Design-Build</Link></li>
+              <li><Link href="/services/general-construction">General Construction</Link></li>
+              <li><Link href="/services/commercial-remodeling">Commercial Remodeling</Link></li>
+              <li><Link href="/services/residential-remodeling">Residential Remodeling</Link></li>
+              <li><Link href="/services/electrical-contracting">Electrical Contracting</Link></li>
+              <li><Link href="/services/emergency-restoration">Emergency Restoration</Link></li>
             </ul>
           </div>
         </div>
@@ -146,10 +177,7 @@ export default function Footer() {
         <div className="sec10-bottom-bar">
           <div className="sec10-bottom-bar__inner">
             <p className="sec10-bottom-bar__copyright">
-              &copy; 2026 Copyright keentelgeneralcontractors
-            </p>
-            <p className="sec10-bottom-bar__licenses">
-              Licenses: CGC1524228 | EC13014476
+              &copy; 2026 Copyright Keentel General Contractors
             </p>
             <div className="sec10-bottom-bar__links">
               <a href="/terms">Term and Condition</a>

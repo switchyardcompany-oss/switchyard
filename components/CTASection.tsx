@@ -59,7 +59,7 @@ Let's build your next project with confidence.
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
-                Florida licensed &amp; fully insured (CGC · CPC · CFC)
+                Florida licensed &amp; fully insured (CGC1524228 &bull; EC13014476)
               </li>
               <li className="cta-perk">
                 <svg className="cta-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

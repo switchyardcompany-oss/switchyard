@@ -322,7 +322,7 @@ export default function ContactPage() {
                 <div>
                   <strong>Licensed &amp; insured</strong>
                   <br />
-                  CGC · CPC · CFC — fully protected
+                  CGC1524228 &bull; EC13014476 — fully protected
                 </div>
               </div>
 
@@ -406,7 +406,7 @@ export default function ContactPage() {
               </div>
               <div className="why-card__title">Licensed &amp; Insured</div>
               <div className="why-card__desc">
-                Florida CGC, CPC &amp; CFC licensed. Fully insured on every
+                Florida licenses CGC1524228 and EC13014476. Fully insured on every
                 project — your investment is protected from the first call.
               </div>
             </div>

@@ -8,7 +8,7 @@ import Script from "next/script";
 const faqData = [
   // ── Licensing & Credentials ──
   { id: 1, category: 'licensing', question: 'Is Keentel General Contractors licensed in Florida?',
-    answer: 'Yes. We hold active Florida CGC (General Contractor), CPC (Certified Plumbing Contractor), and CFC (Certified Electrical Contractor) licenses. All work is performed by our licensed in-house team.' },
+    answer: 'Yes. We hold Florida General Contractor license CGC1524228 and Electrical Contractor license EC13014476. All work is performed by our licensed in-house team.' },
   { id: 2, category: 'licensing', question: 'Are you insured?',
     answer: 'Yes. We carry comprehensive general liability and workers\' compensation insurance on every project across Florida. Your property and investment are fully protected from day one.' },
   { id: 3, category: 'licensing', question: 'Do you work across all of Florida?',
