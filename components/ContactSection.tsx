@@ -56,10 +56,6 @@ export default function ContactSection() {
                   <label htmlFor="fullName">Full Name</label>
                   <input type="text" id="fullName" placeholder="John Doe" />
                 </div>
-                <div className="contact-form-group">
-                  <label htmlFor="company">Company</label>
-                  <input type="text" id="company" placeholder="Your Company" />
-                </div>
               </div>
               <div className="contact-form-row">
                 <div className="contact-form-group">

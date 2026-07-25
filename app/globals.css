@@ -3928,6 +3928,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
+.contact-form-row:has(> .contact-form-group:only-child) {
+  grid-template-columns: 1fr;
+}
+.contact-form-row:has(#budget) {
+  display: none;
+}
 
 .contact-form-group {
   margin-bottom: 18px;
