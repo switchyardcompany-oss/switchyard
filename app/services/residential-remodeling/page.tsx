@@ -3,6 +3,8 @@
 
 import { useState, useEffect, useRef, FormEvent } from "react";
 import "./residential-remodeling.css";
+import "../service-hero.css";
+import WhyKeentel from "@/components/WhyKeentel";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -303,10 +305,10 @@ export default function ResidentialRemodelingPage() {
             Whether you're renovating a single room or transforming your entire home, we help bring your vision to life with confidence.
           </p>
           <div className="rrs-hero-cta-group rrs-reveal rrs-reveal-delay-3">
-            <a href="#rrs-contact" className="rrs-btn rrs-btn-primary">
+            <a href="#contactformsection" className="rrs-btn rrs-btn-primary">
               Schedule a Consultation <FontAwesomeIcon icon={faArrowRight} className="rrs-btn-arrow" />
             </a>
-            <a href="#rrs-contact" className="rrs-btn rrs-btn-secondary">
+            <a href="#contactformsection" className="rrs-btn rrs-btn-secondary">
               Start Your Remodeling Project <FontAwesomeIcon icon={faArrowRight} className="rrs-btn-arrow" />
             </a>
           </div>
@@ -362,6 +364,8 @@ export default function ResidentialRemodelingPage() {
       </section>
 
       {/* ── Why Remodel Your Home? (Dark) ── */}
+      <WhyKeentel />
+
       <section className="rrs-section-dark" id="rrs-why-matters">
         <div className="rrs-decor-ring" style={{ width: 300, height: 300, top: -60, right: -80 }} />
         <div className="rrs-container">
@@ -437,7 +441,7 @@ export default function ResidentialRemodelingPage() {
             ))}
           </div>
           <div className="rrs-project-types-cta rrs-reveal">
-            <a href="#rrs-contact" className="rrs-btn rrs-btn-primary">
+            <a href="#contactformsection" className="rrs-btn rrs-btn-primary">
               Schedule Your Consultation <FontAwesomeIcon icon={faArrowRight} className="rrs-btn-arrow" />
             </a>
           </div>
@@ -645,8 +649,8 @@ export default function ResidentialRemodelingPage() {
           </p>
           <p className="rrs-final-cta-bold">Let's build the home you've always wanted.</p>
           <div className="rrs-final-cta-buttons">
-            <a href="#rrs-contact" className="rrs-btn-filled-dark">Start Your Home Remodel <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#rrs-contact" className="rrs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="rrs-btn-filled-dark">Start Your Home Remodel <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="#contactformsection" className="rrs-btn-outline-dark">Contact Keentel General Contractors</a>
           </div>
         </div>
       </section>

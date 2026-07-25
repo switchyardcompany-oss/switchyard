@@ -3,6 +3,8 @@
 
 import { useState, useEffect, useRef, FormEvent } from "react";
 import "./emergency-restoration.css";
+import "../service-hero.css";
+import WhyKeentel from "@/components/WhyKeentel";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -310,10 +312,10 @@ export default function EmergencyRestorationPage() {
             Our team responds with urgency, develops a clear recovery plan, and manages every stage of the restoration process—from emergency stabilization through final reconstruction.
           </p>
           <div className="ers-hero-cta-group ers-reveal ers-reveal-delay-3">
-            <a href="#ers-contact" className="ers-btn ers-btn-primary">
+            <a href="#contactformsection" className="ers-btn ers-btn-primary">
               Request Emergency Assistance <FontAwesomeIcon icon={faArrowRight} className="ers-btn-arrow" />
             </a>
-            <a href="#ers-contact" className="ers-btn ers-btn-secondary">
+            <a href="#contactformsection" className="ers-btn ers-btn-secondary">
               Speak With Our Team <FontAwesomeIcon icon={faArrowRight} className="ers-btn-arrow" />
             </a>
           </div>
@@ -366,6 +368,8 @@ export default function EmergencyRestorationPage() {
       </section>
 
       {/* ── When to Call Us (Dark) ── */}
+      <WhyKeentel />
+
       <section className="ers-section-dark" id="ers-why-matters">
         <div className="ers-decor-ring" style={{ width: 300, height: 300, top: -60, right: -80 }} />
         <div className="ers-container">
@@ -441,7 +445,7 @@ export default function EmergencyRestorationPage() {
             ))}
           </div>
           <div className="ers-project-types-cta ers-reveal">
-            <a href="#ers-contact" className="ers-btn ers-btn-primary">
+            <a href="#contactformsection" className="ers-btn ers-btn-primary">
               Request Emergency Assistance <FontAwesomeIcon icon={faArrowRight} className="ers-btn-arrow" />
             </a>
           </div>
@@ -639,8 +643,8 @@ export default function EmergencyRestorationPage() {
           </p>
           <p className="ers-final-cta-bold">Let's restore your property together.</p>
           <div className="ers-final-cta-buttons">
-            <a href="#ers-contact" className="ers-btn-filled-dark">Get Emergency Help <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#ers-contact" className="ers-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="ers-btn-filled-dark">Get Emergency Help <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="#contactformsection" className="ers-btn-outline-dark">Contact Keentel General Contractors</a>
           </div>
         </div>
       </section>

@@ -3,6 +3,8 @@
 
 import { useState, useEffect, useRef, FormEvent } from "react";
 import "./design-build.css";
+import "../service-hero.css";
+import WhyKeentel from "@/components/WhyKeentel";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -343,10 +345,10 @@ export default function DesignBuildPage() {
             The result is a more collaborative, efficient, and predictable project from concept to completion.
           </p>
           <div className="dbs-hero-cta-group dbs-reveal dbs-reveal-delay-3">
-            <a href="#dbs-contact" className="dbs-btn dbs-btn-primary">
+            <a href="#contactformsection" className="dbs-btn dbs-btn-primary">
               Schedule a Design-Build Consultation <FontAwesomeIcon icon={faArrowRight} className="dbs-btn-arrow" />
             </a>
-            <a href="#dbs-contact" className="dbs-btn dbs-btn-secondary">
+            <a href="#contactformsection" className="dbs-btn dbs-btn-secondary">
               Discuss Your Project <FontAwesomeIcon icon={faArrowRight} className="dbs-btn-arrow" />
             </a>
           </div>
@@ -402,6 +404,8 @@ export default function DesignBuildPage() {
       </section>
 
       {/* ── Why Choose Design-Build? (Dark) ── */}
+      <WhyKeentel />
+
       <section className="dbs-section-dark" id="dbs-why-matters">
         <div className="dbs-decor-ring" style={{ width: 300, height: 300, top: -60, right: -80 }} />
         <div className="dbs-container">
@@ -480,7 +484,7 @@ export default function DesignBuildPage() {
             ))}
           </div>
           <div className="dbs-project-types-cta dbs-reveal">
-            <a href="#dbs-contact" className="dbs-btn dbs-btn-primary">
+            <a href="#contactformsection" className="dbs-btn dbs-btn-primary">
               Start Your Design-Build Project <FontAwesomeIcon icon={faArrowRight} className="dbs-btn-arrow" />
             </a>
           </div>
@@ -690,8 +694,8 @@ export default function DesignBuildPage() {
           </p>
           <p className="dbs-final-cta-bold">Let's transform your vision into a well-planned, professionally managed, and successfully completed project.</p>
           <div className="dbs-final-cta-buttons">
-            <a href="#dbs-contact" className="dbs-btn-filled-dark">Schedule a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#dbs-contact" className="dbs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="dbs-btn-filled-dark">Schedule a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="#contactformsection" className="dbs-btn-outline-dark">Contact Keentel General Contractors</a>
           </div>
         </div>
       </section>

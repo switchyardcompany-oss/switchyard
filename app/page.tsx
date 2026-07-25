@@ -7,8 +7,6 @@ import IndustriesCarousel from "@/components/IndustriesCarousel";
 import ProcessSection from "@/components/ProcessSection";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import ServiceAreaMap from "@/components/ServiceAreaMap";
-import FAQSection from "@/components/FAQSection";
-import ContactSection from "@/components/ContactSection";
 import CTASection from "@/components/CTASection";
 
 export default function Home() {
@@ -18,14 +16,12 @@ export default function Home() {
        <AboutSection />
       <ServicesSection />
       <RecentWorkSection />
-       <WhyKeentel />
-        <IndustriesCarousel />
-        <ProcessSection />
+      <IndustriesCarousel />
+      <ProcessSection />
       <ReviewCarousel />
       <ServiceAreaMap />
-      <FAQSection />
-      <ContactSection />
       <CTASection />
+      <WhyKeentel />
     </>
   );
 }

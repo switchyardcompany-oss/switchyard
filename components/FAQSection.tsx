@@ -89,55 +89,72 @@ export default function FAQSection() {
   return (
     <section className="faq-section" ref={sectionRef}>
       <div className="faq-container">
-        <div className="faq-header">
-          <span className="faq-eyebrow">FAQ</span>
-          <h2 className="faq-title">FREQUENTLY ASKED QUESTIONS</h2>
-          <p className="faq-subtitle">Answers to Common Questions</p>
-        </div>
-
-        <div className="faq-list">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              data-faq-index={index}
-              className="faq-item"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                toggle(index);
-              }}
-            >
-              <div className="faq-question">
-                <span>{faq.question}</span>
-                <span className="faq-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                  </svg>
-                </span>
-              </div>
-              <div
-                className="faq-answer"
-                ref={(el) => {
-                  if (el) answerRefs.current.set(index, el);
-                  else answerRefs.current.delete(index);
-                }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <p>{faq.answer}</p>
-              </div>
+        <div className="faq-layout">
+          <aside className="faq-header">
+            <span className="faq-eyebrow">Questions We Hear</span>
+            <h2 className="faq-title">
+              Answers,
+              <br />
+              before you ask.
+            </h2>
+            <p className="faq-subtitle">
+              Clear answers to the questions clients ask most often before starting a
+              construction project.
+            </p>
+            <div className="faq-cta-wrapper">
+              <Link href="/contact#contactformsection" className="faq-cta">
+                Ask Us Directly
+                <svg className="faq-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </Link>
             </div>
-          ))}
-        </div>
+          </aside>
 
-        <div className="faq-cta-wrapper">
-          <Link href="/faq" className="faq-cta">
-            View All FAQs
-            <svg className="faq-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+          <div className="faq-content">
+            <div className="faq-list">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  data-faq-index={index}
+                  className="faq-item"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    toggle(index);
+                  }}
+                >
+                  <div className="faq-question">
+                    <span className="faq-question-copy">
+                      <strong className="faq-number">{String(index + 1).padStart(2, "0")}</strong>
+                      <span>{faq.question}</span>
+                    </span>
+                    <span className="faq-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    className="faq-answer"
+                    ref={(el) => {
+                      if (el) answerRefs.current.set(index, el);
+                      else answerRefs.current.delete(index);
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <p>{faq.answer}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="faq-all-link">
+              <Link href="/faq">View All FAQs</Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

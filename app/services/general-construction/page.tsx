@@ -3,6 +3,8 @@
 
 import { useState, useEffect, useRef, FormEvent } from "react";
 import "./general-construction.css";
+import "../service-hero.css";
+import WhyKeentel from "@/components/WhyKeentel";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -301,10 +303,10 @@ export default function GeneralConstructionPage() {
             Whether you're developing a new facility, expanding an existing property, or modernizing your infrastructure, we provide one trusted team to manage every stage of construction.
           </p>
           <div className="gcs-hero-cta-group gcs-reveal gcs-reveal-delay-3">
-            <a href="#gcs-contact" className="gcs-btn gcs-btn-primary">
+            <a href="#contactformsection" className="gcs-btn gcs-btn-primary">
               Schedule a Consultation <FontAwesomeIcon icon={faArrowRight} className="gcs-btn-arrow" />
             </a>
-            <a href="#gcs-contact" className="gcs-btn gcs-btn-secondary">
+            <a href="#contactformsection" className="gcs-btn gcs-btn-secondary">
               View Our Projects <FontAwesomeIcon icon={faArrowRight} className="gcs-btn-arrow" />
             </a>
           </div>
@@ -360,6 +362,8 @@ export default function GeneralConstructionPage() {
       </section>
 
       {/* ── Why Choose General Construction (Dark) ── */}
+      <WhyKeentel />
+
       <section className="gcs-section-dark" id="gcs-why-matters">
         <div className="gcs-decor-ring" style={{ width: 300, height: 300, top: -60, right: -80 }} />
         <div className="gcs-container">
@@ -435,7 +439,7 @@ export default function GeneralConstructionPage() {
             ))}
           </div>
           <div className="gcs-project-types-cta gcs-reveal">
-            <a href="#gcs-contact" className="gcs-btn gcs-btn-primary">
+            <a href="#contactformsection" className="gcs-btn gcs-btn-primary">
               Discuss Your Project <FontAwesomeIcon icon={faArrowRight} className="gcs-btn-arrow" />
             </a>
           </div>
@@ -645,8 +649,8 @@ export default function GeneralConstructionPage() {
           </p>
           <p className="gcs-final-cta-bold">Let's build your next project with confidence.</p>
           <div className="gcs-final-cta-buttons">
-            <a href="#gcs-contact" className="gcs-btn-filled-dark">Start Your Project <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#gcs-contact" className="gcs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="gcs-btn-filled-dark">Start Your Project <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="#contactformsection" className="gcs-btn-outline-dark">Contact Keentel General Contractors</a>
           </div>
         </div>
       </section>

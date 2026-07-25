@@ -78,13 +78,6 @@ export default function ServicesSection() {
       link: "/services/electrical-contracting",
       image: "/images/services/electrical-contracting.webp",
     },
-    {
-      title: "Emergency Restoration",
-      desc: "Fast, reliable restoration following fire, storm, flood, and structural damage to help businesses recover quickly.",
-      icon: "fa-truck-fast",
-      link: "/services/emergency-restoration",
-      image: "/images/services/emergency-restoration.webp",
-    },
   ];
 
   return (

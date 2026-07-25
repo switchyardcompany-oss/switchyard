@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({
         <TopBar />
         <Header />
         <main className="main">{children}</main>
+        <FAQSection />
         <Footer />
       </body>
     </html>

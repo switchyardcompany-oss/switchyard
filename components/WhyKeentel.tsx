@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import ContactSection from "@/components/ContactSection";
 
 export default function WhyKeentel() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -68,41 +68,45 @@ export default function WhyKeentel() {
   return (
     <section className="whyk2-section" ref={sectionRef}>
       <div className="whyk2-container">
-        <div className="whyk2-header">
-          <span className="whyk2-eyebrow">WHY CHOOSE KEENTEL</span>
-          <h2 className="whyk2-title">
-            Built Around <span className="whyk2-highlight">Better Project Delivery</span>
-          </h2>
-          <p className="whyk2-subtitle">
-            Construction success depends on planning, communication, and accountability.
-            That's why every project is managed with a structured process designed to
-            reduce risk, improve efficiency, and deliver exceptional results.
-          </p>
-        </div>
-
-        <div className="whyk2-grid">
-          {reasons.map((item, index) => (
-            <div key={index} className="whyk2-card">
-              <div className="whyk2-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={item.icon} />
-                </svg>
-              </div>
-              <h3 className="whyk2-card-title">{item.title}</h3>
-              <p className="whyk2-card-desc">{item.desc}</p>
-              <span className="whyk2-card-accent"></span>
+        <div className="whyk2-split">
+          <div className="whyk2-content">
+            <div className="whyk2-header">
+              <span className="whyk2-eyebrow">WHY CHOOSE KEENTEL</span>
+              <h2 className="whyk2-title">
+                Built Around <span className="whyk2-highlight">Better Project Delivery</span>
+              </h2>
+              <p className="whyk2-subtitle">
+                Construction success depends on planning, communication, and accountability.
+                That&apos;s why every project is managed with a structured process designed to
+                reduce risk, improve efficiency, and deliver exceptional results.
+              </p>
             </div>
-          ))}
-        </div>
 
-        <div className="whyk2-cta-wrapper">
-          <Link href="/about" className="whyk2-cta">
-            Meet the team
-            <svg className="whyk2-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+            <div className="whyk2-grid">
+              {reasons.map((item, index) => (
+                <div key={index} className="whyk2-card">
+                  <div className="whyk2-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <div className="whyk2-card-copy">
+                    <h3 className="whyk2-card-title">{item.title}</h3>
+                    <p className="whyk2-card-desc">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="whyk2-form-panel" id="contactformsection">
+            <div className="whyk2-form-intro">
+              <span>Start a Conversation</span>
+              <h2>Let&apos;s Discuss Your Next Project</h2>
+              <p>Share your project details and our construction team will follow up with the right next steps.</p>
+            </div>
+            <ContactSection />
+          </div>
         </div>
       </div>
     </section>

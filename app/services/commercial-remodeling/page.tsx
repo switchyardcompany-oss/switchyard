@@ -3,6 +3,8 @@
 
 import { useState, useEffect, useRef, FormEvent } from "react";
 import "./commercial-remodeling.css";
+import "../service-hero.css";
+import WhyKeentel from "@/components/WhyKeentel";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -305,10 +307,10 @@ export default function CommercialRemodelingPage() {
             Whether you're modernizing an office, renovating a retail space, or reconfiguring a commercial facility, we help bring your vision to life with quality and precision.
           </p>
           <div className="crs-hero-cta-group crs-reveal crs-reveal-delay-3">
-            <a href="#crs-contact" className="crs-btn crs-btn-primary">
+            <a href="#contactformsection" className="crs-btn crs-btn-primary">
               Schedule a Consultation <FontAwesomeIcon icon={faArrowRight} className="crs-btn-arrow" />
             </a>
-            <a href="#crs-contact" className="crs-btn crs-btn-secondary">
+            <a href="#contactformsection" className="crs-btn crs-btn-secondary">
               Discuss Your Remodeling Project <FontAwesomeIcon icon={faArrowRight} className="crs-btn-arrow" />
             </a>
           </div>
@@ -360,6 +362,8 @@ export default function CommercialRemodelingPage() {
       </section>
 
       {/* Why Remodel */}
+      <WhyKeentel />
+
       <section className="crs-section-dark" id="crs-why-matters">
         <div className="crs-decor-ring" style={{ width: 300, height: 300, top: -60, right: -80 }} />
         <div className="crs-container">
@@ -433,7 +437,7 @@ export default function CommercialRemodelingPage() {
             ))}
           </div>
           <div className="crs-project-types-cta crs-reveal">
-            <a href="#crs-contact" className="crs-btn crs-btn-primary">
+            <a href="#contactformsection" className="crs-btn crs-btn-primary">
               Request a Remodeling Consultation <FontAwesomeIcon icon={faArrowRight} className="crs-btn-arrow" />
             </a>
           </div>
@@ -630,8 +634,8 @@ export default function CommercialRemodelingPage() {
           </p>
           <p className="crs-final-cta-bold">Let's transform your space with confidence.</p>
           <div className="crs-final-cta-buttons">
-            <a href="#crs-contact" className="crs-btn-filled-dark">Start Your Remodeling Project <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#crs-contact" className="crs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="crs-btn-filled-dark">Start Your Remodeling Project <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="#contactformsection" className="crs-btn-outline-dark">Contact Keentel General Contractors</a>
           </div>
         </div>
       </section>

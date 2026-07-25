@@ -1,0 +1,1477 @@
+/* Shared service-detail hero standard — aligned with the homepage hero. */
+:is(
+  .pc-hero-section,
+  .dbs-hero-section,
+  .gcs-hero-section,
+  .crs-hero-section,
+  .rrs-hero-section,
+  .ecs-hero-section,
+  .ers-hero-section
+) {
+  min-height: 80vh;
+  padding: 40px 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+:is(
+  .pc-hero-content,
+  .dbs-hero-content,
+  .gcs-hero-content,
+  .crs-hero-content,
+  .rrs-hero-content,
+  .ecs-hero-content,
+  .ers-hero-content
+) {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: left;
+}
+
+:is(
+  .pc-hero-badge,
+  .dbs-hero-badge,
+  .gcs-hero-badge,
+  .crs-hero-badge,
+  .rrs-hero-badge,
+  .ecs-hero-badge,
+  .ers-hero-badge
+) {
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 8px 18px 8px 14px;
+  border-radius: 40px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+:is(
+  .pc-hero-title,
+  .dbs-hero-title,
+  .gcs-hero-title,
+  .crs-hero-title,
+  .rrs-hero-title,
+  .ecs-hero-title,
+  .ers-hero-title
+) {
+  max-width: 650px;
+  margin: 0 0 16px;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: normal;
+}
+
+:is(
+  .pc-hero-subtitle,
+  .dbs-hero-subtitle,
+  .gcs-hero-subtitle,
+  .crs-hero-subtitle,
+  .rrs-hero-subtitle,
+  .ecs-hero-subtitle,
+  .ers-hero-subtitle
+) {
+  max-width: 650px;
+  margin: 0 0 12px;
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+:is(
+  .pc-hero-subtitle-small,
+  .dbs-hero-subtitle-small,
+  .gcs-hero-subtitle-small,
+  .crs-hero-subtitle-small,
+  .rrs-hero-subtitle-small,
+  .ecs-hero-subtitle-small,
+  .ers-hero-subtitle-small
+) {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+:is(
+  .pc-hero-cta-group,
+  .dbs-hero-cta-group,
+  .gcs-hero-cta-group,
+  .crs-hero-cta-group,
+  .rrs-hero-cta-group,
+  .ecs-hero-cta-group,
+  .ers-hero-cta-group
+) {
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+:is(
+  .pc-btn,
+  .dbs-btn,
+  .gcs-btn,
+  .crs-btn,
+  .rrs-btn,
+  .ecs-btn,
+  .ers-btn
+) {
+  min-height: 49px;
+  padding: 13px 28px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@media (max-width: 768px) {
+  :is(
+    .pc-hero-section,
+    .dbs-hero-section,
+    .gcs-hero-section,
+    .crs-hero-section,
+    .rrs-hero-section,
+    .ecs-hero-section,
+    .ers-hero-section
+  ) {
+    min-height: 70vh;
+    padding: 60px 20px;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) {
+    text-align: center;
+  }
+
+  :is(
+    .pc-hero-title,
+    .dbs-hero-title,
+    .gcs-hero-title,
+    .crs-hero-title,
+    .rrs-hero-title,
+    .ecs-hero-title,
+    .ers-hero-title,
+    .pc-hero-subtitle,
+    .dbs-hero-subtitle,
+    .gcs-hero-subtitle,
+    .crs-hero-subtitle,
+    .rrs-hero-subtitle,
+    .ecs-hero-subtitle,
+    .ers-hero-subtitle
+  ) {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  :is(
+    .pc-hero-title,
+    .dbs-hero-title,
+    .gcs-hero-title,
+    .crs-hero-title,
+    .rrs-hero-title,
+    .ecs-hero-title,
+    .ers-hero-title
+  ) {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+  }
+
+  :is(
+    .pc-hero-cta-group,
+    .dbs-hero-cta-group,
+    .gcs-hero-cta-group,
+    .crs-hero-cta-group,
+    .rrs-hero-cta-group,
+    .ecs-hero-cta-group,
+    .ers-hero-cta-group
+  ) {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  :is(
+    .pc-hero-section,
+    .dbs-hero-section,
+    .gcs-hero-section,
+    .crs-hero-section,
+    .rrs-hero-section,
+    .ecs-hero-section,
+    .ers-hero-section
+  ) {
+    padding: 48px 16px;
+  }
+
+  :is(
+    .pc-hero-title,
+    .dbs-hero-title,
+    .gcs-hero-title,
+    .crs-hero-title,
+    .rrs-hero-title,
+    .ecs-hero-title,
+    .ers-hero-title
+  ) {
+    font-size: 1.9rem;
+  }
+
+  :is(
+    .pc-hero-cta-group,
+    .dbs-hero-cta-group,
+    .gcs-hero-cta-group,
+    .crs-hero-cta-group,
+    .rrs-hero-cta-group,
+    .ecs-hero-cta-group,
+    .ers-hero-cta-group
+  ) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  :is(
+    .pc-btn,
+    .dbs-btn,
+    .gcs-btn,
+    .crs-btn,
+    .rrs-btn,
+    .ecs-btn,
+    .ers-btn
+  ) {
+    width: 100%;
+    white-space: normal;
+    justify-content: center;
+  }
+}
+
+/* Post-form "Why it matters" section — shared Pre-Construction timeline. */
+:is(
+  #dbs-why-matters,
+  #gcs-why-matters,
+  #crs-why-matters,
+  #rrs-why-matters,
+  #ecs-why-matters,
+  #ers-why-matters
+) {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f8fc 100%);
+}
+
+:is(
+  #dbs-why-matters,
+  #gcs-why-matters,
+  #crs-why-matters,
+  #rrs-why-matters,
+  #ecs-why-matters,
+  #ers-why-matters
+) > :is(
+  .dbs-container,
+  .gcs-container,
+  .crs-container,
+  .rrs-container,
+  .ecs-container,
+  .ers-container
+) {
+  text-align: center;
+}
+
+:is(
+  #dbs-why-matters,
+  #gcs-why-matters,
+  #crs-why-matters,
+  #rrs-why-matters,
+  #ecs-why-matters,
+  #ers-why-matters
+) :is(
+  .dbs-section-label,
+  .gcs-section-label,
+  .crs-section-label,
+  .rrs-section-label,
+  .ecs-section-label,
+  .ers-section-label
+) {
+  color: var(--color-magenta, #a6238f);
+}
+
+:is(
+  #dbs-why-matters,
+  #gcs-why-matters,
+  #crs-why-matters,
+  #rrs-why-matters,
+  #ecs-why-matters,
+  #ers-why-matters
+) :is(
+  .dbs-section-heading,
+  .gcs-section-heading,
+  .crs-section-heading,
+  .rrs-section-heading,
+  .ecs-section-heading,
+  .ers-section-heading
+) {
+  max-width: 720px;
+  margin: 0 auto 18px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+:is(
+  #dbs-why-matters,
+  #gcs-why-matters,
+  #crs-why-matters,
+  #rrs-why-matters,
+  #ecs-why-matters,
+  #ers-why-matters
+) :is(
+  .dbs-section-body,
+  .gcs-section-body,
+  .crs-section-body,
+  .rrs-section-body,
+  .ecs-section-body,
+  .ers-section-body
+) {
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+:is(
+  .dbs-matters-grid,
+  .gcs-matters-grid,
+  .crs-matters-grid,
+  .rrs-matters-grid,
+  .ecs-matters-grid,
+  .ers-matters-grid
+) {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
+  gap: 0;
+  width: 100%;
+  max-width: 940px;
+  margin: 52px auto 0;
+  padding-block: 6px;
+}
+
+:is(
+  .dbs-matters-grid,
+  .gcs-matters-grid,
+  .crs-matters-grid,
+  .rrs-matters-grid,
+  .ecs-matters-grid,
+  .ers-matters-grid
+)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, #de62c2, var(--color-navy, #12106e));
+  transform: translateX(-50%);
+}
+
+:is(
+  .dbs-matter-card,
+  .gcs-matter-card,
+  .crs-matter-card,
+  .rrs-matter-card,
+  .ecs-matter-card,
+  .ers-matter-card
+) {
+  position: relative;
+  grid-column: 1;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 32px;
+  padding: 28px 30px;
+  border: 1px solid rgba(18, 16, 110, 0.18);
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  box-shadow: 0 14px 34px rgba(18, 16, 110, 0.09);
+}
+
+:is(
+  .dbs-matter-card,
+  .gcs-matter-card,
+  .crs-matter-card,
+  .rrs-matter-card,
+  .ecs-matter-card,
+  .ers-matter-card
+):nth-child(even) {
+  grid-column: 3;
+}
+
+:is(
+  .dbs-matter-card,
+  .gcs-matter-card,
+  .crs-matter-card,
+  .rrs-matter-card,
+  .ecs-matter-card,
+  .ers-matter-card
+)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -45px;
+  width: 16px;
+  height: 16px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: var(--color-magenta, #a6238f);
+  box-shadow: 0 0 0 2px var(--color-magenta, #a6238f);
+  transform: translate(50%, -50%);
+}
+
+:is(
+  .dbs-matter-card,
+  .gcs-matter-card,
+  .crs-matter-card,
+  .rrs-matter-card,
+  .ecs-matter-card,
+  .ers-matter-card
+):nth-child(even)::after {
+  right: auto;
+  left: -45px;
+  transform: translate(-50%, -50%);
+}
+
+:is(
+  .dbs-matter-card,
+  .gcs-matter-card,
+  .crs-matter-card,
+  .rrs-matter-card,
+  .ecs-matter-card,
+  .ers-matter-card
+):last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  :is(
+    .dbs-matters-grid,
+    .gcs-matters-grid,
+    .crs-matters-grid,
+    .rrs-matters-grid,
+    .ecs-matters-grid,
+    .ers-matters-grid
+  ) {
+    grid-template-columns: 38px minmax(0, 1fr);
+    margin-top: 38px;
+  }
+
+  :is(
+    .dbs-matters-grid,
+    .gcs-matters-grid,
+    .crs-matters-grid,
+    .rrs-matters-grid,
+    .ecs-matters-grid,
+    .ers-matters-grid
+  )::before {
+    left: 12px;
+    transform: none;
+  }
+
+  :is(
+    .dbs-matter-card,
+    .gcs-matter-card,
+    .crs-matter-card,
+    .rrs-matter-card,
+    .ecs-matter-card,
+    .ers-matter-card
+  ),
+  :is(
+    .dbs-matter-card,
+    .gcs-matter-card,
+    .crs-matter-card,
+    .rrs-matter-card,
+    .ecs-matter-card,
+    .ers-matter-card
+  ):nth-child(even) {
+    grid-column: 2;
+    min-height: auto;
+    margin-bottom: 24px;
+    padding: 24px 20px;
+  }
+
+  :is(
+    .dbs-matter-card,
+    .gcs-matter-card,
+    .crs-matter-card,
+    .rrs-matter-card,
+    .ecs-matter-card,
+    .ers-matter-card
+  )::after,
+  :is(
+    .dbs-matter-card,
+    .gcs-matter-card,
+    .crs-matter-card,
+    .rrs-matter-card,
+    .ecs-matter-card,
+    .ers-matter-card
+  ):nth-child(even)::after {
+    top: 30px;
+    right: auto;
+    left: -26px;
+    width: 14px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Complete service-detail alignment with the Pre-Construction master page. */
+:is(
+  .dbs-about-page,
+  .gcs-about-page,
+  .crs-about-page,
+  .rrs-about-page,
+  .ecs-about-page,
+  .ers-about-page
+) :is(
+  .dbs-section-light,
+  .dbs-section-light-alt,
+  .dbs-section-dark,
+  .gcs-section-light,
+  .gcs-section-light-alt,
+  .gcs-section-dark,
+  .crs-section-light,
+  .crs-section-light-alt,
+  .crs-section-dark,
+  .rrs-section-light,
+  .rrs-section-light-alt,
+  .rrs-section-dark,
+  .ecs-section-light,
+  .ecs-section-light-alt,
+  .ecs-section-dark,
+  .ers-section-light,
+  .ers-section-light-alt,
+  .ers-section-dark
+) {
+  padding: 90px 24px;
+}
+
+:is(
+  .dbs-section-heading,
+  .gcs-section-heading,
+  .crs-section-heading,
+  .rrs-section-heading,
+  .ecs-section-heading,
+  .ers-section-heading
+) {
+  max-width: 760px;
+  margin: 0 0 18px;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  line-height: 1.25;
+  text-align: left;
+}
+
+:is(
+  .dbs-section-body,
+  .gcs-section-body,
+  .crs-section-body,
+  .rrs-section-body,
+  .ecs-section-body,
+  .ers-section-body
+) {
+  max-width: 680px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  text-align: left;
+}
+
+/* Keep the same lean section sequence as Pre-Construction. */
+:is(
+  #dbs-why-choose, #dbs-benefits, #dbs-contact,
+  #gcs-why-choose, #gcs-benefits, #gcs-contact,
+  #crs-why-choose, #crs-benefits, #crs-contact,
+  #rrs-why-choose, #rrs-benefits, #rrs-contact,
+  #ecs-why-choose, #ecs-benefits, #ecs-contact,
+  #ers-why-choose, #ers-benefits, #ers-contact
+) {
+  display: none;
+}
+
+/* Why this service matters — same quiet, light treatment and card geometry. */
+:is(
+  #dbs-why-matters,
+  #gcs-why-matters,
+  #crs-why-matters,
+  #rrs-why-matters,
+  #ecs-why-matters,
+  #ers-why-matters
+) {
+  background: #f8f8fc;
+  color: var(--color-text, #1a1a2e);
+}
+
+:is(
+  #dbs-why-matters,
+  #gcs-why-matters,
+  #crs-why-matters,
+  #rrs-why-matters,
+  #ecs-why-matters,
+  #ers-why-matters
+) :is(
+  .dbs-section-heading, .gcs-section-heading, .crs-section-heading,
+  .rrs-section-heading, .ecs-section-heading, .ers-section-heading
+) {
+  color: var(--color-navy, #12106e);
+}
+
+:is(
+  #dbs-why-matters,
+  #gcs-why-matters,
+  #crs-why-matters,
+  #rrs-why-matters,
+  #ecs-why-matters,
+  #ers-why-matters
+) :is(
+  .dbs-section-body, .gcs-section-body, .crs-section-body,
+  .rrs-section-body, .ecs-section-body, .ers-section-body
+) {
+  color: var(--color-text-light, #4a4a6a);
+}
+
+:is(
+  .dbs-matter-card, .gcs-matter-card, .crs-matter-card,
+  .rrs-matter-card, .ecs-matter-card, .ers-matter-card
+) {
+  min-height: 210px;
+  padding: 28px 26px;
+  border: 1px solid rgba(18, 16, 110, 0.14);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--color-text, #1a1a2e);
+  box-shadow: 0 12px 32px rgba(18, 16, 110, 0.08);
+}
+
+:is(
+  .dbs-matter-card, .gcs-matter-card, .crs-matter-card,
+  .rrs-matter-card, .ecs-matter-card, .ers-matter-card
+) :is(h3, h4) {
+  color: var(--color-navy, #12106e);
+}
+
+:is(
+  .dbs-matter-card, .gcs-matter-card, .crs-matter-card,
+  .rrs-matter-card, .ecs-matter-card, .ers-matter-card
+) p {
+  color: var(--color-text-muted, #6a6a8e);
+}
+
+/* Included services — same image-left / structured-list-right composition. */
+:is(
+  .dbs-services-layout, .gcs-services-layout, .crs-services-layout,
+  .rrs-services-layout, .ecs-services-layout, .ers-services-layout
+) {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: stretch;
+  gap: clamp(48px, 6vw, 84px);
+}
+
+:is(
+  .dbs-services-image-wrapper, .gcs-services-image-wrapper, .crs-services-image-wrapper,
+  .rrs-services-image-wrapper, .ecs-services-image-wrapper, .ers-services-image-wrapper
+) {
+  position: relative;
+  margin-top: 28px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 22px 48px rgba(18, 16, 110, 0.15);
+}
+
+:is(
+  .dbs-services-image, .gcs-services-image, .crs-services-image,
+  .rrs-services-image, .ecs-services-image, .ers-services-image
+) {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+:is(
+  .dbs-services-right, .gcs-services-right, .crs-services-right,
+  .rrs-services-right, .ecs-services-right, .ers-services-right
+) {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  border: 1px solid rgba(18, 16, 110, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 45px rgba(18, 16, 110, 0.08);
+}
+
+:is(
+  .dbs-services-grid, .gcs-services-grid, .crs-services-grid,
+  .rrs-services-grid, .ecs-services-grid, .ers-services-grid
+) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+:is(
+  .dbs-service-item, .gcs-service-item, .crs-service-item,
+  .rrs-service-item, .ecs-service-item, .ers-service-item
+) {
+  min-height: 58px;
+  padding: 12px 14px;
+  border: 1px solid rgba(18, 16, 110, 0.1);
+  border-radius: 10px;
+  background: #fafafe;
+  color: var(--color-text, #1a1a2e);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+:is(
+  .dbs-service-item, .gcs-service-item, .crs-service-item,
+  .rrs-service-item, .ecs-service-item, .ers-service-item
+):hover {
+  transform: translateY(-2px);
+  border-color: var(--color-magenta, #a6238f);
+  background: #fff;
+}
+
+/* Project types are the primary dark, image-led section. */
+:is(
+  #dbs-project-types, #gcs-project-types, #crs-project-types,
+  #rrs-project-types, #ecs-project-types, #ers-project-types
+) {
+  background: #12106e;
+}
+
+:is(
+  .dbs-project-types-grid, .gcs-project-types-grid, .crs-project-types-grid,
+  .rrs-project-types-grid, .ecs-project-types-grid, .ers-project-types-grid
+) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 36px;
+}
+
+:is(
+  .dbs-project-type-card, .gcs-project-type-card, .crs-project-type-card,
+  .rrs-project-type-card, .ecs-project-type-card, .ers-project-type-card
+) {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: #21185f;
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+:is(
+  .dbs-project-type-card, .gcs-project-type-card, .crs-project-type-card,
+  .rrs-project-type-card, .ecs-project-type-card, .ers-project-type-card
+):hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+:is(
+  .dbs-project-type-image, .gcs-project-type-image, .crs-project-type-image,
+  .rrs-project-type-image, .ecs-project-type-image, .ers-project-type-image
+) {
+  height: 220px;
+  background-position: center;
+  background-size: cover;
+}
+
+:is(
+  .dbs-project-type-content, .gcs-project-type-content, .crs-project-type-content,
+  .rrs-project-type-content, .ecs-project-type-content, .ers-project-type-content
+) {
+  padding: 24px 22px 26px;
+  background: #21185f;
+}
+
+/* Who we serve — same restrained white-card system. */
+:is(
+  .dbs-clients-grid, .gcs-clients-grid, .crs-clients-grid,
+  .rrs-clients-grid, .ecs-clients-grid, .ers-clients-grid
+) {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+
+:is(
+  .dbs-client-card, .gcs-client-card, .crs-client-card,
+  .rrs-client-card, .ecs-client-card, .ers-client-card
+) {
+  min-height: 210px;
+  padding: 24px 20px;
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Ordered process — same connected four-step treatment. */
+:is(
+  #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) {
+  background: #12106e;
+}
+
+:is(
+  .dbs-process-horizontal, .gcs-process-horizontal, .crs-process-horizontal,
+  .rrs-process-horizontal, .ecs-process-horizontal, .ers-process-horizontal
+) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+:is(
+  .dbs-process-step, .gcs-process-step, .crs-process-step,
+  .rrs-process-step, .ecs-process-step, .ers-process-step
+) {
+  min-width: 0;
+  max-width: none;
+  padding: 28px 22px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  text-align: left;
+  box-shadow: none;
+}
+
+:is(
+  .dbs-process-step-number, .gcs-process-step-number, .crs-process-step-number,
+  .rrs-process-step-number, .ecs-process-step-number, .ers-process-step-number
+) {
+  width: 44px;
+  height: 44px;
+  margin: 0 0 16px;
+  border-radius: 50%;
+  background: var(--color-magenta, #a6238f);
+}
+
+/* Final CTA follows the same image-backed composition used on Pre-Construction. */
+:is(
+  .dbs-final-cta-section, .gcs-final-cta-section, .crs-final-cta-section,
+  .rrs-final-cta-section, .ecs-final-cta-section, .ers-final-cta-section
+) {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(72px, 8vw, 110px) 24px;
+  background-color: #080a12;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.dbs-final-cta-section { background-image: url("/images/recent-work/multifamily-community.jpeg"); }
+.gcs-final-cta-section { background-image: url("/images/recent-work/homeward-bound.jpeg"); }
+.crs-final-cta-section { background-image: url("/images/services/commercial-remodeling.webp"); }
+.rrs-final-cta-section { background-image: url("/images/services/residential-remodeling.webp"); }
+.ecs-final-cta-section { background-image: url("/images/services/electrical-contracting.webp"); }
+.ers-final-cta-section { background-image: url("/images/services/emergency-restoration.webp"); }
+
+:is(
+  .dbs-final-cta-section, .gcs-final-cta-section, .crs-final-cta-section,
+  .rrs-final-cta-section, .ecs-final-cta-section, .ers-final-cta-section
+)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(4, 5, 12, 0.78);
+}
+
+:is(
+  .dbs-final-cta-section, .gcs-final-cta-section, .crs-final-cta-section,
+  .rrs-final-cta-section, .ecs-final-cta-section, .ers-final-cta-section
+) > div {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  :is(
+    .dbs-services-layout, .gcs-services-layout, .crs-services-layout,
+    .rrs-services-layout, .ecs-services-layout, .ers-services-layout
+  ) {
+    grid-template-columns: 1fr;
+  }
+
+  :is(
+    .dbs-project-types-grid, .gcs-project-types-grid, .crs-project-types-grid,
+    .rrs-project-types-grid, .ecs-project-types-grid, .ers-project-types-grid
+  ) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  :is(
+    .dbs-clients-grid, .gcs-clients-grid, .crs-clients-grid,
+    .rrs-clients-grid, .ecs-clients-grid, .ers-clients-grid
+  ) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  :is(
+    .dbs-process-horizontal, .gcs-process-horizontal, .crs-process-horizontal,
+    .rrs-process-horizontal, .ecs-process-horizontal, .ers-process-horizontal
+  ) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  :is(
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) :is(
+    .dbs-section-light, .dbs-section-light-alt, .dbs-section-dark,
+    .gcs-section-light, .gcs-section-light-alt, .gcs-section-dark,
+    .crs-section-light, .crs-section-light-alt, .crs-section-dark,
+    .rrs-section-light, .rrs-section-light-alt, .rrs-section-dark,
+    .ecs-section-light, .ecs-section-light-alt, .ecs-section-dark,
+    .ers-section-light, .ers-section-light-alt, .ers-section-dark
+  ) {
+    padding: 64px 16px;
+  }
+
+  :is(
+    .dbs-section-heading, .gcs-section-heading, .crs-section-heading,
+    .rrs-section-heading, .ecs-section-heading, .ers-section-heading
+  ) {
+    font-size: 1.9rem;
+  }
+
+  :is(
+    .dbs-services-grid, .gcs-services-grid, .crs-services-grid,
+    .rrs-services-grid, .ecs-services-grid, .ers-services-grid,
+    .dbs-project-types-grid, .gcs-project-types-grid, .crs-project-types-grid,
+    .rrs-project-types-grid, .ecs-project-types-grid, .ers-project-types-grid,
+    .dbs-clients-grid, .gcs-clients-grid, .crs-clients-grid,
+    .rrs-clients-grid, .ecs-clients-grid, .ers-clients-grid,
+    .dbs-process-horizontal, .gcs-process-horizontal, .crs-process-horizontal,
+    .rrs-process-horizontal, .ecs-process-horizontal, .ers-process-horizontal
+  ) {
+    grid-template-columns: 1fr;
+  }
+
+  :is(
+    .dbs-services-right, .gcs-services-right, .crs-services-right,
+    .rrs-services-right, .ecs-services-right, .ers-services-right
+  ) {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  :is(
+    .dbs-project-type-image, .gcs-project-type-image, .crs-project-type-image,
+    .rrs-project-type-image, .ecs-project-type-image, .ers-project-type-image
+  ) {
+    height: 210px;
+  }
+
+  :is(
+    .dbs-final-cta-section, .gcs-final-cta-section, .crs-final-cta-section,
+    .rrs-final-cta-section, .ecs-final-cta-section, .ers-final-cta-section
+  ) {
+    padding: 64px 16px;
+    background-attachment: scroll;
+  }
+}
+
+/* Shared service-page design system.
+   Pre-construction is the visual reference for every service detail page. */
+:is(
+  .dbs-about-page,
+  .gcs-about-page,
+  .crs-about-page,
+  .rrs-about-page,
+  .ecs-about-page,
+  .ers-about-page
+) :is(
+  .dbs-container,
+  .gcs-container,
+  .crs-container,
+  .rrs-container,
+  .ecs-container,
+  .ers-container
+) {
+  width: min(100% - 40px, var(--max-width, 1200px));
+  margin-inline: auto;
+}
+
+/* Each service now opens with its own relevant real project image. */
+.dbs-hero-image {
+  background-image: url("/images/recent-work/multifamily-aerial.jpeg") !important;
+}
+.gcs-hero-image {
+  background-image: url("/images/industries/aerial-view-new-constructions-development-site-with-diverse-team-engineers-architects-discussing-real-estate-projects-heavy-machinery-construction-workers-are-working-area%20(1).jpg") !important;
+}
+.crs-hero-image {
+  background-image: url("/images/services/commercial-remodeling.webp") !important;
+}
+.rrs-hero-image {
+  background-image: url("/images/services/residential-remodeling.webp") !important;
+}
+.ecs-hero-image {
+  background-image: url("/images/services/electrical-contracting.webp") !important;
+}
+.ers-hero-image {
+  background-image: url("/images/services/emergency-restoration.webp") !important;
+}
+
+:is(
+  .dbs-hero-overlay,
+  .gcs-hero-overlay,
+  .crs-hero-overlay,
+  .rrs-hero-overlay,
+  .ecs-hero-overlay,
+  .ers-hero-overlay
+) {
+  background: linear-gradient(90deg, rgba(8, 9, 20, 0.88) 0%, rgba(8, 9, 20, 0.72) 58%, rgba(8, 9, 20, 0.48) 100%);
+}
+
+/* About section: replace floating icon mockups with full, editorial photography. */
+:is(
+  .dbs-about-grid,
+  .gcs-about-grid,
+  .crs-about-grid,
+  .rrs-about-grid,
+  .ecs-about-grid,
+  .ers-about-grid
+) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 88px);
+}
+
+:is(
+  .dbs-about-visual,
+  .gcs-about-visual,
+  .crs-about-visual,
+  .rrs-about-visual,
+  .ecs-about-visual,
+  .ers-about-visual
+) {
+  min-height: 430px;
+  border-radius: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 24px 55px rgba(16, 18, 35, 0.16);
+}
+.dbs-about-visual { background-image: url("/images/recent-work/multifamily-community.jpeg"); }
+.gcs-about-visual { background-image: url("/images/recent-work/homeward-bound.jpeg"); }
+.crs-about-visual { background-image: url("/images/services/commercial-remodeling.webp"); }
+.rrs-about-visual { background-image: url("/images/services/residential-remodeling.webp"); }
+.ecs-about-visual { background-image: url("/images/services/electrical-contracting.webp"); }
+.ers-about-visual { background-image: url("/images/services/emergency-restoration.webp"); }
+
+:is(
+  .dbs-about-visual,
+  .gcs-about-visual,
+  .crs-about-visual,
+  .rrs-about-visual,
+  .ecs-about-visual,
+  .ers-about-visual
+)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 48%, rgba(8, 9, 20, 0.34));
+  z-index: -1;
+}
+
+:is(
+  .dbs-about-floating-card,
+  .gcs-about-floating-card,
+  .crs-about-floating-card,
+  .rrs-about-floating-card,
+  .ecs-about-floating-card,
+  .ers-about-floating-card,
+  .dbs-about-bg-dot,
+  .gcs-about-bg-dot,
+  .crs-about-bg-dot,
+  .rrs-about-bg-dot,
+  .ecs-about-bg-dot,
+  .ers-about-bg-dot
+) {
+  display: none !important;
+}
+
+/* First content section and shared form use matching spacing and rhythm. */
+:is(
+  #dbs-about,
+  #gcs-about,
+  #crs-about,
+  #rrs-about,
+  #ecs-about,
+  #ers-about
+) {
+  padding-block: clamp(72px, 8vw, 112px);
+  background: #fff;
+}
+
+/* The third service-specific section uses one consistent professional card style. */
+:is(
+  #dbs-why-matters,
+  #gcs-why-matters,
+  #crs-why-matters,
+  #rrs-why-matters,
+  #ecs-why-matters,
+  #ers-why-matters
+) {
+  background: #12106e;
+  padding-block: clamp(72px, 8vw, 104px);
+}
+
+:is(
+  .dbs-matters-grid,
+  .gcs-matters-grid,
+  .crs-matters-grid,
+  .rrs-matters-grid,
+  .ecs-matters-grid,
+  .ers-matters-grid
+) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 42px;
+}
+
+:is(
+  .dbs-matter-card,
+  .gcs-matter-card,
+  .crs-matter-card,
+  .rrs-matter-card,
+  .ecs-matter-card,
+  .ers-matter-card
+) {
+  min-height: 220px;
+  padding: 30px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.075);
+  box-shadow: none;
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+:is(
+  .dbs-matter-card,
+  .gcs-matter-card,
+  .crs-matter-card,
+  .rrs-matter-card,
+  .ecs-matter-card,
+  .ers-matter-card
+):hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.48);
+  background: rgba(255, 255, 255, 0.11);
+}
+
+/* The layout already supplies the shared Pre-Construction-style FAQ. */
+:is(
+  #dbs-faq,
+  #gcs-faq,
+  #crs-faq,
+  #rrs-faq,
+  #ecs-faq,
+  #ers-faq
+) {
+  display: none;
+}
+
+/* Keep every remaining service section clean on narrower screens. */
+@media (max-width: 1000px) {
+  :is(
+    .dbs-about-grid,
+    .gcs-about-grid,
+    .crs-about-grid,
+    .rrs-about-grid,
+    .ecs-about-grid,
+    .ers-about-grid
+  ) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  :is(
+    .dbs-about-visual,
+    .gcs-about-visual,
+    .crs-about-visual,
+    .rrs-about-visual,
+    .ecs-about-visual,
+    .ers-about-visual
+  ) {
+    min-height: 380px;
+  }
+
+  :is(
+    .dbs-matters-grid,
+    .gcs-matters-grid,
+    .crs-matters-grid,
+    .rrs-matters-grid,
+    .ecs-matters-grid,
+    .ers-matters-grid
+  ) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  :is(
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) :is(
+    .dbs-container,
+    .gcs-container,
+    .crs-container,
+    .rrs-container,
+    .ecs-container,
+    .ers-container
+  ) {
+    width: min(100% - 32px, var(--max-width, 1200px));
+  }
+
+  :is(
+    .dbs-about-visual,
+    .gcs-about-visual,
+    .crs-about-visual,
+    .rrs-about-visual,
+    .ecs-about-visual,
+    .ers-about-visual
+  ) {
+    min-height: 280px;
+    border-radius: 12px;
+  }
+
+  :is(
+    .dbs-matters-grid,
+    .gcs-matters-grid,
+    .crs-matters-grid,
+    .rrs-matters-grid,
+    .ecs-matters-grid,
+    .ers-matters-grid
+  ) {
+    grid-template-columns: 1fr;
+  }
+
+  :is(
+    .dbs-matter-card,
+    .gcs-matter-card,
+    .crs-matter-card,
+    .rrs-matter-card,
+    .ecs-matter-card,
+    .ers-matter-card
+  ) {
+    min-height: auto;
+    padding: 26px 22px;
+  }
+}
+
+/* Final cascade guard for the post-form alternating timeline. */
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matters-grid,.gcs-matters-grid,.crs-matters-grid,.rrs-matters-grid,.ecs-matters-grid,.ers-matters-grid) {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 70px minmax(0,1fr);
+  gap: 0;
+  max-width: 940px;
+  margin: 52px auto 0;
+  counter-reset: service-matter;
+}
+
+:is(
+  #dbs-why-matters,#gcs-why-matters,#crs-why-matters,
+  #rrs-why-matters,#ecs-why-matters,#ers-why-matters
+) {
+  background: linear-gradient(180deg,#fff 0%,#f8f8fc 100%) !important;
+  color: var(--color-text,#1a1a2e) !important;
+}
+
+:is(
+  #dbs-why-matters,#gcs-why-matters,#crs-why-matters,
+  #rrs-why-matters,#ecs-why-matters,#ers-why-matters
+) :is(
+  .dbs-section-label,.gcs-section-label,.crs-section-label,
+  .rrs-section-label,.ecs-section-label,.ers-section-label
+) {
+  display: block;
+  color: var(--color-magenta,#a6238f) !important;
+  text-align: center !important;
+}
+
+:is(
+  #dbs-why-matters,#gcs-why-matters,#crs-why-matters,
+  #rrs-why-matters,#ecs-why-matters,#ers-why-matters
+) :is(
+  .dbs-section-heading,.gcs-section-heading,.crs-section-heading,
+  .rrs-section-heading,.ecs-section-heading,.ers-section-heading
+) {
+  max-width: 680px !important;
+  margin: 0 auto 18px !important;
+  color: var(--color-navy,#12106e) !important;
+  text-align: center !important;
+}
+
+:is(
+  #dbs-why-matters,#gcs-why-matters,#crs-why-matters,
+  #rrs-why-matters,#ecs-why-matters,#ers-why-matters
+) :is(
+  .dbs-section-body,.gcs-section-body,.crs-section-body,
+  .rrs-section-body,.ecs-section-body,.ers-section-body
+) {
+  max-width: 720px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  color: var(--color-text-light,#4a4a6a) !important;
+  text-align: center !important;
+}
+
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matters-grid,.gcs-matters-grid,.crs-matters-grid,.rrs-matters-grid,.ecs-matters-grid,.ers-matters-grid)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg,#de62c2,var(--color-navy,#12106e));
+  transform: translateX(-50%);
+}
+
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card) {
+  position: relative;
+  grid-column: 1;
+  width: 100%;
+  min-height: 150px;
+  margin: 0 0 32px;
+  padding: 28px 30px;
+  border: 1px solid rgba(18,16,110,.18);
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  box-shadow: 0 14px 34px rgba(18,16,110,.09);
+  counter-increment: service-matter;
+}
+
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card):nth-child(even) {
+  grid-column: 3;
+}
+
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card):nth-child(1) {
+  grid-row: 1;
+}
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card):nth-child(2) {
+  grid-row: 2;
+}
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card):nth-child(3) {
+  grid-row: 3;
+}
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card):nth-child(4) {
+  grid-row: 4;
+}
+
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card)::after {
+  content: counter(service-matter);
+  position: absolute;
+  top: 50%;
+  right: -45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--color-magenta,#a6238f);
+  box-shadow: 0 0 0 2px var(--color-magenta,#a6238f);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  transform: translate(50%,-50%);
+}
+
+:is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+:is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card):nth-child(even)::after {
+  right: auto;
+  left: -45px;
+  transform: translate(-50%,-50%);
+}
+
+@media (max-width:700px) {
+  :is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+  :is(.dbs-matters-grid,.gcs-matters-grid,.crs-matters-grid,.rrs-matters-grid,.ecs-matters-grid,.ers-matters-grid) {
+    grid-template-columns: 38px minmax(0,1fr);
+    margin-top: 38px;
+  }
+
+  :is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+  :is(.dbs-matters-grid,.gcs-matters-grid,.crs-matters-grid,.rrs-matters-grid,.ecs-matters-grid,.ers-matters-grid)::before {
+    left: 12px;
+    transform: none;
+  }
+
+  :is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+  :is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card),
+  :is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+  :is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card):nth-child(even) {
+    grid-column: 2;
+    min-height: auto;
+    margin-bottom: 24px;
+    padding: 24px 20px;
+  }
+
+  :is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+  :is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card):nth-child(n) {
+    grid-row: auto;
+  }
+
+  :is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+  :is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card)::after,
+  :is(.dbs-about-page,.gcs-about-page,.crs-about-page,.rrs-about-page,.ecs-about-page,.ers-about-page)
+  :is(.dbs-matter-card,.gcs-matter-card,.crs-matter-card,.rrs-matter-card,.ecs-matter-card,.ers-matter-card):nth-child(even)::after {
+    top: 30px;
+    right: auto;
+    left: -26px;
+    width: 22px;
+    height: 22px;
+    transform: translate(-50%,-50%);
+  }
+}

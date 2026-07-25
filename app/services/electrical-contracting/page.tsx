@@ -3,6 +3,8 @@
 
 import { useState, useEffect, useRef, FormEvent } from "react";
 import "./electrical-contracting.css";
+import "../service-hero.css";
+import WhyKeentel from "@/components/WhyKeentel";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -309,10 +311,10 @@ export default function ElectricalContractingPage() {
           </p>
          
           <div className="ecs-hero-cta-group ecs-reveal ecs-reveal-delay-3">
-            <a href="#ecs-contact" className="ecs-btn ecs-btn-primary">
+            <a href="#contactformsection" className="ecs-btn ecs-btn-primary">
               Request an Electrical Consultation <FontAwesomeIcon icon={faArrowRight} className="ecs-btn-arrow" />
             </a>
-            <a href="#ecs-contact" className="ecs-btn ecs-btn-secondary">
+            <a href="#contactformsection" className="ecs-btn ecs-btn-secondary">
               Discuss Your Project <FontAwesomeIcon icon={faArrowRight} className="ecs-btn-arrow" />
             </a>
           </div>
@@ -368,6 +370,8 @@ export default function ElectricalContractingPage() {
       </section>
 
       {/* ── Why Professional Electrical Contracting Matters (Dark) ── */}
+      <WhyKeentel />
+
       <section className="ecs-section-dark" id="ecs-why-matters">
         <div className="ecs-decor-ring" style={{ width: 300, height: 300, top: -60, right: -80 }} />
         <div className="ecs-container">
@@ -443,7 +447,7 @@ export default function ElectricalContractingPage() {
             ))}
           </div>
           <div className="ecs-project-types-cta ecs-reveal">
-            <a href="#ecs-contact" className="ecs-btn ecs-btn-primary">
+            <a href="#contactformsection" className="ecs-btn ecs-btn-primary">
               Schedule an Electrical Consultation <FontAwesomeIcon icon={faArrowRight} className="ecs-btn-arrow" />
             </a>
           </div>
@@ -654,8 +658,8 @@ export default function ElectricalContractingPage() {
           </p>
           <p className="ecs-final-cta-bold">Let's power your next project together.</p>
           <div className="ecs-final-cta-buttons">
-            <a href="#ecs-contact" className="ecs-btn-filled-dark">Start Your Electrical Project <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#ecs-contact" className="ecs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="ecs-btn-filled-dark">Start Your Electrical Project <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="#contactformsection" className="ecs-btn-outline-dark">Contact Keentel General Contractors</a>
           </div>
         </div>
       </section>
