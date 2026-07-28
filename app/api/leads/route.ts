@@ -1,8 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase/client';
+import { createClient } from '@supabase/supabase-js';
 
 export async function POST(request: NextRequest) {
   try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.error('Lead submission is unavailable: Supabase is not configured.');
+      return NextResponse.json(
+        { success: false, error: 'Lead submission is temporarily unavailable.' },
+        { status: 503 },
+      );
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
     const body = await request.json();
     const { formSource, firstName, lastName, email, phone, message, ...rest } = body;
 
