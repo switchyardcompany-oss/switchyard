@@ -1,7 +1,16 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import {
+    BriefcaseBusiness,
+    CalendarCheck2,
+    Hammer,
+    Handshake,
+    MessagesSquare,
+    ShieldCheck,
+} from "lucide-react";
 import "./projects.css";
+import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 
 type IconName =
     | "compass"
@@ -201,14 +210,6 @@ function Icon({ name, className }: { name: IconName; className?: string }) {
    Content data — sourced from the Keentel Projects page copy.
    ------------------------------------------------------------------------- */
 
-const TRUST_BAR = [
-    "Quality Craftsmanship",
-    "Professional Project Management",
-    "Licensed & Insured",
-    "Safety-First Construction",
-    "Trusted Project Delivery",
-];
-
 type Category = {
     tag: string;
     title: string;
@@ -320,6 +321,25 @@ const CATEGORIES: Category[] = [
             "https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=1200&q=80",
         icon: "flame",
     },
+    {
+        tag: "06",
+        title: "Institutional Projects",
+        description:
+            "Purpose-built construction and facility improvements for organizations that require safety, durability, and dependable long-term performance.",
+        items: [
+            "Educational Facilities",
+            "Healthcare Buildings",
+            "Government Facilities",
+            "Community Centers",
+            "Municipal Buildings",
+            "Public-Sector Renovations",
+            "Facility Expansions",
+            "Infrastructure Improvements",
+        ],
+        cta: "View Institutional Projects",
+        image: "/images/services/Institutional%20Projects.jpg",
+        icon: "layers",
+    },
 ];
 
 const PROCESS = [
@@ -328,28 +348,28 @@ const PROCESS = [
         title: "Discover",
         description:
             "Understanding project goals, budget, timeline, and operational requirements.",
-        icon: "compass" as IconName,
+        image: "/images/services/Comprehensive%20Design-Build%20Services.jpg",
     },
     {
         num: "02",
         title: "Plan",
         description:
             "Developing construction strategies, schedules, budgets, and project coordination plans.",
-        icon: "clipboard" as IconName,
+        image: "/images/services/About%20Our%20Pre%E2%80%91Construction%20Services.jpg",
     },
     {
         num: "03",
         title: "Build",
         description:
             "Executing construction with experienced leadership and attention to quality.",
-        icon: "hardhat" as IconName,
+        image: "/images/services/construction-workers-building-site.jpg",
     },
     {
         num: "04",
         title: "Deliver",
         description:
             "Completing inspections, closeout documentation, and final project handover with confidence.",
-        icon: "check" as IconName,
+        image: "/images/recent-work/homeward-bound.jpeg",
     },
 ];
 
@@ -387,6 +407,15 @@ const TRUST_FEATURES = [
             "Focused on building relationships through exceptional project delivery.",
         icon: "handshake" as IconName,
     },
+];
+
+const TRUST_ICONS = [
+    BriefcaseBusiness,
+    Hammer,
+    MessagesSquare,
+    ShieldCheck,
+    CalendarCheck2,
+    Handshake,
 ];
 
 const GALLERY = [
@@ -435,8 +464,7 @@ const GALLERY = [
     {
         title: "Mixed-Use Development",
         category: "Commercial",
-        image:
-            "https://www.pillarstone.pk/assets/img/Commercial-Construction-Lahore-3.webp",
+        image: "/images/industries/retail-mixed-use.jpg",
     },
 ];
 
@@ -450,46 +478,19 @@ const GALLERY_FILTERS = [
 ];
 
 const PROJECT_TYPES_ROW_1 = [
-    "Commercial Offices",
-    "Industrial & Manufacturing",
-    "Warehousing & Distribution",
-    "Retail",
-    "Restaurants & Hospitality",
+    { title: "Commercial Offices", image: "/images/services/Office%20Renovations.jpg" },
+    { title: "Industrial & Manufacturing", image: "/images/services/Commercial%20Construction.jpg" },
+    { title: "Warehousing & Distribution", image: "/images/services/Facility%20Expansions.jpg" },
+    { title: "Retail", image: "/images/services/Retail%20Spaces.jpg" },
+    { title: "Restaurants & Hospitality", image: "/images/services/Restaurants%20%26%20Hospitality.jpg" },
 ];
 
 const PROJECT_TYPES_ROW_2 = [
-    "Healthcare",
-    "Educational Facilities",
-    "Government Buildings",
-    "Multi-Family Developments",
-    "Large Residential Projects",
-];
-
-const FAQS = [
-    {
-        q: "What types of construction projects do you complete?",
-        a: "We deliver commercial, industrial, residential, renovation, and emergency restoration projects for a wide range of clients and industries.",
-    },
-    {
-        q: "Can you manage projects from planning to completion?",
-        a: "Yes. We provide complete project management, construction coordination, quality control, and final project delivery.",
-    },
-    {
-        q: "Do you work on occupied buildings?",
-        a: "Yes. Many renovation and remodeling projects are completed while facilities remain operational through carefully planned construction phasing.",
-    },
-    {
-        q: "Can you handle large-scale commercial projects?",
-        a: "Absolutely. Our team has the experience and resources to manage projects of varying sizes and complexity.",
-    },
-    {
-        q: "Do you provide Design-Build services?",
-        a: "Yes. We offer integrated Design-Build solutions that simplify project delivery through one coordinated team.",
-    },
-    {
-        q: "How do I get started?",
-        a: "Contact Keentel General Contractors to schedule a consultation. We'll discuss your goals, evaluate your project, and recommend the best path forward.",
-    },
+    { title: "Healthcare", image: "/images/services/Healthcare%20Facilities.jpg" },
+    { title: "Educational Facilities", image: "/images/services/Educational%20%26%20Institutional%20Buildings.jpg" },
+    { title: "Government Buildings", image: "/images/services/Institutional%20Projects.jpg" },
+    { title: "Multi-Family Developments", image: "/images/recent-work/multifamily-community.jpeg" },
+    { title: "Large Residential Projects", image: "/images/services/Large%20Residential%20Projects.jpg" },
 ];
 
 /* -------------------------------------------------------------------------
@@ -531,7 +532,7 @@ function Reveal({
         Tag,
         {
             ref,
-            className: `ktl-reveal ${visible ? "ktl-visible" : ""} ${className}`,
+            className: `ktlp-reveal ${visible ? "ktlp-visible" : ""} ${className}`,
             style: { transitionDelay: `${delay}ms` },
         },
         children
@@ -542,7 +543,6 @@ function Reveal({
    PAGE COMPONENT
    ========================================================================= */
 export default function ProjectsPage() {
-    const [activeFaq, setActiveFaq] = useState<number | null>(0);
     const [galleryFilter, setGalleryFilter] = useState("All");
     const [submitted, setSubmitted] = useState(false);
 
@@ -557,12 +557,12 @@ export default function ProjectsPage() {
     }
 
     return (
-        <main className="ktl-page">
+        <main className="ktlp-page">
             {/* ================= HERO ================= */}
-            <section className="ktl-hero">
-                <div className="ktl-hero-media">
+            <section className="ktlp-hero">
+                <div className="ktlp-hero-media">
                     <video
-                        className="ktl-hero-video"
+                        className="ktlp-hero-video"
                         autoPlay
                         muted
                         loop
@@ -572,78 +572,69 @@ export default function ProjectsPage() {
                         {/* Replace with your own hero footage at /public/videos/hero-construction.mp4 */}
                         <source src="https://video-previews.elements.envatousercontent.com/06513e02-7f78-45cb-90b5-281996f4001b/watermarked_preview/watermarked_preview.mp4" type="video/mp4" />
                     </video>
-                    <div className="ktl-hero-overlay" />
-                    <div className="ktl-hero-grid" />
-                    <div className="ktl-hero-shape ktl-hero-shape-1" />
-                    <div className="ktl-hero-shape ktl-hero-shape-2" />
+                    <div className="ktlp-hero-overlay" />
+                    <div className="ktlp-hero-grid" />
+                    <div className="ktlp-hero-shape ktlp-hero-shape-1" />
+                    <div className="ktlp-hero-shape ktlp-hero-shape-2" />
                 </div>
 
-                <div className="ktl-container ktl-hero-content">
-                    <p className="ktl-eyebrow ktl-hero-kicker">
-                        Commercial <span className="ktl-dot">•</span> Industrial{" "}
-                        <span className="ktl-dot">•</span> Residential{" "}
-                        <span className="ktl-dot">•</span> Renovations{" "}
-                        <span className="ktl-dot">•</span> Restoration
+                <div className="ktlp-container ktlp-hero-content">
+                    <p className="ktlp-eyebrow ktlp-hero-kicker">
+                        Commercial <span className="ktlp-dot">•</span> Industrial{" "}
+                        <span className="ktlp-dot">•</span> Residential{" "}
+                        <span className="ktlp-dot">•</span> Renovations{" "}
+                        <span className="ktlp-dot">•</span> Restoration
                     </p>
 
-                    <h1 className="ktl-hero-title">
-                        <span className="ktl-hero-line">Projects Built with Quality.</span>
-                        <span className="ktl-hero-line ktl-hero-line-accent">
+                    <h1 className="ktlp-hero-title">
+                        <span className="ktlp-hero-line">Projects Built with Quality.</span>
+                        <span className="ktlp-hero-line ktlp-hero-line-accent">
                             Delivered with Confidence.
                         </span>
                     </h1>
 
-                    <p className="ktl-hero-text">
+                    <p className="ktlp-hero-text">
                         Every project tells a story of planning, collaboration, and
                         craftsmanship. At Keentel General Contractors, we deliver
                         construction solutions that help businesses grow, strengthen
                         communities, and create spaces built to last.
                     </p>
 
-                    <div className="ktl-hero-actions">
-                        <a href="#ktl-contact" className="ktl-btn ktl-btn-primary">
-                            Discuss Your Project
-                            <Icon name="arrow" className="ktl-btn-icon" />
-                        </a>
-                        <a href="#ktl-contact" className="ktl-btn ktl-btn-ghost">
-                            Request a Consultation
-                        </a>
+                    <div className="ktlp-hero-cta-row">
+                        <div className="ktlp-hero-actions">
+                            <a href="#ktlp-contact" className="ktlp-btn ktlp-btn-primary">
+                                Book a Consultation
+                                <Icon name="arrow" className="ktlp-btn-icon" />
+                            </a>
+                            <a href="tel:8133950000" className="ktlp-btn ktlp-btn-ghost">
+                                Call Us
+                            </a>
+                        </div>
+                        <ServiceHeroCredentials />
                     </div>
 
-                    <ul className="ktl-trust-bar">
-                        {TRUST_BAR.map((item, i) => (
-                            <li
-                                key={item}
-                                className="ktl-trust-bar-item"
-                                style={{ animationDelay: `${0.9 + i * 0.12}s` }}
-                            >
-                                <Icon name="check" className="ktl-trust-bar-icon" />
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
                 </div>
 
               
             </section>
 
             {/* ================= ABOUT ================= */}
-            <section className="ktl-section ktl-about">
-                <div className="ktl-container ktl-about-grid">
-                    <Reveal className="ktl-about-media">
-                        <div className="ktl-frame">
+            <section className="ktlp-section ktlp-about">
+                <div className="ktlp-container ktlp-about-grid">
+                    <Reveal className="ktlp-about-media">
+                        <div className="ktlp-frame">
                             <img
                                 src="https://leaptodigital.com/wp-content/uploads/2024/07/07092024-General-Contractor-Blog.png"
                                 alt="Architectural exterior of a completed Keentel construction project"
                                 loading="lazy"
                             />
-                            <span className="ktl-corner ktl-corner-tl" />
-                            <span className="ktl-corner ktl-corner-tr" />
-                            <span className="ktl-corner ktl-corner-bl" />
-                            <span className="ktl-corner ktl-corner-br" />
+                            <span className="ktlp-corner ktlp-corner-tl" />
+                            <span className="ktlp-corner ktlp-corner-tr" />
+                            <span className="ktlp-corner ktlp-corner-bl" />
+                            <span className="ktlp-corner ktlp-corner-br" />
                         </div>
-                        <div className="ktl-about-badge">
-                            <Icon name="layers" className="ktl-about-badge-icon" />
+                        <div className="ktlp-about-badge">
+                            <Icon name="layers" className="ktlp-about-badge-icon" />
                             <div>
                                 <strong>Full-Cycle</strong>
                                 <span>Project Delivery</span>
@@ -653,15 +644,15 @@ export default function ProjectsPage() {
 
                     <div>
                         <Reveal>
-                            <p className="ktl-eyebrow">About Our Projects</p>
+                            <p className="ktlp-eyebrow">About Our Projects</p>
                         </Reveal>
                         <Reveal delay={80}>
-                            <h2 className="ktl-section-title">
+                            <h2 className="ktlp-section-title">
                                 Building Projects That Deliver Long-Term Value
                             </h2>
                         </Reveal>
                         <Reveal delay={160}>
-                            <p className="ktl-body-text">
+                            <p className="ktlp-body-text">
                                 Every construction project represents an investment in the
                                 future. Whether it&rsquo;s a new commercial facility, an
                                 industrial expansion, a custom home renovation, or emergency
@@ -671,7 +662,7 @@ export default function ProjectsPage() {
                             </p>
                         </Reveal>
                         <Reveal delay={240}>
-                            <p className="ktl-body-text">
+                            <p className="ktlp-body-text">
                                 At Keentel General Contractors, we believe successful
                                 projects are built through collaboration, careful planning,
                                 transparent communication, and attention to every detail.
@@ -686,44 +677,40 @@ export default function ProjectsPage() {
             <DimensionDivider label="Portfolio" />
 
             {/* ================= PROJECT CATEGORIES ================= */}
-            <section className="ktl-section ktl-categories">
-                <div className="ktl-container">
-                    <Reveal className="ktl-section-head">
-                        <p className="ktl-eyebrow">Project Categories</p>
-                        <h2 className="ktl-section-title">
+            <section className="ktlp-section ktlp-categories">
+                <div className="ktlp-container">
+                    <Reveal className="ktlp-section-head">
+                        <p className="ktlp-eyebrow">Project Categories</p>
+                        <h2 className="ktlp-section-title">
                             Explore Our Construction Experience
                         </h2>
                     </Reveal>
 
-                    <div className="ktl-categories-grid">
+                    <div className="ktlp-categories-grid">
                         {CATEGORIES.map((cat, i) => (
                             <Reveal
                                 key={cat.title}
                                 delay={i * 90}
-                                className="ktl-cat-card"
+                                className="ktlp-cat-card"
                             >
-                                <div className="ktl-cat-media">
+                                <div className="ktlp-cat-media">
                                     <img src={cat.image} alt={cat.title} loading="lazy" />
-                                    <span className="ktl-corner ktl-corner-tl" />
-                                    <span className="ktl-corner ktl-corner-br" />
-                                    <span className="ktl-cat-tag">{cat.tag}</span>
-                                    <span className="ktl-cat-icon">
+                                    <span className="ktlp-corner ktlp-corner-tl" />
+                                    <span className="ktlp-corner ktlp-corner-br" />
+                                    <span className="ktlp-cat-tag">{cat.tag}</span>
+                                    <span className="ktlp-cat-icon">
                                         <Icon name={cat.icon} />
                                     </span>
                                 </div>
-                                <div className="ktl-cat-body">
-                                    <h3 className="ktl-cat-title">{cat.title}</h3>
-                                    <p className="ktl-cat-desc">{cat.description}</p>
-                                    <p className="ktl-cat-sub">Projects Include</p>
-                                    <ul className="ktl-cat-list">
+                                <div className="ktlp-cat-body">
+                                    <h3 className="ktlp-cat-title">{cat.title}</h3>
+                                    <p className="ktlp-cat-desc">{cat.description}</p>
+                                    <p className="ktlp-cat-sub">Projects Include</p>
+                                    <ul className="ktlp-cat-list">
                                         {cat.items.map((item) => (
                                             <li key={item}>{item}</li>
                                         ))}
                                     </ul>
-                                    <a href="#ktl-contact" className="ktl-cat-cta">
-                                        {cat.cta}
-                                        <Icon name="arrow" className="ktl-btn-icon" />
-                                    </a>
                                 </div>
                             </Reveal>
                         ))}
@@ -732,15 +719,15 @@ export default function ProjectsPage() {
             </section>
 
             {/* ================= OUR APPROACH / PROCESS ================= */}
-            <section className="ktl-section ktl-process">
-                <div className="ktl-process-grid" />
-                <div className="ktl-container">
-                    <Reveal className="ktl-section-head ktl-section-head-light">
-                        <p className="ktl-eyebrow ktl-eyebrow-light">Our Approach</p>
-                        <h2 className="ktl-section-title ktl-section-title-light">
+            <section className="ktlp-section ktlp-process">
+                <div className="ktlp-process-grid" />
+                <div className="ktlp-container">
+                    <Reveal className="ktlp-section-head ktlp-section-head-light">
+                        <p className="ktlp-eyebrow ktlp-eyebrow-light">Our Approach</p>
+                        <h2 className="ktlp-section-title ktlp-section-title-light">
                             Every Project Begins with a Plan
                         </h2>
-                        <p className="ktl-section-sub ktl-section-sub-light">
+                        <p className="ktlp-section-sub ktlp-section-sub-light">
                             No matter the project size or complexity, Keentel General
                             Contractors follows a proven process that ensures quality,
                             accountability, and consistent communication throughout every
@@ -748,27 +735,26 @@ export default function ProjectsPage() {
                         </p>
                     </Reveal>
 
-                    <div className="ktl-process-steps">
+                    <div className="ktlp-process-steps">
                         {PROCESS.map((step, i) => (
                             <Reveal
                                 key={step.num}
                                 delay={i * 110}
-                                className="ktl-process-step"
+                                className="ktlp-process-step"
                             >
-                                <div className="ktl-process-step-inner">
-                                    <div className="ktl-process-icon-wrap">
-                                        <Icon name={step.icon} className="ktl-process-icon" />
-                                        <span className="ktl-process-num">{step.num}</span>
+                                <div className="ktlp-process-step-inner">
+                                    <div className="ktlp-process-photo">
+                                        <img
+                                            src={step.image}
+                                            alt={`${step.title} stage of the Keentel construction process`}
+                                            loading="lazy"
+                                        />
                                     </div>
-                                    <h3 className="ktl-process-title">{step.title}</h3>
-                                    <p className="ktl-process-desc">{step.description}</p>
+                                    <div className="ktlp-process-card-body">
+                                        <h3 className="ktlp-process-title">{step.title}</h3>
+                                        <p className="ktlp-process-desc">{step.description}</p>
+                                    </div>
                                 </div>
-                                {i < PROCESS.length - 1 && (
-                                    <div className="ktl-process-connector" aria-hidden="true">
-                                        <div className="ktl-process-connector-line" />
-                                        <div className="ktl-process-connector-dot" />
-                                    </div>
-                                )}
                             </Reveal>
                         ))}
                     </div>
@@ -776,27 +762,33 @@ export default function ProjectsPage() {
             </section>
 
             {/* ================= WHY CLIENTS TRUST US ================= */}
-            <section className="ktl-section ktl-trust-section">
-                <div className="ktl-container">
-                    <Reveal className="ktl-section-head">
-                        <p className="ktl-eyebrow">
+            <section className="ktlp-section ktlp-trust-section">
+                <div className="ktlp-container">
+                    <Reveal className="ktlp-section-head">
+                        <p className="ktlp-eyebrow">
                             Why Clients Trust Keentel General Contractors
                         </p>
-                        <h2 className="ktl-section-title">Building More Than Structures</h2>
-                        <p className="ktl-section-sub ktl-section-sub-dark">
+                        <h2 className="ktlp-section-title">Building More Than Structures</h2>
+                        <p className="ktlp-section-sub ktlp-section-sub-dark">
                             Clients choose Keentel General Contractors because we bring
                             experience, organization, and accountability to every project.
                         </p>
                     </Reveal>
 
-                    <div className="ktl-trust-grid">
+                    <div className="ktlp-trust-grid">
                         {TRUST_FEATURES.map((f, i) => (
-                            <Reveal key={f.title} delay={i * 80} className="ktl-trust-card">
-                                <span className="ktl-trust-icon-wrap">
-                                    <Icon name={f.icon} className="ktl-trust-icon" />
+                            <Reveal key={f.title} delay={i * 80} className="ktlp-trust-card">
+                                <span className="ktlp-trust-icon-wrap">
+                                    {React.createElement(TRUST_ICONS[i], {
+                                        className: "ktlp-trust-icon",
+                                        strokeWidth: 1.8,
+                                        "aria-hidden": true,
+                                    })}
                                 </span>
-                                <h3 className="ktl-trust-title">{f.title}</h3>
-                                <p className="ktl-trust-desc">{f.description}</p>
+                                <div className="ktlp-trust-card-copy">
+                                    <h3 className="ktlp-trust-title">{f.title}</h3>
+                                    <p className="ktlp-trust-desc">{f.description}</p>
+                                </div>
                             </Reveal>
                         ))}
                     </div>
@@ -806,12 +798,12 @@ export default function ProjectsPage() {
             <DimensionDivider label="Gallery" />
 
             {/* ================= FEATURED PROJECT GALLERY ================= */}
-            <section className="ktl-section ktl-gallery-section">
-                <div className="ktl-container">
-                    <Reveal className="ktl-section-head">
-                        <p className="ktl-eyebrow">Featured Project Gallery</p>
-                        <h2 className="ktl-section-title">See What&rsquo;s Possible</h2>
-                        <p className="ktl-section-sub">
+            <section className="ktlp-section ktlp-gallery-section">
+                <div className="ktlp-container">
+                    <Reveal className="ktlp-section-head">
+                        <p className="ktlp-eyebrow">Featured Project Gallery</p>
+                        <h2 className="ktlp-section-title">See What&rsquo;s Possible</h2>
+                        <p className="ktlp-section-sub">
                             Every completed project demonstrates our commitment to
                             quality construction, professional management, and dependable
                             results. Whether it&rsquo;s a commercial development,
@@ -821,13 +813,13 @@ export default function ProjectsPage() {
                         </p>
                     </Reveal>
 
-                    <Reveal className="ktl-gallery-filters">
+                    <Reveal className="ktlp-gallery-filters">
                         {GALLERY_FILTERS.map((f) => (
                             <button
                                 key={f}
                                 type="button"
                                 onClick={() => setGalleryFilter(f)}
-                                className={`ktl-filter-chip ${galleryFilter === f ? "ktl-filter-chip-active" : ""
+                                className={`ktlp-filter-chip ${galleryFilter === f ? "ktlp-filter-chip-active" : ""
                                     }`}
                             >
                                 {f}
@@ -835,162 +827,111 @@ export default function ProjectsPage() {
                         ))}
                     </Reveal>
 
-                    <div className="ktl-gallery-grid">
+                    <div className="ktlp-gallery-grid">
                         {filteredGallery.map((g, i) => (
                             <Reveal
                                 key={g.title}
                                 delay={(i % 4) * 90}
-                                className="ktl-gallery-item"
+                                className="ktlp-gallery-item"
                             >
-                                <div className="ktl-gallery-media">
+                                <div className="ktlp-gallery-media">
                                     <img src={g.image} alt={g.title} loading="lazy" />
-                                    <span className="ktl-corner ktl-corner-tl" />
-                                    <span className="ktl-corner ktl-corner-br" />
+                                    <span className="ktlp-corner ktlp-corner-tl" />
+                                    <span className="ktlp-corner ktlp-corner-br" />
                                 </div>
-                                <div className="ktl-gallery-caption">
-                                    <span className="ktl-gallery-cat">{g.category}</span>
-                                    <span className="ktl-gallery-title">{g.title}</span>
+                                <div className="ktlp-gallery-caption">
+                                    <span className="ktlp-gallery-cat">{g.category}</span>
+                                    <span className="ktlp-gallery-title">{g.title}</span>
                                 </div>
                             </Reveal>
                         ))}
                     </div>
 
-                    <Reveal className="ktl-gallery-cta-wrap">
-                        <a href="#ktl-contact" className="ktl-btn ktl-btn-outline">
+                    <Reveal className="ktlp-gallery-cta-wrap">
+                        <a href="#ktlp-contact" className="ktlp-btn ktlp-btn-outline">
                             Explore Our Portfolio
-                            <Icon name="arrow" className="ktl-btn-icon" />
+                            <Icon name="arrow" className="ktlp-btn-icon" />
                         </a>
                     </Reveal>
                 </div>
             </section>
 
             {/* ================= PROJECT TYPES WE SERVE (marquee) ================= */}
-            <section className="ktl-section ktl-types-section">
-                <div className="ktl-container">
-                    <Reveal className="ktl-section-head">
-                        <p className="ktl-eyebrow">Project Types We Serve</p>
-                        <h2 className="ktl-section-title">
+            <section className="ktlp-section ktlp-types-section">
+                <div className="ktlp-container">
+                    <Reveal className="ktlp-section-head">
+                        <p className="ktlp-eyebrow">Project Types We Serve</p>
+                        <h2 className="ktlp-section-title">
                             Construction Solutions Across Every Industry
                         </h2>
                     </Reveal>
                 </div>
 
-                <div className="ktl-marquee-row">
-                    <div className="ktl-marquee-track ktl-marquee-track-left">
-                        {[...PROJECT_TYPES_ROW_1, ...PROJECT_TYPES_ROW_1].map((t, i) => (
-                            <span className="ktl-marquee-chip" key={`${t}-${i}`}>
-                                <Icon name="grid" className="ktl-marquee-chip-icon" />
-                                {t}
-                            </span>
+                <div className="ktlp-marquee-row">
+                    <div className="ktlp-marquee-track ktlp-marquee-track-left">
+                        {[0, 1].map((group) => (
+                            <div className="ktlp-marquee-group" key={group} aria-hidden={group === 1}>
+                                {PROJECT_TYPES_ROW_1.map((item) => (
+                                    <article className="ktlp-marquee-chip" key={`${group}-${item.title}`}>
+                                        <img src={item.image} alt="" loading="lazy" />
+                                        <span>{item.title}</span>
+                                    </article>
+                                ))}
+                            </div>
                         ))}
                     </div>
                 </div>
-                <div className="ktl-marquee-row">
-                    <div className="ktl-marquee-track ktl-marquee-track-right">
-                        {[...PROJECT_TYPES_ROW_2, ...PROJECT_TYPES_ROW_2].map((t, i) => (
-                            <span className="ktl-marquee-chip" key={`${t}-${i}`}>
-                                <Icon name="grid" className="ktl-marquee-chip-icon" />
-                                {t}
-                            </span>
+                <div className="ktlp-marquee-row">
+                    <div className="ktlp-marquee-track ktlp-marquee-track-right">
+                        {[0, 1].map((group) => (
+                            <div className="ktlp-marquee-group" key={group} aria-hidden={group === 1}>
+                                {PROJECT_TYPES_ROW_2.map((item) => (
+                                    <article className="ktlp-marquee-chip" key={`${group}-${item.title}`}>
+                                        <img src={item.image} alt="" loading="lazy" />
+                                        <span>{item.title}</span>
+                                    </article>
+                                ))}
+                            </div>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            <DimensionDivider label="FAQ" />
-
-            {/* ================= FAQ ================= */}
-            <section className="ktl-section ktl-faq-section">
-                <div className="ktl-container ktl-faq-grid">
-                    <Reveal className="ktl-faq-head">
-                        <p className="ktl-eyebrow">Frequently Asked Questions</p>
-                        <h2 className="ktl-section-title">Project FAQs</h2>
-                        <p className="ktl-section-sub">
-                            Answers to the questions we hear most often from clients
-                            planning a new project.
-                        </p>
-                    </Reveal>
-
-                    <div className="ktl-faq-list">
-                        {FAQS.map((item, i) => {
-                            const open = activeFaq === i;
-                            return (
-                                <Reveal
-                                    key={item.q}
-                                    delay={i * 60}
-                                    className={`ktl-faq-item ${open ? "ktl-faq-item-open" : ""
-                                        }`}
-                                >
-                                    <button
-                                        type="button"
-                                        className="ktl-faq-question"
-                                        onClick={() => setActiveFaq(open ? null : i)}
-                                        aria-expanded={open}
-                                    >
-                                        {item.q}
-                                        <span className="ktl-faq-icon-wrap">
-                                            <Icon name="plus" className="ktl-faq-icon" />
-                                        </span>
-                                    </button>
-                                    <div className="ktl-faq-answer">
-                                        <p>{item.a}</p>
-                                    </div>
-                                </Reveal>
-                            );
-                        })}
                     </div>
                 </div>
             </section>
 
             {/* ================= CONTACT ================= */}
-            <section className="ktl-section ktl-contact-section" id="ktl-contact">
-                <div className="ktl-container ktl-contact-grid">
-                    <Reveal className="ktl-contact-intro">
-                        <p className="ktl-eyebrow">Get In Touch</p>
-                        <h2 className="ktl-section-title">
+            <section className="ktlp-section ktlp-contact-section" id="ktlp-contact">
+                <div className="ktlp-container ktlp-contact-grid">
+                    <Reveal className="ktlp-contact-intro">
+                        <p className="ktlp-eyebrow">Get In Touch</p>
+                        <h2 className="ktlp-section-title">
                             Ready to Build Your Next Project?
                         </h2>
-                        <p className="ktl-body-text">
+                        <p className="ktlp-body-text">
                             Whether you&rsquo;re planning new construction, expanding an
                             existing facility, remodeling your property, or recovering
                             from unexpected damage, Keentel General Contractors is ready
                             to help.
                         </p>
-                        <p className="ktl-body-text">
+                        <p className="ktlp-body-text">
                             Tell us about your project, and our team will develop a
                             solution tailored to your goals.
                         </p>
 
-                        <div className="ktl-contact-media">
+                        <div className="ktlp-contact-media">
                             <img
                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9unIXZKoMFQZQJcxfCjU-3rI76NcFuCErkRFfUBYQInObaN_cE07pVZ3w&s=10"
                                 alt="Keentel project management team reviewing plans"
                                 loading="lazy"
                             />
-                            <span className="ktl-corner ktl-corner-tl" />
-                            <span className="ktl-corner ktl-corner-br" />
+                            <span className="ktlp-corner ktlp-corner-tl" />
+                            <span className="ktlp-corner ktlp-corner-br" />
                         </div>
 
-                        <ul className="ktl-contact-details">
-                            <li>
-                                <Icon name="pin" className="ktl-contact-detail-icon" />
-                                Proudly serving projects nationwide
-                            </li>
-                            <li>
-                                <Icon name="phone" className="ktl-contact-detail-icon" />
-                                Speak with a project manager today
-                            </li>
-                            <li>
-                                <Icon name="mail" className="ktl-contact-detail-icon" />
-                                Fast, detailed project proposals
-                            </li>
-                        </ul>
                     </Reveal>
 
-                    <Reveal delay={100} className="ktl-form-wrap">
+                    <Reveal delay={100} className="ktlp-form-wrap">
                         {submitted ? (
-                            <div className="ktl-form-success">
-                                <span className="ktl-form-success-icon">
+                            <div className="ktlp-form-success">
+                                <span className="ktlp-form-success-icon">
                                     <Icon name="check" />
                                 </span>
                                 <h3>Thank you.</h3>
@@ -1000,38 +941,38 @@ export default function ProjectsPage() {
                                 </p>
                                 <button
                                     type="button"
-                                    className="ktl-btn ktl-btn-outline"
+                                    className="ktlp-btn ktlp-btn-outline"
                                     onClick={() => setSubmitted(false)}
                                 >
                                     Submit Another Project
                                 </button>
                             </div>
                         ) : (
-                            <form className="ktl-form" onSubmit={handleSubmit}>
-                                <div className="ktl-form-row">
-                                    <div className="ktl-field">
-                                        <label htmlFor="ktl-name">Full Name</label>
-                                        <input id="ktl-name" name="name" type="text" required />
+                            <form className="ktlp-form" onSubmit={handleSubmit}>
+                                <div className="ktlp-form-row">
+                                    <div className="ktlp-field">
+                                        <label htmlFor="ktlp-name">Full Name</label>
+                                        <input id="ktlp-name" name="name" type="text" required />
                                     </div>
-                                    <div className="ktl-field">
-                                        <label htmlFor="ktl-company">Company</label>
-                                        <input id="ktl-company" name="company" type="text" />
-                                    </div>
-                                </div>
-                                <div className="ktl-form-row">
-                                    <div className="ktl-field">
-                                        <label htmlFor="ktl-email">Email Address</label>
-                                        <input id="ktl-email" name="email" type="email" required />
-                                    </div>
-                                    <div className="ktl-field">
-                                        <label htmlFor="ktl-phone">Phone Number</label>
-                                        <input id="ktl-phone" name="phone" type="tel" />
+                                    <div className="ktlp-field">
+                                        <label htmlFor="ktlp-company">Company</label>
+                                        <input id="ktlp-company" name="company" type="text" />
                                     </div>
                                 </div>
-                                <div className="ktl-form-row">
-                                    <div className="ktl-field">
-                                        <label htmlFor="ktl-type">Project Type</label>
-                                        <select id="ktl-type" name="projectType" defaultValue="">
+                                <div className="ktlp-form-row">
+                                    <div className="ktlp-field">
+                                        <label htmlFor="ktlp-email">Email Address</label>
+                                        <input id="ktlp-email" name="email" type="email" required />
+                                    </div>
+                                    <div className="ktlp-field">
+                                        <label htmlFor="ktlp-phone">Phone Number</label>
+                                        <input id="ktlp-phone" name="phone" type="tel" />
+                                    </div>
+                                </div>
+                                <div className="ktlp-form-row">
+                                    <div className="ktlp-field">
+                                        <label htmlFor="ktlp-type">Project Type</label>
+                                        <select id="ktlp-type" name="projectType" defaultValue="">
                                             <option value="" disabled>
                                                 Select a project type
                                             </option>
@@ -1042,15 +983,15 @@ export default function ProjectsPage() {
                                             <option>Emergency Restoration</option>
                                         </select>
                                     </div>
-                                    <div className="ktl-field">
-                                        <label htmlFor="ktl-location">Project Location</label>
-                                        <input id="ktl-location" name="location" type="text" />
+                                    <div className="ktlp-field">
+                                        <label htmlFor="ktlp-location">Project Location</label>
+                                        <input id="ktlp-location" name="location" type="text" />
                                     </div>
                                 </div>
-                                <div className="ktl-form-row">
-                                    <div className="ktl-field">
-                                        <label htmlFor="ktl-budget">Estimated Budget</label>
-                                        <select id="ktl-budget" name="budget" defaultValue="">
+                                <div className="ktlp-form-row">
+                                    <div className="ktlp-field">
+                                        <label htmlFor="ktlp-budget">Estimated Budget</label>
+                                        <select id="ktlp-budget" name="budget" defaultValue="">
                                             <option value="" disabled>
                                                 Select a range
                                             </option>
@@ -1060,9 +1001,9 @@ export default function ProjectsPage() {
                                             <option>$1M+</option>
                                         </select>
                                     </div>
-                                    <div className="ktl-field">
-                                        <label htmlFor="ktl-timeline">Project Timeline</label>
-                                        <select id="ktl-timeline" name="timeline" defaultValue="">
+                                    <div className="ktlp-field">
+                                        <label htmlFor="ktlp-timeline">Project Timeline</label>
+                                        <select id="ktlp-timeline" name="timeline" defaultValue="">
                                             <option value="" disabled>
                                                 Select a timeline
                                             </option>
@@ -1073,15 +1014,15 @@ export default function ProjectsPage() {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="ktl-field">
-                                    <label htmlFor="ktl-details">
+                                <div className="ktlp-field">
+                                    <label htmlFor="ktlp-details">
                                         Tell Us About Your Project
                                     </label>
-                                    <textarea id="ktl-details" name="details" rows={4} />
+                                    <textarea id="ktlp-details" name="details" rows={4} />
                                 </div>
-                                <button type="submit" className="ktl-btn ktl-btn-primary ktl-btn-full">
+                                <button type="submit" className="ktlp-btn ktlp-btn-primary ktlp-btn-full">
                                     Request a Consultation
-                                    <Icon name="arrow" className="ktl-btn-icon" />
+                                    <Icon name="arrow" className="ktlp-btn-icon" />
                                 </button>
                             </form>
                         )}
@@ -1090,24 +1031,24 @@ export default function ProjectsPage() {
             </section>
 
             {/* ================= FINAL CTA ================= */}
-            <section className="ktl-final-cta">
-                <div className="ktl-final-cta-media">
+            <section className="ktlp-final-cta">
+                <div className="ktlp-final-cta-media">
                     <img
                         src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1920&q=80"
                         alt="Construction site at golden hour"
                         loading="lazy"
                     />
-                    <div className="ktl-final-cta-overlay" />
+                    <div className="ktlp-final-cta-overlay" />
                 </div>
-                <div className="ktl-container ktl-final-cta-content">
+                <div className="ktlp-container ktlp-final-cta-content">
                     <Reveal>
-                        <p className="ktl-eyebrow ktl-eyebrow-light">Let&rsquo;s Build Together</p>
+                        <p className="ktlp-eyebrow ktlp-eyebrow-light">Let&rsquo;s Build Together</p>
                     </Reveal>
                     <Reveal delay={80}>
-                        <h2 className="ktl-final-cta-title">Your Next Project Starts Here</h2>
+                        <h2 className="ktlp-final-cta-title">Your Next Project Starts Here</h2>
                     </Reveal>
                     <Reveal delay={160}>
-                        <p className="ktl-final-cta-text">
+                        <p className="ktlp-final-cta-text">
                             Every successful project begins with the right partner. At
                             Keentel General Contractors, we combine strategic planning,
                             experienced project management, and quality craftsmanship to
@@ -1115,12 +1056,12 @@ export default function ProjectsPage() {
                             Let&rsquo;s build something exceptional together.
                         </p>
                     </Reveal>
-                    <Reveal delay={240} className="ktl-final-cta-actions">
-                        <a href="#ktl-contact" className="ktl-btn ktl-btn-primary">
+                    <Reveal delay={240} className="ktlp-final-cta-actions">
+                        <a href="#ktlp-contact" className="ktlp-btn ktlp-btn-primary">
                             Start Your Project
-                            <Icon name="arrow" className="ktl-btn-icon" />
+                            <Icon name="arrow" className="ktlp-btn-icon" />
                         </a>
-                        <a href="#ktl-contact" className="ktl-btn ktl-btn-ghost">
+                        <a href="#ktlp-contact" className="ktlp-btn ktlp-btn-ghost">
                             Contact Keentel General Contractors
                         </a>
                     </Reveal>
@@ -1136,12 +1077,12 @@ export default function ProjectsPage() {
    ------------------------------------------------------------------------- */
 function DimensionDivider({ label }: { label: string }) {
     return (
-        <div className="ktl-dimension-divider">
-            <span className="ktl-dimension-tick" />
-            <span className="ktl-dimension-line" />
-            <span className="ktl-dimension-label">{label}</span>
-            <span className="ktl-dimension-line" />
-            <span className="ktl-dimension-tick" />
+        <div className="ktlp-dimension-divider">
+            <span className="ktlp-dimension-tick" />
+            <span className="ktlp-dimension-line" />
+            <span className="ktlp-dimension-label">{label}</span>
+            <span className="ktlp-dimension-line" />
+            <span className="ktlp-dimension-tick" />
         </div>
     );
 }

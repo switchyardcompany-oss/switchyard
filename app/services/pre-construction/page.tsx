@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import "./pre-construction.css";
 import "../service-hero.css";
 import WhyKeentel from "@/components/WhyKeentel";
+import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -220,22 +221,27 @@ export default function PreConstructionPage() {
         <div className="pc-hero-overlay"></div>
         <div className="pc-hero-content">
           <div className="pc-hero-badge pc-reveal">
-            <span className="pc-hero-badge-dot" />
             PLANNING • BUDGETING • DESIGN COORDINATION • PROJECT FEASIBILITY
           </div>
           <h1 className="pc-hero-title pc-reveal pc-reveal-delay-1">
-            Every Successful Project Begins <span className="pc-highlight">Before Construction</span> Starts
+            <span className="service-hero-title-line">Every Successful Project Begins</span>
+            <span className="service-hero-title-line">
+              <span className="pc-highlight">Before Construction</span> Starts
+            </span>
           </h1>
           <p className="pc-hero-subtitle pc-reveal pc-reveal-delay-2">
             The most successful construction projects are built on careful planning—not assumptions. Keentel General Contractors provides comprehensive pre‑construction services that help owners, developers, and businesses make informed decisions before breaking ground.
           </p>
-          <div className="pc-hero-cta-group pc-reveal pc-reveal-delay-3">
-            <a href="#contactformsection" className="pc-btn pc-btn-primary">
-              Schedule a Pre‑Construction Consultation <FontAwesomeIcon icon={faArrowRight} className="pc-btn-arrow" />
-            </a>
-            <a href="#contactformsection" className="pc-btn pc-btn-secondary">
-              Talk With Our Team <FontAwesomeIcon icon={faArrowRight} className="pc-btn-arrow" />
-            </a>
+          <div className="service-hero-bottom-row">
+            <div className="pc-hero-cta-group pc-reveal pc-reveal-delay-3">
+              <a href="#contactformsection" className="pc-btn pc-btn-primary">
+                Book a Consultation <FontAwesomeIcon icon={faArrowRight} className="pc-btn-arrow" />
+              </a>
+              <a href="tel:8133950000" className="pc-btn pc-btn-secondary">
+                Call Us <FontAwesomeIcon icon={faArrowRight} className="pc-btn-arrow" />
+              </a>
+            </div>
+            <ServiceHeroCredentials />
           </div>
         </div>
       </section>
@@ -330,7 +336,7 @@ export default function PreConstructionPage() {
               </p>
               <div className="pc-services-image-wrapper">
                 <img
-                  src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/ed/6b/a7/6e/48/v1_E11/E118CG4S.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=60127bdca6734a11de17a7023704ddd421e2cc6594733ed849a27600523f5d28"
+                  src="/images/services/About%20Our%20Pre%E2%80%91Construction%20Services.jpg"
                   alt="Planning services"
                   className="pc-services-image"
                 />
@@ -426,9 +432,6 @@ export default function PreConstructionPage() {
                   <span>{String(idx + 1).padStart(2, "0")}</span>
                 </div>
                 <div className="pc-process-step-content">
-                  <div className="pc-process-step-icon">
-                    <FontAwesomeIcon icon={step.icon} />
-                  </div>
                   <h3>{step.title}</h3>
                   <p>{step.desc}</p>
                 </div>
@@ -440,24 +443,13 @@ export default function PreConstructionPage() {
 
       {/* ── Final CTA (theme matching) ── */}
       <section className="pc-final-cta-section" id="pc-final-cta">
-        <div className="pc-container pc-final-cta-layout pc-reveal">
-          <div className="pc-final-cta-content">
-            <p className="pc-final-cta-eyebrow">Plan With Confidence</p>
-            <h2>
-              Every Great Project Starts With a <span>Great Plan</span>
-            </h2>
-            <p>
-              Whether you&apos;re developing a commercial property, expanding an industrial facility, or preparing for a major renovation, Keentel General Contractors provides the planning, coordination, and construction expertise needed to move forward with confidence.
-            </p>
-            <p className="pc-final-cta-bold">Let&apos;s build the right foundation before construction begins.</p>
-          </div>
-          <div className="pc-final-cta-card">
-            <p className="pc-final-cta-card-title">Ready to Plan Your Project?</p>
-            <p>Connect with our pre-construction team and take the next step with clarity.</p>
-            <div className="pc-final-cta-buttons">
-              <a href="#contactformsection" className="pc-btn-filled-dark">Get Started Today <FontAwesomeIcon icon={faArrowRight} /></a>
-              <a href="#contactformsection" className="pc-btn-outline-dark">Contact Keentel General Contractors</a>
-            </div>
+        <div className="pc-container pc-reveal">
+          <h2>
+            Every Great Project Starts With a <span>Great Plan</span>
+          </h2>
+          <div className="pc-final-cta-buttons">
+            <a href="#contactformsection" className="pc-btn-filled-dark">Book a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="tel:8133950000" className="pc-btn-outline-dark">Call Us</a>
           </div>
         </div>
       </section>

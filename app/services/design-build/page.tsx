@@ -5,6 +5,7 @@ import { useState, useEffect, useRef, FormEvent } from "react";
 import "./design-build.css";
 import "../service-hero.css";
 import WhyKeentel from "@/components/WhyKeentel";
+import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -158,37 +159,37 @@ export default function DesignBuildPage() {
       icon: faBuilding,
       title: "Commercial Construction",
       desc: "Office buildings, retail developments, mixed-use projects, and business facilities.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/38/7f/c9/07/ca/v1_E10/E10AQCWB.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=0c948850b392c0ae2a54badb9913435d46fd281ebfc73bd19b935409b593367e",
+      image: "/images/services/Commercial%20Construction.jpg",
     },
     {
       icon: faIndustry,
       title: "Industrial Facilities",
       desc: "Warehouses, manufacturing plants, production facilities, and logistics centers.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/1a/da/d1/88/c0/v1_E10/E10CXB3Q.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=f444a31362c6942bb657dfee8c6d3150c8173a962660b5401a735b9ac69aafa8",
+      image: "/images/services/construction-workers-building-site.jpg",
     },
     {
       icon: faSchool,
       title: "Institutional Projects",
       desc: "Educational facilities, healthcare buildings, government projects, and public infrastructure.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/1da902e5-8bb7-4bc2-883f-e253ca487511/a1a5d319-de7c-4538-a255-42a41016f7fa.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=67e91452b6cb3cbf1373feb59b41849d9a27c86d06e45946b0a69adb60daa953",
+      image: "/images/services/Institutional%20Projects.jpg",
     },
     {
       icon: faMaximize,
       title: "Facility Expansions",
       desc: "Building additions and operational growth projects designed to minimize disruption.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/9a/c3/7a/15/0e/v1_E10/E109TMD4.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=3a023dd7818f768211c3022ff35b0b7c46c2b59718bf3860d72efc4496042f44",
+      image: "/images/services/Facility%20Expansions.jpg",
     },
     {
       icon: faBuildingColumns,
       title: "Tenant Improvements",
       desc: "Customized commercial interiors designed around operational needs.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/be/9f/e9/9c/df/v1_E10/E10BW9BS.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=edca7417d1de50a85d3ffc00879c90929aab910d11f397c23b8a79a30d0fa15b",
+      image: "/images/services/construction-workers-building-site.jpg",
     },
     {
       icon: faHouse,
       title: "Large Residential Projects",
       desc: "Luxury homes, custom residences, and extensive residential developments.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/12/b7/a7/70/3d/v1_E11/E117XMXQ.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=82d802a8dd695cb8f143f605732dd6cf900e171af8f4c5aefc07c96e30932185",
+      image: "/images/services/Large%20Residential%20Projects.jpg",
     },
   ];
 
@@ -328,15 +329,31 @@ export default function DesignBuildPage() {
 
       {/* ── Hero Section ── */}
       <section className="dbs-hero-section">
-        <div className="dbs-hero-image"></div>
+        <video
+          className="dbs-hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/images/services/One%20Team.%20One%20Vision.%20One%20Successful%20Project..jpg"
+          aria-hidden="true"
+        >
+          <source
+            src="/images/services/ONE%20TEAM%20%E2%80%A2%20ONE%20CONTRACT%20%E2%80%A2%20ONE%20SEAMLESS%20PROCESS.mp4"
+            type="video/mp4"
+          />
+        </video>
         <div className="dbs-hero-overlay"></div>
         <div className="dbs-hero-content">
           <div className="dbs-hero-badge dbs-reveal">
-            <span className="dbs-hero-badge-dot" />
             ONE TEAM • ONE CONTRACT • ONE SEAMLESS PROCESS
           </div>
           <h1 className="dbs-hero-title dbs-reveal dbs-reveal-delay-1">
-            Design, Planning & Construction—<span className="dbs-highlight">Working Together from Day One</span>
+            <span className="service-hero-title-line">Design, Planning &amp; Construction</span>
+            <span className="service-hero-title-line dbs-highlight">
+              Working Together from Day One
+            </span>
           </h1>
           <p className="dbs-hero-subtitle dbs-reveal dbs-reveal-delay-2">
             Traditional construction separates design and construction into different teams, often leading to delays, miscommunication, and costly changes. Keentel General Contractors simplifies the process through integrated Design-Build services, bringing planning, design coordination, budgeting, and construction together under one experienced team.
@@ -344,13 +361,16 @@ export default function DesignBuildPage() {
           <p className="dbs-hero-subtitle dbs-hero-subtitle-small dbs-reveal dbs-reveal-delay-2">
             The result is a more collaborative, efficient, and predictable project from concept to completion.
           </p>
-          <div className="dbs-hero-cta-group dbs-reveal dbs-reveal-delay-3">
-            <a href="#contactformsection" className="dbs-btn dbs-btn-primary">
-              Schedule a Design-Build Consultation <FontAwesomeIcon icon={faArrowRight} className="dbs-btn-arrow" />
-            </a>
-            <a href="#contactformsection" className="dbs-btn dbs-btn-secondary">
-              Discuss Your Project <FontAwesomeIcon icon={faArrowRight} className="dbs-btn-arrow" />
-            </a>
+          <div className="service-hero-bottom-row">
+            <div className="dbs-hero-cta-group dbs-reveal dbs-reveal-delay-3">
+              <a href="#contactformsection" className="dbs-btn dbs-btn-primary">
+                Book a Consultation <FontAwesomeIcon icon={faArrowRight} className="dbs-btn-arrow" />
+              </a>
+              <a href="tel:8133950000" className="dbs-btn dbs-btn-secondary">
+                Call Us <FontAwesomeIcon icon={faArrowRight} className="dbs-btn-arrow" />
+              </a>
+            </div>
+            <ServiceHeroCredentials />
           </div>
         </div>
       </section>
@@ -389,8 +409,12 @@ export default function DesignBuildPage() {
               </p>
             </div>
             <div className="dbs-about-visual dbs-reveal dbs-reveal-delay-2">
-              <div className="dbs-about-bg-dot" style={{ top: "5%", left: "5%" }} />
-              <div className="dbs-about-bg-dot dbs-dot-2" />
+              <img
+                src="/images/services/One%20Team.%20One%20Vision.%20One%20Successful%20Project..jpg"
+                alt="Design-build professionals coordinating one successful project"
+                className="dbs-about-image"
+                loading="lazy"
+              />
               <div className="dbs-about-floating-card">
                 <div className="dbs-card-icon-large">
                   <FontAwesomeIcon icon={faHardHat} />
@@ -444,9 +468,10 @@ export default function DesignBuildPage() {
               </p>
               <div className="dbs-services-image-wrapper">
                 <img
-                  src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/ed/6b/a7/6e/48/v1_E11/E118CG4S.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=60127bdca6734a11de17a7023704ddd421e2cc6594733ed849a27600523f5d28"
-                  alt="Design-Build services"
+                  src="/images/services/Comprehensive%20Design-Build%20Services.jpg"
+                  alt="Comprehensive design-build services"
                   className="dbs-services-image"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -474,9 +499,6 @@ export default function DesignBuildPage() {
               <div className={`dbs-project-type-card dbs-reveal dbs-reveal-delay-${idx + 2}`} key={idx}>
                 <div className="dbs-project-type-image" style={{ backgroundImage: `url(${type.image})` }} />
                 <div className="dbs-project-type-content">
-                  <div className="dbs-project-type-icon">
-                    <FontAwesomeIcon icon={type.icon} />
-                  </div>
                   <h4>{type.title}</h4>
                   <p>{type.desc}</p>
                 </div>
@@ -521,9 +543,6 @@ export default function DesignBuildPage() {
           <div className="dbs-process-horizontal">
             {processSteps.map((step, idx) => (
               <div className={`dbs-process-step dbs-reveal dbs-reveal-delay-${idx + 1}`} key={idx}>
-                <div className="dbs-process-step-icon">
-                  <FontAwesomeIcon icon={step.icon} />
-                </div>
                 <div className="dbs-process-step-number">{step.step}</div>
                 <div className="dbs-process-step-content">
                   <h4>{step.title}</h4>
@@ -689,13 +708,9 @@ export default function DesignBuildPage() {
             One Team. One Process.{" "}
             <span style={{ color: "#a6238f" }}>One Successful Outcome.</span>
           </h2>
-          <p>
-            At Keentel General Contractors, our Design-Build services simplify construction by bringing planning, design, and execution together under one experienced team.
-          </p>
-          <p className="dbs-final-cta-bold">Let's transform your vision into a well-planned, professionally managed, and successfully completed project.</p>
           <div className="dbs-final-cta-buttons">
-            <a href="#contactformsection" className="dbs-btn-filled-dark">Schedule a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#contactformsection" className="dbs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="dbs-btn-filled-dark">Book a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="tel:8133950000" className="dbs-btn-outline-dark">Call Us</a>
           </div>
         </div>
       </section>

@@ -1,574 +1,414 @@
-// src/app/contact/page.tsx
 "use client";
 
+import { FormEvent, useState } from "react";
+import Link from "next/link";
+import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 import "./contact.css";
-import { useEffect } from "react";
 
-export default function ContactPage() {
-  useEffect(() => {
-    // Scroll Reveal
-    const revealElements = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
+const contactDetails = [
+  {
+    label: "Call our team",
+    value: "813-395-0000",
+    href: "tel:+18133950000",
+    icon: "phone",
+  },
+  {
+    label: "Email us",
+    value: "contact@keentelgeneralcontractors.com",
+    href: "mailto:contact@keentelgeneralcontractors.com",
+    icon: "mail",
+  },
+  {
+    label: "Tampa office",
+    value: "400 North Ashley Drive, Suite 2600, Tampa, FL 33602",
+    href: "https://maps.google.com/?q=400+North+Ashley+Drive+Suite+2600+Tampa+FL+33602",
+    icon: "pin",
+  },
+];
 
-    revealElements.forEach((el) => observer.observe(el));
+const faqs = [
+  {
+    question: "What information should I include with my inquiry?",
+    answer:
+      "Share the project type, location, current stage, desired timeline, and a short description of the work. Our team will help clarify anything else during the initial conversation.",
+  },
+  {
+    question: "Do you work throughout Florida?",
+    answer:
+      "Yes. Keentel General Contractors supports construction projects across all 67 Florida counties, with a primary base in Tampa Bay.",
+  },
+  {
+    question: "Can electrical contracting be included in my project?",
+    answer:
+      "Yes. Electrical contracting can be coordinated as part of an integrated construction project or discussed as a standalone service.",
+  },
+  {
+    question: "What happens after I submit the form?",
+    answer:
+      "A member of our team will review your project information, contact you to discuss the scope, and outline the appropriate next steps.",
+  },
+];
 
-    // Hero content should be visible immediately
-    document.querySelectorAll(".hero .reveal").forEach((el) =>
-      el.classList.add("visible")
-    );
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Form submission handler
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    const payload = {
-      formSource: "contact",
-      firstName: formData.get("firstName"),
-      lastName: formData.get("lastName"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      message: formData.get("message"),
-      projectType: formData.get("projectType"),
-      location: formData.get("location"),
-    };
-
-    try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
-      if (data.success) {
-        alert(
-          "Thank you for your message! Our team will respond within the same business day."
-        );
-        form.reset();
-      } else {
-        alert("Something went wrong — please try again or call us directly.");
-      }
-    } catch {
-      alert("Something went wrong — please try again or call us directly.");
-    }
+function ContactIcon({ name }: { name: string }) {
+  const paths: Record<string, React.ReactNode> = {
+    phone: (
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.33 1.84.56 2.8.69A2 2 0 0 1 22 16.92Z" />
+    ),
+    mail: (
+      <>
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="m3 7 9 6 9-6" />
+      </>
+    ),
+    pin: (
+      <>
+        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </>
+    ),
+    clock: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </>
+    ),
   };
 
   return (
-    <>
-      {/* ═══════════════ HERO SECTION ═══════════════ */}
-      <section className="contact-hero">
-  <div className="contact-hero__bg-pattern"></div>
-  <div className="contact-hero__orb contact-hero__orb--1"></div>
-  <div className="contact-hero__orb contact-hero__orb--2"></div>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      {paths[name]}
+    </svg>
+  );
+}
 
-  <div className="contact-hero__content">
-    <p className="contact-hero__eyebrow reveal">Get in Touch</p>
-    <h1 className="contact-hero__title reveal reveal-delay-1">
-      Let's start <span className="highlight">building</span>.
-    </h1>
-    <p className="contact-hero__subtitle reveal reveal-delay-2">
-      Whether you are planning a new build, a remodel, or need emergency
-      support — our team is available 7 days a week. Get a free,
-      no-obligation estimate for your project anywhere in Florida.
-    </p>
-  </div>
-</section>
+export default function ContactPage() {
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
-      {/* ═══════════════ CONTACT DETAILS — PREMIUM ═══════════════ */}
-      <section className="section section--white">
-        <div className="section__inner">
-          <div className="contact-details-premium">
-            <div className="contact-details-premium__header">
-              <p className="section__label reveal">Connect With Us</p>
-              <h2 className="section__title reveal">
-                We're here to help — reach out anytime
-              </h2>
-              <p className="section__text reveal reveal-delay-1">
-                Our team is available 7 days a week to discuss your project,
-                answer your questions, and provide a free estimate.
-              </p>
-            </div>
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
-            <div className="contact-details-premium__grid">
-              {/* Phone */}
-              <div className="contact-detail-premium reveal reveal-delay-1">
-                <div className="contact-detail-premium__icon">
-                  <i className="fas fa-phone"></i>
-                </div>
-                <div className="contact-detail-premium__content">
-                  <span className="contact-detail-premium__label">Call Us</span>
-                  <a href="tel:+18133950000" className="contact-detail-premium__value">
-                    (813) 395-0000
-                  </a>
-                  <span className="contact-detail-premium__sub">Mon–Sun, 7am–7pm</span>
-                </div>
-              </div>
+    setStatus("sending");
 
-              {/* Email */}
-              <div className="contact-detail-premium reveal reveal-delay-2">
-                <div className="contact-detail-premium__icon">
-                  <i className="fas fa-envelope"></i>
-                </div>
-                <div className="contact-detail-premium__content">
-                  <span className="contact-detail-premium__label">Email Us</span>
-                  <a
-                    href="mailto:contact@keentelgeneralcontractors.com"
-                    className="contact-detail-premium__value"
-                  >
-                    contact@keentelgeneralcontractors.com
-                  </a>
-                  <span className="contact-detail-premium__sub">
-                    We reply within 4 hours
-                  </span>
-                </div>
-              </div>
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formSource: "contact",
+          firstName: formData.get("firstName"),
+          lastName: formData.get("lastName"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          message: formData.get("message"),
+          projectType: formData.get("projectType"),
+          location: formData.get("location"),
+        }),
+      });
+      const data = await response.json();
 
-              {/* Address */}
-              <div className="contact-detail-premium reveal reveal-delay-3">
-                <div className="contact-detail-premium__icon">
-                  <i className="fas fa-map-marker-alt"></i>
-                </div>
-                <div className="contact-detail-premium__content">
-                  <span className="contact-detail-premium__label">Visit Us</span>
-                  <span className="contact-detail-premium__value">
-                    400 North Ashley Drive, Suite 100
-                  </span>
-                  <span className="contact-detail-premium__sub">
-                    Tampa, FL 33602
-                  </span>
-                </div>
-              </div>
+      if (!response.ok || !data.success) throw new Error("Submission failed");
 
-              {/* Emergency */}
-              <div className="contact-detail-premium contact-detail-premium--emergency reveal reveal-delay-4">
-                <div className="contact-detail-premium__icon">
-                  <i className="fas fa-exclamation-triangle"></i>
-                </div>
-                <div className="contact-detail-premium__content">
-                  <span className="contact-detail-premium__label">24/7 Emergency</span>
-                  <a href="tel:+18133950000" className="contact-detail-premium__value">
-                    (813) 395-0000
-                  </a>
-                  <span className="contact-detail-premium__sub">
-                    Always available — 365 days a year
-                  </span>
-                </div>
-              </div>
+      form.reset();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  return (
+    <div className="kcontact">
+      <section className="kcontact-hero">
+        <video
+          className="kcontact-hero__media"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src="/Video/contact.mp4" type="video/mp4" />
+        </video>
+        <div className="kcontact-hero__overlay" />
+
+        <div className="kcontact-shell kcontact-hero__inner">
+          <div className="kcontact-hero__copy">
+            <p className="kcontact-eyebrow">Contact Keentel General Contractors</p>
+            <h1>
+              Let&apos;s Build Your
+              <span> Next Project.</span>
+            </h1>
+            <p className="kcontact-hero__intro">
+              Tell us what you are planning. Our licensed construction team
+              will help define the scope, answer your questions, and identify
+              the right next steps.
+            </p>
+            <div className="kcontact-hero__actions">
+              <a className="kcontact-button kcontact-button--primary" href="#contactformsection">
+                Book a Consultation <span aria-hidden="true">→</span>
+              </a>
+              <a className="kcontact-button kcontact-button--ghost" href="tel:+18133950000">
+                Call Us
+              </a>
             </div>
           </div>
+
+          <ServiceHeroCredentials />
         </div>
       </section>
 
-      {/* ═══════════════ CONTACT FORM + INFO SPLIT ═══════════════ */}
-      <section className="section section--off-white" id="contactformsection">
-        <div className="section__inner">
-          <div style={{ marginBottom: "32px" }}>
-            <p className="section__label reveal">Request a Free Estimate</p>
-            <h2 className="section__title reveal">
-              Fill in the form and our team will respond within the same business day.
-            </h2>
-          </div>
+      <section className="kcontact-quick" aria-label="Contact information">
+        <div className="kcontact-shell kcontact-quick__grid">
+          {contactDetails.map((detail) => {
+            const content = (
+              <>
+                <span className="kcontact-quick__icon">
+                  <ContactIcon name={detail.icon} />
+                </span>
+                <span className="kcontact-quick__copy">
+                  <strong>{detail.label}</strong>
+                  <span>{detail.value}</span>
+                </span>
+              </>
+            );
 
-          <div className="form-split">
-            {/* Form */}
-            <div className="form-split__form reveal reveal-delay-1">
-              <form id="contactForm" onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="firstName">
-                      First Name <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      className="form-input"
-                      placeholder="John"
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="lastName">
-                      Last Name <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      className="form-input"
-                      placeholder="Doe"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="phone">
-                      Phone Number <span className="required">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="form-input"
-                      placeholder="(813) 555-1234"
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="email">
-                      Email Address <span className="required">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="form-input"
-                      placeholder="john@example.com"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="projectType">
-                      Project Type <span className="required">*</span>
-                    </label>
-                    <select id="projectType" name="projectType" className="form-select" required>
-                      <option value="">Select a project type…</option>
-                      <option value="new-construction">New Construction</option>
-                      <option value="remodeling">Remodeling</option>
-                      <option value="electrical">Electrical</option>
-                      <option value="design-services">Design Services</option>
-                      <option value="emergency">Emergency</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="location">
-                      Project Location / County
-                    </label>
-                    <input
-                      type="text"
-                      id="location"
-                      name="location"
-                      className="form-input"
-                      placeholder="Hillsborough County, FL"
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label" htmlFor="message">
-                    Message / Project Description <span className="required">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    className="form-textarea"
-                    placeholder="Tell us about your project, timeline, and any specific requirements…"
-                    required
-                  ></textarea>
-                </div>
-
-                <button type="submit" className="form-submit">
-                  <i className="fas fa-paper-plane"></i>
-                  Send My Request
-                </button>
-              </form>
-            </div>
-
-            {/* Info Sidebar */}
-            <div className="form-split__info reveal reveal-delay-2">
-              <h3>Why reach out?</h3>
-              <p>
-                Our team is ready to discuss your project, answer your questions,
-                and provide a free, no-obligation estimate.
-              </p>
-
-              <div className="form-split__info-item">
-                <i className="fas fa-clock"></i>
-                <div>
-                  <strong>Same-day response</strong>
-                  <br />
-                  We reply within hours
-                </div>
+            return detail.href ? (
+              <a
+                key={detail.label}
+                className="kcontact-quick__item"
+                href={detail.href}
+                target={detail.icon === "pin" ? "_blank" : undefined}
+                rel={detail.icon === "pin" ? "noopener noreferrer" : undefined}
+              >
+                {content}
+              </a>
+            ) : (
+              <div key={detail.label} className="kcontact-quick__item">
+                {content}
               </div>
-              <div className="form-split__info-item">
-                <i className="fas fa-file-invoice"></i>
-                <div>
-                  <strong>Free estimate</strong>
-                  <br />
-                  No obligation, fixed-price proposal
-                </div>
-              </div>
-              <div className="form-split__info-item">
-                <i className="fas fa-shield-alt"></i>
-                <div>
-                  <strong>Licensed &amp; insured</strong>
-                  <br />
-                  CGC1524228 &bull; EC13014476 — fully protected
-                </div>
-              </div>
-
-              <span className="emergency-badge">
-                <i className="fas fa-exclamation-triangle"></i> 24/7 Emergency
-                Line Always Active
-              </span>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* ═══════════════ PROCESS AFTER CONTACT ═══════════════ */}
-      <section className="section section--white">
-        <div className="section__inner">
-          <div style={{ textAlign: "center", marginBottom: "12px" }}>
-            <p className="section__label reveal">What Happens After You Reach Out</p>
-            <h2 className="section__title reveal">
-              From first contact to project start
-            </h2>
-          </div>
-
-          <div className="process-grid">
-            <div className="process-step reveal reveal-delay-1">
-              <div className="process-step__number">1</div>
-              <div className="process-step__title">You Contact Us</div>
-              <div className="process-step__desc">Call, email, or submit the form</div>
-              <span className="process-step__arrow">
-                <i className="fas fa-chevron-right"></i>
-              </span>
-            </div>
-            <div className="process-step reveal reveal-delay-2">
-              <div className="process-step__number">2</div>
-              <div className="process-step__title">Same-Day Response</div>
-              <div className="process-step__desc">Our team replies within hours</div>
-              <span className="process-step__arrow">
-                <i className="fas fa-chevron-right"></i>
-              </span>
-            </div>
-            <div className="process-step reveal reveal-delay-3">
-              <div className="process-step__number">3</div>
-              <div className="process-step__title">Free Site Estimate</div>
-              <div className="process-step__desc">We visit and assess your project</div>
-              <span className="process-step__arrow">
-                <i className="fas fa-chevron-right"></i>
-              </span>
-            </div>
-            <div className="process-step reveal reveal-delay-4">
-              <div className="process-step__number">4</div>
-              <div className="process-step__title">Written Proposal</div>
-              <div className="process-step__desc">Fixed price, clear scope, no surprises</div>
-              <span className="process-step__arrow">
-                <i className="fas fa-chevron-right"></i>
-              </span>
-            </div>
-            <div className="process-step reveal reveal-delay-5">
-              <div className="process-step__number">5</div>
-              <div className="process-step__title">Project Start</div>
-              <div className="process-step__desc">
-                Signed contract, licensed team mobilized
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ WHY CHOOSE KEENTEL ═══════════════ */}
-      <section className="section section--off-white">
-        <div className="section__inner">
-          <div style={{ textAlign: "center", marginBottom: "12px" }}>
-            <p className="section__label reveal">Why Choose Keentel General Contractors</p>
-            <h2 className="section__title reveal">
-              Licensed, insured, and ready to build
-            </h2>
-          </div>
-
-          <div className="why-grid">
-            <div className="why-card reveal reveal-delay-1">
-              <div className="why-card__icon">
-                <i className="fas fa-shield-alt"></i>
-              </div>
-              <div className="why-card__title">Licensed &amp; Insured</div>
-              <div className="why-card__desc">
-                Florida licenses CGC1524228 and EC13014476. Fully insured on every
-                project — your investment is protected from the first call.
-              </div>
-            </div>
-            <div className="why-card reveal reveal-delay-2">
-              <div className="why-card__icon">
-                <i className="fas fa-file-invoice"></i>
-              </div>
-              <div className="why-card__title">Free Estimate</div>
-              <div className="why-card__desc">
-                No obligation, no pressure. We assess your scope, visit the site
-                where needed, and deliver a written fixed-price proposal.
-              </div>
-            </div>
-            <div className="why-card reveal reveal-delay-3">
-              <div className="why-card__icon">
-                <i className="fas fa-calendar-check"></i>
-              </div>
-              <div className="why-card__title">Available 7 Days</div>
-              <div className="why-card__desc">
-                Our team takes calls Monday through Sunday. For emergencies, our
-                dispatch line is active 24 hours a day, 365 days a year.
-              </div>
-            </div>
-            <div className="why-card reveal reveal-delay-4">
-              <div className="why-card__icon">
-                <i className="fas fa-map-marked-alt"></i>
-              </div>
-              <div className="why-card__title">Statewide Coverage</div>
-              <div className="why-card__desc">
-                Headquartered in Tampa Bay, we serve all 67 Florida counties for
-                residential, commercial, and industrial projects.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ EMERGENCY CTA ═══════════════ */}
-      <section className="section section--white">
-        <div className="section__inner">
-          <div className="emergency-cta reveal">
-            <span className="emergency-cta__badge">
-              <i className="fas fa-exclamation-triangle"></i> 24/7 Emergency
-              Response
-            </span>
-            <h2>Facing an emergency right now?</h2>
+      <section className="kcontact-form-section" id="contactformsection">
+        <div className="kcontact-shell kcontact-form-layout">
+          <div className="kcontact-form-intro">
+            <p className="kcontact-eyebrow">Start a Conversation</p>
+            <h2>Tell Us About Your Project</h2>
             <p>
-              Don't wait for a callback. Call our emergency line directly — we
-              dispatch within 15 minutes and arrive on-site across Florida within
-              30 to 60 minutes.
+              From early planning to active construction, the right
+              conversation creates clarity. Share the essential details and
+              our team will follow up with focused, practical next steps.
             </p>
 
-            <a href="tel:+18133950000" className="phone-large">
-              <i className="fas fa-phone"></i>
-              (813) 395-0000
-            </a>
+            <div className="kcontact-form-intro__image" aria-hidden="true" />
 
-            <div className="tags">
-              <span>Storm</span>
-              <span>Flood</span>
-              <span>Fire</span>
-              <span>Structural Failure</span>
-              <span>Electrical Emergency</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ OFFICE LOCATIONS ═══════════════ */}
-      <section className="section section--off-white">
-        <div className="section__inner">
-          <div style={{ marginBottom: "12px" }}>
-            <p className="section__label reveal">Our Offices</p>
-            <h2 className="section__title reveal">
-              Serving Florida from Tampa Bay
-            </h2>
-          </div>
-
-          <div className="locations-grid">
-            <div className="location-card reveal reveal-delay-1">
-              <h3>
-                <i
-                  className="fas fa-building"
-                  style={{ color: "var(--color-magenta)", marginRight: "8px" }}
-                ></i>
-                Tampa Bay — Main Office
-              </h3>
-              <div className="sub">Headquarters</div>
-              <p>
-                400 North Ashley Drive, Suite 100
-                <br />
-                Tampa, FL 33602
-              </p>
-              <a href="tel:+18133950000" className="phone-link">
-                <i className="fas fa-phone"></i> (813) 395-0000
+            <div className="kcontact-form-intro__actions">
+              <a href="tel:+18133950000" className="kcontact-intro-button kcontact-intro-button--call">
+                Call Us
+              </a>
+              <a href="#project-inquiry" className="kcontact-intro-button kcontact-intro-button--schedule">
+                Schedule a Consultation <span aria-hidden="true">→</span>
               </a>
             </div>
-            <div className="location-card reveal reveal-delay-2">
-              <h3>
-                <i
-                  className="fas fa-map-signs"
-                  style={{ color: "var(--color-magenta)", marginRight: "8px" }}
-                ></i>
-                Service Territory
-              </h3>
-              <div className="sub">Statewide Coverage</div>
-              <p>
-                All 67 Florida counties — residential, commercial, and industrial
-                construction services available statewide.
-              </p>
-              <div
-                style={{
-                  marginTop: "10px",
-                  fontSize: "0.85rem",
-                  color: "var(--color-text-muted)",
-                }}
-              >
-                Hillsborough · Pinellas · Pasco · Polk · Hernando · Manatee ·
-                Sarasota · and all remaining Florida counties
+          </div>
+
+          <div className="kcontact-form-card" id="project-inquiry">
+            <div className="kcontact-form-card__heading">
+              <span>Project Inquiry</span>
+              <h3>Request a Consultation</h3>
+              <p>Fields marked with an asterisk are required.</p>
+            </div>
+
+            <form onSubmit={handleSubmit}>
+              <div className="kcontact-form-grid">
+                <label>
+                  First Name *
+                  <input name="firstName" type="text" autoComplete="given-name" required />
+                </label>
+                <label>
+                  Last Name *
+                  <input name="lastName" type="text" autoComplete="family-name" required />
+                </label>
+                <label>
+                  Email Address *
+                  <input name="email" type="email" autoComplete="email" required />
+                </label>
+                <label>
+                  Phone Number *
+                  <input name="phone" type="tel" autoComplete="tel" required />
+                </label>
+                <label>
+                  Project Type *
+                  <select name="projectType" defaultValue="" required>
+                    <option value="" disabled>Select project type</option>
+                    <option>Pre-Construction</option>
+                    <option>Design-Build</option>
+                    <option>General Construction</option>
+                    <option>Commercial Remodeling</option>
+                    <option>Residential Remodeling</option>
+                    <option>Electrical Contracting</option>
+                    <option>Emergency Restoration</option>
+                  </select>
+                </label>
+                <label>
+                  Project Location *
+                  <input name="location" type="text" placeholder="City, Florida" required />
+                </label>
+                <label className="kcontact-form-grid__full">
+                  Project Details *
+                  <textarea
+                    name="message"
+                    rows={6}
+                    placeholder="Tell us about the project scope, goals, and timeline."
+                    required
+                  />
+                </label>
               </div>
-            </div>
+
+              <button
+                className="kcontact-submit"
+                type="submit"
+                disabled={status === "sending"}
+              >
+                {status === "sending" ? "Sending..." : "Request a Consultation"}
+                {status !== "sending" && <span aria-hidden="true">→</span>}
+              </button>
+
+              <div className="kcontact-form-status" aria-live="polite">
+                {status === "success" && (
+                  <p className="kcontact-form-status--success">
+                    Thank you. Your project inquiry has been received.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="kcontact-form-status--error">
+                    We could not send your inquiry. Please try again or call
+                    813-395-0000.
+                  </p>
+                )}
+              </div>
+            </form>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ FINAL CTA ═══════════════ */}
-      <section className="section section--white">
-        <div className="section__inner">
-          <div className="final-cta reveal">
-            <div className="final-cta__badge">
-              <i className="fas fa-phone-volume"></i>
-              Call Us Today
-            </div>
-
-            <h2 className="final-cta__title">
-              Your next project starts with one call.
-            </h2>
-
-            <div className="final-cta__actions">
-              <a href="tel:+18133950000" className="final-cta__phone">
-                <i className="fas fa-phone"></i>
-                (813) 395-0000
-              </a>
-              <a href="#contactformsection" className="final-cta__btn">
-                Request Free Estimate <i className="fas fa-arrow-right"></i>
-              </a>
-            </div>
-
-            <div className="final-cta__perks">
-              <span>
-                <i className="fas fa-check-circle"></i> Free estimate
-              </span>
-              <span>
-                <i className="fas fa-shield-alt"></i> Licensed &amp; insured
-              </span>
-              <span>
-                <i className="fas fa-clock"></i> Available 7 days a week
-              </span>
-            </div>
+      <section className="kcontact-process">
+        <div className="kcontact-shell">
+          <div className="kcontact-heading">
+            <p className="kcontact-eyebrow">What Happens Next</p>
+            <h2>A Clear Start for Your Project</h2>
+            <p>
+              A focused three-step process keeps the first conversation useful
+              and gives your project a clear direction.
+            </p>
+          </div>
+          <div className="kcontact-process__grid">
+            {[
+              ["01", "Share the Details", "Tell us what you are building, where it is located, and what success looks like."],
+              ["02", "Speak With Our Team", "We review the scope, discuss priorities, and identify the services your project needs."],
+              ["03", "Define the Next Steps", "You receive a clear path forward based on your project stage, goals, and requirements."],
+            ].map(([number, title, description]) => (
+              <article key={number}>
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
-    </>
+
+      <section className="kcontact-support">
+        <div className="kcontact-shell">
+          <div className="kcontact-support__heading">
+            <div>
+              <p className="kcontact-eyebrow">Construction Support Across Florida</p>
+              <h2>Wherever the Project Starts, We Help You Move Forward.</h2>
+            </div>
+            <p>
+              Explore our statewide construction coverage or connect with our
+              restoration team when property damage requires a coordinated
+              response.
+            </p>
+          </div>
+
+          <div className="kcontact-support__grid">
+            <article className="kcontact-support__card">
+              <div className="kcontact-support__media kcontact-support__media--areas">
+                <span>Serving all 67 Florida counties</span>
+              </div>
+              <div className="kcontact-support__body">
+                <p className="kcontact-eyebrow">Florida Construction Service Areas</p>
+                <h3>Professional Construction Services Across Florida</h3>
+                <p>
+                  Find the Florida regions and communities served by Keentel
+                  General Contractors for commercial, residential, industrial,
+                  and institutional projects.
+                </p>
+                <Link href="/service-areas">
+                  Explore Florida Service Areas <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </article>
+
+            <article className="kcontact-support__card">
+              <div className="kcontact-support__media kcontact-support__media--emergency">
+                <span>Fire • Water • Storm • Structural</span>
+              </div>
+              <div className="kcontact-support__body">
+                <p className="kcontact-eyebrow">Emergency Restoration Services</p>
+                <h3>Restore Your Property with a Clear Recovery Plan</h3>
+                <p>
+                  Get professional support for fire, water, storm, and
+                  structural damage—from initial assessment through
+                  reconstruction.
+                </p>
+                <Link href="/services/emergency-restoration">
+                  View Emergency Restoration Services <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="kcontact-faq">
+        <div className="kcontact-shell">
+          <div className="kcontact-faq__heading">
+            <div>
+              <p className="kcontact-eyebrow">Construction Consultation FAQs</p>
+              <h2>Plan Your First Conversation with Confidence</h2>
+            </div>
+            <p>
+              Find answers about project inquiries, statewide coverage,
+              electrical contracting, and what happens after you contact our
+              construction team.
+            </p>
+          </div>
+          <div className="kcontact-faq__list">
+            {faqs.map((faq, index) => (
+              <details key={faq.question}>
+                <summary>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{faq.question}</strong>
+                  <i aria-hidden="true">+</i>
+                </summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+          <div className="kcontact-faq__footer">
+            <span>Still have a question?</span>
+            <a href="tel:+18133950000">Call our construction team →</a>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

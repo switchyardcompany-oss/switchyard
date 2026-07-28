@@ -2,9 +2,11 @@
 "use client";
 
 import { useState, useEffect, useRef, FormEvent } from "react";
+import Image from "next/image";
 import "./general-construction.css";
 import "../service-hero.css";
 import WhyKeentel from "@/components/WhyKeentel";
+import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -155,37 +157,37 @@ export default function GeneralConstructionPage() {
       icon: faBuilding,
       title: "Commercial Buildings",
       desc: "Professional offices, retail developments, mixed-use properties, restaurants, and hospitality spaces.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/38/7f/c9/07/ca/v1_E10/E10AQCWB.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=0c948850b392c0ae2a54badb9913435d46fd281ebfc73bd19b935409b593367e",
+      image: "/images/services/Commercial%20Construction.jpg",
     },
     {
       icon: faIndustry,
       title: "Industrial Facilities",
       desc: "Warehouses, manufacturing plants, logistics centers, distribution facilities, and operational infrastructure.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/1a/da/d1/88/c0/v1_E10/E10CXB3Q.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=f444a31362c6942bb657dfee8c6d3150c8173a962660b5401a735b9ac69aafa8",
+      image: "/images/services/construction-workers-building-site.jpg",
     },
     {
       icon: faSchool,
       title: "Institutional Projects",
       desc: "Educational facilities, healthcare buildings, government properties, and community developments.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/1da902e5-8bb7-4bc2-883f-e253ca487511/a1a5d319-de7c-4538-a255-42a41016f7fa.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=67e91452b6cb3cbf1373feb59b41849d9a27c86d06e45946b0a69adb60daa953",
+      image: "/images/services/Institutional%20Projects.jpg",
     },
     {
       icon: faMaximize,
       title: "Facility Expansions",
       desc: "Building additions and operational expansions that increase capacity while minimizing disruption.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/9a/c3/7a/15/0e/v1_E10/E109TMD4.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=3a023dd7818f768211c3022ff35b0b7c46c2b59718bf3860d72efc4496042f44",
+      image: "/images/services/construction-workers-building-site.jpg",
     },
     {
       icon: faBuildingColumns,
       title: "Tenant Improvements",
       desc: "Customized interior spaces designed to meet operational requirements, branding objectives, and future growth.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/be/9f/e9/9c/df/v1_E10/E10BW9BS.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=edca7417d1de50a85d3ffc00879c90929aab910d11f397c23b8a79a30d0fa15b",
+      image: "/images/services/Tenant%20Improvements.jpg",
     },
     {
       icon: faHouse,
       title: "Large Residential Construction",
       desc: "Luxury homes, custom residences, additions, and major residential renovations.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/12/b7/a7/70/3d/v1_E11/E117XMXQ.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=82d802a8dd695cb8f143f605732dd6cf900e171af8f4c5aefc07c96e30932185",
+      image: "/images/services/Large%20Residential%20Projects.jpg",
     },
   ];
 
@@ -286,15 +288,30 @@ export default function GeneralConstructionPage() {
 
       {/* ── Hero Section ── */}
       <section className="gcs-hero-section">
-        <div className="gcs-hero-image"></div>
+        <video
+          className="gcs-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source
+            src="/Video/general-construction.mp4"
+            type="video/mp4"
+          />
+        </video>
         <div className="gcs-hero-overlay"></div>
         <div className="gcs-hero-content">
           <div className="gcs-hero-badge gcs-reveal">
-            <span className="gcs-hero-badge-dot" />
             COMMERCIAL • INDUSTRIAL • INSTITUTIONAL • LARGE RESIDENTIAL
           </div>
           <h1 className="gcs-hero-title gcs-reveal gcs-reveal-delay-1">
-            Building Projects with <span className="gcs-highlight">Precision, Quality & Accountability</span>
+            <span className="service-hero-title-line">Building Projects with Precision</span>
+            <span className="service-hero-title-line gcs-highlight">
+              Quality &amp; Accountability
+            </span>
           </h1>
           <p className="gcs-hero-subtitle gcs-reveal gcs-reveal-delay-2">
             Every successful project depends on more than skilled construction—it requires careful planning, experienced leadership, and seamless coordination. Keentel General Contractors delivers comprehensive general construction services that transform concepts into high-quality, lasting spaces built around your goals, schedule, and budget.
@@ -302,13 +319,16 @@ export default function GeneralConstructionPage() {
           <p className="gcs-hero-subtitle gcs-hero-subtitle-small gcs-reveal gcs-reveal-delay-2">
             Whether you're developing a new facility, expanding an existing property, or modernizing your infrastructure, we provide one trusted team to manage every stage of construction.
           </p>
-          <div className="gcs-hero-cta-group gcs-reveal gcs-reveal-delay-3">
-            <a href="#contactformsection" className="gcs-btn gcs-btn-primary">
-              Schedule a Consultation <FontAwesomeIcon icon={faArrowRight} className="gcs-btn-arrow" />
-            </a>
-            <a href="#contactformsection" className="gcs-btn gcs-btn-secondary">
-              View Our Projects <FontAwesomeIcon icon={faArrowRight} className="gcs-btn-arrow" />
-            </a>
+          <div className="service-hero-bottom-row">
+            <div className="gcs-hero-cta-group gcs-reveal gcs-reveal-delay-3">
+              <a href="#contactformsection" className="gcs-btn gcs-btn-primary">
+                Book a Consultation <FontAwesomeIcon icon={faArrowRight} className="gcs-btn-arrow" />
+              </a>
+              <a href="tel:8133950000" className="gcs-btn gcs-btn-secondary">
+                Call Us <FontAwesomeIcon icon={faArrowRight} className="gcs-btn-arrow" />
+              </a>
+            </div>
+            <ServiceHeroCredentials />
           </div>
         </div>
       </section>
@@ -399,7 +419,7 @@ export default function GeneralConstructionPage() {
               </p>
               <div className="gcs-services-image-wrapper">
                 <img
-                  src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/ed/6b/a7/6e/48/v1_E11/E118CG4S.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=60127bdca6734a11de17a7023704ddd421e2cc6594733ed849a27600523f5d28"
+                  src="/images/services/construction-workers-building-site.jpg"
                   alt="General construction services"
                   className="gcs-services-image"
                 />
@@ -427,11 +447,16 @@ export default function GeneralConstructionPage() {
           <div className="gcs-project-types-grid">
             {projectTypes.map((type, idx) => (
               <div className={`gcs-project-type-card gcs-reveal gcs-reveal-delay-${idx + 2}`} key={idx}>
-                <div className="gcs-project-type-image" style={{ backgroundImage: `url(${type.image})` }} />
+                <div className="gcs-project-type-image">
+                  <Image
+                    src={type.image}
+                    alt={`${type.title} general construction project`}
+                    fill
+                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    className="gcs-project-type-photo"
+                  />
+                </div>
                 <div className="gcs-project-type-content">
-                  <div className="gcs-project-type-icon">
-                    <FontAwesomeIcon icon={type.icon} />
-                  </div>
                   <h4>{type.title}</h4>
                   <p>{type.desc}</p>
                 </div>
@@ -476,9 +501,6 @@ export default function GeneralConstructionPage() {
           <div className="gcs-process-horizontal">
             {processSteps.map((step, idx) => (
               <div className={`gcs-process-step gcs-reveal gcs-reveal-delay-${idx + 1}`} key={idx}>
-                <div className="gcs-process-step-icon">
-                  <FontAwesomeIcon icon={step.icon} />
-                </div>
                 <div className="gcs-process-step-number">{step.step}</div>
                 <div className="gcs-process-step-content">
                   <h4>{step.title}</h4>
@@ -644,13 +666,9 @@ export default function GeneralConstructionPage() {
           <h2>
             Build with a Partner <span style={{ color: "#a6238f" }}>Committed to Excellence</span>
           </h2>
-          <p>
-            Every successful project starts with the right construction team. At Keentel General Contractors, we combine planning, project management, skilled craftsmanship, and dependable execution to deliver construction solutions that stand the test of time.
-          </p>
-          <p className="gcs-final-cta-bold">Let's build your next project with confidence.</p>
           <div className="gcs-final-cta-buttons">
-            <a href="#contactformsection" className="gcs-btn-filled-dark">Start Your Project <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#contactformsection" className="gcs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="gcs-btn-filled-dark">Book a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="tel:8133950000" className="gcs-btn-outline-dark">Call Us</a>
           </div>
         </div>
       </section>

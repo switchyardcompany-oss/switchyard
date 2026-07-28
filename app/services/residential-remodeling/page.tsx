@@ -2,9 +2,11 @@
 "use client";
 
 import { useState, useEffect, useRef, FormEvent } from "react";
+import Image from "next/image";
 import "./residential-remodeling.css";
 import "../service-hero.css";
 import WhyKeentel from "@/components/WhyKeentel";
+import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -163,37 +165,37 @@ export default function ResidentialRemodelingPage() {
       icon: faHouse,
       title: "Whole Home Renovations",
       desc: "Complete interior and exterior transformations designed to modernize your home while improving functionality and value.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/12/b7/a7/70/3d/v1_E11/E117XMXQ.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=82d802a8dd695cb8f143f605732dd6cf900e171af8f4c5aefc07c96e30932185",
+      image: "/images/services/Whole%20Home%20Renovations.jpg",
     },
     {
       icon: faUtensils,
       title: "Kitchen Remodeling",
       desc: "Beautiful, practical kitchens designed for everyday living, entertaining, and long-term performance.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/38/7f/c9/07/ca/v1_E10/E10AQCWB.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=0c948850b392c0ae2a54badb9913435d46fd281ebfc73bd19b935409b593367e",
+      image: "/images/services/Kitchen%20Remodeling.jpg",
     },
     {
       icon: faBath,
       title: "Bathroom Remodeling",
       desc: "Modern bathrooms with upgraded layouts, finishes, fixtures, and improved comfort.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/be/9f/e9/9c/df/v1_E10/E10BW9BS.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=edca7417d1de50a85d3ffc00879c90929aab910d11f397c23b8a79a30d0fa15b",
+      image: "/images/services/Bathroom%20Remodeling.jpg",
     },
     {
       icon: faMaximize,
       title: "Home Additions",
       desc: "Expand your living space with thoughtfully designed additions that blend seamlessly with your existing home.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/9a/c3/7a/15/0e/v1_E10/E109TMD4.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=3a023dd7818f768211c3022ff35b0b7c46c2b59718bf3860d72efc4496042f44",
+      image: "/images/services/Home%20Additions.jpg",
     },
     {
       icon: faBuilding,
       title: "Basement Finishing",
       desc: "Transform unfinished spaces into functional living areas, entertainment rooms, home gyms, or guest suites.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/1da902e5-8bb7-4bc2-883f-e253ca487511/a1a5d319-de7c-4538-a255-42a41016f7fa.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=67e91452b6cb3cbf1373feb59b41849d9a27c86d06e45946b0a69adb60daa953",
+      image: "/images/services/Basement%20Finishing.jpg",
     },
     {
       icon: faBuildingColumns,
       title: "Interior Renovations",
       desc: "Refresh and modernize individual rooms while improving comfort, efficiency, and overall home appeal.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/1a/da/d1/88/c0/v1_E10/E10CXB3Q.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=f444a31362c6942bb657dfee8c6d3150c8173a962660b5401a735b9ac69aafa8",
+      image: "/images/services/Interior%20Renovations.jpg",
     },
   ];
 
@@ -288,15 +290,30 @@ export default function ResidentialRemodelingPage() {
 
       {/* ── Hero Section ── */}
       <section className="rrs-hero-section">
-        <div className="rrs-hero-image"></div>
+        <video
+          className="rrs-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source
+            src="/Video/Transform%20Commercial%20Spaces%20with%20Confidence.mp4"
+            type="video/mp4"
+          />
+        </video>
         <div className="rrs-hero-overlay"></div>
         <div className="rrs-hero-content">
           <div className="rrs-hero-badge rrs-reveal">
-            <span className="rrs-hero-badge-dot" />
             WHOLE HOME RENOVATIONS • HOME ADDITIONS • KITCHENS • BATHROOMS
           </div>
           <h1 className="rrs-hero-title rrs-reveal rrs-reveal-delay-1">
-            Transform Your Home with <span className="rrs-highlight">Quality Craftsmanship & Thoughtful Design</span>
+            <span className="service-hero-title-line">Transform Your Home with</span>
+            <span className="service-hero-title-line rrs-highlight">
+              Quality Craftsmanship &amp; Thoughtful Design
+            </span>
           </h1>
           <p className="rrs-hero-subtitle rrs-reveal rrs-reveal-delay-2">
             Your home should reflect your lifestyle, support your family's needs, and provide lasting comfort. Keentel General Contractors delivers professional residential remodeling services that combine quality craftsmanship, functional design, and experienced project management to create beautiful living spaces built around the way you live.
@@ -304,13 +321,16 @@ export default function ResidentialRemodelingPage() {
           <p className="rrs-hero-subtitle rrs-hero-subtitle-small rrs-reveal rrs-reveal-delay-2">
             Whether you're renovating a single room or transforming your entire home, we help bring your vision to life with confidence.
           </p>
-          <div className="rrs-hero-cta-group rrs-reveal rrs-reveal-delay-3">
-            <a href="#contactformsection" className="rrs-btn rrs-btn-primary">
-              Schedule a Consultation <FontAwesomeIcon icon={faArrowRight} className="rrs-btn-arrow" />
-            </a>
-            <a href="#contactformsection" className="rrs-btn rrs-btn-secondary">
-              Start Your Remodeling Project <FontAwesomeIcon icon={faArrowRight} className="rrs-btn-arrow" />
-            </a>
+          <div className="service-hero-bottom-row">
+            <div className="rrs-hero-cta-group rrs-reveal rrs-reveal-delay-3">
+              <a href="#contactformsection" className="rrs-btn rrs-btn-primary">
+                Book a Consultation <FontAwesomeIcon icon={faArrowRight} className="rrs-btn-arrow" />
+              </a>
+              <a href="tel:8133950000" className="rrs-btn rrs-btn-secondary">
+                Call Us <FontAwesomeIcon icon={faArrowRight} className="rrs-btn-arrow" />
+              </a>
+            </div>
+            <ServiceHeroCredentials />
           </div>
         </div>
       </section>
@@ -401,7 +421,7 @@ export default function ResidentialRemodelingPage() {
               </p>
               <div className="rrs-services-image-wrapper">
                 <img
-                  src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/ed/6b/a7/6e/48/v1_E11/E118CG4S.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=60127bdca6734a11de17a7023704ddd421e2cc6594733ed849a27600523f5d28"
+                  src="/images/services/Interior%20Renovations.jpg"
                   alt="Residential Remodeling services"
                   className="rrs-services-image"
                 />
@@ -429,11 +449,16 @@ export default function ResidentialRemodelingPage() {
           <div className="rrs-project-types-grid">
             {projectTypes.map((type, idx) => (
               <div className={`rrs-project-type-card rrs-reveal rrs-reveal-delay-${idx + 2}`} key={idx}>
-                <div className="rrs-project-type-image" style={{ backgroundImage: `url(${type.image})` }} />
+                <div className="rrs-project-type-image">
+                  <Image
+                    src={type.image}
+                    alt={`${type.title} residential remodeling project`}
+                    fill
+                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    className="rrs-project-type-photo"
+                  />
+                </div>
                 <div className="rrs-project-type-content">
-                  <div className="rrs-project-type-icon">
-                    <FontAwesomeIcon icon={type.icon} />
-                  </div>
                   <h4>{type.title}</h4>
                   <p>{type.desc}</p>
                 </div>
@@ -478,9 +503,6 @@ export default function ResidentialRemodelingPage() {
           <div className="rrs-process-horizontal">
             {processSteps.map((step, idx) => (
               <div className={`rrs-process-step rrs-reveal rrs-reveal-delay-${idx + 1}`} key={idx}>
-                <div className="rrs-process-step-icon">
-                  <FontAwesomeIcon icon={step.icon} />
-                </div>
                 <div className="rrs-process-step-number">{step.step}</div>
                 <div className="rrs-process-step-content">
                   <h4>{step.title}</h4>
@@ -644,13 +666,9 @@ export default function ResidentialRemodelingPage() {
           <h2>
             Reimagine Your Home <span style={{ color: "#a6238f" }}>with Confidence</span>
           </h2>
-          <p>
-            A successful remodel is about more than new finishes—it's about creating a home that better supports your lifestyle today and adds value for tomorrow. At Keentel General Contractors, we combine thoughtful planning, quality craftsmanship, and professional project management to deliver residential remodeling projects you'll enjoy for years to come.
-          </p>
-          <p className="rrs-final-cta-bold">Let's build the home you've always wanted.</p>
           <div className="rrs-final-cta-buttons">
-            <a href="#contactformsection" className="rrs-btn-filled-dark">Start Your Home Remodel <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#contactformsection" className="rrs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="rrs-btn-filled-dark">Book a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="tel:8133950000" className="rrs-btn-outline-dark">Call Us</a>
           </div>
         </div>
       </section>

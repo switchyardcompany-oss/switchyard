@@ -5,6 +5,7 @@ import { useState, useEffect, useRef, FormEvent } from "react";
 import "./emergency-restoration.css";
 import "../service-hero.css";
 import WhyKeentel from "@/components/WhyKeentel";
+import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -165,37 +166,37 @@ export default function EmergencyRestorationPage() {
       icon: faFire,
       title: "Fire Damage",
       desc: "Repairing structural damage, rebuilding affected spaces, and restoring your property after fire-related incidents.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/38/7f/c9/07/ca/v1_E10/E10AQCWB.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=0c948850b392c0ae2a54badb9913435d46fd281ebfc73bd19b935409b593367e",
+      image: "/images/services/Fire%20Damage.jpg",
     },
     {
       icon: faWater,
       title: "Water Damage",
       desc: "Restoring properties affected by plumbing failures, flooding, leaks, and water intrusion.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/1a/da/d1/88/c0/v1_E10/E10CXB3Q.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=f444a31362c6942bb657dfee8c6d3150c8173a962660b5401a735b9ac69aafa8",
+      image: "/images/services/Water%20Damage.jpg",
     },
     {
       icon: faCloudRain,
       title: "Storm Damage",
       desc: "Repairing damage caused by high winds, heavy rain, hail, fallen trees, and severe weather events.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/1da902e5-8bb7-4bc2-883f-e253ca487511/a1a5d319-de7c-4538-a255-42a41016f7fa.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=67e91452b6cb3cbf1373feb59b41849d9a27c86d06e45946b0a69adb60daa953",
+      image: "/images/services/Storm%20Damage.jpg",
     },
     {
       icon: faBuilding,
       title: "Structural Damage",
       desc: "Restoring buildings affected by impact damage, structural movement, or compromised building components.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/be/9f/e9/9c/df/v1_E10/E10BW9BS.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=edca7417d1de50a85d3ffc00879c90929aab910d11f397c23b8a79a30d0fa15b",
+      image: "/images/services/Structural%20Damage.jpg",
     },
     {
       icon: faBuildingColumns,
       title: "Commercial Property Damage",
       desc: "Helping businesses recover quickly while minimizing operational downtime.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/9a/c3/7a/15/0e/v1_E10/E109TMD4.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=3a023dd7818f768211c3022ff35b0b7c46c2b59718bf3860d72efc4496042f44",
+      image: "/images/services/Commercial%20Property%20Damage.jpg",
     },
     {
       icon: faHouse,
       title: "Residential Property Damage",
       desc: "Restoring homes with careful attention to quality, safety, and long-term durability.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/12/b7/a7/70/3d/v1_E11/E117XMXQ.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=82d802a8dd695cb8f143f605732dd6cf900e171af8f4c5aefc07c96e30932185",
+      image: "/images/services/Residential%20Property%20Damage.jpg",
     },
   ];
 
@@ -295,15 +296,26 @@ export default function EmergencyRestorationPage() {
 
       {/* ── Hero Section ── */}
       <section className="ers-hero-section">
-        <div className="ers-hero-image"></div>
+        <video
+          className="ers-hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="/images/services/emergency-restoration.webp"
+          aria-hidden="true"
+        >
+          <source src="/Video/emergency-restoration.mp4" type="video/mp4" />
+        </video>
         <div className="ers-hero-overlay"></div>
         <div className="ers-hero-content">
           <div className="ers-hero-badge ers-reveal">
-            <span className="ers-hero-badge-dot" />
             FIRE • WATER • STORM • STRUCTURAL DAMAGE • EMERGENCY REPAIRS
           </div>
           <h1 className="ers-hero-title ers-reveal ers-reveal-delay-1">
-            Fast Response. Reliable Restoration. <span className="ers-highlight">Complete Recovery.</span>
+            <span className="service-hero-title-line">Fast Response. Reliable Restoration.</span>
+            <span className="service-hero-title-line ers-highlight">Complete Recovery.</span>
           </h1>
           <p className="ers-hero-subtitle ers-reveal ers-reveal-delay-2">
             When disaster strikes, every minute matters. Keentel General Contractors provides professional emergency restoration services to help homeowners, businesses, and property owners recover quickly after fire, water, storm, structural, or accidental damage.
@@ -311,13 +323,16 @@ export default function EmergencyRestorationPage() {
           <p className="ers-hero-subtitle ers-hero-subtitle-small ers-reveal ers-reveal-delay-2">
             Our team responds with urgency, develops a clear recovery plan, and manages every stage of the restoration process—from emergency stabilization through final reconstruction.
           </p>
-          <div className="ers-hero-cta-group ers-reveal ers-reveal-delay-3">
-            <a href="#contactformsection" className="ers-btn ers-btn-primary">
-              Request Emergency Assistance <FontAwesomeIcon icon={faArrowRight} className="ers-btn-arrow" />
-            </a>
-            <a href="#contactformsection" className="ers-btn ers-btn-secondary">
-              Speak With Our Team <FontAwesomeIcon icon={faArrowRight} className="ers-btn-arrow" />
-            </a>
+          <div className="service-hero-bottom-row">
+            <div className="ers-hero-cta-group ers-reveal ers-reveal-delay-3">
+              <a href="#contactformsection" className="ers-btn ers-btn-primary">
+                Book a Consultation <FontAwesomeIcon icon={faArrowRight} className="ers-btn-arrow" />
+              </a>
+              <a href="tel:8133950000" className="ers-btn ers-btn-secondary">
+                Call Us <FontAwesomeIcon icon={faArrowRight} className="ers-btn-arrow" />
+              </a>
+            </div>
+            <ServiceHeroCredentials />
           </div>
         </div>
       </section>
@@ -375,18 +390,29 @@ export default function EmergencyRestorationPage() {
         <div className="ers-container">
           <span className="ers-section-label ers-reveal">When to Call Us</span>
           <h2 className="ers-section-heading ers-reveal ers-reveal-delay-1">Immediate Action Can Reduce Long-Term Damage</h2>
-          <p className="ers-section-body ers-reveal ers-reveal-delay-1">
-            Emergency restoration should begin as soon as possible after property damage occurs. Prompt response helps protect the property from further damage, improve safety, reduce restoration costs, and speed up recovery.
-          </p>
-          <p className="ers-section-body ers-reveal ers-reveal-delay-1">
-            The sooner restoration begins, the greater the opportunity to protect your investment and restore operations faster.
-          </p>
           <div className="ers-matters-grid">
-            {["Protect from Further Damage", "Improve Safety", "Reduce Restoration Costs", "Speed Up Recovery"].map((title, i) => (
+            {[
+              {
+                title: "Protect from Further Damage",
+                description: "Rapid stabilization helps prevent existing property damage from spreading.",
+              },
+              {
+                title: "Improve Safety",
+                description: "Early assessment identifies hazards and helps protect occupants, crews, and the property.",
+              },
+              {
+                title: "Reduce Restoration Costs",
+                description: "Prompt action can limit the scope of repairs and better protect your investment.",
+              },
+              {
+                title: "Speed Up Recovery",
+                description: "A faster response creates a clearer path to restoring normal operations sooner.",
+              },
+            ].map((item, i) => (
               <div className={`ers-matter-card ers-reveal ers-reveal-delay-${i + 2}`} key={i}>
                 <span className="ers-matter-number">0{i + 1}</span>
-                <h4>{title}</h4>
-                <p>Early action minimizes loss and accelerates the path to recovery.</p>
+                <h4>{item.title}</h4>
+                <p>{item.description}</p>
               </div>
             ))}
           </div>
@@ -405,9 +431,10 @@ export default function EmergencyRestorationPage() {
               </p>
               <div className="ers-services-image-wrapper">
                 <img
-                  src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/ed/6b/a7/6e/48/v1_E11/E118CG4S.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=60127bdca6734a11de17a7023704ddd421e2cc6594733ed849a27600523f5d28"
-                  alt="Emergency Restoration services"
+                  src="/images/services/Complete%20Emergency%20Restoration%20Services.jpg"
+                  alt="Complete emergency restoration services"
                   className="ers-services-image"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -435,9 +462,6 @@ export default function EmergencyRestorationPage() {
               <div className={`ers-project-type-card ers-reveal ers-reveal-delay-${idx + 2}`} key={idx}>
                 <div className="ers-project-type-image" style={{ backgroundImage: `url(${type.image})` }} />
                 <div className="ers-project-type-content">
-                  <div className="ers-project-type-icon">
-                    <FontAwesomeIcon icon={type.icon} />
-                  </div>
                   <h4>{type.title}</h4>
                   <p>{type.desc}</p>
                 </div>
@@ -468,7 +492,7 @@ export default function EmergencyRestorationPage() {
               </div>
             ))}
           </div>
-          <p className="ers-section-body ers-reveal" style={{ marginTop: 20 }}>
+          <p className="ers-section-body ers-clients-summary ers-reveal">
             No matter the size or complexity of the damage, Keentel General Contractors provides dependable restoration solutions tailored to your property's needs.
           </p>
         </div>
@@ -482,9 +506,6 @@ export default function EmergencyRestorationPage() {
           <div className="ers-process-horizontal">
             {processSteps.map((step, idx) => (
               <div className={`ers-process-step ers-reveal ers-reveal-delay-${idx + 1}`} key={idx}>
-                <div className="ers-process-step-icon">
-                  <FontAwesomeIcon icon={step.icon} />
-                </div>
                 <div className="ers-process-step-number">{step.step}</div>
                 <div className="ers-process-step-content">
                   <h4>{step.title}</h4>
@@ -638,13 +659,9 @@ export default function EmergencyRestorationPage() {
           <h2>
             Restore Your Property <span style={{ color: "#a6238f" }}>with Confidence</span>
           </h2>
-          <p>
-            Property damage can be overwhelming, but you don't have to face the recovery process alone. At Keentel General Contractors, we provide responsive emergency restoration, professional project management, and quality reconstruction to help you recover quickly and move forward with confidence.
-          </p>
-          <p className="ers-final-cta-bold">Let's restore your property together.</p>
           <div className="ers-final-cta-buttons">
-            <a href="#contactformsection" className="ers-btn-filled-dark">Get Emergency Help <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#contactformsection" className="ers-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="ers-btn-filled-dark">Book a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="tel:8133950000" className="ers-btn-outline-dark">Call Us</a>
           </div>
         </div>
       </section>

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import {
   ArrowRight,
-  ArrowDown,
   CheckCircle2,
   Building2,
   ShoppingBag,
@@ -17,18 +16,12 @@ import {
   GraduationCap,
   Landmark,
   Home as HomeIcon,
-  ChevronDown,
   Mail,
   Phone,
   MapPin,
-  Globe2,
-  Award,
-  ClipboardCheck,
-  MessageCircle,
-  ShieldCheck,
-  Users,
   Sparkles,
 } from 'lucide-react';
+import ServiceHeroCredentials from '@/components/ServiceHeroCredentials';
 import './industries.css';
 
 /* ==========================================================================
@@ -159,12 +152,30 @@ const APPROACH_STEPS = [
 ];
 
 const WHY_ITEMS = [
-  { icon: Globe2, title: 'Diverse Market Experience', desc: 'Serving commercial, industrial, institutional, and residential clients across multiple sectors.' },
-  { icon: Award, title: 'Quality Craftsmanship', desc: 'Built with precision, durability, and attention to detail.' },
-  { icon: ClipboardCheck, title: 'Professional Project Management', desc: 'Organized planning, scheduling, and coordination from start to finish.' },
-  { icon: MessageCircle, title: 'Transparent Communication', desc: 'Keeping clients informed throughout every phase of construction.' },
-  { icon: ShieldCheck, title: 'Safety-First Culture', desc: 'Committed to maintaining safe job sites and responsible construction practices.' },
-  { icon: Users, title: 'Long-Term Partnerships', desc: 'Focused on delivering projects that create lasting value and trusted client relationships.' },
+  {
+    title: 'Diverse Industry Experience',
+    desc: 'Commercial, industrial, institutional, and residential expertise helps our team understand the operational demands behind every project.',
+    image: '/images/services/Commercial Construction.jpg',
+    alt: 'Large commercial construction project managed by an experienced contractor',
+  },
+  {
+    title: 'Professional Project Management',
+    desc: 'Disciplined planning, scheduling, trade coordination, and quality control keep complex construction projects moving forward.',
+    image: '/images/services/One Team. One Vision. One Successful Project..jpg',
+    alt: 'Construction project team reviewing plans and coordinating project delivery',
+  },
+  {
+    title: 'Quality & Safety in Every Phase',
+    desc: 'Careful workmanship and responsible site practices support durable results without compromising the people working around the project.',
+    image: '/images/services/construction-workers-building-site.jpg',
+    alt: 'Construction professionals working safely on an active building site',
+  },
+  {
+    title: 'Built for Long-Term Value',
+    desc: 'We focus on dependable facilities, transparent communication, and relationships that continue beyond project completion.',
+    image: '/images/services/Facility Expansions.jpg',
+    alt: 'Completed facility expansion designed for long-term operational value',
+  },
 ];
 
 const SUPPORT_TAGS = [
@@ -180,33 +191,6 @@ const SUPPORT_TAGS = [
   'Retail Brands',
   'Multi-Family Developers',
   'Residential Communities',
-];
-
-const FAQS = [
-  {
-    q: 'Which industries does Keentel General Contractors serve?',
-    a: 'We serve commercial, industrial, manufacturing, healthcare, hospitality, retail, education, government, multi-family, warehouse, and residential community clients.',
-  },
-  {
-    q: 'Can you manage projects across multiple industries?',
-    a: 'Yes. Our team has experience delivering construction, remodeling, restoration, and electrical contracting services across a wide range of industries.',
-  },
-  {
-    q: 'Do you offer Design-Build services?',
-    a: 'Yes. We provide integrated Design-Build project delivery to simplify coordination and improve efficiency.',
-  },
-  {
-    q: 'Can you work in occupied facilities?',
-    a: 'Absolutely. Many of our renovation and remodeling projects are completed while businesses and facilities remain operational.',
-  },
-  {
-    q: 'Do you provide construction for both public and private clients?',
-    a: 'Yes. We work with private businesses, developers, institutions, municipalities, and public-sector organizations.',
-  },
-  {
-    q: 'How do I get started?',
-    a: "Contact Keentel General Contractors to schedule a consultation. We'll discuss your project requirements and recommend the right construction solution for your industry.",
-  },
 ];
 
 /* ==========================================================================
@@ -243,7 +227,7 @@ function useScrollReveal() {
 export default function IndustriesPage() {
   useScrollReveal();
 
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [activeWhy, setActiveWhy] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -287,7 +271,8 @@ export default function IndustriesPage() {
               <span>Residential</span>
             </div>
             <h1 className="kgc-hero__title">
-              Construction Solutions for <em>Every Industry</em>
+              <span>Construction Solutions for</span>
+              <span><em>Every Industry</em></span>
             </h1>
             <p className="kgc-hero__subtitle">
               Every industry has unique construction challenges, operational requirements, and
@@ -296,13 +281,16 @@ export default function IndustriesPage() {
               commercial businesses, industrial facilities, public institutions, and residential
               developments.
             </p>
-            <div className="kgc-hero__ctas">
-              <button className="kgc-btn kgc-btn--primary" onClick={() => scrollToId('kgc-contact')}>
-                Discuss Your Project <ArrowRight size={17} />
-              </button>
-              <button className="kgc-btn kgc-btn--outline" onClick={() => scrollToId('kgc-contact')}>
-                Request a Consultation
-              </button>
+            <div className="service-hero-bottom-row">
+              <div className="kgc-hero__ctas">
+                <button className="kgc-btn kgc-btn--primary" onClick={() => scrollToId('kgc-contact')}>
+                  Book a Consultation <ArrowRight size={17} />
+                </button>
+                <a className="kgc-btn kgc-btn--outline" href="tel:8133950000">
+                  Call Us
+                </a>
+              </div>
+              <ServiceHeroCredentials />
             </div>
           </div>
         </div>
@@ -445,10 +433,10 @@ export default function IndustriesPage() {
       </section>
 
       {/* ============================ WHY CHOOSE ============================ */}
-      <section className="kgc-section kgc-section--light-gray">
+      <section className="kgc-section kgc-section--light-gray kgc-why-section">
         <div className="kgc-container">
-          <div className="kgc-section-header kgc-section-header--center kgc-reveal">
-            <div className="kgc-eyebrow" style={{ justifyContent: 'center', display: 'inline-flex' }}>
+          <div className="kgc-section-header kgc-why-heading kgc-reveal">
+            <div className="kgc-eyebrow">
               Why Choose Keentel General Contractors
             </div>
             <h2 className="kgc-section-title">Industry Experience You Can Rely On</h2>
@@ -457,23 +445,29 @@ export default function IndustriesPage() {
             </p>
           </div>
 
-          <div className="kgc-why__grid">
-            {WHY_ITEMS.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  className="kgc-why__item kgc-reveal"
-                  key={item.title}
-                  style={{ transitionDelay: `${(i % 3) * 0.08}s` }}
-                >
-                  <div className="kgc-why__icon">
-                    <Icon size={24} />
-                  </div>
-                  <div className="kgc-why__title">{item.title}</div>
-                  <p className="kgc-why__desc">{item.desc}</p>
+          <div className="kgc-why-accordion kgc-reveal" role="list" aria-label="Reasons to choose Keentel General Contractors">
+            {WHY_ITEMS.map((item, i) => (
+              <article
+                key={item.title}
+                className={`kgc-why-panel${activeWhy === i ? ' kgc-why-panel--active' : ''}`}
+                role="listitem"
+                tabIndex={0}
+                onMouseEnter={() => setActiveWhy(i)}
+                onFocus={() => setActiveWhy(i)}
+                onClick={() => setActiveWhy(i)}
+                aria-label={`${item.title}. ${item.desc}`}
+              >
+                <img src={item.image} alt={item.alt} loading="lazy" />
+                <span className="kgc-why-panel__shade" aria-hidden="true" />
+                <span className="kgc-why-panel__index" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="kgc-why-panel__copy">
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
                 </div>
-              );
-            })}
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -507,43 +501,6 @@ export default function IndustriesPage() {
                 {tag}
               </span>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================================ FAQ ================================ */}
-      <section className="kgc-section kgc-section--off-white">
-        <div className="kgc-container">
-          <div className="kgc-section-header kgc-section-header--center kgc-reveal">
-            <div className="kgc-eyebrow" style={{ justifyContent: 'center', display: 'inline-flex' }}>
-              Frequently Asked Questions
-            </div>
-            <h2 className="kgc-section-title">Industries FAQs</h2>
-          </div>
-
-          <div className="kgc-faq__wrap kgc-reveal">
-            {FAQS.map((faq, i) => {
-              const isOpen = openFaq === i;
-              return (
-                <div className={`kgc-faq__item ${isOpen ? 'kgc-faq__item--open' : ''}`} key={faq.q}>
-                  <button
-                    className="kgc-faq__question"
-                    onClick={() => setOpenFaq(isOpen ? null : i)}
-                    aria-expanded={isOpen}
-                  >
-                    {faq.q}
-                    <span className="kgc-faq__icon">
-                      <ChevronDown size={16} />
-                    </span>
-                  </button>
-                  <div className="kgc-faq__answer">
-                    <div className="kgc-faq__answer-inner">
-                      <p>{faq.a}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </section>

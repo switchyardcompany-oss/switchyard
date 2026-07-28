@@ -2,9 +2,11 @@
 "use client";
 
 import { useState, useEffect, useRef, FormEvent } from "react";
+import Image from "next/image";
 import "./commercial-remodeling.css";
 import "../service-hero.css";
 import WhyKeentel from "@/components/WhyKeentel";
+import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -161,37 +163,37 @@ export default function CommercialRemodelingPage() {
       icon: faBuilding,
       title: "Office Renovations",
       desc: "Create productive workspaces that improve collaboration, employee experience, and operational efficiency.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/38/7f/c9/07/ca/v1_E10/E10AQCWB.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=0c948850b392c0ae2a54badb9913435d46fd281ebfc73bd19b935409b593367e",
+      image: "/images/services/Office%20Renovations.jpg",
     },
     {
       icon: faBuildingColumns,
       title: "Tenant Improvements",
       desc: "Customize leased commercial spaces to meet business requirements and branding goals.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/be/9f/e9/9c/df/v1_E10/E10BW9BS.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=edca7417d1de50a85d3ffc00879c90929aab910d11f397c23b8a79a30d0fa15b",
+      image: "/images/services/Tenant%20Improvements.jpg",
     },
     {
       icon: faStore,
       title: "Retail Spaces",
       desc: "Modernize retail environments to improve customer experience and support business growth.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/1a/da/d1/88/c0/v1_E10/E10CXB3Q.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=f444a31362c6942bb657dfee8c6d3150c8173a962660b5401a735b9ac69aafa8",
+      image: "/images/services/Retail%20Spaces.jpg",
     },
     {
       icon: faUtensils,
       title: "Restaurants & Hospitality",
       desc: "Renovations designed to improve functionality, aesthetics, and guest experience.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/9a/c3/7a/15/0e/v1_E10/E109TMD4.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=3a023dd7818f768211c3022ff35b0b7c46c2b59718bf3860d72efc4496042f44",
+      image: "/images/services/Restaurants%20%26%20Hospitality.jpg",
     },
     {
       icon: faStethoscope,
       title: "Healthcare Facilities",
       desc: "Interior improvements completed with careful planning to support ongoing operations.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/1da902e5-8bb7-4bc2-883f-e253ca487511/a1a5d319-de7c-4538-a255-42a41016f7fa.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=67e91452b6cb3cbf1373feb59b41849d9a27c86d06e45946b0a69adb60daa953",
+      image: "/images/services/Healthcare%20Facilities.jpg",
     },
     {
       icon: faSchool,
       title: "Educational & Institutional Buildings",
       desc: "Facility upgrades designed around safety, functionality, and long-term durability.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/12/b7/a7/70/3d/v1_E11/E117XMXQ.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=82d802a8dd695cb8f143f605732dd6cf900e171af8f4c5aefc07c96e30932185",
+      image: "/images/services/Educational%20%26%20Institutional%20Buildings.jpg",
     },
   ];
 
@@ -290,15 +292,28 @@ export default function CommercialRemodelingPage() {
     <main className="crs-about-page">
       {/* Hero */}
       <section className="crs-hero-section">
-        <div className="crs-hero-image"></div>
+        <video
+          className="crs-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source
+            src="/Video/Transform%20Commercial%20Spaces%20with%20Confidence.mp4"
+            type="video/mp4"
+          />
+        </video>
         <div className="crs-hero-overlay"></div>
         <div className="crs-hero-content">
           <div className="crs-hero-badge crs-reveal">
-            <span className="crs-hero-badge-dot" />
             OFFICE RENOVATIONS • TENANT IMPROVEMENTS • RETAIL • HOSPITALITY
           </div>
           <h1 className="crs-hero-title crs-reveal crs-reveal-delay-1">
-            Transform Commercial Spaces <span className="crs-highlight">with Confidence</span>
+            <span className="service-hero-title-line">Transform Commercial Spaces</span>
+            <span className="service-hero-title-line crs-highlight">with Confidence</span>
           </h1>
           <p className="crs-hero-subtitle crs-reveal crs-reveal-delay-2">
             A successful remodel is more than updating a space—it's about creating an environment that supports your business, reflects your brand, and prepares your property for future growth. Keentel General Contractors delivers professional commercial remodeling services with careful planning, skilled craftsmanship, and minimal disruption to your daily operations.
@@ -306,13 +321,16 @@ export default function CommercialRemodelingPage() {
           <p className="crs-hero-subtitle crs-hero-subtitle-small crs-reveal crs-reveal-delay-2">
             Whether you're modernizing an office, renovating a retail space, or reconfiguring a commercial facility, we help bring your vision to life with quality and precision.
           </p>
-          <div className="crs-hero-cta-group crs-reveal crs-reveal-delay-3">
-            <a href="#contactformsection" className="crs-btn crs-btn-primary">
-              Schedule a Consultation <FontAwesomeIcon icon={faArrowRight} className="crs-btn-arrow" />
-            </a>
-            <a href="#contactformsection" className="crs-btn crs-btn-secondary">
-              Discuss Your Remodeling Project <FontAwesomeIcon icon={faArrowRight} className="crs-btn-arrow" />
-            </a>
+          <div className="service-hero-bottom-row">
+            <div className="crs-hero-cta-group crs-reveal crs-reveal-delay-3">
+              <a href="#contactformsection" className="crs-btn crs-btn-primary">
+                Book a Consultation <FontAwesomeIcon icon={faArrowRight} className="crs-btn-arrow" />
+              </a>
+              <a href="tel:8133950000" className="crs-btn crs-btn-secondary">
+                Call Us <FontAwesomeIcon icon={faArrowRight} className="crs-btn-arrow" />
+              </a>
+            </div>
+            <ServiceHeroCredentials />
           </div>
         </div>
       </section>
@@ -398,9 +416,12 @@ export default function CommercialRemodelingPage() {
                 Our services cover every aspect of your remodeling project, from demolition to final finishes, tailored to your business needs.
               </p>
               <div className="crs-services-image-wrapper">
-                <img
-                  src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/ed/6b/a7/6e/48/v1_E11/E118CG4S.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=60127bdca6734a11de17a7023704ddd421e2cc6594733ed849a27600523f5d28"
+                <Image
+                  src="/images/services/doctors-nurse-discussing-report.jpg"
                   alt="Commercial Remodeling services"
+                  width={900}
+                  height={600}
+                  sizes="(max-width: 900px) 100vw, 50vw"
                   className="crs-services-image"
                 />
               </div>
@@ -427,9 +448,16 @@ export default function CommercialRemodelingPage() {
           <div className="crs-project-types-grid">
             {projectTypes.map((type, idx) => (
               <div className={`crs-project-type-card crs-reveal crs-reveal-delay-${idx + 2}`} key={idx}>
-                <div className="crs-project-type-image" style={{ backgroundImage: `url(${type.image})` }} />
+                <div className="crs-project-type-image">
+                  <Image
+                    src={type.image}
+                    alt={`${type.title} commercial remodeling project`}
+                    fill
+                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    className="crs-project-type-photo"
+                  />
+                </div>
                 <div className="crs-project-type-content">
-                  <div className="crs-project-type-icon"><FontAwesomeIcon icon={type.icon} /></div>
                   <h4>{type.title}</h4>
                   <p>{type.desc}</p>
                 </div>
@@ -472,7 +500,6 @@ export default function CommercialRemodelingPage() {
           <div className="crs-process-horizontal">
             {processSteps.map((step, idx) => (
               <div className={`crs-process-step crs-reveal crs-reveal-delay-${idx + 1}`} key={idx}>
-                <div className="crs-process-step-icon"><FontAwesomeIcon icon={step.icon} /></div>
                 <div className="crs-process-step-number">{step.step}</div>
                 <div className="crs-process-step-content">
                   <h4>{step.title}</h4>
@@ -629,13 +656,9 @@ export default function CommercialRemodelingPage() {
           <h2>
             Transform Your Space. <span style={{ color: "#a6238f" }}>Strengthen Your Business.</span>
           </h2>
-          <p>
-            Your commercial property should support the way your business operates today while preparing for tomorrow. At Keentel General Contractors, we deliver commercial remodeling solutions that improve functionality, enhance appearance, and create long-term value.
-          </p>
-          <p className="crs-final-cta-bold">Let's transform your space with confidence.</p>
           <div className="crs-final-cta-buttons">
-            <a href="#contactformsection" className="crs-btn-filled-dark">Start Your Remodeling Project <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#contactformsection" className="crs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="crs-btn-filled-dark">Book a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="tel:8133950000" className="crs-btn-outline-dark">Call Us</a>
           </div>
         </div>
       </section>

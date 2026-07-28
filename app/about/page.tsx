@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import ServicesSection from '@/components/ServicesSection';
 import IndustriesCarousel from '@/components/IndustriesCarousel';
 import WhyKeentel from '@/components/WhyKeentel';
+import ServiceHeroCredentials from '@/components/ServiceHeroCredentials';
 import './about.css';
 
 export default function AboutPage() {
@@ -92,21 +93,28 @@ export default function AboutPage() {
               KEENTEL GENERAL CONTRACTORS
             </p>
             <h1 className="about-hero-title animate-text" style={{ animationDelay: getDelay(1) }}>
-              Building with <span className="about-hero-highlight">Purpose</span>.<br />
-              Delivering with <span className="about-hero-highlight">Confidence</span>.
+              <span className="about-hero-title-line">
+                Building with <span className="about-hero-highlight">Purpose</span>.
+              </span>
+              <span className="about-hero-title-line">
+                Delivering with <span className="about-hero-highlight">Confidence</span>.
+              </span>
             </h1>
             <p className="about-hero-text animate-text" style={{ animationDelay: getDelay(2) }}>
               We partner with developers, businesses, property owners, and institutions to deliver
               commercial, industrial, and large-scale residential construction projects that are built
               to perform today and create value for years to come.
             </p>
-            <div className="about-hero-buttons animate-text" style={{ animationDelay: getDelay(3) }}>
-              <a href="/contact#contactformsection" className="about-hero-cta">
-                Book a Consultation
-              </a>
-              <a href="/services" className="about-hero-cta about-hero-cta--secondary">
-                Explore Our Services
-              </a>
+            <div className="service-hero-bottom-row">
+              <div className="about-hero-buttons animate-text" style={{ animationDelay: getDelay(3) }}>
+                <a href="/contact#contactformsection" className="about-hero-cta">
+                  Book a Consultation
+                </a>
+                <a href="tel:8133950000" className="about-hero-cta about-hero-cta--secondary">
+                  Call Us
+                </a>
+              </div>
+              <ServiceHeroCredentials />
             </div>
           </div>
         </div>
@@ -121,8 +129,8 @@ export default function AboutPage() {
         <div className="about-who-container">
           <div className="about-who-image-wrap">
             <img
-              src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/84/c9/13/0b/9b/v1_E10/E101J44K.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=0cb8c743abc07f205dd48e96db18cb92b78e72898154f01fe0d17fa706c5e333"
-              alt="Keentel team"
+              src="/images/home/Construction%20Partner.jpg"
+              alt="Construction professional reviewing project plans on site"
             />
             <div className="about-who-badge">
               <span>Licensed Contractor</span>
@@ -273,14 +281,13 @@ export default function AboutPage() {
           </div>
           <div className="about-cta-actions animate-text" style={{ animationDelay: getDelay(4) }}>
             <a href="/contact#contactformsection" className="about-cta-btn">
-              <span>Discuss Your Project</span>
+              <span>Book a Consultation</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
-            <a href="tel:8133950000" className="about-cta-phone">
-              <span>Call Our Team</span>
-              <strong>813-395-0000</strong>
+            <a href="tel:8133950000" className="about-cta-btn about-cta-btn--call">
+              <span>Call Us</span>
             </a>
           </div>
         </div>

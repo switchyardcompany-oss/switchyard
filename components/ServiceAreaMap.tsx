@@ -44,12 +44,12 @@ export default function ServiceAreaMap() {
     <section className="sec3-area" ref={sectionRef}>
       <div className="sec3-area__inner">
         <div className="sec3-area__content" ref={contentRef}>
-          <p className="sec3-area__eyebrow">Service Area</p>
-          <h2 className="sec3-area__title">Serving Tampa Bay and<br />All of Florida</h2>
+          <p className="sec3-area__eyebrow">Florida Service Areas</p>
+          <h2 className="sec3-area__title">General Contracting Across<br />Tampa Bay &amp; Florida</h2>
           <p className="sec3-area__desc">
-            Headquartered in Tampa Bay, we provide licensed general contracting services across all 67 Florida counties. Our in-house crews cover residential, commercial, and industrial projects statewide — same licensed team, same warranty, same standard of delivery regardless of location.
+            Based in Tampa, Keentel General Contractors delivers licensed construction services throughout Tampa Bay and all 67 Florida counties. Our team supports commercial, industrial, institutional, multi-family, and large residential projects with coordinated planning, dependable project management, and consistent quality from pre-construction through closeout.
           </p>
-          <p className="sec3-area__desc" style={{ marginTop: "-16px" }}>
+          <p className="sec3-area__desc" style={{ display: "none" }} aria-hidden="true">
             <strong>Primary Base:</strong> Hillsborough · Pinellas · Pasco · Polk · Hernando · Manatee · Sarasota<br />
             <strong>Statewide:</strong> Miami-Dade · Broward · Palm Beach · Orange · Duval · Brevard · Lee · Collier · Alachua · Volusia · and all remaining Florida counties
           </p>
@@ -97,7 +97,7 @@ export default function ServiceAreaMap() {
                 <circle cx="12" cy="10" r="3" />
                 <path d="M12 21c-2-4-6-6.5-6-10.5a6 6 0 1 1 12 0c0 4-4 6.5-6 10.5z" />
               </svg>
-              <span>9 Service Areas</span>
+              <span>Service Areas</span>
             </div>
           </div>
         </div>

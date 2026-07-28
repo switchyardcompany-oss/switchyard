@@ -84,13 +84,13 @@
   overflow: hidden;
   background: #0a0930;
 }
-.rrs-hero-image {
+.rrs-hero-video {
   position: absolute;
   inset: 0;
-  background-image: url('https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/19/2b/4a/42/d6/v1_E11/E118CG4E.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=40c1c1eca73b2806192138fd7445374c9a9b416a4b0ad196b43b27a2db32b9af');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   z-index: 1;
 }
 .rrs-hero-overlay {
@@ -538,9 +538,18 @@
   transform: translateY(-4px);
 }
 .rrs-project-type-image {
+  position: relative;
   height: 160px;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+  background: #e9e8e4;
+}
+.rrs-project-type-photo {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.45s ease;
+}
+.rrs-project-type-card:hover .rrs-project-type-photo {
+  transform: scale(1.04);
 }
 .rrs-project-type-content {
   padding: 24px;

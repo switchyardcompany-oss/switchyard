@@ -2,9 +2,11 @@
 "use client";
 
 import { useState, useEffect, useRef, FormEvent } from "react";
+import Image from "next/image";
 import "./electrical-contracting.css";
 import "../service-hero.css";
 import WhyKeentel from "@/components/WhyKeentel";
+import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 
 // Font Awesome imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -164,37 +166,37 @@ export default function ElectricalContractingPage() {
       icon: faBuilding,
       title: "Commercial Buildings",
       desc: "Electrical systems for offices, retail centers, mixed-use developments, and professional facilities.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/38/7f/c9/07/ca/v1_E10/E10AQCWB.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=0c948850b392c0ae2a54badb9913435d46fd281ebfc73bd19b935409b593367e",
+      image: "/images/services/Commercial%20Construction.jpg",
     },
     {
       icon: faIndustry,
       title: "Industrial Facilities",
       desc: "Power distribution, equipment connections, production areas, warehouses, and manufacturing environments.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/1a/da/d1/88/c0/v1_E10/E10CXB3Q.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=f444a31362c6942bb657dfee8c6d3150c8173a962660b5401a735b9ac69aafa8",
+      image: "/images/services/construction-workers-building-site.jpg",
     },
     {
       icon: faHospital,
       title: "Healthcare & Institutional Buildings",
       desc: "Reliable electrical systems supporting healthcare facilities, schools, government buildings, and institutional projects.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/1da902e5-8bb7-4bc2-883f-e253ca487511/a1a5d319-de7c-4538-a255-42a41016f7fa.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=67e91452b6cb3cbf1373feb59b41849d9a27c86d06e45946b0a69adb60daa953",
+      image: "/images/services/Healthcare%20Facilities.jpg",
     },
     {
       icon: faBuildingColumns,
       title: "Tenant Improvements",
       desc: "Electrical modifications designed around changing business requirements and new tenant layouts.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/be/9f/e9/9c/df/v1_E10/E10BW9BS.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=edca7417d1de50a85d3ffc00879c90929aab910d11f397c23b8a79a30d0fa15b",
+      image: "/images/services/Tenant%20Improvements.jpg",
     },
     {
       icon: faMaximize,
       title: "Building Expansions",
       desc: "Electrical infrastructure supporting facility growth and operational expansion.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/9a/c3/7a/15/0e/v1_E10/E109TMD4.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=3a023dd7818f768211c3022ff35b0b7c46c2b59718bf3860d72efc4496042f44",
+      image: "/images/services/Facility%20Expansions.jpg",
     },
     {
       icon: faHouse,
       title: "Large Residential Projects",
       desc: "Professional electrical installations for custom homes, additions, and high-end residential renovations.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/12/b7/a7/70/3d/v1_E11/E117XMXQ.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=82d802a8dd695cb8f143f605732dd6cf900e171af8f4c5aefc07c96e30932185",
+      image: "/images/services/Large%20Residential%20Projects.jpg",
     },
   ];
 
@@ -296,27 +298,45 @@ export default function ElectricalContractingPage() {
 
       {/* ── Hero Section ── */}
       <section className="ecs-hero-section">
-        <div className="ecs-hero-image"></div>
+        <video
+          className="ecs-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source
+            src="/Video/COMMERCIAL%20%20INDUSTRIAL%20INSTITUTIONAL%20%20POWER%20DISTRIBUTION.mp4"
+            type="video/mp4"
+          />
+        </video>
         <div className="ecs-hero-overlay"></div>
         <div className="ecs-hero-content">
           <div className="ecs-hero-badge ecs-reveal">
-            <span className="ecs-hero-badge-dot" />
             COMMERCIAL • INDUSTRIAL • INSTITUTIONAL • POWER DISTRIBUTION
           </div>
           <h1 className="ecs-hero-title ecs-reveal ecs-reveal-delay-1">
-            Reliable Electrical Solutions <span className="ecs-highlight">Built for Performance & Safety</span>
+            <span className="service-hero-title-line">Reliable Electrical Solutions</span>
+            <span className="service-hero-title-line ecs-highlight">
+              Built for Performance &amp; Safety
+            </span>
           </h1>
           <p className="ecs-hero-subtitle ecs-reveal ecs-reveal-delay-2">
             Electrical systems are the backbone of every modern building. Keentel General Contractors provides professional electrical contracting services for commercial, industrial, institutional, and large residential projects, delivering safe, efficient, and code-compliant electrical systems designed for long-term performance.
           </p>
          
-          <div className="ecs-hero-cta-group ecs-reveal ecs-reveal-delay-3">
-            <a href="#contactformsection" className="ecs-btn ecs-btn-primary">
-              Request an Electrical Consultation <FontAwesomeIcon icon={faArrowRight} className="ecs-btn-arrow" />
-            </a>
-            <a href="#contactformsection" className="ecs-btn ecs-btn-secondary">
-              Discuss Your Project <FontAwesomeIcon icon={faArrowRight} className="ecs-btn-arrow" />
-            </a>
+          <div className="service-hero-bottom-row">
+            <div className="ecs-hero-cta-group ecs-reveal ecs-reveal-delay-3">
+              <a href="#contactformsection" className="ecs-btn ecs-btn-primary">
+                Book a Consultation <FontAwesomeIcon icon={faArrowRight} className="ecs-btn-arrow" />
+              </a>
+              <a href="tel:8133950000" className="ecs-btn ecs-btn-secondary">
+                Call Us <FontAwesomeIcon icon={faArrowRight} className="ecs-btn-arrow" />
+              </a>
+            </div>
+            <ServiceHeroCredentials />
           </div>
         </div>
       </section>
@@ -407,7 +427,7 @@ export default function ElectricalContractingPage() {
               </p>
               <div className="ecs-services-image-wrapper">
                 <img
-                  src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/ed/6b/a7/6e/48/v1_E11/E118CG4S.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=60127bdca6734a11de17a7023704ddd421e2cc6594733ed849a27600523f5d28"
+                  src="/images/services/Commercial%20Construction.jpg"
                   alt="Electrical Contracting services"
                   className="ecs-services-image"
                 />
@@ -435,11 +455,16 @@ export default function ElectricalContractingPage() {
           <div className="ecs-project-types-grid">
             {projectTypes.map((type, idx) => (
               <div className={`ecs-project-type-card ecs-reveal ecs-reveal-delay-${idx + 2}`} key={idx}>
-                <div className="ecs-project-type-image" style={{ backgroundImage: `url(${type.image})` }} />
+                <div className="ecs-project-type-image">
+                  <Image
+                    src={type.image}
+                    alt={`${type.title} electrical contracting project`}
+                    fill
+                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    className="ecs-project-type-photo"
+                  />
+                </div>
                 <div className="ecs-project-type-content">
-                  <div className="ecs-project-type-icon">
-                    <FontAwesomeIcon icon={type.icon} />
-                  </div>
                   <h4>{type.title}</h4>
                   <p>{type.desc}</p>
                 </div>
@@ -484,9 +509,6 @@ export default function ElectricalContractingPage() {
           <div className="ecs-process-horizontal">
             {processSteps.map((step, idx) => (
               <div className={`ecs-process-step ecs-reveal ecs-reveal-delay-${idx + 1}`} key={idx}>
-                <div className="ecs-process-step-icon">
-                  <FontAwesomeIcon icon={step.icon} />
-                </div>
                 <div className="ecs-process-step-number">{step.step}</div>
                 <div className="ecs-process-step-content">
                   <h4>{step.title}</h4>
@@ -653,13 +675,9 @@ export default function ElectricalContractingPage() {
           <h2>
             Reliable Electrical Solutions <span style={{ color: "#a6238f" }}>Begin with the Right Partner</span>
           </h2>
-          <p>
-            At Keentel General Contractors, we deliver professional electrical contracting services backed by quality workmanship, experienced project management, and a commitment to safety. Whether your project involves new construction, renovations, or electrical upgrades, we're ready to help power your success.
-          </p>
-          <p className="ecs-final-cta-bold">Let's power your next project together.</p>
           <div className="ecs-final-cta-buttons">
-            <a href="#contactformsection" className="ecs-btn-filled-dark">Start Your Electrical Project <FontAwesomeIcon icon={faArrowRight} /></a>
-            <a href="#contactformsection" className="ecs-btn-outline-dark">Contact Keentel General Contractors</a>
+            <a href="#contactformsection" className="ecs-btn-filled-dark">Book a Consultation <FontAwesomeIcon icon={faArrowRight} /></a>
+            <a href="tel:8133950000" className="ecs-btn-outline-dark">Call Us</a>
           </div>
         </div>
       </section>

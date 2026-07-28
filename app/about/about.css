@@ -99,10 +99,15 @@
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 740px) minmax(300px, 360px);
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(32px, 4vw, 56px);
 }
 
 .about-hero-content {
-  max-width: 650px;
+  max-width: 740px;
   text-align: left;
 }
 
@@ -136,10 +141,76 @@
 
 .about-hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 6vw, 3.6rem);
-  line-height: 1.15;
-  font-weight: 700;
+  max-width: 940px;
+  font-size: clamp(2.65rem, 4vw, 3.65rem);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
   margin-bottom: 16px;
+}
+
+.about-hero-title-line {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+@media (min-width: 481px) {
+  .about-hero-title-line {
+    white-space: nowrap;
+  }
+}
+
+.about-hero .service-hero-credentials {
+  position: static;
+  inset: auto;
+  width: min(100%, 360px);
+  margin: 0;
+  justify-self: end;
+  transform: none;
+}
+
+@media (min-width: 1050px) {
+  .about-hero-inner {
+    display: block;
+  }
+
+  .about-hero-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .about-hero .service-hero-bottom-row > .service-hero-credentials {
+    position: static;
+    width: 360px;
+    margin: 0;
+    transform: none;
+  }
+}
+
+.about-hero .service-hero-credential,
+.about-hero .service-hero-credential img {
+  height: 76px;
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .about-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-hero-content {
+    max-width: 100%;
+  }
+
+  .about-hero .service-hero-credentials {
+    justify-self: start;
+  }
+
+  .about-hero-title {
+    font-size: clamp(2.7rem, 5.4vw, 3.4rem);
+  }
 }
 
 .about-hero-text {
@@ -231,8 +302,17 @@
     text-align: center;
   }
 
+  .about-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-hero .service-hero-credentials {
+    justify-self: center;
+  }
+
   .about-hero-title {
-    font-size: clamp(2rem, 7vw, 2.8rem);
+    font-size: clamp(2.25rem, 6vw, 2.85rem);
   }
 
   .about-hero-text {
@@ -257,7 +337,8 @@
   }
 
   .about-hero-title {
-    font-size: 1.9rem;
+    font-size: clamp(2rem, 8vw, 2.4rem);
+    line-height: 1.08;
   }
 
   .about-hero-text {
@@ -298,9 +379,11 @@
 
 .about-who-image-wrap img {
   width: 100%;
+  height: clamp(440px, 48vw, 560px);
   border-radius: 40px;
   box-shadow: var(--shadow-xl);
   object-fit: cover;
+  object-position: 30% center;
 }
 
 .about-who-badge {
@@ -336,13 +419,15 @@
 }
 
 .about-who-large {
-  font-size: 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
   color: var(--color-text-light);
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
 
 .about-who-sub {
+  font-family: var(--font-body);
   font-size: 1rem;
   color: var(--color-text-muted);
   line-height: 1.7;
@@ -356,6 +441,9 @@
   }
   .about-who-image-wrap {
     order: -1;
+  }
+  .about-who-image-wrap img {
+    height: clamp(360px, 80vw, 520px);
   }
 }
 
@@ -1339,6 +1427,8 @@
 }
 
 .about-cta-actions {
+  display: grid;
+  gap: 12px;
   padding: 26px;
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 20px;
@@ -1372,26 +1462,18 @@
   box-shadow: 0 18px 34px rgba(166,35,143,0.38);
 }
 
-.about-cta-phone {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  margin-top: 18px;
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-}
-
-.about-cta-phone span {
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.about-cta-phone strong {
+.about-cta-btn--call {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.35);
   color: #fff;
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
+  box-shadow: none;
+}
+
+.about-cta-btn--call:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--color-navy);
+  box-shadow: none;
 }
 
 @media (max-width: 900px) {

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import ServiceHeroCredentials from '@/components/ServiceHeroCredentials';
 import './service-areas.css';
 
 /* ============================================================================
@@ -97,7 +98,6 @@ const NAV_LINKS = [
   { label: 'Service Areas', href: '#areas' },
   { label: 'Industries', href: '#industries' },
   { label: 'Why Keentel', href: '#why' },
-  { label: 'FAQ', href: '#faq' },
 ];
 
 const TRUST_ITEMS = [
@@ -237,10 +237,14 @@ const REGIONS: Region[] = [
 ];
 
 const COUNTIES = [
-  'Miami-Dade', 'Broward', 'Palm Beach', 'Hillsborough', 'Pinellas', 'Orange', 'Osceola', 'Seminole',
-  'Polk', 'Lee', 'Collier', 'Sarasota', 'Manatee', 'Pasco', 'Hernando', 'Brevard', 'Indian River',
-  'St. Lucie', 'Martin', 'Duval', 'Alachua', 'Leon', 'Escambia', 'Santa Rosa', 'Okaloosa', 'Bay',
-  'Monroe', 'Charlotte', 'Volusia', 'Flagler', 'Clay', 'St. Johns', 'Lake', 'Citrus', 'Highlands', 'Marion',
+  'Alachua', 'Baker', 'Bay', 'Bradford', 'Brevard', 'Broward', 'Calhoun', 'Charlotte', 'Citrus',
+  'Clay', 'Collier', 'Columbia', 'DeSoto', 'Dixie', 'Duval', 'Escambia', 'Flagler', 'Franklin',
+  'Gadsden', 'Gilchrist', 'Glades', 'Gulf', 'Hamilton', 'Hardee', 'Hendry', 'Hernando', 'Highlands',
+  'Hillsborough', 'Holmes', 'Indian River', 'Jackson', 'Jefferson', 'Lafayette', 'Lake', 'Lee', 'Leon',
+  'Levy', 'Liberty', 'Madison', 'Manatee', 'Marion', 'Martin', 'Miami-Dade', 'Monroe', 'Nassau',
+  'Okaloosa', 'Okeechobee', 'Orange', 'Osceola', 'Palm Beach', 'Pasco', 'Pinellas', 'Polk', 'Putnam',
+  'Santa Rosa', 'Sarasota', 'Seminole', 'St. Johns', 'St. Lucie', 'Sumter', 'Suwannee', 'Taylor',
+  'Union', 'Volusia', 'Wakulla', 'Walton', 'Washington',
 ];
 
 const INDUSTRIES: { name: string; img: string; alt: string }[] = [
@@ -259,21 +263,31 @@ const INDUSTRIES: { name: string; img: string; alt: string }[] = [
   { name: 'Residential Developments', img: 'https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'Residential neighborhood' },
 ];
 
-const WHY_US: { title: string; blurb: string; icon: IconName }[] = [
-  { title: 'Statewide Coverage', blurb: 'Serving clients throughout North, Central, South, East, West, and Southwest Florida.', icon: 'mapPin' },
-  { title: 'Experienced Team', blurb: 'Professional project managers and skilled construction professionals.', icon: 'users' },
-  { title: 'Quality Craftsmanship', blurb: 'Committed to delivering durable, high-quality construction solutions.', icon: 'sparkle' },
-  { title: 'Reliable Communication', blurb: 'Keeping clients informed from consultation through project completion.', icon: 'message' },
-  { title: 'Complete Construction Services', blurb: 'One trusted contractor for construction, remodeling, electrical, and restoration.', icon: 'layers' },
-  { title: 'Customer-Focused Approach', blurb: 'Every project is planned around your schedule, budget, and business goals.', icon: 'target' },
-];
-
-const FAQS = [
-  { q: 'Do you serve all of Florida?', a: 'Yes. Keentel General Contractors proudly serves clients throughout Florida, including major cities, surrounding communities, and neighboring counties.' },
-  { q: 'Do you travel for large projects?', a: 'Absolutely. We regularly support projects across the state depending on scope, schedule, and project requirements.' },
-  { q: 'What types of construction projects do you handle?', a: 'We provide General Construction, Design-Build, Commercial Remodeling, Residential Remodeling, Industrial Construction, Electrical Contracting, and Emergency Restoration services.' },
-  { q: "Can I request service if my city isn't listed?", a: "Yes. If you're located anywhere in Florida, contact us to discuss your project. We frequently work in surrounding cities and expanding communities." },
-  { q: 'Do you provide free consultations?', a: 'Yes. Our team is happy to discuss your project, answer your questions, and recommend the best solution for your needs.' },
+const WHY_US: { title: string; blurb: string; img: string; alt: string }[] = [
+  {
+    title: 'Statewide Florida Coverage',
+    blurb: 'One licensed construction partner serving projects across all 67 Florida counties.',
+    img: '/images/services/Commercial Construction.jpg',
+    alt: 'Large commercial construction project in progress',
+  },
+  {
+    title: 'Experienced Project Team',
+    blurb: 'Professional project managers and skilled construction specialists guide every phase.',
+    img: '/images/services/construction-workers-building-site.jpg',
+    alt: 'Construction professionals coordinating work on site',
+  },
+  {
+    title: 'Quality Craftsmanship',
+    blurb: 'Disciplined execution and careful quality control create durable, dependable results.',
+    img: '/images/services/Facility Expansions.jpg',
+    alt: 'Construction team completing a major facility expansion',
+  },
+  {
+    title: 'Clear, Reliable Communication',
+    blurb: 'Straightforward updates keep owners informed from consultation through completion.',
+    img: '/images/services/One Team. One Vision. One Successful Project..jpg',
+    alt: 'Project team reviewing construction plans together',
+  },
 ];
 
 const FL_OUTLINE_PATH =
@@ -331,10 +345,10 @@ function Reveal({
 export default function ServiceAreasPage() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeRegion, setActiveRegion] = useState<string>('southeast');
   const [expandedRegions, setExpandedRegions] = useState<Set<string>>(new Set());
   const [submitted, setSubmitted] = useState(false);
+  const [activeWhy, setActiveWhy] = useState(0);
 
   useEffect(() => {
     const onScroll = () => setNavScrolled(window.scrollY > 40);
@@ -353,7 +367,6 @@ export default function ServiceAreasPage() {
   };
 
   const activeRegionData = REGIONS.find((r) => r.id === activeRegion) ?? REGIONS[0];
-  const allCities = REGIONS.flatMap((r) => r.cities);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -419,34 +432,35 @@ export default function ServiceAreasPage() {
             muted
             loop
             playsInline
+            preload="metadata"
             poster="https://images.pexels.com/photos/5505125/pexels-photo-5505125.jpeg?auto=compress&cs=tinysrgb&w=1600"
           >
-            <source src="https://assets.mixkit.co/videos/25270/25270-720.mp4" type="video/mp4" />
+            <source src="/Video/service-areas.mp4" type="video/mp4" />
           </video>
           <div className="ktl-hero-overlay" />
           <div className="ktl-blueprint-grid ktl-blueprint-grid--light" />
         </div>
 
         <div className="ktl-container ktl-hero-inner">
-          <div className="ktl-hero-eyebrow-row">
-            <span className="ktl-eyebrow ktl-eyebrow--light">Proudly Serving Communities Across Florida</span>
-          </div>
           <h1>
-            <span><b>Construction Services</b></span>
-            <span><b>Across the State of Florida</b></span>
+            <span><b>Construction Services Across</b></span>
+            <span><b>the State of Florida</b></span>
           </h1>
           <p className="ktl-hero-sub">
             Wherever your project is located in Florida, Keentel General Contractors is ready to
             deliver dependable construction, remodeling, electrical contracting, and restoration
             services — for commercial, industrial, and residential clients statewide.
           </p>
-          <div className="ktl-hero-actions">
-            <a href="#contact" className="ktl-btn ktl-btn--primary">
-              Request a Consultation <Icon name="arrowRight" />
-            </a>
-            <a href="#areas" className="ktl-btn ktl-btn--outline">
-              Find Service Near You <Icon name="mapPin" />
-            </a>
+          <div className="service-hero-bottom-row">
+            <div className="ktl-hero-actions">
+              <a href="#contact" className="ktl-btn ktl-btn--primary">
+                Book a Consultation <Icon name="arrowRight" />
+              </a>
+              <a href="tel:8133950000" className="ktl-btn ktl-btn--outline">
+                Call Us
+              </a>
+            </div>
+            <ServiceHeroCredentials />
           </div>
           <div className="ktl-hero-coords">
             <span className="ktl-dot-live" />
@@ -543,16 +557,23 @@ export default function ServiceAreasPage() {
       </section>
 
       {/* ============================== SERVICE AREAS / CITIES ============================== */}
-      <section id="areas" className="ktl-section">
+      <section id="areas" className="ktl-section ktl-coverage-section">
         <div className="ktl-container">
-          <Reveal className="ktl-section-head" as="div">
-            <span className="ktl-eyebrow">Florida Cities We Serve</span>
-            <h2>Coverage in Every Corner of the Sunshine State</h2>
-            <p>
-              From the Panhandle to the Keys, our teams travel across Florida&rsquo;s regions for
-              projects of every size. Tap a region to see the communities we serve there.
-            </p>
-          </Reveal>
+          <div className="ktl-coverage-intro">
+            <Reveal className="ktl-section-head" as="div">
+              <span className="ktl-eyebrow">Florida Cities We Serve</span>
+              <h2>Coverage in Every Corner of the Sunshine State</h2>
+              <p>
+                From the Panhandle to the Keys, our teams travel across Florida&rsquo;s regions for
+                projects of every size. Select a region to explore the communities we serve.
+              </p>
+            </Reveal>
+            <Reveal className="ktl-coverage-summary" delay={2} as="div">
+              <div><strong>67</strong><span>Florida counties</span></div>
+              <div><strong>{REGIONS.length}</strong><span>Service regions</span></div>
+              <div><strong>1</strong><span>Accountable team</span></div>
+            </Reveal>
+          </div>
 
           <div className="ktl-grid-regions">
             {REGIONS.map((region, i) => {
@@ -563,11 +584,14 @@ export default function ServiceAreasPage() {
                   <div className="ktl-region-card">
                     <div className={`ktl-region-visual${region.img ? '' : ' ktl-region-visual--gradient'}`}>
                       {region.img && <img src={region.img} alt={region.alt} loading="lazy" />}
-                      <span className="ktl-region-visual-icon"><Icon name="mapPin" /></span>
-                      <span className="ktl-region-name">{region.name}</span>
+                      <span className="ktl-region-index">{String(i + 1).padStart(2, '0')}</span>
+                      <div className="ktl-region-title">
+                        <span className="ktl-region-visual-icon"><Icon name="mapPin" /></span>
+                        <span className="ktl-region-name">{region.name}</span>
+                      </div>
                     </div>
                     <div className="ktl-region-body">
-                      <span className="ktl-region-count">{region.cities.length} cities served</span>
+                      <span className="ktl-region-count">{region.cities.length} communities in this region</span>
                       <div className="ktl-region-pills">
                         {preview.map((c) => (
                           <span className="ktl-region-pill" key={c}>{c}</span>
@@ -576,6 +600,7 @@ export default function ServiceAreasPage() {
                       <button
                         className={`ktl-region-toggle${isOpen ? ' ktl-region-toggle--open' : ''}`}
                         onClick={() => toggleRegion(region.id)}
+                        aria-expanded={isOpen}
                       >
                         {isOpen ? 'Hide full list' : 'View all cities'} <Icon name="chevronDown" />
                       </button>
@@ -590,58 +615,38 @@ export default function ServiceAreasPage() {
           </div>
         </div>
 
-        <div className="ktl-city-marquee-wrap">
-          <div className="ktl-city-marquee-row ktl-city-marquee-row--a">
-            <div className="ktl-city-marquee-track">
-              {[...allCities, ...allCities].map((city, i) => (
-                <span className="ktl-city-pill" key={i}>{city}</span>
-              ))}
-            </div>
-          </div>
-          <div className="ktl-city-marquee-row ktl-city-marquee-row--b">
-            <div className="ktl-city-marquee-track">
-              {[...allCities.slice().reverse(), ...allCities.slice().reverse()].map((city, i) => (
-                <span className="ktl-city-pill ktl-city-pill--dim" key={i}>{city}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ============================== COUNTIES - NEW DARK THEME ============================== */}
-        <div className="ktl-counties-dark">
-          <div className="ktl-container">
-            <Reveal as="div" className="ktl-counties-header">
-              <span className="ktl-eyebrow ktl-eyebrow--light" style={{ justifyContent: 'center' }}>Counties We Cover</span>
-              <h2>Florida Counties We Serve</h2>
-              <p>From the Panhandle to the Keys, we provide construction services across every county in Florida.</p>
-            </Reveal>
-            <div className="ktl-counties-grid">
-              {COUNTIES.map((county) => (
-                <span key={county} className="ktl-county-pill">{county} County</span>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
       
 
       {/* ============================== WHY CHOOSE US ============================== */}
-      <section id="why" className="ktl-section">
+      <section id="why" className="ktl-section ktl-why-section">
         <div className="ktl-container">
-          <Reveal className="ktl-section-head ktl-section-head--center" as="div">
-            <span className="ktl-eyebrow" style={{ justifyContent: 'center' }}>Why Choose Keentel</span>
+          <Reveal className="ktl-section-head ktl-why-heading" as="div">
+            <span className="ktl-eyebrow">Why Choose Keentel</span>
             <h2>A Trusted Construction Partner Across Florida</h2>
+            <p>Experience, accountability, and statewide capability for projects that need to move forward with confidence.</p>
           </Reveal>
-          <div className="ktl-grid-why">
+          <div className="ktl-why-accordion" role="list" aria-label="Reasons to choose Keentel">
             {WHY_US.map((item, i) => (
-              <Reveal key={item.title} delay={((i % 3) + 1) as 1 | 2 | 3}>
-                <div className="ktl-why-card">
-                  <span className="ktl-why-icon"><Icon name={item.icon} /></span>
+              <article
+                key={item.title}
+                className={`ktl-why-panel${activeWhy === i ? ' ktl-why-panel--active' : ''}`}
+                role="listitem"
+                tabIndex={0}
+                onMouseEnter={() => setActiveWhy(i)}
+                onFocus={() => setActiveWhy(i)}
+                onClick={() => setActiveWhy(i)}
+                aria-label={`${item.title}. ${item.blurb}`}
+              >
+                <img src={item.img} alt={item.alt} loading="lazy" />
+                <span className="ktl-why-panel-shade" aria-hidden="true" />
+                <span className="ktl-why-panel-index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <div className="ktl-why-panel-copy">
                   <h3>{item.title}</h3>
                   <p>{item.blurb}</p>
                 </div>
-              </Reveal>
+              </article>
             ))}
           </div>
         </div>
@@ -650,86 +655,88 @@ export default function ServiceAreasPage() {
       {/* ============================== SERVICE AREA MAP (signature) ============================== */}
       <section className="ktl-section ktl-map-section">
         <div className="ktl-blueprint-grid ktl-blueprint-grid--light" style={{ opacity: 0.6 }} />
-        <div className="ktl-container ktl-map-layout" style={{ position: 'relative' }}>
-          <Reveal className="ktl-map-svg-wrap" as="div">
-            <svg className="ktl-map-svg" viewBox="0 0 340 480">
-              <path className="ktl-fl-outline" d={FL_OUTLINE_PATH} />
-              <path className="ktl-map-scan" d={FL_OUTLINE_PATH} />
-              {REGIONS.map((region) => (
-                <g
-                  key={region.id}
-                  className={`ktl-marker${activeRegion === region.id ? ' ktl-marker--active' : ''}`}
-                  onClick={() => setActiveRegion(region.id)}
-                  onMouseEnter={() => setActiveRegion(region.id)}
-                >
-                  <circle className="ktl-marker-ring" cx={region.mx} cy={region.my} r="5" />
-                  <circle className="ktl-marker-dot" cx={region.mx} cy={region.my} r={activeRegion === region.id ? 6 : 4.5} />
-                  <text className="ktl-marker-label" x={region.mx + 10} y={region.my + 3}>
-                    {region.name.split(' ')[0]}
-                  </text>
-                </g>
-              ))}
-            </svg>
-          </Reveal>
-
-          <Reveal className="ktl-map-copy" delay={2} as="div">
+        <div className="ktl-container" style={{ position: 'relative' }}>
+          <Reveal className="ktl-map-section-head" as="div">
             <span className="ktl-eyebrow ktl-eyebrow--light">Serving the Entire State of Florida</span>
             <h2>An Interactive Look at Our Florida Service Area</h2>
-            <p style={{ color: 'rgba(255,255,255,0.72)', marginTop: 16, fontSize: 16.5, lineHeight: 1.75 }}>
+            <p>
               Select a marker to see the region and communities we serve there — then request
               service in your area with one click.
             </p>
+          </Reveal>
 
-            <div className="ktl-map-panel">
-              <div className="ktl-map-panel-head">
-                <h4>{activeRegionData.name}</h4>
-                <span className="ktl-map-panel-tag">{activeRegionData.cities.length} Cities</span>
+          <div className="ktl-map-layout">
+            <Reveal className="ktl-map-svg-wrap" as="div">
+              <div className="ktl-map-card">
+              <div className="ktl-map-card-head">
+                <span>Florida Coverage Network</span>
+                <strong>{REGIONS.length} Active Regions</strong>
               </div>
-              <div className="ktl-map-panel-cities">
-                {activeRegionData.cities.slice(0, 8).map((c) => (
-                  <span key={c}>{c}</span>
+              <svg className="ktl-map-svg" viewBox="0 0 340 480" role="img" aria-label="Interactive Florida construction service area map">
+                <path className="ktl-fl-outline" d={FL_OUTLINE_PATH} />
+                <path className="ktl-map-scan" d={FL_OUTLINE_PATH} />
+                {REGIONS.map((region) => (
+                  <g
+                    key={region.id}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View service locations in ${region.name}`}
+                    className={`ktl-marker${activeRegion === region.id ? ' ktl-marker--active' : ''}`}
+                    onClick={() => setActiveRegion(region.id)}
+                    onMouseEnter={() => setActiveRegion(region.id)}
+                    onFocus={() => setActiveRegion(region.id)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        setActiveRegion(region.id);
+                      }
+                    }}
+                  >
+                    <circle className="ktl-marker-ring" cx={region.mx} cy={region.my} r="5" />
+                    <circle className="ktl-marker-dot" cx={region.mx} cy={region.my} r={activeRegion === region.id ? 6 : 4.5} />
+                    <text className="ktl-marker-label" x={region.mx + 10} y={region.my + 3}>
+                      {region.name.replace('Florida', '').replace('Area', '').trim()}
+                    </text>
+                  </g>
                 ))}
-                {activeRegionData.cities.length > 8 && <span>+{activeRegionData.cities.length - 8} more</span>}
+              </svg>
               </div>
-              <a href="#contact" className="ktl-btn ktl-btn--primary ktl-btn--sm">
-                Request Service in Your Area <Icon name="arrowRight" />
-              </a>
-            </div>
-            <p className="ktl-map-hint">Tap any of the {REGIONS.length} region markers on the map to explore coverage.</p>
-          </Reveal>
-        </div>
-      </section>
+            </Reveal>
 
-      {/* ============================== FAQ ============================== */}
-      <section id="faq" className="ktl-section ktl-section--off">
-        <div className="ktl-container">
-          <Reveal className="ktl-section-head ktl-section-head--center" as="div">
-            <span className="ktl-eyebrow" style={{ justifyContent: 'center' }}>Service Areas FAQs</span>
-            <h2>Frequently Asked Questions</h2>
-          </Reveal>
-          <div className="ktl-faq-list">
-            {FAQS.map((faq, i) => {
-              const isOpen = openFaq === i;
-              return (
-                <Reveal key={faq.q} as="div">
-                  <div className={`ktl-faq-item${isOpen ? ' ktl-faq-item--open' : ''}`}>
-                    <button className="ktl-faq-q" onClick={() => setOpenFaq(isOpen ? null : i)}>
-                      {faq.q}
-                      <span className="ktl-faq-icon"><Icon name="arrowRight" /></span>
+            <Reveal className="ktl-map-copy" delay={2} as="div">
+              <div className="ktl-map-feature">
+                <div className="ktl-map-feature-image">
+                  <img src={activeRegionData.img} alt={activeRegionData.alt} />
+                </div>
+                <div className="ktl-map-region-nav" role="tablist" aria-label="Select a Florida service region">
+                  {REGIONS.map((region) => (
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={activeRegion === region.id}
+                      className={activeRegion === region.id ? 'is-active' : ''}
+                      onClick={() => setActiveRegion(region.id)}
+                      key={region.id}
+                    >
+                      {region.name.replace('Florida', '').replace('Area', '').trim()}
                     </button>
-                    <div className="ktl-faq-a">
-                      <p>{faq.a}</p>
-                    </div>
+                  ))}
+                </div>
+                <div className="ktl-map-feature-caption">
+                  <div>
+                    <span>Selected service region</span>
+                    <h3>{activeRegionData.name}</h3>
                   </div>
-                </Reveal>
-              );
-            })}
+                  <strong>{activeRegionData.cities.length} cities</strong>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* ============================== CONTACT ============================== */}
-      <section id="contact" className="ktl-section">
+      <section id="contact" className="ktl-section ktl-contact-section">
         <div className="ktl-container">
           <Reveal className="ktl-section-head ktl-section-head--center" as="div">
             <span className="ktl-eyebrow" style={{ justifyContent: 'center' }}>Get In Touch</span>
@@ -848,43 +855,6 @@ export default function ServiceAreasPage() {
         </div>
       </section>
 
-      {/* ============================== FINAL CTA ============================== */}
-      <section className="ktl-final-cta">
-        <div className="ktl-final-cta-img">
-          <img
-            src="https://images.pexels.com/photos/4513940/pexels-photo-4513940.jpeg?auto=compress&cs=tinysrgb&w=1800"
-            alt="Construction cranes silhouetted against a Florida sunset skyline"
-          />
-        </div>
-        <div className="ktl-container ktl-final-cta-inner">
-          <Reveal as="div">
-            <span className="ktl-eyebrow ktl-eyebrow--light" style={{ justifyContent: 'center' }}>
-              Statewide Florida Construction
-            </span>
-            <h2>Serving Florida with Quality Construction Solutions</h2>
-            <p>
-              From Jacksonville to Miami, Tampa to Orlando, Pensacola to Key West — Keentel
-              General Contractors is proud to provide dependable construction services across
-              the State of Florida.
-            </p>
-            <div className="ktl-final-cta-actions">
-              <a href="#contact" className="ktl-btn ktl-btn--primary">
-                Schedule a Consultation <Icon name="arrowRight" />
-              </a>
-              <a href="#contact" className="ktl-btn ktl-btn--outline">
-                Contact Keentel General Contractors
-              </a>
-            </div>
-            <div className="ktl-final-cta-route">
-              <span>Jacksonville</span><Icon name="arrowRight" />
-              <span>Orlando</span><Icon name="arrowRight" />
-              <span>Tampa</span><Icon name="arrowRight" />
-              <span>Miami</span><Icon name="arrowRight" />
-              <span>Key West</span>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </div>
   );
 }

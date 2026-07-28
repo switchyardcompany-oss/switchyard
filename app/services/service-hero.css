@@ -14,6 +14,1054 @@
   justify-content: center;
 }
 
+/* Keep credentials anchored to hero content instead of viewport height. */
+@media (min-width: 1050px) {
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) {
+    position: relative;
+    padding-right: 400px;
+  }
+
+  :is(
+    .pc-hero-title,
+    .dbs-hero-title,
+    .gcs-hero-title,
+    .crs-hero-title,
+    .rrs-hero-title,
+    .ecs-hero-title,
+    .ers-hero-title
+  ) {
+    max-width: 720px;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) > .service-hero-credentials {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    width: 360px;
+    margin: 0;
+    transform: translateY(-50%);
+  }
+}
+
+/* Canonical desktop hero footer row — intentionally last in this stylesheet. */
+@media (min-width: 1050px) {
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) {
+    width: min(var(--max-width, 1150px), calc(100% - 48px));
+    max-width: var(--max-width, 1150px);
+    padding-right: 0;
+    text-align: left;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) > .service-hero-bottom-row {
+    grid-template-columns: minmax(0, 740px) 360px;
+    width: 100%;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) .service-hero-bottom-row > .service-hero-credentials {
+    position: static;
+    inset: auto;
+    width: 360px;
+    margin: 0;
+    transform: none;
+  }
+}
+
+/* Final hero positioning: CTA group and trust panel share one stable row. */
+@media (min-width: 1050px) {
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) {
+    width: min(var(--max-width, 1150px), calc(100% - 48px));
+    max-width: var(--max-width, 1150px);
+    padding-right: 0;
+    text-align: left;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) > .service-hero-bottom-row {
+    grid-template-columns: minmax(0, 740px) 360px;
+    width: 100%;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) .service-hero-bottom-row > .service-hero-credentials {
+    position: static;
+    inset: auto;
+    width: 360px;
+    margin: 0;
+    transform: none;
+  }
+}
+
+/* CTA + credentials stay in the same row at every desktop viewport size. */
+@media (min-width: 1050px) {
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) {
+    padding-right: 0;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) > .service-hero-bottom-row {
+    width: 100%;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) .service-hero-bottom-row > .service-hero-credentials {
+    position: static;
+    inset: auto;
+    width: 360px;
+    margin: 0;
+    transform: none;
+  }
+}
+
+@media (min-width: 1050px) {
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) {
+    position: relative;
+    padding-right: 400px;
+  }
+
+  :is(
+    .pc-hero-title,
+    .dbs-hero-title,
+    .gcs-hero-title,
+    .crs-hero-title,
+    .rrs-hero-title,
+    .ecs-hero-title,
+    .ers-hero-title
+  ) {
+    max-width: 720px;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) > .service-hero-credentials {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    width: 360px;
+    margin: 0;
+    transform: translateY(-50%);
+  }
+}
+
+/* =========================================================
+   Stable process + compact closing CTA across service pages
+   ========================================================= */
+
+/* Process content must never remain hidden after a hard refresh. */
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) :is(
+  .pc-reveal, .dbs-reveal, .gcs-reveal, .crs-reveal,
+  .rrs-reveal, .ecs-reveal, .ers-reveal
+) {
+  opacity: 1 !important;
+  transform: none !important;
+  transition-delay: 0s !important;
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) {
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
+  overflow: hidden;
+  background-color: #080a12 !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+#pc-process {
+  background-image: url("/images/services/About%20Our%20Pre%E2%80%91Construction%20Services.jpg") !important;
+}
+#dbs-process {
+  background-image: url("/images/services/One%20Team.%20One%20Vision.%20One%20Successful%20Project..jpg") !important;
+}
+#gcs-process {
+  background-image: url("/images/services/construction-workers-building-site.jpg") !important;
+}
+#crs-process {
+  background-image: url("/images/services/Office%20Renovations.jpg") !important;
+}
+#rrs-process {
+  background-image: url("/images/services/Interior%20Renovations.jpg") !important;
+}
+#ecs-process {
+  background-image: url("/images/services/Commercial%20Construction.jpg") !important;
+}
+#ers-process {
+  background-image: url("/images/services/Restore%20Your%20Property%20with%20Confidence.jpg") !important;
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(7, 8, 20, 0.78);
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) :is(
+  .pc-section-heading, .dbs-section-heading, .gcs-section-heading,
+  .crs-section-heading, .rrs-section-heading, .ecs-section-heading,
+  .ers-section-heading
+) {
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   Professional What's Included system
+   ========================================================= */
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) {
+  background: #f2f1ed !important;
+}
+
+:is(
+  .pc-services-layout,
+  .dbs-services-layout,
+  .gcs-services-layout,
+  .crs-services-layout,
+  .rrs-services-layout,
+  .ecs-services-layout,
+  .ers-services-layout
+) {
+  display: grid !important;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr) !important;
+  grid-template-areas:
+    "label label"
+    "title title"
+    "body body"
+    "image services" !important;
+  align-items: stretch !important;
+  column-gap: clamp(24px, 4vw, 52px) !important;
+  row-gap: 12px !important;
+  overflow: hidden;
+  padding: clamp(28px, 4vw, 52px) !important;
+  border: 1px solid #d9d7d0;
+  border-top: 5px solid #12106e;
+  border-radius: 12px !important;
+  background: #ffffff;
+  box-shadow: 0 16px 44px rgba(18, 22, 28, 0.07);
+}
+
+:is(
+  .pc-services-left,
+  .dbs-services-left,
+  .gcs-services-left,
+  .crs-services-left,
+  .rrs-services-left,
+  .ecs-services-left,
+  .ers-services-left
+) {
+  display: contents !important;
+}
+
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) :is(
+  .pc-section-label, .dbs-section-label, .gcs-section-label,
+  .crs-section-label, .rrs-section-label, .ecs-section-label,
+  .ers-section-label
+) {
+  grid-area: label;
+  width: fit-content;
+  margin: 0 0 2px;
+}
+
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) :is(
+  .pc-section-heading, .dbs-section-heading, .gcs-section-heading,
+  .crs-section-heading, .rrs-section-heading, .ecs-section-heading,
+  .ers-section-heading
+) {
+  grid-area: title;
+  max-width: 22ch;
+  margin: 0 0 4px;
+  color: #12106e !important;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) :is(
+  .pc-section-body, .dbs-section-body, .gcs-section-body,
+  .crs-section-body, .rrs-section-body, .ecs-section-body,
+  .ers-section-body
+) {
+  grid-area: body;
+  max-width: 72ch;
+  margin: 0 0 14px;
+  color: #5f6168;
+  font-size: 0.96rem;
+  line-height: 1.68;
+}
+
+#ers-services .ers-section-heading,
+#ers-services .ers-section-body {
+  width: 100%;
+  max-width: none;
+}
+
+:is(
+  .pc-services-image-wrapper,
+  .dbs-services-image-wrapper,
+  .gcs-services-image-wrapper,
+  .crs-services-image-wrapper,
+  .rrs-services-image-wrapper,
+  .ecs-services-image-wrapper,
+  .ers-services-image-wrapper
+) {
+  position: relative;
+  grid-area: image;
+  align-self: stretch;
+  aspect-ratio: 4 / 3;
+  min-height: 310px;
+  max-height: none;
+  margin-top: 8px !important;
+  overflow: hidden;
+  border: 1px solid #d9d7d0;
+  border-radius: 8px !important;
+  background: #e8e6df;
+  box-shadow: none !important;
+}
+
+:is(
+  .pc-services-image,
+  .dbs-services-image,
+  .gcs-services-image,
+  .crs-services-image,
+  .rrs-services-image,
+  .ecs-services-image,
+  .ers-services-image
+) {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: auto !important;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.88) contrast(1.04);
+  transition: transform 0.45s ease;
+}
+
+:is(
+  .pc-services-image-wrapper,
+  .dbs-services-image-wrapper,
+  .gcs-services-image-wrapper,
+  .crs-services-image-wrapper,
+  .rrs-services-image-wrapper,
+  .ecs-services-image-wrapper,
+  .ers-services-image-wrapper
+):hover :is(
+  .pc-services-image,
+  .dbs-services-image,
+  .gcs-services-image,
+  .crs-services-image,
+  .rrs-services-image,
+  .ecs-services-image,
+  .ers-services-image
+) {
+  transform: scale(1.035);
+}
+
+.pc-services-image-overlay {
+  display: none !important;
+}
+
+:is(
+  .pc-services-right,
+  .dbs-services-right,
+  .gcs-services-right,
+  .crs-services-right,
+  .rrs-services-right,
+  .ecs-services-right,
+  .ers-services-right
+) {
+  grid-area: services;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch !important;
+  min-width: 0;
+  align-self: stretch;
+  padding: 22px 24px !important;
+  border: 1px solid #d9d7d0 !important;
+  border-radius: 8px !important;
+  background: #f7f6f2 !important;
+  box-shadow: none !important;
+}
+
+:is(
+  .dbs-services-right,
+  .gcs-services-right,
+  .crs-services-right,
+  .rrs-services-right,
+  .ecs-services-right,
+  .ers-services-right
+)::before {
+  content: "Included Services";
+  display: block;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #12106e;
+  color: #12106e;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.pc-services-right-header {
+  margin: 0 0 24px !important;
+  padding: 0 0 20px !important;
+  border-bottom: 1px solid #d9d7d0 !important;
+}
+
+.pc-services-right-header span,
+.pc-services-right-header p {
+  color: #12106e !important;
+}
+
+:is(
+  .pc-services-grid,
+  .dbs-services-grid,
+  .gcs-services-grid,
+  .crs-services-grid,
+  .rrs-services-grid,
+  .ecs-services-grid,
+  .ers-services-grid
+) {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 16px !important;
+  width: 100%;
+}
+
+:is(
+  .pc-service-item,
+  .dbs-service-item,
+  .gcs-service-item,
+  .crs-service-item,
+  .rrs-service-item,
+  .ecs-service-item,
+  .ers-service-item
+) {
+  display: flex !important;
+  align-items: center;
+  min-width: 0;
+  min-height: 48px;
+  padding: 9px 4px !important;
+  border: 0 !important;
+  border-bottom: 1px solid #d9d7d0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #12106e !important;
+  font-size: 0.79rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+:is(
+  .pc-service-item,
+  .dbs-service-item,
+  .gcs-service-item,
+  .crs-service-item,
+  .rrs-service-item,
+  .ecs-service-item,
+  .ers-service-item
+):hover {
+  border-color: #12106e !important;
+  background: #ffffff !important;
+  color: #12106e !important;
+  transform: translateX(2px);
+}
+
+.pc-service-item :is(.pc-service-index, .pc-service-name, .pc-service-check) {
+  color: inherit !important;
+}
+
+@media (max-width: 900px) {
+  :is(
+    .pc-services-layout,
+    .dbs-services-layout,
+    .gcs-services-layout,
+    .crs-services-layout,
+    .rrs-services-layout,
+    .ecs-services-layout,
+    .ers-services-layout
+  ) {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "label"
+      "title"
+      "body"
+      "image"
+      "services" !important;
+  }
+
+  :is(
+    #pc-services, #dbs-services, #gcs-services, #crs-services,
+    #rrs-services, #ecs-services, #ers-services
+  ) :is(
+    .pc-section-heading, .dbs-section-heading, .gcs-section-heading,
+    .crs-section-heading, .rrs-section-heading, .ecs-section-heading,
+    .ers-section-heading
+  ) {
+    max-width: 18ch;
+  }
+
+  :is(
+    .pc-services-grid,
+    .dbs-services-grid,
+    .gcs-services-grid,
+    .crs-services-grid,
+    .rrs-services-grid,
+    .ecs-services-grid,
+    .ers-services-grid
+  ) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :is(
+    .pc-services-layout,
+    .dbs-services-layout,
+    .gcs-services-layout,
+    .crs-services-layout,
+    .rrs-services-layout,
+    .ecs-services-layout,
+    .ers-services-layout
+  ) {
+    border-radius: 14px !important;
+  }
+
+  :is(
+    .pc-services-left,
+    .dbs-services-left,
+    .gcs-services-left,
+    .crs-services-left,
+    .rrs-services-left,
+    .ecs-services-left,
+    .ers-services-left,
+    .pc-services-right,
+    .dbs-services-right,
+    .gcs-services-right,
+    .crs-services-right,
+    .rrs-services-right,
+    .ecs-services-right,
+    .ers-services-right
+  ) {
+    padding: 24px 18px !important;
+  }
+
+  :is(
+    .pc-services-grid,
+    .dbs-services-grid,
+    .gcs-services-grid,
+    .crs-services-grid,
+    .rrs-services-grid,
+    .ecs-services-grid,
+    .ers-services-grid
+  ) {
+    grid-template-columns: 1fr !important;
+  }
+
+  :is(
+    .pc-services-image-wrapper,
+    .dbs-services-image-wrapper,
+    .gcs-services-image-wrapper,
+    .crs-services-image-wrapper,
+    .rrs-services-image-wrapper,
+    .ecs-services-image-wrapper,
+    .ers-services-image-wrapper
+  ) {
+    min-height: 190px;
+    max-height: 220px;
+    aspect-ratio: 16 / 10;
+  }
+
+  :is(
+    #pc-services, #dbs-services, #gcs-services, #crs-services,
+    #rrs-services, #ecs-services, #ers-services
+  ) :is(
+    .pc-section-heading, .dbs-section-heading, .gcs-section-heading,
+    .crs-section-heading, .rrs-section-heading, .ecs-section-heading,
+    .ers-section-heading
+  ) {
+    max-width: none;
+    font-size: clamp(1.8rem, 9vw, 2.3rem);
+  }
+}
+
+:is(
+  .pc-final-cta-section,
+  .dbs-final-cta-section,
+  .gcs-final-cta-section,
+  .crs-final-cta-section,
+  .rrs-final-cta-section,
+  .ecs-final-cta-section,
+  .ers-final-cta-section
+) {
+  position: relative !important;
+  isolation: isolate;
+  min-height: 0 !important;
+  padding: 48px 24px !important;
+  border-top: 12px solid #f2f1ed;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: scroll !important;
+  color: #ffffff;
+}
+
+.pc-final-cta-section {
+  background-image: url("/images/services/About%20Our%20Pre%E2%80%91Construction%20Services.jpg") !important;
+}
+.dbs-final-cta-section {
+  background-image: url("/images/services/One%20Team.%20One%20Vision.%20One%20Successful%20Project..jpg") !important;
+}
+.gcs-final-cta-section {
+  background-image: url("/images/services/construction-workers-building-site.jpg") !important;
+}
+.crs-final-cta-section {
+  background-image: url("/images/services/Office%20Renovations.jpg") !important;
+}
+.rrs-final-cta-section {
+  background-image: url("/images/services/Interior%20Renovations.jpg") !important;
+}
+.ecs-final-cta-section {
+  background-image: url("/images/services/Commercial%20Construction.jpg") !important;
+}
+.ers-final-cta-section {
+  background-image: url("/images/services/Restore%20Your%20Property%20with%20Confidence.jpg") !important;
+}
+
+:is(
+  .pc-final-cta-section,
+  .dbs-final-cta-section,
+  .gcs-final-cta-section,
+  .crs-final-cta-section,
+  .rrs-final-cta-section,
+  .ecs-final-cta-section,
+  .ers-final-cta-section
+)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: transparent !important;
+}
+
+:is(
+  .pc-final-cta-section,
+  .dbs-final-cta-section,
+  .gcs-final-cta-section,
+  .crs-final-cta-section,
+  .rrs-final-cta-section,
+  .ecs-final-cta-section,
+  .ers-final-cta-section
+) > div {
+  width: min(100%, 880px) !important;
+  max-width: 880px !important;
+  margin-inline: auto !important;
+  padding: 36px 40px !important;
+  opacity: 1 !important;
+  transform: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  background: #12106e;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  text-align: center !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+}
+
+:is(
+  .pc-final-cta-section,
+  .dbs-final-cta-section,
+  .gcs-final-cta-section,
+  .crs-final-cta-section,
+  .rrs-final-cta-section,
+  .ecs-final-cta-section,
+  .ers-final-cta-section
+) h2 {
+  max-width: 760px;
+  margin: 0 auto 24px !important;
+  color: #ffffff;
+  font-size: clamp(1.8rem, 3.4vw, 2.7rem) !important;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+:is(
+  .pc-final-cta-buttons,
+  .dbs-final-cta-buttons,
+  .gcs-final-cta-buttons,
+  .crs-final-cta-buttons,
+  .rrs-final-cta-buttons,
+  .ecs-final-cta-buttons,
+  .ers-final-cta-buttons
+) {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 !important;
+}
+
+:is(
+  .pc-btn-filled-dark, .dbs-btn-filled-dark, .gcs-btn-filled-dark,
+  .crs-btn-filled-dark, .rrs-btn-filled-dark, .ecs-btn-filled-dark,
+  .ers-btn-filled-dark
+) {
+  min-height: 52px;
+  padding: 14px 26px;
+  border: 1px solid #b51f96 !important;
+  border-radius: 8px !important;
+  background: #b51f96 !important;
+  color: #ffffff !important;
+}
+
+:is(
+  .pc-btn-outline-dark, .dbs-btn-outline-dark, .gcs-btn-outline-dark,
+  .crs-btn-outline-dark, .rrs-btn-outline-dark, .ecs-btn-outline-dark,
+  .ers-btn-outline-dark
+) {
+  min-height: 52px;
+  padding: 14px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 700px) {
+  :is(
+    .pc-final-cta-section,
+    .dbs-final-cta-section,
+    .gcs-final-cta-section,
+    .crs-final-cta-section,
+    .rrs-final-cta-section,
+    .ecs-final-cta-section,
+    .ers-final-cta-section
+  ) {
+    padding: 32px 16px !important;
+    border-top-width: 8px;
+  }
+
+  :is(
+    .pc-final-cta-section,
+    .dbs-final-cta-section,
+    .gcs-final-cta-section,
+    .crs-final-cta-section,
+    .rrs-final-cta-section,
+    .ecs-final-cta-section,
+    .ers-final-cta-section
+  ) > div {
+    padding: 28px 18px !important;
+    border-radius: 14px;
+  }
+
+  :is(
+    .pc-final-cta-buttons,
+    .dbs-final-cta-buttons,
+    .gcs-final-cta-buttons,
+    .crs-final-cta-buttons,
+    .rrs-final-cta-buttons,
+    .ecs-final-cta-buttons,
+    .ers-final-cta-buttons
+  ) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  :is(
+    .pc-final-cta-buttons,
+    .dbs-final-cta-buttons,
+    .gcs-final-cta-buttons,
+    .crs-final-cta-buttons,
+    .rrs-final-cta-buttons,
+    .ecs-final-cta-buttons,
+    .ers-final-cta-buttons
+  ) a {
+    width: 100%;
+    min-height: 56px;
+    justify-content: center;
+  }
+}
+
+/* Pre-Construction uses the same Project Types and Process system. */
+#pc-project-types {
+  background: #12106e;
+}
+
+#pc-project-types .pc-project-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 36px;
+}
+
+#pc-project-types .pc-project-type-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 14px 36px rgba(4, 3, 35, 0.22);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+#pc-project-types .pc-project-type-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 48px rgba(4, 3, 35, 0.32);
+}
+
+#pc-project-types .pc-project-type-image {
+  height: 220px;
+  background-position: center;
+  background-size: cover;
+  border-bottom: 4px solid var(--color-magenta, #a6238f);
+}
+
+#pc-project-types .pc-project-type-content {
+  padding: 24px 22px 26px;
+  background: #ffffff;
+}
+
+#pc-project-types .pc-project-type-content h4 {
+  margin-bottom: 10px;
+  color: var(--color-navy, #12106e);
+}
+
+#pc-project-types .pc-project-type-content p {
+  color: var(--color-text-muted, #5c5a61);
+  line-height: 1.65;
+}
+
+#pc-process {
+  background: #12106e;
+}
+
+#pc-process .pc-process-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+#pc-process .pc-process-timeline::before {
+  display: none;
+}
+
+#pc-process .pc-process-step {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 28px 22px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  text-align: left;
+  box-shadow: none;
+  transform: none;
+}
+
+#pc-process .pc-process-step:hover {
+  border-color: #ffffff;
+  background: #ffffff;
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+}
+
+#pc-process .pc-process-step-marker {
+  position: static;
+  width: 44px;
+  height: 44px;
+  margin: 0 0 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--color-magenta, #a6238f);
+  transform: none;
+}
+
+#pc-process .pc-process-step-content,
+#pc-process .pc-process-step:nth-child(even) .pc-process-step-content {
+  position: static;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+  transform: none;
+}
+
+#pc-process .pc-process-step-content h3 {
+  color: #ffffff;
+}
+
+#pc-process .pc-process-step-content p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+#pc-process .pc-process-step:hover .pc-process-step-content h3 {
+  color: #111111;
+}
+
+#pc-process .pc-process-step:hover .pc-process-step-content p {
+  color: #3f3f46;
+}
+
+@media (min-width: 1001px) {
+  :is(#pc-project-types, #pc-process) .pc-section-heading {
+    width: 100%;
+    max-width: none;
+    white-space: nowrap;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+  }
+}
+
+@media (max-width: 1000px) {
+  #pc-project-types .pc-project-types-grid,
+  #pc-process .pc-process-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  #pc-project-types .pc-project-types-grid,
+  #pc-process .pc-process-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  #pc-project-types .pc-project-type-image {
+    height: 210px;
+  }
+}
+
 :is(
   .pc-hero-content,
   .dbs-hero-content,
@@ -56,12 +1104,19 @@
   .ecs-hero-title,
   .ers-hero-title
 ) {
-  max-width: 650px;
+  max-width: 940px;
   margin: 0 0 16px;
-  font-size: clamp(2.4rem, 6vw, 3.6rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: normal;
+  font-size: clamp(2.65rem, 4.35vw, 4rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.service-hero-title-line {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
 }
 
 :is(
@@ -180,7 +1235,7 @@
     .ecs-hero-title,
     .ers-hero-title
   ) {
-    font-size: clamp(2rem, 7vw, 2.8rem);
+    font-size: clamp(2.25rem, 6.5vw, 3.35rem);
   }
 
   :is(
@@ -218,7 +1273,12 @@
     .ecs-hero-title,
     .ers-hero-title
   ) {
-    font-size: 1.9rem;
+    font-size: clamp(2rem, 9.5vw, 2.65rem);
+    line-height: 1.08;
+  }
+
+  .service-hero-title-line {
+    width: auto;
   }
 
   :is(
@@ -765,18 +1825,20 @@
   .rrs-project-type-card, .ecs-project-type-card, .ers-project-type-card
 ) {
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 12px;
-  background: #21185f;
-  transition: transform 0.35s ease, border-color 0.35s ease;
+  background: #ffffff;
+  box-shadow: 0 14px 36px rgba(4, 3, 35, 0.22);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 :is(
   .dbs-project-type-card, .gcs-project-type-card, .crs-project-type-card,
   .rrs-project-type-card, .ecs-project-type-card, .ers-project-type-card
 ):hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-7px);
+  border-color: #ffffff;
+  box-shadow: 0 22px 48px rgba(4, 3, 35, 0.32);
 }
 
 :is(
@@ -793,7 +1855,23 @@
   .rrs-project-type-content, .ecs-project-type-content, .ers-project-type-content
 ) {
   padding: 24px 22px 26px;
-  background: #21185f;
+  background: #ffffff;
+}
+
+:is(
+  .dbs-project-type-card, .gcs-project-type-card, .crs-project-type-card,
+  .rrs-project-type-card, .ecs-project-type-card, .ers-project-type-card
+) h4 {
+  margin-bottom: 10px;
+  color: var(--color-navy, #12106e);
+}
+
+:is(
+  .dbs-project-type-card, .gcs-project-type-card, .crs-project-type-card,
+  .rrs-project-type-card, .ecs-project-type-card, .ers-project-type-card
+) p {
+  color: var(--color-text-muted, #5c5a61);
+  line-height: 1.65;
 }
 
 /* Who we serve — same restrained white-card system. */
@@ -853,14 +1931,69 @@
 }
 
 :is(
+  .dbs-process-step, .gcs-process-step, .crs-process-step,
+  .rrs-process-step, .ecs-process-step, .ers-process-step
+):hover {
+  border-color: #ffffff;
+  background: #ffffff;
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+}
+
+:is(
   .dbs-process-step-number, .gcs-process-step-number, .crs-process-step-number,
   .rrs-process-step-number, .ecs-process-step-number, .ers-process-step-number
 ) {
   width: 44px;
   height: 44px;
   margin: 0 0 16px;
-  border-radius: 50%;
+  border-radius: 8px;
   background: var(--color-magenta, #a6238f);
+}
+
+:is(
+  .dbs-process-step-content, .gcs-process-step-content, .crs-process-step-content,
+  .rrs-process-step-content, .ecs-process-step-content, .ers-process-step-content
+) :is(h3, h4) {
+  color: #ffffff;
+}
+
+:is(
+  .dbs-process-step-content, .gcs-process-step-content, .crs-process-step-content,
+  .rrs-process-step-content, .ecs-process-step-content, .ers-process-step-content
+) p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+:is(
+  .dbs-process-step, .gcs-process-step, .crs-process-step,
+  .rrs-process-step, .ecs-process-step, .ers-process-step
+):hover :is(h3, h4) {
+  color: #111111;
+}
+
+:is(
+  .dbs-process-step, .gcs-process-step, .crs-process-step,
+  .rrs-process-step, .ecs-process-step, .ers-process-step
+):hover p {
+  color: #3f3f46;
+}
+
+@media (min-width: 1001px) {
+  :is(
+    #dbs-project-types, #gcs-project-types, #crs-project-types,
+    #rrs-project-types, #ecs-project-types, #ers-project-types,
+    #dbs-process, #gcs-process, #crs-process,
+    #rrs-process, #ecs-process, #ers-process
+  ) :is(
+    .dbs-section-heading, .gcs-section-heading, .crs-section-heading,
+    .rrs-section-heading, .ecs-section-heading, .ers-section-heading
+  ) {
+    width: 100%;
+    max-width: none;
+    white-space: nowrap;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+  }
 }
 
 /* Final CTA follows the same image-backed composition used on Pre-Construction. */
@@ -1473,5 +2606,96 @@
     width: 22px;
     height: 22px;
     transform: translate(-50%,-50%);
+  }
+}
+
+@media (min-width: 1050px) {
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) {
+    position: relative;
+    padding-right: 400px;
+  }
+
+  :is(
+    .pc-hero-title,
+    .dbs-hero-title,
+    .gcs-hero-title,
+    .crs-hero-title,
+    .rrs-hero-title,
+    .ecs-hero-title,
+    .ers-hero-title
+  ) {
+    max-width: 720px;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) > .service-hero-credentials {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    width: 360px;
+    margin: 0;
+    transform: translateY(-50%);
+  }
+}
+
+/* Canonical hero alignment: buttons left, trusted badges right, one row. */
+@media (min-width: 1050px) {
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) {
+    width: min(var(--max-width, 1150px), calc(100% - 48px));
+    max-width: var(--max-width, 1150px);
+    padding-right: 0;
+    text-align: left;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) > .service-hero-bottom-row {
+    grid-template-columns: minmax(0, 740px) 360px;
+  }
+
+  :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) .service-hero-bottom-row > .service-hero-credentials {
+    position: static;
+    inset: auto;
+    width: 360px;
+    margin: 0;
+    transform: none;
   }
 }

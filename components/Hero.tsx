@@ -50,13 +50,13 @@ export default function Hero() {
             className={`sec1-hero__content ${isLoaded ? "sec1-hero__content--visible" : ""}`}
           >
             <span className="sec1-hero__badge">
-              <span className="sec1-hero__badge-dot"></span>
               GENERAL CONTRACTING • DESIGN-BUILD • PROJECT MANAGEMENT
             </span>
             <h1 className="sec1-hero__title">
-              Building Projects That
-              <br />
-              <span style={{ color: "#a6238f" }}>Stand the Test of Time</span>
+              <span className="sec1-hero__title-line">Building Projects That</span>
+              <span className="sec1-hero__title-line" style={{ color: "#a6238f" }}>
+                Stand the Test of Time
+              </span>
             </h1>
             <p className="sec1-hero__desc">
               Keentel General Contractors delivers commercial, industrial,
@@ -69,21 +69,53 @@ export default function Hero() {
                 focused on quality, safety, efficiency, and lasting results.
               </span>
             </p>
-            <div className="sec1-hero__buttons">
-              <a
-                href="/contact#contactformsection"
-                className="btn btn--primary"
+            <div className="sec1-hero__bottom-row">
+              <div className="sec1-hero__buttons">
+                <a
+                  href="/contact#contactformsection"
+                  className="btn btn--primary"
+                >
+                  Request a Consultation
+                </a>
+                <Link href="/services" className="btn btn--secondary">
+                  <i className="fa-solid fa-building"></i>&nbsp; Explore Our Services
+                </Link>
+              </div>
+              <aside
+                className={`sec1-hero__credentials ${isLoaded ? "sec1-hero__credentials--visible" : ""}`}
+                aria-label="Professional credentials and affiliations"
               >
-                Request a Consultation
-              </a>
-              <Link href="/services" className="btn btn--secondary">
-                <i className="fa-solid fa-building"></i>&nbsp; Explore Our Services
-              </Link>
+                <div className="sec1-hero__credentials-row">
+                  <a
+                    href="https://www.bbb.org/us/fl/tampa/profile/electrical-engineer/keentel-engineering-0653-90446480#licensing"
+                    className="sec1-hero__credential"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="View Keentel's BBB Accredited Business profile"
+                  >
+                    <img src="/images/footer-logo.webp" alt="BBB Accredited Business A+" />
+                  </a>
+                  <div className="sec1-hero__credential">
+                    <img
+                      src="/images/genral%20contratcter.png"
+                      alt="State of Florida Certified General Contractor"
+                    />
+                  </div>
+                  <a
+                    href="https://fleng.org/"
+                    className="sec1-hero__credential sec1-hero__credential--fes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit the Florida Engineering Society website"
+                  >
+                    <img src="/images/fes-logo.png" alt="Florida Engineering Society" />
+                  </a>
+                </div>
+              </aside>
             </div>
           </div>
         </div>
       </section>
-
       <TrustMarquee />
     </>
   );

@@ -43,6 +43,20 @@ export default function Footer() {
                 className="sec10-footer-contractor-badge__img"
                 loading="lazy"
               />
+              <a
+                href="https://fleng.org/"
+                aria-label="Visit the Florida Engineering Society website"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sec10-footer-fes-link"
+              >
+                <img
+                  src="/images/fes-logo.png"
+                  alt="Florida Engineering Society (FES)"
+                  className="sec10-footer-fes-badge__img"
+                  loading="lazy"
+                />
+              </a>
             </div>
             <div className="sec10-footer-social">
               {/* Facebook */}

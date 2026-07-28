@@ -41,32 +41,21 @@ Let's build your next project with confidence.
 
         <div className="cta-right">
           <div className="cta-card">
-            <a href="tel:8133950000" className="cta-phone">
-              
-               Contact Us Now
-
-            </a>
-            <Link href="/contact#contactformsection" className="cta-btn">Schedule a Consultation</Link>
+            <div className="cta-actions">
+              <Link href="/contact#contactformsection" className="cta-btn">
+                Book a Consultation
+              </Link>
+              <a href="tel:8133950000" className="cta-phone">
+                Call Now
+              </a>
+            </div>
             <ul className="cta-perks">
-              <li className="cta-perk">
-                <svg className="cta-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Free, no-obligation quote
-              </li>
               <li className="cta-perk">
                 <svg className="cta-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
                 Florida licensed &amp; fully insured (CGC1524228 &bull; EC13014476)
-              </li>
-              <li className="cta-perk">
-                <svg className="cta-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  <path d="M9 12l2 2 4-4"></path>
-                </svg>
-                Available 7 days a week
               </li>
             </ul>
           </div>
