@@ -60,6 +60,371 @@
   }
 }
 
+/* ================================================================
+   SERVICE HERO CASCADE LOCK
+   Page-level styles and this shared stylesheet can be inserted in a
+   different order during client navigation. These declarations make
+   the final hero layout independent of stylesheet insertion order.
+   ================================================================ */
+:is(
+  .pc-about-page,
+  .dbs-about-page,
+  .gcs-about-page,
+  .crs-about-page,
+  .rrs-about-page,
+  .ecs-about-page,
+  .ers-about-page
+) :is(
+  .pc-hero-section,
+  .dbs-hero-section,
+  .gcs-hero-section,
+  .crs-hero-section,
+  .rrs-hero-section,
+  .ecs-hero-section,
+  .ers-hero-section
+) {
+  position: relative !important;
+  isolation: isolate !important;
+  display: flex !important;
+  width: 100% !important;
+  min-height: max(620px, calc(100svh - 120px)) !important;
+  height: auto !important;
+  padding: clamp(48px, 7vh, 72px) 24px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+:is(
+  .pc-about-page,
+  .dbs-about-page,
+  .gcs-about-page,
+  .crs-about-page,
+  .rrs-about-page,
+  .ecs-about-page,
+  .ers-about-page
+) :is(
+  .pc-hero-content,
+  .dbs-hero-content,
+  .gcs-hero-content,
+  .crs-hero-content,
+  .rrs-hero-content,
+  .ecs-hero-content,
+  .ers-hero-content
+) {
+  position: relative !important;
+  z-index: 2 !important;
+  width: min(1150px, 100%) !important;
+  max-width: 1150px !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+:is(
+  .pc-about-page,
+  .dbs-about-page,
+  .gcs-about-page,
+  .crs-about-page,
+  .rrs-about-page,
+  .ecs-about-page,
+  .ers-about-page
+) :is(
+  .pc-hero-title,
+  .dbs-hero-title,
+  .gcs-hero-title,
+  .crs-hero-title,
+  .rrs-hero-title,
+  .ecs-hero-title,
+  .ers-hero-title
+) {
+  width: 100% !important;
+  max-width: 940px !important;
+  margin: 0 0 16px !important;
+  font-size: clamp(2.65rem, 4.35vw, 4rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.025em !important;
+  text-align: left !important;
+  text-wrap: balance;
+}
+
+:is(
+  .pc-about-page,
+  .dbs-about-page,
+  .gcs-about-page,
+  .crs-about-page,
+  .rrs-about-page,
+  .ecs-about-page,
+  .ers-about-page
+) :is(
+  .pc-hero-subtitle,
+  .dbs-hero-subtitle,
+  .gcs-hero-subtitle,
+  .crs-hero-subtitle,
+  .rrs-hero-subtitle,
+  .ecs-hero-subtitle,
+  .ers-hero-subtitle
+) {
+  width: 100% !important;
+  max-width: 650px !important;
+  margin: 0 0 12px !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  text-align: left !important;
+}
+
+:is(
+  .pc-about-page,
+  .dbs-about-page,
+  .gcs-about-page,
+  .crs-about-page,
+  .rrs-about-page,
+  .ecs-about-page,
+  .ers-about-page
+) .service-hero-bottom-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 360px !important;
+  width: 100% !important;
+  margin-top: 24px !important;
+  align-items: center !important;
+  gap: clamp(32px, 5vw, 64px) !important;
+}
+
+:is(
+  .pc-about-page,
+  .dbs-about-page,
+  .gcs-about-page,
+  .crs-about-page,
+  .rrs-about-page,
+  .ecs-about-page,
+  .ers-about-page
+) :is(
+  .pc-hero-cta-group,
+  .dbs-hero-cta-group,
+  .gcs-hero-cta-group,
+  .crs-hero-cta-group,
+  .rrs-hero-cta-group,
+  .ecs-hero-cta-group,
+  .ers-hero-cta-group
+) {
+  display: flex !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+}
+
+:is(
+  .pc-about-page,
+  .dbs-about-page,
+  .gcs-about-page,
+  .crs-about-page,
+  .rrs-about-page,
+  .ecs-about-page,
+  .ers-about-page
+) .service-hero-bottom-row > .service-hero-credentials {
+  position: static !important;
+  inset: auto !important;
+  width: 360px !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  justify-self: end !important;
+  transform: none !important;
+}
+
+@media (max-width: 1049px) {
+  :is(
+    .pc-about-page,
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) :is(
+    .pc-hero-content,
+    .dbs-hero-content,
+    .gcs-hero-content,
+    .crs-hero-content,
+    .rrs-hero-content,
+    .ecs-hero-content,
+    .ers-hero-content
+  ) {
+    text-align: center !important;
+  }
+
+  :is(
+    .pc-about-page,
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) :is(
+    .pc-hero-title,
+    .dbs-hero-title,
+    .gcs-hero-title,
+    .crs-hero-title,
+    .rrs-hero-title,
+    .ecs-hero-title,
+    .ers-hero-title,
+    .pc-hero-subtitle,
+    .dbs-hero-subtitle,
+    .gcs-hero-subtitle,
+    .crs-hero-subtitle,
+    .rrs-hero-subtitle,
+    .ecs-hero-subtitle,
+    .ers-hero-subtitle
+  ) {
+    margin-right: auto !important;
+    margin-left: auto !important;
+    text-align: center !important;
+  }
+
+  :is(
+    .pc-about-page,
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) .service-hero-bottom-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  :is(
+    .pc-about-page,
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) :is(
+    .pc-hero-cta-group,
+    .dbs-hero-cta-group,
+    .gcs-hero-cta-group,
+    .crs-hero-cta-group,
+    .rrs-hero-cta-group,
+    .ecs-hero-cta-group,
+    .ers-hero-cta-group
+  ) {
+    margin-inline: auto !important;
+    justify-content: center !important;
+  }
+
+  :is(
+    .pc-about-page,
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) .service-hero-bottom-row > .service-hero-credentials {
+    width: min(360px, 100%) !important;
+    margin-inline: auto !important;
+    justify-self: center !important;
+  }
+}
+
+@media (max-width: 600px) {
+  :is(
+    .pc-about-page,
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) :is(
+    .pc-hero-section,
+    .dbs-hero-section,
+    .gcs-hero-section,
+    .crs-hero-section,
+    .rrs-hero-section,
+    .ecs-hero-section,
+    .ers-hero-section
+  ) {
+    min-height: calc(100svh - 80px) !important;
+    padding: 48px 16px !important;
+  }
+
+  :is(
+    .pc-about-page,
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) :is(
+    .pc-hero-title,
+    .dbs-hero-title,
+    .gcs-hero-title,
+    .crs-hero-title,
+    .rrs-hero-title,
+    .ecs-hero-title,
+    .ers-hero-title
+  ) {
+    font-size: clamp(2rem, 10vw, 2.7rem) !important;
+    line-height: 1.06 !important;
+    overflow-wrap: anywhere;
+  }
+
+  :is(
+    .pc-about-page,
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) :is(
+    .pc-hero-cta-group,
+    .dbs-hero-cta-group,
+    .gcs-hero-cta-group,
+    .crs-hero-cta-group,
+    .rrs-hero-cta-group,
+    .ecs-hero-cta-group,
+    .ers-hero-cta-group
+  ) {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  :is(
+    .pc-about-page,
+    .dbs-about-page,
+    .gcs-about-page,
+    .crs-about-page,
+    .rrs-about-page,
+    .ecs-about-page,
+    .ers-about-page
+  ) :is(
+    .pc-btn,
+    .dbs-btn,
+    .gcs-btn,
+    .crs-btn,
+    .rrs-btn,
+    .ecs-btn,
+    .ers-btn
+  ) {
+    width: 100% !important;
+    min-height: 56px !important;
+    justify-content: center !important;
+  }
+}
+
 /* Canonical desktop hero footer row — intentionally last in this stylesheet. */
 @media (min-width: 1050px) {
   :is(
