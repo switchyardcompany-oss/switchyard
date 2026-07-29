@@ -22,6 +22,14 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Keentel General Contractors | Open 24/7",
   description: "Residential, Commercial & Industrial Experts",
+  metadataBase: new URL("https://keentelgeneralcontractors.com"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: [
       {
