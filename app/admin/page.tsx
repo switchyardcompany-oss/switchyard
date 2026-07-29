@@ -64,7 +64,7 @@ export default function AdminPage() {
         border: '1px solid #e5e3e6',
         textAlign: 'center'
       }}>
-        <h1 style={{ fontFamily: 'Montserrat, sans-serif', color: '#12106e', fontSize: '1.8rem', marginBottom: '8px' }}>
+        <h1 style={{ fontFamily: 'var(--font-heading)', color: '#12106e', fontSize: '1.8rem', marginBottom: '8px' }}>
           Admin Login
         </h1>
         <p style={{ color: '#5c5a61', marginBottom: '24px' }}>
@@ -114,7 +114,7 @@ export default function AdminPage() {
   return (
     <div style={{ maxWidth: 800, margin: '40px auto', padding: '20px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-        <h1 style={{ fontFamily: 'Montserrat, sans-serif', color: '#12106e' }}>Admin Dashboard</h1>
+        <h1 style={{ fontFamily: 'var(--font-heading)', color: '#12106e' }}>Admin Dashboard</h1>
         <button
           onClick={handleLogout}
           style={{
@@ -135,7 +135,7 @@ export default function AdminPage() {
         <p>Loading blogs...</p>
       ) : (
         <div style={{ marginTop: '20px' }}>
-          <h3 style={{ fontFamily: 'Montserrat, sans-serif', color: '#12106e', marginBottom: '16px' }}>
+          <h3 style={{ fontFamily: 'var(--font-heading)', color: '#12106e', marginBottom: '16px' }}>
             Your Blogs
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -175,7 +175,7 @@ export default function AdminPage() {
       )}
 
       <div style={{ marginTop: '40px', padding: '20px', background: '#f9f8f9', borderRadius: '8px', border: '1px solid #e5e3e6' }}>
-        <h3 style={{ fontFamily: 'Montserrat, sans-serif', color: '#12106e' }}>Create New Blog</h3>
+        <h3 style={{ fontFamily: 'var(--font-heading)', color: '#12106e' }}>Create New Blog</h3>
         <p style={{ color: '#5c5a61', marginTop: '8px' }}>
           Create a new JSON file in <code style={{ background: '#e5e3e6', padding: '2px 6px', borderRadius: '4px' }}>content/blog/</code> with the slug as the filename.
         </p>

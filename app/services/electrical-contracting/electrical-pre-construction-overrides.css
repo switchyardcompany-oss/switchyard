@@ -1,0 +1,318 @@
+.electrical-pc-hero-photo{position:absolute;inset:0;background-position:center;background-size:cover}
+.electrical-pc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
+.electrical-pc-process{position:relative;isolation:isolate;background-image:linear-gradient(rgba(16,13,104,.86),rgba(16,13,104,.9)),var(--electrical-process-image);background-position:center;background-size:cover}
+.electrical-pc-process>.pc-container{position:relative;z-index:1}
+@media(max-width:600px){.pc-hero-title .service-hero-title-line{white-space:normal}}
+
+/* Shared electrical capability panel */
+.electrical-capabilities-section{background:#f4f3ef}
+.electrical-capabilities-section>.pc-container{padding:clamp(32px,4vw,56px);border:1px solid #d8d6cf;border-radius:16px;background:#fff;box-shadow:0 24px 60px rgba(24,22,50,.09);position:relative;overflow:hidden}
+.electrical-capabilities-section>.pc-container::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:#17136f}
+.electrical-capabilities-header{max-width:900px;margin-bottom:40px}
+.electrical-capabilities-header .pc-section-heading{max-width:760px;margin-bottom:16px}
+.electrical-capabilities-header .pc-section-body{max-width:760px;margin:0}
+.pc-about-page .electrical-capabilities-section .pc-services-layout{grid-template-columns:minmax(300px,.82fr) minmax(0,1.18fr);gap:24px;align-items:stretch}
+.electrical-capabilities-section .pc-services-left{min-width:0}
+.pc-about-page .electrical-capabilities-section .pc-services-image-wrapper{height:100%;min-height:390px;margin:0;border:1px solid #d8d6cf;border-radius:10px;overflow:hidden;position:relative}
+.pc-about-page .electrical-capabilities-section .pc-services-image-wrapper::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,9,48,.28));pointer-events:none}
+.pc-about-page .electrical-capabilities-section .pc-services-image{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;filter:saturate(.82) contrast(1.04)}
+.pc-about-page .electrical-capabilities-section .pc-services-right{padding:30px;border:1px solid #d8d6cf;border-radius:10px;background:#faf9f6}
+.electrical-capabilities-section .pc-services-right-header{margin-bottom:16px;padding-bottom:20px;border-bottom:1px solid #d8d6cf}
+.electrical-capabilities-section .pc-services-right-header span{font-size:23px}
+.electrical-capabilities-section .pc-services-right-header p{font-size:14px}
+.electrical-capabilities-section .pc-services-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;align-content:start}
+.electrical-capabilities-section .pc-service-item{min-height:0;height:auto;padding:13px 2px;border:0;border-bottom:1px solid #d8d6cf;border-radius:0;background:transparent;box-shadow:none;transform:none}
+.electrical-capabilities-section .pc-service-item:hover{border-color:#17136f;background:transparent;transform:translateX(3px)}
+.electrical-capabilities-section .pc-service-index{font-size:11px}
+.electrical-capabilities-section .pc-service-name{font-size:13px;line-height:1.35}
+.electrical-capabilities-section .pc-service-check{width:18px;height:18px;font-size:10px}
+.pc-project-type-image>img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* Compact premium audience cards */
+.electrical-audience-section{background:#f7f7fb}
+.electrical-audience-section .pc-audience-header{align-items:end}
+.electrical-audience-section .pc-audience-header>.pc-section-body{max-width:500px;padding-left:26px;border-left:3px solid #b51f91}
+.pc-about-page .electrical-audience-section .pc-clients-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:38px}
+.pc-about-page .electrical-audience-section .pc-client-card{display:grid;grid-template-columns:48px minmax(0,1fr);align-items:start;min-height:0;height:auto;padding:22px;gap:16px;border:1px solid #d9d8e3;border-radius:10px;background:#fff;box-shadow:0 10px 26px rgba(24,22,50,.05);position:relative;overflow:hidden}
+.pc-about-page .electrical-audience-section .pc-client-card::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:#17136f;transform:scaleY(0);transform-origin:bottom;transition:transform .3s ease}
+.electrical-audience-section .pc-client-card:hover{border-color:#17136f;transform:translateY(-3px)}
+.electrical-audience-section .pc-client-card:hover::before{transform:scaleY(1)}
+.electrical-audience-section .pc-client-card-top{display:flex;min-height:78px;margin:0;flex-direction:column;align-items:center;justify-content:space-between}
+.electrical-audience-section .pc-client-number{align-self:flex-start}
+.electrical-audience-section .pc-client-icon{width:38px;height:38px;border-radius:8px}
+.electrical-audience-section .pc-client-copy{min-width:0}
+.electrical-audience-section .pc-client-card h4{margin:1px 0 7px;color:#17136f;font-size:17px}
+.electrical-audience-section .pc-client-card p{margin:0;color:#656775;font-size:14px;line-height:1.55}
+
+/* Compact image-overlay process */
+.electrical-pc-process{padding-block:clamp(72px,8vw,104px)}
+.electrical-pc-process .pc-process-timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:none;margin-top:38px;align-items:start}
+.electrical-pc-process .pc-process-timeline::before{display:none}
+.pc-about-page .electrical-pc-process .pc-process-step{display:block;min-height:0;height:auto;padding:24px;border:1px solid rgba(255,255,255,.3);border-radius:10px;background:rgba(7,8,28,.54);backdrop-filter:blur(6px)}
+.pc-about-page .electrical-pc-process .pc-process-step:hover{border-color:#fff;background:rgba(7,8,28,.62);transform:translateY(-3px)}
+.electrical-pc-process .pc-process-step-marker{display:grid;width:42px;height:42px;margin:0 0 18px;place-items:center;border:0;border-radius:7px;background:#b51f91;color:#fff}
+.electrical-pc-process .pc-process-step-marker span{position:static;width:auto;height:auto;border:0;background:transparent;color:#fff}
+.pc-about-page .electrical-pc-process .pc-process-step-content,.pc-about-page .electrical-pc-process .pc-process-step:nth-child(even) .pc-process-step-content{display:block;text-align:left}
+.electrical-pc-process .pc-process-step-content h3{margin:0 0 10px;color:#fff;font-size:17px}
+.electrical-pc-process .pc-process-step-content p{margin:0;color:rgba(255,255,255,.82);font-size:14px;line-height:1.55}
+
+/* White closing section with a site-width navy panel */
+.electrical-final-cta{padding:72px 24px;background:#fff!important;background-image:none!important;color:#fff}
+.electrical-final-cta::before{display:none}
+.electrical-final-cta>.pc-container{width:100%;max-width:var(--max-width,1150px);padding:44px clamp(24px,5vw,64px);border:1px solid #29247d;border-radius:14px;background:#17136f;box-shadow:0 18px 44px rgba(23,19,111,.13);text-align:center}
+.electrical-final-cta h2{max-width:760px;margin:0 auto 26px;color:#fff}
+.electrical-final-cta .pc-final-cta-buttons{display:flex;max-width:440px;margin:0 auto;flex-direction:row;justify-content:center}
+.electrical-final-cta .pc-final-cta-buttons>a{min-width:180px}
+.electrical-final-cta .pc-btn-outline-dark{border-color:rgba(255,255,255,.72);background:transparent;color:#fff}
+
+@media(max-width:980px){
+  .pc-about-page .electrical-capabilities-section .pc-services-layout{grid-template-columns:1fr}
+  .pc-about-page .electrical-capabilities-section .pc-services-image-wrapper{min-height:320px}
+  .electrical-capabilities-section .pc-services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pc-about-page .electrical-audience-section .pc-clients-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .electrical-pc-process .pc-process-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .electrical-capabilities-section>.pc-container{width:calc(100% - 24px);padding:24px 16px;border-radius:10px}
+  .pc-about-page .electrical-capabilities-section .pc-services-image-wrapper{min-height:230px}
+  .pc-about-page .electrical-capabilities-section .pc-services-right{padding:22px 16px}
+  .electrical-capabilities-section .pc-services-grid{grid-template-columns:1fr}
+  .pc-about-page .electrical-audience-section .pc-clients-grid,.electrical-pc-process .pc-process-timeline{grid-template-columns:1fr}
+  .pc-about-page .electrical-audience-section .pc-client-card{padding:19px 17px}
+  .electrical-audience-section .pc-audience-header>.pc-section-body{padding-left:18px}
+  .electrical-final-cta{padding:56px 12px}
+  .electrical-final-cta>.pc-container{padding:36px 18px}
+  .electrical-final-cta .pc-final-cta-buttons{flex-direction:column}
+  .electrical-final-cta .pc-final-cta-buttons>a{width:100%}
+}
+
+/* Keep the electrical hub and child pages aligned with the shared premium
+   included-services system while preserving their service-specific content. */
+.electrical-capabilities-section{
+  background:#f7f7fb!important;
+}
+.electrical-capabilities-section>.pc-container{
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  overflow:visible;
+}
+.electrical-capabilities-section>.pc-container::before{
+  display:none;
+}
+.electrical-capabilities-header{
+  display:grid;
+  grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);
+  grid-template-areas:
+    "label body"
+    "title body";
+  gap:14px clamp(28px,5vw,64px);
+  align-items:end;
+  max-width:none;
+  margin:0 0 42px;
+}
+.electrical-capabilities-header .pc-section-label{
+  grid-area:label;
+  margin:0;
+}
+.electrical-capabilities-header .pc-section-heading{
+  grid-area:title;
+  max-width:15ch;
+  margin:0;
+  font-size:clamp(2.25rem,4vw,3.65rem);
+  line-height:1.02;
+  letter-spacing:-.035em;
+}
+.electrical-capabilities-header .pc-section-body{
+  grid-area:body;
+  align-self:end;
+  max-width:58ch;
+  margin:0;
+  padding:6px 0 6px clamp(22px,3vw,36px);
+  border-left:2px solid #b31f91;
+  color:#5f616b;
+  font-size:1rem;
+  line-height:1.75;
+}
+.pc-about-page .electrical-capabilities-section .pc-services-layout{
+  display:grid!important;
+  grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr)!important;
+  grid-template-areas:"image services"!important;
+  grid-template-rows:auto!important;
+  gap:clamp(28px,5vw,64px)!important;
+  align-items:stretch!important;
+}
+.pc-about-page .electrical-capabilities-section .pc-services-image-wrapper{
+  grid-area:image;
+  min-height:390px;
+  margin:0;
+  aspect-ratio:4/3;
+  border:1px solid #d9d9e4;
+  border-radius:14px;
+  box-shadow:0 18px 44px rgba(18,16,110,.09)!important;
+}
+.pc-about-page .electrical-capabilities-section .pc-services-image-wrapper::after{
+  display:none;
+}
+.pc-about-page .electrical-capabilities-section .pc-services-right{
+  position:relative;
+  grid-area:services;
+  padding:clamp(24px,3vw,36px)!important;
+  overflow:hidden;
+  border:1px solid #d9d9e4!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  box-shadow:0 18px 44px rgba(18,16,110,.07)!important;
+}
+.electrical-capabilities-section .pc-services-right-header{
+  margin:0 0 22px!important;
+  padding:0 0 18px!important;
+  border-bottom:1px solid #dedee7!important;
+}
+.electrical-capabilities-section .pc-services-right-header span{
+  font-size:1.2rem;
+}
+.electrical-capabilities-section .pc-services-right-header p{
+  font-size:.9rem;
+}
+.electrical-capabilities-section .pc-services-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+.electrical-capabilities-section .pc-service-item{
+  min-height:62px;
+  height:auto;
+  padding:13px 38px 13px 15px!important;
+  border:1px solid #e0e0e8!important;
+  border-radius:9px!important;
+  background:#f7f7fb!important;
+}
+.electrical-capabilities-section .pc-service-item:hover{
+  border-color:#12106e!important;
+  background:#fff!important;
+  transform:translateY(-2px);
+}
+.electrical-capabilities-section .pc-service-name{
+  font-size:.84rem;
+}
+
+@media(max-width:900px){
+  .electrical-capabilities-header{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "label"
+      "title"
+      "body";
+    gap:14px;
+    margin-bottom:30px;
+  }
+  .electrical-capabilities-header .pc-section-heading{
+    max-width:18ch;
+  }
+  .electrical-capabilities-header .pc-section-body{
+    max-width:64ch;
+  }
+  .pc-about-page .electrical-capabilities-section .pc-services-layout{
+    grid-template-columns:1fr!important;
+    grid-template-areas:
+      "image"
+      "services"!important;
+    gap:18px!important;
+  }
+  .pc-about-page .electrical-capabilities-section .pc-services-image-wrapper{
+    min-height:320px;
+    aspect-ratio:16/9;
+  }
+}
+@media(max-width:620px){
+  .electrical-capabilities-section>.pc-container{
+    width:min(var(--max-width,1150px),calc(100% - 32px));
+    padding:0;
+  }
+  .electrical-capabilities-header .pc-section-heading{
+    max-width:none;
+    font-size:clamp(2rem,10vw,2.65rem);
+  }
+  .electrical-capabilities-header .pc-section-body{
+    padding-left:18px;
+    font-size:.95rem;
+  }
+  .pc-about-page .electrical-capabilities-section .pc-services-image-wrapper{
+    min-height:210px;
+    max-height:240px;
+  }
+  .pc-about-page .electrical-capabilities-section .pc-services-right{
+    padding:22px 16px!important;
+    border-radius:11px!important;
+  }
+  .electrical-capabilities-section .pc-services-grid{
+    grid-template-columns:1fr!important;
+    gap:9px!important;
+  }
+  .electrical-capabilities-section .pc-service-item{
+    min-height:56px;
+  }
+}
+
+/* Main Electrical Contracting page: clearly separate the capabilities block
+   from the timeline above it without affecting any child service page. */
+.electrical-capabilities-section--hub{
+  position:relative;
+  margin-top:clamp(48px,6vw,80px);
+  padding-top:clamp(88px,9vw,128px)!important;
+  border-top:1px solid #d9d8e4;
+  background:#f7f7fb!important;
+}
+.electrical-capabilities-section--hub::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  top:-2px;
+  left:max(24px,calc((100% - var(--max-width,1150px))/2));
+  width:clamp(72px,8vw,112px);
+  height:4px;
+  border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,#12106e 0 58%,#b31f91 58% 100%);
+}
+.electrical-capabilities-section--hub .electrical-capabilities-header{
+  display:block;
+  width:100%;
+  max-width:none;
+  margin:0 0 clamp(36px,5vw,56px);
+  padding:0 0 clamp(28px,4vw,40px);
+  border-bottom:1px solid #dedee7;
+}
+.electrical-capabilities-section--hub .electrical-capabilities-header .pc-section-label{
+  display:block;
+  width:fit-content;
+  margin:0 0 14px;
+}
+.electrical-capabilities-section--hub .electrical-capabilities-header .pc-section-heading{
+  width:100%;
+  max-width:none;
+  margin:0 0 18px;
+}
+.electrical-capabilities-section--hub .electrical-capabilities-header .pc-section-body{
+  width:100%;
+  max-width:72ch;
+  margin:0;
+  padding:0;
+  border-left:0;
+}
+
+@media(max-width:620px){
+  .electrical-capabilities-section--hub{
+    margin-top:40px;
+    padding-top:72px!important;
+  }
+  .electrical-capabilities-section--hub::before{
+    left:16px;
+  }
+  .electrical-capabilities-section--hub .electrical-capabilities-header{
+    margin-bottom:28px;
+    padding-bottom:24px;
+  }
+}

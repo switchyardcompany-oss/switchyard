@@ -60,6 +60,474 @@
   }
 }
 
+/* =========================================================
+   Premium included-services layout
+   Shared by every primary service page
+   ========================================================= */
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) {
+  position: relative;
+  overflow: hidden;
+  background: #f7f7fb !important;
+}
+
+:is(
+  .pc-services-layout,
+  .dbs-services-layout,
+  .gcs-services-layout,
+  .crs-services-layout,
+  .rrs-services-layout,
+  .ecs-services-layout,
+  .ers-services-layout
+) {
+  display: grid !important;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr) !important;
+  grid-template-areas:
+    "label body"
+    "title body"
+    "image services" !important;
+  gap: 18px clamp(28px, 5vw, 64px) !important;
+  align-items: end !important;
+  padding: 0 !important;
+  overflow: visible;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+:is(
+  .pc-services-left,
+  .dbs-services-left,
+  .gcs-services-left,
+  .crs-services-left,
+  .rrs-services-left,
+  .ecs-services-left,
+  .ers-services-left
+) {
+  display: contents !important;
+}
+
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) :is(
+  .pc-section-label, .dbs-section-label, .gcs-section-label,
+  .crs-section-label, .rrs-section-label, .ecs-section-label,
+  .ers-section-label
+) {
+  grid-area: label;
+  align-self: end;
+  margin: 0 !important;
+  color: var(--color-magenta, #b31f91) !important;
+  letter-spacing: 0.16em;
+}
+
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) :is(
+  .pc-section-heading, .dbs-section-heading, .gcs-section-heading,
+  .crs-section-heading, .rrs-section-heading, .ecs-section-heading,
+  .ers-section-heading
+) {
+  grid-area: title;
+  align-self: start;
+  max-width: 15ch;
+  margin: 0 0 24px !important;
+  color: #12106e !important;
+  font-size: clamp(2.25rem, 4vw, 3.65rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) :is(
+  .pc-section-heading, .dbs-section-heading, .gcs-section-heading,
+  .crs-section-heading, .rrs-section-heading, .ecs-section-heading,
+  .ers-section-heading
+) span {
+  color: var(--color-magenta, #b31f91) !important;
+}
+
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) :is(
+  .pc-section-body, .dbs-section-body, .gcs-section-body,
+  .crs-section-body, .rrs-section-body, .ecs-section-body,
+  .ers-section-body
+) {
+  grid-area: body;
+  align-self: end;
+  max-width: 58ch;
+  margin: 0 0 24px !important;
+  padding: 6px 0 6px clamp(22px, 3vw, 36px);
+  border-left: 2px solid var(--color-magenta, #b31f91);
+  color: #5f616b;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+:is(
+  .pc-services-image-wrapper,
+  .dbs-services-image-wrapper,
+  .gcs-services-image-wrapper,
+  .crs-services-image-wrapper,
+  .rrs-services-image-wrapper,
+  .ecs-services-image-wrapper,
+  .ers-services-image-wrapper
+) {
+  grid-area: image;
+  align-self: stretch;
+  width: 100%;
+  min-height: 360px;
+  max-height: none;
+  margin: 0 !important;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid #d9d9e4;
+  border-radius: 14px !important;
+  background: #e9e9f0;
+  box-shadow: 0 18px 44px rgba(18, 16, 110, 0.09) !important;
+}
+
+:is(
+  .pc-services-image,
+  .dbs-services-image,
+  .gcs-services-image,
+  .crs-services-image,
+  .rrs-services-image,
+  .ecs-services-image,
+  .ers-services-image
+) {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  filter: saturate(0.86) contrast(1.04);
+}
+
+:is(
+  .pc-services-right,
+  .dbs-services-right,
+  .gcs-services-right,
+  .crs-services-right,
+  .rrs-services-right,
+  .ecs-services-right,
+  .ers-services-right
+) {
+  position: relative;
+  grid-area: services;
+  align-self: stretch;
+  min-width: 0;
+  padding: clamp(24px, 3vw, 36px) !important;
+  overflow: hidden;
+  border: 1px solid #d9d9e4 !important;
+  border-radius: 14px !important;
+  background: #ffffff !important;
+  box-shadow: 0 18px 44px rgba(18, 16, 110, 0.07) !important;
+}
+
+:is(
+  .pc-services-right,
+  .dbs-services-right,
+  .gcs-services-right,
+  .crs-services-right,
+  .rrs-services-right,
+  .ecs-services-right,
+  .ers-services-right
+)::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: #12106e;
+}
+
+:is(
+  .dbs-services-right,
+  .gcs-services-right,
+  .crs-services-right,
+  .rrs-services-right,
+  .ecs-services-right,
+  .ers-services-right
+)::before {
+  content: "Included Services";
+  display: block;
+  margin: 0 0 22px;
+  padding: 0 0 18px;
+  border-bottom: 1px solid #dedee7;
+  color: #12106e;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.pc-services-right-header {
+  margin: 0 0 22px !important;
+  padding: 0 0 18px !important;
+  border-bottom: 1px solid #dedee7 !important;
+}
+
+.pc-services-right-header span {
+  color: #12106e !important;
+  font-size: 1.2rem;
+}
+
+.pc-services-right-header p {
+  color: #666875 !important;
+  font-size: 0.9rem;
+}
+
+:is(
+  .pc-services-grid,
+  .dbs-services-grid,
+  .gcs-services-grid,
+  .crs-services-grid,
+  .rrs-services-grid,
+  .ecs-services-grid,
+  .ers-services-grid
+) {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  width: 100%;
+  counter-reset: included-service;
+}
+
+:is(
+  .pc-service-item,
+  .dbs-service-item,
+  .gcs-service-item,
+  .crs-service-item,
+  .rrs-service-item,
+  .ecs-service-item,
+  .ers-service-item
+) {
+  position: relative;
+  display: flex !important;
+  align-items: center;
+  min-width: 0;
+  min-height: 62px;
+  height: auto;
+  padding: 13px 15px !important;
+  gap: 11px;
+  border: 1px solid #e0e0e8 !important;
+  border-radius: 9px !important;
+  background: #f7f7fb !important;
+  color: #17156b !important;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.35;
+  counter-increment: included-service;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+:is(
+  .dbs-service-item,
+  .gcs-service-item,
+  .crs-service-item,
+  .rrs-service-item,
+  .ecs-service-item,
+  .ers-service-item
+)::before {
+  content: counter(included-service, decimal-leading-zero);
+  flex: 0 0 auto;
+  color: var(--color-magenta, #b31f91);
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+:is(
+  .pc-service-item,
+  .dbs-service-item,
+  .gcs-service-item,
+  .crs-service-item,
+  .rrs-service-item,
+  .ecs-service-item,
+  .ers-service-item
+):hover {
+  border-color: #12106e !important;
+  background: #ffffff !important;
+  color: #12106e !important;
+  transform: translateY(-2px);
+}
+
+:is(
+  .dbs-service-dot,
+  .gcs-service-dot,
+  .crs-service-dot,
+  .rrs-service-dot,
+  .ecs-service-dot,
+  .ers-service-dot
+) {
+  display: none !important;
+}
+
+.pc-service-index {
+  color: var(--color-magenta, #b31f91) !important;
+}
+
+.pc-service-item {
+  padding-right: 40px !important;
+}
+
+.pc-service-name {
+  min-width: 0;
+  color: inherit !important;
+}
+
+.pc-service-check {
+  right: 12px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: rgba(179, 31, 145, 0.09);
+  color: var(--color-magenta, #b31f91) !important;
+}
+
+@media (max-width: 900px) {
+  :is(
+    .pc-services-layout,
+    .dbs-services-layout,
+    .gcs-services-layout,
+    .crs-services-layout,
+    .rrs-services-layout,
+    .ecs-services-layout,
+    .ers-services-layout
+  ) {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "label"
+      "title"
+      "body"
+      "image"
+      "services" !important;
+    gap: 16px !important;
+  }
+
+  :is(
+    #pc-services, #dbs-services, #gcs-services, #crs-services,
+    #rrs-services, #ecs-services, #ers-services
+  ) :is(
+    .pc-section-heading, .dbs-section-heading, .gcs-section-heading,
+    .crs-section-heading, .rrs-section-heading, .ecs-section-heading,
+    .ers-section-heading
+  ) {
+    max-width: 18ch;
+    margin-bottom: 4px !important;
+  }
+
+  :is(
+    #pc-services, #dbs-services, #gcs-services, #crs-services,
+    #rrs-services, #ecs-services, #ers-services
+  ) :is(
+    .pc-section-body, .dbs-section-body, .gcs-section-body,
+    .crs-section-body, .rrs-section-body, .ecs-section-body,
+    .ers-section-body
+  ) {
+    max-width: 64ch;
+    margin-bottom: 18px !important;
+  }
+
+  :is(
+    .pc-services-image-wrapper,
+    .dbs-services-image-wrapper,
+    .gcs-services-image-wrapper,
+    .crs-services-image-wrapper,
+    .rrs-services-image-wrapper,
+    .ecs-services-image-wrapper,
+    .ers-services-image-wrapper
+  ) {
+    min-height: 320px;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 600px) {
+  :is(
+    #pc-services, #dbs-services, #gcs-services, #crs-services,
+    #rrs-services, #ecs-services, #ers-services
+  ) :is(
+    .pc-section-heading, .dbs-section-heading, .gcs-section-heading,
+    .crs-section-heading, .rrs-section-heading, .ecs-section-heading,
+    .ers-section-heading
+  ) {
+    max-width: none;
+    font-size: clamp(2rem, 10vw, 2.65rem);
+  }
+
+  :is(
+    #pc-services, #dbs-services, #gcs-services, #crs-services,
+    #rrs-services, #ecs-services, #ers-services
+  ) :is(
+    .pc-section-body, .dbs-section-body, .gcs-section-body,
+    .crs-section-body, .rrs-section-body, .ecs-section-body,
+    .ers-section-body
+  ) {
+    padding-left: 18px;
+    font-size: 0.95rem;
+  }
+
+  :is(
+    .pc-services-image-wrapper,
+    .dbs-services-image-wrapper,
+    .gcs-services-image-wrapper,
+    .crs-services-image-wrapper,
+    .rrs-services-image-wrapper,
+    .ecs-services-image-wrapper,
+    .ers-services-image-wrapper
+  ) {
+    min-height: 210px;
+    max-height: 240px;
+  }
+
+  :is(
+    .pc-services-right,
+    .dbs-services-right,
+    .gcs-services-right,
+    .crs-services-right,
+    .rrs-services-right,
+    .ecs-services-right,
+    .ers-services-right
+  ) {
+    padding: 22px 16px !important;
+    border-radius: 11px !important;
+  }
+
+  :is(
+    .pc-services-grid,
+    .dbs-services-grid,
+    .gcs-services-grid,
+    .crs-services-grid,
+    .rrs-services-grid,
+    .ecs-services-grid,
+    .ers-services-grid
+  ) {
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+  }
+
+  :is(
+    .pc-service-item,
+    .dbs-service-item,
+    .gcs-service-item,
+    .crs-service-item,
+    .rrs-service-item,
+    .ecs-service-item,
+    .ers-service-item
+  ) {
+    min-height: 56px;
+  }
+}
+
 /* ================================================================
    SERVICE HERO CASCADE LOCK
    Page-level styles and this shared stylesheet can be inserted in a
@@ -469,6 +937,438 @@
     width: 360px;
     margin: 0;
     transform: none;
+  }
+}
+
+/* Final cascade lock: project capability cards must render identically
+   regardless of page-level stylesheet insertion order. */
+:is(#pc-project-types,#dbs-project-types,#gcs-project-types,#crs-project-types,#rrs-project-types,#ecs-project-types,#ers-project-types)
+:is(.pc-section-heading,.dbs-section-heading,.gcs-section-heading,.crs-section-heading,.rrs-section-heading,.ecs-section-heading,.ers-section-heading){
+  width:100%;
+  max-width:24ch;
+  white-space:normal!important;
+}
+:is(.pc-project-types-grid,.dbs-project-types-grid,.gcs-project-types-grid,.crs-project-types-grid,.rrs-project-types-grid,.ecs-project-types-grid,.ers-project-types-grid){
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:stretch;
+  gap:clamp(18px,2.2vw,28px)!important;
+  margin-top:clamp(30px,4vw,44px)!important;
+}
+:is(.pc-project-type-card,.dbs-project-type-card,.gcs-project-type-card,.crs-project-type-card,.rrs-project-type-card,.ecs-project-type-card,.ers-project-type-card){
+  display:grid!important;
+  grid-template-rows:auto 1fr;
+  min-width:0;
+  height:100%;
+  overflow:hidden;
+  border-radius:12px!important;
+  background:#fff!important;
+}
+:is(.pc-project-type-image,.dbs-project-type-image,.gcs-project-type-image,.crs-project-type-image,.rrs-project-type-image,.ecs-project-type-image,.ers-project-type-image){
+  position:relative!important;
+  width:100%;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  border-bottom:3px solid var(--color-magenta,#b31f91);
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  background-size:cover!important;
+}
+:is(.pc-project-type-image,.dbs-project-type-image,.gcs-project-type-image,.crs-project-type-image,.rrs-project-type-image,.ecs-project-type-image,.ers-project-type-image)>img,
+:is(.gcs-project-type-photo,.crs-project-type-photo,.rrs-project-type-photo,.ecs-project-type-photo){
+  position:absolute!important;
+  inset:0!important;
+  display:block;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+:is(.pc-project-type-content,.dbs-project-type-content,.gcs-project-type-content,.crs-project-type-content,.rrs-project-type-content,.ecs-project-type-content,.ers-project-type-content){
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  height:100%;
+  padding:clamp(18px,2vw,24px)!important;
+  background:#fff!important;
+}
+:is(.pc-project-type-content,.dbs-project-type-content,.gcs-project-type-content,.crs-project-type-content,.rrs-project-type-content,.ecs-project-type-content,.ers-project-type-content) h4{
+  margin:0 0 9px!important;
+  color:#12106e!important;
+  font-size:1rem;
+  line-height:1.35;
+}
+:is(.pc-project-type-content,.dbs-project-type-content,.gcs-project-type-content,.crs-project-type-content,.rrs-project-type-content,.ecs-project-type-content,.ers-project-type-content) p{
+  margin:0!important;
+  color:#626571!important;
+  font-size:.88rem;
+  line-height:1.62;
+}
+@media(max-width:960px){
+  :is(.pc-project-types-grid,.dbs-project-types-grid,.gcs-project-types-grid,.crs-project-types-grid,.rrs-project-types-grid,.ecs-project-types-grid,.ers-project-types-grid){
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+@media(max-width:620px){
+  :is(.pc-project-types-grid,.dbs-project-types-grid,.gcs-project-types-grid,.crs-project-types-grid,.rrs-project-types-grid,.ecs-project-types-grid,.ers-project-types-grid){
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+  :is(.pc-project-type-image,.dbs-project-type-image,.gcs-project-type-image,.crs-project-type-image,.rrs-project-type-image,.ecs-project-type-image,.ers-project-type-image){
+    aspect-ratio:16/9;
+  }
+}
+
+/* Final cascade lock for the premium included-services composition. */
+:is(#pc-services,#dbs-services,#gcs-services,#crs-services,#rrs-services,#ecs-services,#ers-services){
+  background:#f7f7fb!important;
+}
+:is(.pc-services-layout,.dbs-services-layout,.gcs-services-layout,.crs-services-layout,.rrs-services-layout,.ecs-services-layout,.ers-services-layout){
+  grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr)!important;
+  grid-template-areas:"label body" "title body" "image services"!important;
+  gap:18px clamp(28px,5vw,64px)!important;
+  align-items:end!important;
+  padding:0!important;
+  overflow:visible;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+:is(#pc-services,#dbs-services,#gcs-services,#crs-services,#rrs-services,#ecs-services,#ers-services)
+:is(.pc-section-heading,.dbs-section-heading,.gcs-section-heading,.crs-section-heading,.rrs-section-heading,.ecs-section-heading,.ers-section-heading){
+  max-width:15ch;
+  margin:0 0 24px!important;
+  font-size:clamp(2.25rem,4vw,3.65rem);
+  line-height:1.02;
+  letter-spacing:-.035em;
+}
+:is(#pc-services,#dbs-services,#gcs-services,#crs-services,#rrs-services,#ecs-services,#ers-services)
+:is(.pc-section-body,.dbs-section-body,.gcs-section-body,.crs-section-body,.rrs-section-body,.ecs-section-body,.ers-section-body){
+  max-width:58ch;
+  margin:0 0 24px!important;
+  padding:6px 0 6px clamp(22px,3vw,36px);
+  border-left:2px solid var(--color-magenta,#b31f91);
+  font-size:1rem;
+  line-height:1.75;
+}
+:is(.pc-services-image-wrapper,.dbs-services-image-wrapper,.gcs-services-image-wrapper,.crs-services-image-wrapper,.rrs-services-image-wrapper,.ecs-services-image-wrapper,.ers-services-image-wrapper){
+  min-height:360px;
+  max-height:none;
+  margin:0!important;
+  aspect-ratio:4/3;
+  border:1px solid #d9d9e4;
+  border-radius:14px!important;
+  box-shadow:0 18px 44px rgba(18,16,110,.09)!important;
+}
+:is(.pc-services-right,.dbs-services-right,.gcs-services-right,.crs-services-right,.rrs-services-right,.ecs-services-right,.ers-services-right){
+  position:relative;
+  align-self:stretch;
+  padding:clamp(24px,3vw,36px)!important;
+  overflow:hidden;
+  border:1px solid #d9d9e4!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  box-shadow:0 18px 44px rgba(18,16,110,.07)!important;
+}
+:is(.dbs-services-right,.gcs-services-right,.crs-services-right,.rrs-services-right,.ecs-services-right,.ers-services-right)::before{
+  margin:0 0 22px;
+  padding:0 0 18px;
+  border-bottom:1px solid #dedee7;
+  font-size:1.15rem;
+}
+:is(.pc-services-grid,.dbs-services-grid,.gcs-services-grid,.crs-services-grid,.rrs-services-grid,.ecs-services-grid,.ers-services-grid){
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:12px!important;
+}
+:is(.pc-service-item,.dbs-service-item,.gcs-service-item,.crs-service-item,.rrs-service-item,.ecs-service-item,.ers-service-item){
+  min-height:62px;
+  height:auto;
+  padding:13px 15px!important;
+  border:1px solid #e0e0e8!important;
+  border-radius:9px!important;
+  background:#f7f7fb!important;
+  color:#17156b!important;
+}
+.pc-service-item{
+  padding-right:40px!important;
+}
+:is(.pc-service-item,.dbs-service-item,.gcs-service-item,.crs-service-item,.rrs-service-item,.ecs-service-item,.ers-service-item):hover{
+  border-color:#12106e!important;
+  background:#fff!important;
+  transform:translateY(-2px);
+}
+
+@media(max-width:900px){
+  :is(.pc-services-layout,.dbs-services-layout,.gcs-services-layout,.crs-services-layout,.rrs-services-layout,.ecs-services-layout,.ers-services-layout){
+    grid-template-columns:1fr!important;
+    grid-template-areas:"label" "title" "body" "image" "services"!important;
+    gap:16px!important;
+  }
+  :is(#pc-services,#dbs-services,#gcs-services,#crs-services,#rrs-services,#ecs-services,#ers-services)
+  :is(.pc-section-heading,.dbs-section-heading,.gcs-section-heading,.crs-section-heading,.rrs-section-heading,.ecs-section-heading,.ers-section-heading){
+    max-width:18ch;
+    margin-bottom:4px!important;
+  }
+  :is(#pc-services,#dbs-services,#gcs-services,#crs-services,#rrs-services,#ecs-services,#ers-services)
+  :is(.pc-section-body,.dbs-section-body,.gcs-section-body,.crs-section-body,.rrs-section-body,.ecs-section-body,.ers-section-body){
+    max-width:64ch;
+    margin-bottom:18px!important;
+  }
+  :is(.pc-services-image-wrapper,.dbs-services-image-wrapper,.gcs-services-image-wrapper,.crs-services-image-wrapper,.rrs-services-image-wrapper,.ecs-services-image-wrapper,.ers-services-image-wrapper){
+    min-height:320px;
+    aspect-ratio:16/9;
+  }
+}
+@media(max-width:600px){
+  :is(#pc-services,#dbs-services,#gcs-services,#crs-services,#rrs-services,#ecs-services,#ers-services)
+  :is(.pc-section-heading,.dbs-section-heading,.gcs-section-heading,.crs-section-heading,.rrs-section-heading,.ecs-section-heading,.ers-section-heading){
+    max-width:none;
+    font-size:clamp(2rem,10vw,2.65rem);
+  }
+  :is(#pc-services,#dbs-services,#gcs-services,#crs-services,#rrs-services,#ecs-services,#ers-services)
+  :is(.pc-section-body,.dbs-section-body,.gcs-section-body,.crs-section-body,.rrs-section-body,.ecs-section-body,.ers-section-body){
+    padding-left:18px;
+    font-size:.95rem;
+  }
+  :is(.pc-services-image-wrapper,.dbs-services-image-wrapper,.gcs-services-image-wrapper,.crs-services-image-wrapper,.rrs-services-image-wrapper,.ecs-services-image-wrapper,.ers-services-image-wrapper){
+    min-height:210px;
+    max-height:240px;
+  }
+  :is(.pc-services-right,.dbs-services-right,.gcs-services-right,.crs-services-right,.rrs-services-right,.ecs-services-right,.ers-services-right){
+    padding:22px 16px!important;
+    border-radius:11px!important;
+  }
+  :is(.pc-services-grid,.dbs-services-grid,.gcs-services-grid,.crs-services-grid,.rrs-services-grid,.ecs-services-grid,.ers-services-grid){
+    grid-template-columns:1fr!important;
+    gap:9px!important;
+  }
+  :is(.pc-service-item,.dbs-service-item,.gcs-service-item,.crs-service-item,.rrs-service-item,.ecs-service-item,.ers-service-item){
+    min-height:56px;
+  }
+}
+
+/* =========================================================
+   Premium project capability cards
+   Normalizes background images, Next/Image, and plain images
+   across every service detail page.
+   ========================================================= */
+:is(
+  #pc-project-types,#dbs-project-types,#gcs-project-types,
+  #crs-project-types,#rrs-project-types,#ecs-project-types,
+  #ers-project-types
+) {
+  overflow: hidden;
+  background: #12106e !important;
+}
+
+:is(
+  #pc-project-types,#dbs-project-types,#gcs-project-types,
+  #crs-project-types,#rrs-project-types,#ecs-project-types,
+  #ers-project-types
+) :is(
+  .pc-section-heading,.dbs-section-heading,.gcs-section-heading,
+  .crs-section-heading,.rrs-section-heading,.ecs-section-heading,
+  .ers-section-heading
+) {
+  width: 100%;
+  max-width: 24ch;
+  margin-bottom: 0;
+  color: #ffffff !important;
+  white-space: normal !important;
+  text-wrap: balance;
+}
+
+:is(
+  .pc-project-types-grid,.dbs-project-types-grid,.gcs-project-types-grid,
+  .crs-project-types-grid,.rrs-project-types-grid,.ecs-project-types-grid,
+  .ers-project-types-grid
+) {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  align-items: stretch;
+  gap: clamp(18px, 2.2vw, 28px) !important;
+  margin-top: clamp(30px, 4vw, 44px) !important;
+}
+
+:is(
+  .pc-project-type-card,.dbs-project-type-card,.gcs-project-type-card,
+  .crs-project-type-card,.rrs-project-type-card,.ecs-project-type-card,
+  .ers-project-type-card
+) {
+  display: grid !important;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.28) !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  box-shadow: 0 16px 38px rgba(4,3,35,.22) !important;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+:is(
+  .pc-project-type-card,.dbs-project-type-card,.gcs-project-type-card,
+  .crs-project-type-card,.rrs-project-type-card,.ecs-project-type-card,
+  .ers-project-type-card
+):hover {
+  border-color: rgba(255,255,255,.9) !important;
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(4,3,35,.32) !important;
+}
+
+:is(
+  .pc-project-type-image,.dbs-project-type-image,.gcs-project-type-image,
+  .crs-project-type-image,.rrs-project-type-image,.ecs-project-type-image,
+  .ers-project-type-image
+) {
+  position: relative !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 0;
+  border-bottom: 3px solid var(--color-magenta,#b31f91);
+  background-color: #d9d9e2;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+:is(
+  .pc-project-type-image,.dbs-project-type-image,.gcs-project-type-image,
+  .crs-project-type-image,.rrs-project-type-image,.ecs-project-type-image,
+  .ers-project-type-image
+) > img,
+:is(
+  .gcs-project-type-photo,.crs-project-type-photo,
+  .rrs-project-type-photo,.ecs-project-type-photo
+) {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  transition: transform .45s ease;
+}
+
+:is(
+  .pc-project-type-card,.dbs-project-type-card,.gcs-project-type-card,
+  .crs-project-type-card,.rrs-project-type-card,.ecs-project-type-card,
+  .ers-project-type-card
+):hover :is(
+  .pc-project-type-image,.dbs-project-type-image,.gcs-project-type-image,
+  .crs-project-type-image,.rrs-project-type-image,.ecs-project-type-image,
+  .ers-project-type-image
+) {
+  transform: none !important;
+}
+
+:is(
+  .pc-project-type-card,.dbs-project-type-card,.gcs-project-type-card,
+  .crs-project-type-card,.rrs-project-type-card,.ecs-project-type-card,
+  .ers-project-type-card
+):hover :is(
+  .pc-project-type-image,.dbs-project-type-image,.gcs-project-type-image,
+  .crs-project-type-image,.rrs-project-type-image,.ecs-project-type-image,
+  .ers-project-type-image
+) > img,
+:is(
+  .gcs-project-type-card:hover .gcs-project-type-photo,
+  .crs-project-type-card:hover .crs-project-type-photo,
+  .rrs-project-type-card:hover .rrs-project-type-photo,
+  .ecs-project-type-card:hover .ecs-project-type-photo
+) {
+  transform: scale(1.045);
+}
+
+:is(
+  .pc-project-type-content,.dbs-project-type-content,.gcs-project-type-content,
+  .crs-project-type-content,.rrs-project-type-content,.ecs-project-type-content,
+  .ers-project-type-content
+) {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: clamp(18px,2vw,24px) !important;
+  background: #ffffff !important;
+}
+
+:is(
+  .pc-project-type-content,.dbs-project-type-content,.gcs-project-type-content,
+  .crs-project-type-content,.rrs-project-type-content,.ecs-project-type-content,
+  .ers-project-type-content
+) h4 {
+  margin: 0 0 9px !important;
+  color: #12106e !important;
+  font-size: 1rem;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+:is(
+  .pc-project-type-content,.dbs-project-type-content,.gcs-project-type-content,
+  .crs-project-type-content,.rrs-project-type-content,.ecs-project-type-content,
+  .ers-project-type-content
+) p {
+  margin: 0 !important;
+  color: #626571 !important;
+  font-size: .88rem;
+  line-height: 1.62;
+}
+
+:is(
+  .pc-project-types-cta,.dbs-project-types-cta,.gcs-project-types-cta,
+  .crs-project-types-cta,.rrs-project-types-cta,.ecs-project-types-cta,
+  .ers-project-types-cta
+) {
+  margin-top: clamp(30px,4vw,46px) !important;
+  text-align: center;
+}
+
+@media(max-width:960px) {
+  :is(
+    .pc-project-types-grid,.dbs-project-types-grid,.gcs-project-types-grid,
+    .crs-project-types-grid,.rrs-project-types-grid,.ecs-project-types-grid,
+    .ers-project-types-grid
+  ) {
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  }
+}
+
+@media(max-width:620px) {
+  :is(
+    .pc-project-types-grid,.dbs-project-types-grid,.gcs-project-types-grid,
+    .crs-project-types-grid,.rrs-project-types-grid,.ecs-project-types-grid,
+    .ers-project-types-grid
+  ) {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  :is(
+    .pc-project-type-image,.dbs-project-type-image,.gcs-project-type-image,
+    .crs-project-type-image,.rrs-project-type-image,.ecs-project-type-image,
+    .ers-project-type-image
+  ) {
+    aspect-ratio: 16 / 9;
+  }
+
+  :is(
+    .pc-project-type-content,.dbs-project-type-content,.gcs-project-type-content,
+    .crs-project-type-content,.rrs-project-type-content,.ecs-project-type-content,
+    .ers-project-type-content
+  ) {
+    padding: 18px !important;
   }
 }
 
@@ -1097,28 +1997,6 @@
   background-size: cover !important;
   background-attachment: scroll !important;
   color: #ffffff;
-}
-
-.pc-final-cta-section {
-  background-image: url("/images/services/About%20Our%20Pre%E2%80%91Construction%20Services.jpg") !important;
-}
-.dbs-final-cta-section {
-  background-image: url("/images/services/One%20Team.%20One%20Vision.%20One%20Successful%20Project..jpg") !important;
-}
-.gcs-final-cta-section {
-  background-image: url("/images/services/construction-workers-building-site.jpg") !important;
-}
-.crs-final-cta-section {
-  background-image: url("/images/services/Office%20Renovations.jpg") !important;
-}
-.rrs-final-cta-section {
-  background-image: url("/images/services/Interior%20Renovations.jpg") !important;
-}
-.ecs-final-cta-section {
-  background-image: url("/images/services/Commercial%20Construction.jpg") !important;
-}
-.ers-final-cta-section {
-  background-image: url("/images/services/Restore%20Your%20Property%20with%20Confidence.jpg") !important;
 }
 
 :is(
@@ -2344,6 +3222,211 @@
   color: #3f3f46;
 }
 
+/* Shared professional process cards: compact, content-safe, and consistent. */
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) {
+  border-bottom: 14px solid #ffffff !important;
+}
+
+#pc-process .pc-process-timeline,
+:is(
+  .dbs-process-horizontal, .gcs-process-horizontal, .crs-process-horizontal,
+  .rrs-process-horizontal, .ecs-process-horizontal, .ers-process-horizontal
+) {
+  align-items: stretch !important;
+  gap: clamp(16px, 2vw, 24px) !important;
+}
+
+#pc-process .pc-process-step,
+:is(
+  .dbs-process-step, .gcs-process-step, .crs-process-step,
+  .rrs-process-step, .ecs-process-step, .ers-process-step
+) {
+  display: flex !important;
+  flex-direction: column;
+  position: relative !important;
+  isolation: isolate;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 250px !important;
+  height: auto !important;
+  padding: 26px 22px 24px !important;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.26) !important;
+  border-radius: 12px !important;
+  background: rgba(10, 10, 28, 0.62) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16) !important;
+  transition:
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow 0.38s ease !important;
+}
+
+#pc-process .pc-process-step::before,
+:is(
+  .dbs-process-step, .gcs-process-step, .crs-process-step,
+  .rrs-process-step, .ecs-process-step, .ers-process-step
+)::before {
+  content: "" !important;
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: inherit;
+  background: #ffffff;
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 0.32s ease,
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+#pc-process .pc-process-step > *,
+:is(
+  .dbs-process-step, .gcs-process-step, .crs-process-step,
+  .rrs-process-step, .ecs-process-step, .ers-process-step
+) > * {
+  position: relative;
+  z-index: 1;
+}
+
+#pc-process .pc-process-step::after,
+:is(
+  .dbs-process-step, .gcs-process-step, .crs-process-step,
+  .rrs-process-step, .ecs-process-step, .ers-process-step
+)::after {
+  content: "" !important;
+  position: absolute;
+  z-index: 2;
+  inset: 0 20px auto;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: var(--color-magenta, #b31f91);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+#pc-process .pc-process-step-content,
+#pc-process .pc-process-step:nth-child(even) .pc-process-step-content,
+:is(
+  .dbs-process-step-content, .gcs-process-step-content, .crs-process-step-content,
+  .rrs-process-step-content, .ecs-process-step-content, .ers-process-step-content
+) {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+#pc-process .pc-process-step-content :is(h3, p),
+:is(
+  .dbs-process-step-content, .gcs-process-step-content, .crs-process-step-content,
+  .rrs-process-step-content, .ecs-process-step-content, .ers-process-step-content
+) :is(h3, h4, p) {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) :is(
+  .pc-process-step, .dbs-process-step, .gcs-process-step,
+  .crs-process-step, .rrs-process-step, .ecs-process-step,
+  .ers-process-step
+):hover {
+  border-color: rgba(179, 31, 145, 0.3) !important;
+  transform: translateY(-8px) !important;
+  box-shadow:
+    0 26px 58px rgba(4, 5, 20, 0.3),
+    0 8px 18px rgba(179, 31, 145, 0.08) !important;
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) :is(
+  .pc-process-step, .dbs-process-step, .gcs-process-step,
+  .crs-process-step, .rrs-process-step, .ecs-process-step,
+  .ers-process-step
+):hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) :is(
+  .pc-process-step, .dbs-process-step, .gcs-process-step,
+  .crs-process-step, .rrs-process-step, .ecs-process-step,
+  .ers-process-step
+):hover::after {
+  transform: scaleX(1);
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) :is(
+  .pc-process-step, .dbs-process-step, .gcs-process-step,
+  .crs-process-step, .rrs-process-step, .ecs-process-step,
+  .ers-process-step
+):hover :is(h3, h4) {
+  color: #12106e !important;
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) :is(
+  .pc-process-step, .dbs-process-step, .gcs-process-step,
+  .crs-process-step, .rrs-process-step, .ecs-process-step,
+  .ers-process-step
+):hover p {
+  color: #555865 !important;
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) :is(
+  .pc-process-step-marker,
+  .dbs-process-step-number, .gcs-process-step-number,
+  .crs-process-step-number, .rrs-process-step-number,
+  .ecs-process-step-number, .ers-process-step-number
+) {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+:is(
+  #pc-process, #dbs-process, #gcs-process, #crs-process,
+  #rrs-process, #ecs-process, #ers-process
+) :is(
+  .pc-process-step, .dbs-process-step, .gcs-process-step,
+  .crs-process-step, .rrs-process-step, .ecs-process-step,
+  .ers-process-step
+):hover :is(
+  .pc-process-step-marker,
+  .dbs-process-step-number, .gcs-process-step-number,
+  .crs-process-step-number, .rrs-process-step-number,
+  .ecs-process-step-number, .ers-process-step-number
+) {
+  transform: translateY(-2px) scale(1.06) !important;
+  box-shadow: 0 8px 20px rgba(179, 31, 145, 0.28) !important;
+}
+
 @media (min-width: 1001px) {
   :is(
     #dbs-project-types, #gcs-project-types, #crs-project-types,
@@ -2376,13 +3459,6 @@
   background-attachment: fixed;
   color: #fff;
 }
-
-.dbs-final-cta-section { background-image: url("/images/recent-work/multifamily-community.jpeg"); }
-.gcs-final-cta-section { background-image: url("/images/recent-work/homeward-bound.jpeg"); }
-.crs-final-cta-section { background-image: url("/images/services/commercial-remodeling.webp"); }
-.rrs-final-cta-section { background-image: url("/images/services/residential-remodeling.webp"); }
-.ecs-final-cta-section { background-image: url("/images/services/electrical-contracting.webp"); }
-.ers-final-cta-section { background-image: url("/images/services/emergency-restoration.webp"); }
 
 :is(
   .dbs-final-cta-section, .gcs-final-cta-section, .crs-final-cta-section,

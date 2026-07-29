@@ -8,6 +8,7 @@ import ProcessSection from "@/components/ProcessSection";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import ServiceAreaMap from "@/components/ServiceAreaMap";
 import CTASection from "@/components/CTASection";
+import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <ServiceAreaMap />
       <CTASection />
       <WhyKeentel />
+      <FAQSection />
     </>
   );
 }

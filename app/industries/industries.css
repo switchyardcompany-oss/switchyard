@@ -3,8 +3,6 @@
    Stylesheet. All class names are prefixed with `kgc-` to avoid collisions.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
-
 :root {
   --color-magenta: #a6238f;
   --color-navy: #12106e;
@@ -16,8 +14,8 @@
   --color-text: #2d2d33;
   --color-text-light: #5c5a61;
   --color-text-muted: #7a7880;
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Poppins', sans-serif;
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-body: var(--font-poppins), sans-serif;
 
   --kgc-gradient-primary: linear-gradient(135deg, var(--color-navy) 0%, var(--color-magenta) 100%);
   --kgc-gradient-diagonal: linear-gradient(115deg, rgba(18,16,110,0.94) 0%, rgba(18,16,110,0.82) 38%, rgba(166,35,143,0.72) 100%);

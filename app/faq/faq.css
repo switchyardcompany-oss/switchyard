@@ -9,7 +9,7 @@
   --keentel-color-text: #2d2d33;
   --keentel-color-text-light: #5c5a61;
   --keentel-color-text-muted: #7a7880;
-  --keentel-font-heading: "Montserrat", sans-serif;
+  --keentel-font-heading: var(--font-montserrat), sans-serif;
   --keentel-font-body: 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --keentel-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
   --keentel-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);

@@ -11,8 +11,8 @@
   --color-text: #2d2d33;
   --color-text-light: #5c5a61;
   --color-text-muted: #7a7880;
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Poppins', sans-serif;
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-body: var(--font-poppins), sans-serif;
 
   font-family: var(--font-body);
   color: var(--color-text);

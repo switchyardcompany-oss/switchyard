@@ -1,20 +1,26 @@
 import type { Metadata } from "next";
-import { Montserrat, Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
-import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
+const montserrat = localFont({
+  src: "./fonts/Montserrat-Latin-Variable.woff2",
+  weight: "100 900",
+  style: "normal",
   display: "swap",
   variable: "--font-montserrat",
 });
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+const poppins = localFont({
+  src: [
+    { path: "./fonts/Poppins-Latin-300.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/Poppins-Latin-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/Poppins-Latin-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/Poppins-Latin-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/Poppins-Latin-700.woff2", weight: "700", style: "normal" },
+  ],
   display: "swap",
   variable: "--font-poppins",
 });
@@ -63,7 +69,6 @@ export default function RootLayout({
         <TopBar />
         <Header />
         <main className="main">{children}</main>
-        <FAQSection />
         <Footer />
       </body>
     </html>

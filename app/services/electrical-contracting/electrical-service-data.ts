@@ -1,0 +1,280 @@
+export type ElectricalServicePage = {
+  slug: string;
+  eyebrow: string;
+  title: string;
+  accent: string;
+  intro: string;
+  overview: string;
+  heroImage: string;
+  heroVideo?: string;
+  featureImage: string;
+  services: { title: string; description: string }[];
+  process: { title: string; description: string }[];
+  faqs: { question: string; answer: string }[];
+  sourcePages: string[];
+};
+
+const oldSite = "https://www.keentelelectricalcontractors.com";
+const item = (title: string, description: string) => ({ title, description });
+
+export const electricalServicePages: ElectricalServicePage[] = [
+  {
+    slug: "residential-services",
+    eyebrow: "RESIDENTIAL ELECTRICAL SERVICES",
+    title: "Safe, Reliable Electrical Work",
+    accent: "for Your Home.",
+    intro: "Professional residential electrical services for repairs, upgrades, new installations, backup power, and modern home technology.",
+    overview: "From a dedicated circuit or ceiling fan to a panel replacement or whole-home rewiring project, our team plans each installation around safety, code requirements, and the needs of your property.",
+    heroImage: "/images/electrical-services/residential-inspections.jpg",
+    heroVideo: "/Video/residential-services.mp4",
+    featureImage: "/images/electrical-services/residential-inspections.jpg",
+    services: [
+      item("Panel Upgrades & Replacement", "Service-panel evaluation, replacement, and capacity upgrades for changing household electrical needs."),
+      item("Home Rewiring", "Targeted and whole-home wiring improvements for renovations, aging systems, and new electrical demands."),
+      item("Interior & Exterior Lighting", "Lighting installation and upgrades for living spaces, landscapes, pathways, and security needs."),
+      item("Smart Home Electrical Work", "Electrical preparation and installation support for connected switches, controls, and devices."),
+      item("Ceiling Fan Installation", "Secure fan installation, replacement, switching, and electrical-box preparation."),
+      item("Dedicated Circuits", "Properly sized circuits for appliances, workshops, HVAC equipment, and higher-demand loads."),
+      item("EV Charger Installation", "Residential charging-circuit planning and professional charger installation."),
+      item("Battery Storage", "Electrical preparation and installation coordination for compatible home battery-storage systems."),
+      item("Standby Generators", "Generator installation planning, electrical connections, and integration with the home electrical system."),
+      item("Transfer Switches & Monitoring", "Automatic or portable transfer-switch installation and compatible remote-monitoring setup."),
+      item("Inspections & Code Corrections", "Electrical inspections, issue identification, and corrective work based on the approved scope."),
+      item("Troubleshooting & Repairs", "Systematic diagnosis of outages, tripping breakers, faulty devices, and other electrical concerns."),
+    ],
+    process: [
+      item("Discuss Your Needs", "We review the concern, property conditions, planned improvement, and desired outcome."),
+      item("Evaluate the System", "Existing equipment, capacity, access, and installation requirements are assessed."),
+      item("Complete the Work", "The approved scope is installed with attention to safety, workmanship, and coordination."),
+      item("Test & Review", "The completed work is tested and the operating details are reviewed with you."),
+    ],
+    faqs: [
+      item("When should an electrical panel be replaced?", "A replacement may be appropriate when capacity is insufficient, equipment is damaged or obsolete, breakers trip repeatedly, or a renovation adds significant demand. An on-site evaluation determines the proper scope."),
+      item("Can you install an EV charger at my home?", "Yes. Installation begins with a review of charger requirements, available panel capacity, circuit route, and mounting location."),
+      item("Do you install standby generators and transfer switches?", "Yes. Generator and transfer-switch work can be planned as an integrated backup-power solution based on the property and selected equipment."),
+      item("Can you add a circuit for a new appliance?", "Yes. Dedicated circuits can be installed for appliances, equipment, workshops, and other loads, subject to an electrical assessment."),
+    ].map(({ title, description }) => ({ question: title, answer: description })),
+    sourcePages: [`${oldSite}/residential-services`, `${oldSite}/electrical-panel-upgrade-and-replacement`, `${oldSite}/standby-generators`, `${oldSite}/portable-power`, `${oldSite}/ev-chargers`, `${oldSite}/battery-storage`],
+  },
+  {
+    slug: "commercial-services",
+    eyebrow: "COMMERCIAL ELECTRICAL SERVICES",
+    title: "Electrical Systems That Support",
+    accent: "Business Operations.",
+    intro: "Coordinated electrical construction, upgrades, and maintenance for offices, retail spaces, warehouses, and commercial facilities.",
+    overview: "Commercial electrical work must support daily operations while coordinating with schedules, tenants, equipment, and other trades. We organize each scope around clear planning and dependable execution.",
+    heroImage: "/images/electrical-services/commercial-construction.jpg",
+    heroVideo: "/Video/commercial-electrical-services.mp4",
+    featureImage: "/images/electrical-services/commercial-maintenance.jpg",
+    services: [
+      item("Commercial Wiring", "Branch wiring, distribution, devices, and infrastructure for new and existing commercial spaces."),
+      item("Office & Retail Build-Outs", "Electrical work coordinated with tenant layouts, lighting plans, equipment, and occupancy needs."),
+      item("Warehouse & Equipment Wiring", "Power connections and circuits for warehouse operations and compatible commercial equipment."),
+      item("Lighting & Controls", "Interior, exterior, site, security, and energy-conscious lighting improvements."),
+      item("Emergency Power & UPS", "Electrical integration for compatible generators, transfer equipment, and uninterruptible power systems."),
+      item("Electrical Maintenance", "Planned service and corrective work that helps address issues before they disrupt operations."),
+      item("Inspections & Code Compliance", "Existing-condition reviews, documented findings, and code-correction scopes."),
+      item("Dedicated Circuits", "Circuits for specialized equipment, appliances, technology systems, and operational loads."),
+      item("Energy-Efficiency Upgrades", "Practical lighting, control, and equipment improvements based on facility needs."),
+      item("EV & Battery Infrastructure", "Electrical preparation for compatible charging and energy-storage equipment."),
+    ],
+    process: [
+      item("Facility Review", "We assess operational needs, infrastructure, drawings, access, and scheduling constraints."),
+      item("Scope Coordination", "The electrical scope is coordinated with ownership, management, and other project teams."),
+      item("Installation", "Work proceeds through planned phases designed to reduce disruption where practical."),
+      item("Testing & Turnover", "Installed systems are tested and relevant project information is organized for turnover."),
+    ],
+    faqs: [
+      { question: "Can electrical work be phased around business operations?", answer: "Many scopes can be sequenced around access and operational requirements. Available options depend on the facility, safety conditions, and work being performed." },
+      { question: "Do you handle tenant improvement electrical work?", answer: "Yes. We support office, retail, and commercial build-outs with wiring, lighting, devices, equipment connections, and related electrical work." },
+      { question: "Can you evaluate an existing commercial electrical system?", answer: "Yes. An assessment can identify visible conditions, capacity considerations, maintenance needs, and items requiring further investigation." },
+      { question: "Do you provide emergency-power electrical work?", answer: "Yes. We can support the electrical portion of compatible generator, transfer, and UPS installations based on the approved scope." },
+    ],
+    sourcePages: [`${oldSite}/services/commercial-electrical-services`],
+  },
+  {
+    slug: "industrial-services",
+    eyebrow: "INDUSTRIAL ELECTRICAL SERVICES",
+    title: "Powering Equipment, Facilities,",
+    accent: "and Production.",
+    intro: "Industrial electrical solutions planned around equipment requirements, facility infrastructure, safety, and operational continuity.",
+    overview: "Industrial facilities depend on coordinated power distribution and reliable equipment connections. Our approach begins with operating requirements and develops a clear scope for installation, upgrades, maintenance, or repair.",
+    heroImage: "/images/electrical-services/project-industrial.jpg",
+    heroVideo: "/Video/industrial-services.mp4",
+    featureImage: "/images/electrical-services/industrial-equipment-wiring.jpg",
+    services: [
+      item("Equipment & Machinery Wiring", "Electrical connections and circuit work based on documented equipment requirements."),
+      item("Warehouse Electrical Systems", "Distribution, lighting, devices, and equipment power for warehousing and logistics."),
+      item("Power Distribution", "Distribution equipment, feeders, panels, and related infrastructure for facility loads."),
+      item("Panel & Infrastructure Upgrades", "Planned upgrades for aging equipment, capacity changes, and facility expansion."),
+      item("Controls & Automation Support", "Electrical installation support for compatible control panels, devices, and automation systems."),
+      item("Emergency & Backup Power", "Electrical integration for compatible generators, transfer equipment, and critical loads."),
+      item("Preventive Maintenance", "Planned reviews and maintenance scopes intended to identify developing concerns."),
+      item("Troubleshooting & Repairs", "Structured diagnosis and repair planning for equipment, circuits, and distribution issues."),
+      item("Inspections & Compliance", "Condition reviews, documented observations, and corrective electrical scopes."),
+      item("Energy & Lighting Upgrades", "Facility lighting and control improvements aligned with operational requirements."),
+    ],
+    process: [
+      item("Operational Assessment", "We document equipment, electrical requirements, infrastructure, and access constraints."),
+      item("Technical Coordination", "The scope is coordinated with facility teams, equipment information, and project requirements."),
+      item("Planned Execution", "Installation or repair work is sequenced around safety and facility operations."),
+      item("Verification", "Completed work is tested and reviewed against the approved scope."),
+    ],
+    faqs: [
+      { question: "Can you connect new industrial equipment?", answer: "Yes. We review manufacturer electrical requirements, the available distribution system, circuit routing, and coordination needs." },
+      { question: "Do you work in active facilities?", answer: "Work is planned around access, hazards, operational priorities, and required shutdowns. The final approach depends on site conditions." },
+      { question: "Can you upgrade industrial panels and distribution?", answer: "Yes. Upgrades can be scoped after reviewing existing equipment, load requirements, and project objectives." },
+      { question: "Do you provide industrial troubleshooting?", answer: "Yes. We diagnose electrical symptoms and develop a repair scope based on observed conditions and testing." },
+    ],
+    sourcePages: [`${oldSite}/industrial-services`],
+  },
+  {
+    slug: "electrical-engineering-services",
+    eyebrow: "ELECTRICAL ENGINEERING SERVICES",
+    title: "Electrical Planning Built Around",
+    accent: "Project Requirements.",
+    intro: "Coordinated electrical planning and technical support for construction, renovation, equipment, distribution, lighting, and backup-power scopes.",
+    overview: "Electrical engineering support helps define system requirements before installation. Services are tailored to the project and coordinated with available documents, equipment information, applicable requirements, and the wider construction team.",
+    heroImage: "/images/services/electrical-contracting.webp",
+    heroVideo: "/Video/electrical-engineering-services.mp4",
+    featureImage: "/images/electrical-services/emergency-power.jpg",
+    services: [
+      item("Electrical Design & Planning", "Project-specific planning for infrastructure, equipment, lighting, and distribution."),
+      item("Load & Capacity Review", "Evaluation of documented loads and available system capacity for planned improvements."),
+      item("Power Distribution Planning", "Coordination of distribution concepts, equipment requirements, and circuit needs."),
+      item("Lighting & Controls Planning", "Lighting and control coordination based on use, performance, and project goals."),
+      item("Backup-Power Coordination", "Planning support for compatible generators, transfer equipment, UPS, and critical loads."),
+      item("Energy-Efficiency Review", "Review of practical electrical and lighting improvements relevant to the facility."),
+      item("Controls & Automation Coordination", "Technical coordination for compatible control and automation requirements."),
+      item("Code & Documentation Support", "Electrical documentation and coordination appropriate to the approved scope."),
+      item("Existing-System Assessments", "Condition and capacity reviews that help inform renovation and upgrade decisions."),
+    ],
+    process: [
+      item("Define Requirements", "We collect project goals, available drawings, equipment data, and site information."),
+      item("Analyze Conditions", "Existing infrastructure and proposed electrical demands are reviewed."),
+      item("Coordinate the Solution", "Requirements are coordinated with architecture, construction, and equipment needs."),
+      item("Support Delivery", "Applicable technical coordination continues through the approved project phase."),
+    ],
+    faqs: [
+      { question: "When should electrical planning begin?", answer: "It should begin early enough to influence equipment selection, space planning, utility coordination, budgeting, and sequencing." },
+      { question: "Can you review an existing system before renovation?", answer: "Yes. An assessment can identify visible conditions, capacity considerations, and information needed for the planned scope." },
+      { question: "Can engineering support be coordinated with construction?", answer: "Yes. Planning can be coordinated with the broader construction team so requirements and field execution remain aligned." },
+      { question: "Are engineering services the same for every project?", answer: "No. Required services depend on project type, jurisdiction, available documents, equipment, and requested deliverables." },
+    ],
+    sourcePages: [`${oldSite}/electrical-engineering-services`],
+  },
+  {
+    slug: "troubleshooting-repairs",
+    eyebrow: "24/7 TROUBLESHOOTING & REPAIRS",
+    title: "Find the Problem.",
+    accent: "Restore Safe Operation.",
+    intro: "Responsive electrical troubleshooting for urgent faults, outages, damaged components, and unsafe operating conditions.",
+    overview: "Electrical problems can interrupt a home, business, or facility and may create serious safety concerns. Our process focuses on identifying the source, making the area safe, and explaining the recommended repair path.",
+    heroImage: "/images/electrical-services/electrical-maintenance.jpg",
+    heroVideo: "/Video/troubleshooting-repairs.mp4",
+    featureImage: "/images/electrical-services/commercial-maintenance.jpg",
+    services: [
+      item("Power Loss & Partial Outages", "Diagnosis of localized or building-area power loss after basic utility issues are ruled out."),
+      item("Repeated Breaker Trips", "Testing to identify overloads, faults, equipment issues, or circuit conditions."),
+      item("Flickering or Dimming Lights", "Evaluation of affected fixtures, circuits, connections, controls, and supply conditions."),
+      item("Hot, Buzzing, or Damaged Components", "Prompt assessment of panels, devices, wiring, and equipment showing signs of distress."),
+      item("Dead Outlets & Devices", "Circuit tracing and testing for nonworking receptacles, switches, fixtures, and equipment."),
+      item("Commercial & Industrial Faults", "Structured troubleshooting for facility circuits, equipment power, and distribution issues."),
+      item("Temporary Stabilization", "Appropriate steps to isolate unsafe conditions before permanent repairs are completed."),
+      item("Permanent Electrical Repairs", "Clear repair scopes based on testing, access, replacement requirements, and observed conditions."),
+    ],
+    process: [
+      item("Describe the Issue", "Tell us what changed, what is affected, and whether there are signs of heat, smoke, sparks, or damage."),
+      item("Make the Area Safe", "Follow emergency guidance and avoid touching damaged or energized equipment."),
+      item("Diagnose the Cause", "The affected system is inspected and tested to isolate the likely source."),
+      item("Repair & Verify", "Approved repairs are completed and the affected operation is tested."),
+    ],
+    faqs: [
+      { question: "What electrical warning signs require urgent attention?", answer: "Smoke, sparks, burning odors, visible damage, hot components, repeated breaker trips, or sudden unexplained power loss should be treated seriously. If there is immediate danger, leave and contact emergency services." },
+      { question: "Should I reset a breaker that keeps tripping?", answer: "Do not continue resetting it. A repeated trip may indicate a fault or overload; disconnect affected equipment if safe and arrange an assessment." },
+      { question: "Can you troubleshoot different property types?", answer: "Yes. Troubleshooting is available for residential, commercial, and industrial properties, subject to site conditions and equipment involved." },
+      { question: "Will every issue be repaired during the first visit?", answer: "Some can be corrected after diagnosis; others require parts, replacement equipment, additional access, coordination, or a larger approved scope." },
+    ],
+    sourcePages: [`${oldSite}/24/7-troubleshooting-repairs`],
+  },
+  {
+    slug: "projects-capabilities",
+    eyebrow: "PROJECTS & CAPABILITIES",
+    title: "Electrical Capability Across",
+    accent: "Complex Environments.",
+    intro: "Electrical construction and coordination capabilities for commercial, industrial, institutional, hospitality, and public-facing environments.",
+    overview: "Every sector brings different operational, scheduling, safety, and coordination requirements. Our electrical capabilities support project teams from early planning through installation, testing, and turnover.",
+    heroImage: "/images/electrical-services/project-office.jpg",
+    heroVideo: "/Video/Electrical Services Projects.mp4",
+    featureImage: "/images/electrical-services/project-hospitality.jpg",
+    services: [
+      item("Hospitality & Restaurants", "Electrical coordination for guest areas, kitchens, back-of-house operations, lighting, and equipment."),
+      item("Industrial & Manufacturing", "Distribution, equipment power, facility upgrades, maintenance, and operational coordination."),
+      item("Government & Public Facilities", "Electrical scopes organized around public access, documentation, scheduling, and facility needs."),
+      item("Offices & Commercial Spaces", "Power, lighting, devices, equipment, and tenant-improvement electrical work."),
+      item("Transportation Environments", "Coordinated capabilities for facilities with complex access and operational requirements."),
+      item("Religious & Institutional", "Electrical improvements for assembly, education, administration, and community spaces."),
+      item("Entertainment & Public Venues", "Electrical support for public areas, building systems, lighting, and equipment needs."),
+      item("Education Facilities", "Electrical renovations and improvements coordinated around campus and facility operations."),
+    ],
+    process: [
+      item("Understand the Environment", "We identify operating requirements, stakeholders, access, and project constraints."),
+      item("Define the Electrical Scope", "Systems, equipment, interfaces, and deliverables are documented and coordinated."),
+      item("Plan Project Delivery", "Procurement, sequencing, shutdowns, and trade coordination are organized."),
+      item("Install & Turn Over", "The work is completed, tested, and prepared for project closeout."),
+    ],
+    faqs: [
+      { question: "What project types can your electrical team support?", answer: "Capabilities include residential, commercial, industrial, institutional, hospitality, public-facility, and large construction or renovation scopes." },
+      { question: "Can electrical work be included within a general construction project?", answer: "Yes. Electrical contracting can be coordinated within an integrated construction scope or discussed as a standalone project." },
+      { question: "Do you coordinate with owners, designers, and other trades?", answer: "Yes. Electrical work commonly requires coordination with ownership, design teams, equipment suppliers, utilities, and construction trades." },
+      { question: "How is the right electrical scope established?", answer: "It begins with project documents, site conditions, equipment requirements, operational needs, jurisdictional requirements, and the requested outcome." },
+    ],
+    sourcePages: [`${oldSite}/projects-and-capabilities`],
+  },
+];
+
+export const electricalServicePageBySlug = Object.fromEntries(
+  electricalServicePages.map((page) => [page.slug, page])
+) as Record<string, ElectricalServicePage>;
+
+export const electricalHubPage: ElectricalServicePage = {
+  slug: "electrical-contracting",
+  eyebrow: "COMMERCIAL • INDUSTRIAL • RESIDENTIAL • ELECTRICAL ENGINEERING",
+  title: "Reliable Electrical Solutions",
+  accent: "Built for Performance & Safety.",
+  intro: "Professional electrical contracting services for residential, commercial, industrial, and complex construction environments.",
+  overview: "Keentel General Contractors coordinates electrical planning, installation, upgrades, maintenance, troubleshooting, and backup-power work around the needs of each property and project.",
+  heroImage: "/images/electrical-services/commercial-construction.jpg",
+  featureImage: "/images/electrical-services/commercial-maintenance.jpg",
+  services: [
+    item("Residential Services", "Panel upgrades, rewiring, lighting, smart-home work, EV charging, generators, and residential repairs."),
+    item("Commercial Services", "Commercial wiring, tenant improvements, lighting, maintenance, emergency power, and facility upgrades."),
+    item("Industrial Services", "Equipment wiring, distribution, warehouse systems, controls support, maintenance, and troubleshooting."),
+    item("Electrical Engineering Services", "Electrical planning, system assessment, load review, distribution, lighting, and technical coordination."),
+    item("24/7 Troubleshooting & Repairs", "Responsive diagnosis for outages, repeated breaker trips, damaged equipment, and unsafe conditions."),
+    item("Projects & Capabilities", "Electrical construction capabilities for hospitality, institutional, public, commercial, and industrial environments."),
+    item("Electrical Panel Upgrades", "Panel and distribution improvements based on condition, capacity, and project requirements."),
+    item("Home Rewiring", "Targeted and whole-home wiring improvements for renovation and changing electrical demands."),
+    item("Interior & Exterior Lighting", "Lighting installation and upgrades for buildings, sites, landscapes, and security needs."),
+    item("Standby Generators", "Electrical integration for compatible generators, automatic transfer switches, and monitoring."),
+    item("Portable Power", "Portable-power connections and compatible transfer-switch installation."),
+    item("EV Charger Installation", "Charging-circuit planning and professional residential or commercial installation."),
+    item("Battery Storage", "Electrical preparation and installation coordination for compatible energy-storage systems."),
+    item("Emergency Power & UPS", "Electrical work supporting compatible backup-power and critical-load systems."),
+    item("Inspections & Code Corrections", "Existing-condition reviews, documented findings, and approved corrective work."),
+    item("Dedicated Circuits", "Properly sized circuits for appliances, equipment, technology, and specialized loads."),
+  ],
+  process: [
+    item("Consultation & Assessment", "We review the property, system, project requirements, equipment, and desired outcome."),
+    item("Scope & Coordination", "The electrical scope is defined and coordinated with the owner, design team, and other trades."),
+    item("Installation & Repairs", "Approved work is completed with attention to safety, workmanship, and project sequencing."),
+    item("Testing & Turnover", "Completed systems are tested and applicable operating information is reviewed."),
+  ],
+  faqs: [
+    { question: "What electrical services do you provide?", answer: "Services include residential, commercial, industrial, electrical planning, troubleshooting, repairs, upgrades, generators, EV charging, battery storage, lighting, maintenance, and related electrical construction." },
+    { question: "Can electrical work be included in a construction project?", answer: "Yes. Electrical contracting can be coordinated within an integrated construction project or discussed as a standalone electrical scope." },
+    { question: "Do you provide generator and transfer-switch services?", answer: "Yes. Compatible standby generators, automatic or portable transfer switches, and related electrical integration can be included after evaluating the property and equipment." },
+    { question: "Which Florida licenses apply?", answer: "Keentel General Contractors lists Florida Licenses CGC1524228 and EC13014476." },
+  ],
+  sourcePages: electricalServicePages.flatMap((page) => page.sourcePages),
+};

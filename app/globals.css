@@ -20,8 +20,8 @@
             --color-text: #2d2d33;
             --color-text-light: #5c5a61;
             --color-text-muted: #7a7880;
-            --font-heading: var(--font-montserrat), 'Montserrat', sans-serif;
-            --font-body: var(--font-poppins), 'Poppins', sans-serif;
+            --font-heading: var(--font-montserrat), sans-serif;
+            --font-body: var(--font-poppins), sans-serif;
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
             --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
             --radius-sm: 4px;
@@ -530,6 +530,28 @@ body :is(
     visibility: visible;
     transform: translateY(0) scale(1);
 }
+.nav-item-has-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+@media (min-width: 1121px) {
+    .nav-item-has-dropdown.dropdown-suppressed:hover .dropdown-menu,
+    .nav-item-has-dropdown.dropdown-suppressed:focus-within .dropdown-menu {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-4px) scale(0.98);
+    }
+}
+.dropdown-menu::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    left: 0;
+    height: 10px;
+}
 
 .dropdown-link {
     display: flex;
@@ -563,6 +585,22 @@ body :is(
 .dropdown-submenu-parent {
     position: relative;
 }
+.dropdown-submenu-row {
+    display: flex;
+    align-items: center;
+}
+.dropdown-submenu-row .dropdown-link {
+    flex: 1;
+}
+.dropdown-submenu-toggle {
+    width: 36px;
+    height: 34px;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 1.35rem;
+    cursor: pointer;
+}
 .sub-dropdown-menu {
     position: absolute;
     top: 0;
@@ -584,6 +622,19 @@ body :is(
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
+}
+.dropdown-submenu-parent:focus-within .sub-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+.sub-dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 10px;
+    height: 100%;
 }
 .sub-dropdown-menu li a {
     display: block;
@@ -744,6 +795,10 @@ body :is(
     }
 
     /* Convert dropdowns to accordion on mobile */
+    .dropdown-menu::before,
+    .sub-dropdown-menu::before {
+        display: none;
+    }
     .dropdown-menu,
     .sub-dropdown-menu {
         position: static;
@@ -4680,7 +4735,7 @@ body :is(
     font-weight: 600;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: #f05bbb;
+    color: #A6238F;
     margin-bottom: 18px;
     position: relative;
 }

@@ -3,7 +3,39 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 
-export default function FAQSection() {
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+type FAQSectionProps = {
+  faqs?: FAQItem[];
+  eyebrow?: string;
+  titleLines?: [string, string];
+  subtitle?: string;
+  showAllLink?: boolean;
+};
+
+const defaultFaqs: FAQItem[] = [
+  { question: "What types of projects do you specialize in?", answer: "Commercial, industrial, institutional, multi-family, and large residential construction projects." },
+  { question: "Do you provide design-build services?", answer: "Yes. We manage planning, design coordination, and construction through one integrated team." },
+  { question: "Can you manage the entire construction project?", answer: "Absolutely. We oversee planning, scheduling, coordination, construction, quality control, and project closeout." },
+  { question: "Do you perform commercial renovations?", answer: "Yes. We complete office renovations, retail build-outs, tenant improvements, hospitality projects, and facility upgrades." },
+  { question: "Do you offer emergency restoration services?", answer: "Yes. We provide restoration and reconstruction following fire, storm, water, and structural damage." },
+  { question: "Can electrical services be included in my project?", answer: "Yes. Electrical contracting is available as part of our integrated construction services or as a standalone solution." },
+  { question: "What areas do you serve?", answer: "We serve all 67 counties in Florida, with a primary base in Tampa Bay and surrounding regions." },
+  { question: "How do you handle project budgeting?", answer: "We provide transparent estimates, track costs throughout the project, and work to keep your budget on target without compromising quality." },
+  { question: "Do you offer warranties on your work?", answer: "Yes. We stand behind our work with comprehensive warranties and a commitment to client satisfaction." },
+  { question: "How long does a typical project take?", answer: "Timelines vary based on scope and complexity. We'll provide a detailed schedule during the planning phase and keep you updated at every stage." },
+];
+
+export default function FAQSection({
+  faqs = defaultFaqs,
+  eyebrow = "Questions We Hear",
+  titleLines = ["Answers,", "before you ask."],
+  subtitle = "Clear answers to the questions clients ask most often before starting a construction project.",
+  showAllLink = true,
+}: FAQSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const answerRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   const openIndexRef = useRef<number | null>(null);
@@ -73,34 +105,18 @@ export default function FAQSection() {
     }
   };
 
-  const faqs = [
-    { question: "What types of projects do you specialize in?", answer: "Commercial, industrial, institutional, multi-family, and large residential construction projects." },
-    { question: "Do you provide design-build services?", answer: "Yes. We manage planning, design coordination, and construction through one integrated team." },
-    { question: "Can you manage the entire construction project?", answer: "Absolutely. We oversee planning, scheduling, coordination, construction, quality control, and project closeout." },
-    { question: "Do you perform commercial renovations?", answer: "Yes. We complete office renovations, retail build-outs, tenant improvements, hospitality projects, and facility upgrades." },
-    { question: "Do you offer emergency restoration services?", answer: "Yes. We provide restoration and reconstruction following fire, storm, water, and structural damage." },
-    { question: "Can electrical services be included in my project?", answer: "Yes. Electrical contracting is available as part of our integrated construction services or as a standalone solution." },
-    { question: "What areas do you serve?", answer: "We serve all 67 counties in Florida, with a primary base in Tampa Bay and surrounding regions." },
-    { question: "How do you handle project budgeting?", answer: "We provide transparent estimates, track costs throughout the project, and work to keep your budget on target without compromising quality." },
-    { question: "Do you offer warranties on your work?", answer: "Yes. We stand behind our work with comprehensive warranties and a commitment to client satisfaction." },
-    { question: "How long does a typical project take?", answer: "Timelines vary based on scope and complexity. We'll provide a detailed schedule during the planning phase and keep you updated at every stage." },
-  ];
-
   return (
     <section className="faq-section" ref={sectionRef}>
       <div className="faq-container">
         <div className="faq-layout">
           <aside className="faq-header">
-            <span className="faq-eyebrow">Questions We Hear</span>
+            <span className="faq-eyebrow">{eyebrow}</span>
             <h2 className="faq-title">
-              Answers,
+              {titleLines[0]}
               <br />
-              before you ask.
+              {titleLines[1]}
             </h2>
-            <p className="faq-subtitle">
-              Clear answers to the questions clients ask most often before starting a
-              construction project.
-            </p>
+            <p className="faq-subtitle">{subtitle}</p>
             <div className="faq-cta-wrapper">
               <Link href="/contact#contactformsection" className="faq-cta">
                 Ask Us Directly
@@ -151,9 +167,11 @@ export default function FAQSection() {
               ))}
             </div>
 
-            <div className="faq-all-link">
-              <Link href="/faq">View All FAQs</Link>
-            </div>
+            {showAllLink && (
+              <div className="faq-all-link">
+                <Link href="/faq">View All FAQs</Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

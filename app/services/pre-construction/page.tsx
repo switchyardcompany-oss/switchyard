@@ -4,6 +4,7 @@
 import { useEffect } from "react";
 import "./pre-construction.css";
 import "../service-hero.css";
+import "../project-capabilities.css";
 import WhyKeentel from "@/components/WhyKeentel";
 import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 

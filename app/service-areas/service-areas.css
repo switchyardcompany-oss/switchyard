@@ -4,8 +4,6 @@
    with a statewide coverage map motif. All classes prefixed `ktl-`.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
-
 /* --------------------------------------------------------------------------
    TOKENS
    -------------------------------------------------------------------------- */
@@ -21,8 +19,8 @@
   --color-text-light: #5c5a61;
   --color-text-muted: #7a7880;
 
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Poppins', sans-serif;
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-body: var(--font-poppins), sans-serif;
 
   --ktl-navy-rgb: 18, 16, 110;
   --ktl-magenta-rgb: 166, 35, 143;

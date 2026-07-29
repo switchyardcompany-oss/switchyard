@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef, FormEvent } from "react";
 import "./design-build.css";
 import "../service-hero.css";
+import "../project-capabilities.css";
 import WhyKeentel from "@/components/WhyKeentel";
 import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 

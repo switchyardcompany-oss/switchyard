@@ -5,6 +5,7 @@ import { useState, useEffect, useRef, FormEvent } from "react";
 import Image from "next/image";
 import "./general-construction.css";
 import "../service-hero.css";
+import "../project-capabilities.css";
 import WhyKeentel from "@/components/WhyKeentel";
 import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 
