@@ -39,13 +39,13 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/images/Favicon/KGC.png?v=7",
-        type: "image/png",
-        sizes: "1620x1620",
+        url: "/images/Favicon/kgc-sharp.svg?v=9",
+        type: "image/svg+xml",
+        sizes: "any",
       },
     ],
-    shortcut: "/images/Favicon/KGC.png?v=7",
-    apple: "/images/Favicon/KGC.png?v=7",
+    shortcut: "/images/Favicon/kgc-sharp.svg?v=9",
+    apple: "/images/Favicon/FAV%20icon.png?v=8",
   },
 };
 

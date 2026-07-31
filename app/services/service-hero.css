@@ -940,6 +940,20 @@
   }
 }
 
+/* Final full-width lock for What's Included copy across all service routes. */
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) :is(
+  .pc-section-body, .dbs-section-body, .gcs-section-body,
+  .crs-section-body, .rrs-section-body, .ecs-section-body,
+  .ers-section-body
+) {
+  width: 100% !important;
+  max-width: none !important;
+  max-inline-size: none !important;
+}
+
 /* Final cascade lock: project capability cards must render identically
    regardless of page-level stylesheet insertion order. */
 :is(#pc-project-types,#dbs-project-types,#gcs-project-types,#crs-project-types,#rrs-project-types,#ecs-project-types,#ers-project-types)

@@ -3,7 +3,41 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-export default function Hero() {
+type HeroCta = { label: string; href: string; icon?: string };
+
+type HeroProps = {
+  badge?: string;
+  titleLine1?: string;
+  titleLine2?: string;
+  titleLine2Color?: string;
+  description?: React.ReactNode;
+  primaryCta?: HeroCta;
+  secondaryCta?: HeroCta;
+};
+
+const defaultDescription = (
+  <>
+    Keentel General Contractors delivers commercial, industrial,
+    institutional, and large-scale residential construction with the
+    planning, coordination, and expertise required for successful
+    project delivery.
+    <br />
+    <span className="sec1-hero__desc-highlight">
+      From concept to completion, we provide one accountable team
+      focused on quality, safety, efficiency, and lasting results.
+    </span>
+  </>
+);
+
+export default function Hero({
+  badge = "GENERAL CONTRACTING • DESIGN-BUILD • PROJECT MANAGEMENT",
+  titleLine1 = "Building Projects That",
+  titleLine2 = "Stand the Test of Time",
+  titleLine2Color = "#a6238f",
+  description = defaultDescription,
+  primaryCta = { label: "Request a Consultation", href: "/contact#contactformsection" },
+  secondaryCta = { label: "Explore Our Services", href: "/services", icon: "fa-building" },
+}: HeroProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -49,36 +83,29 @@ export default function Hero() {
           <div
             className={`sec1-hero__content ${isLoaded ? "sec1-hero__content--visible" : ""}`}
           >
-            <span className="sec1-hero__badge">
-              GENERAL CONTRACTING • DESIGN-BUILD • PROJECT MANAGEMENT
-            </span>
+            <span className="sec1-hero__badge">{badge}</span>
             <h1 className="sec1-hero__title">
-              <span className="sec1-hero__title-line">Building Projects That</span>
-              <span className="sec1-hero__title-line" style={{ color: "#a6238f" }}>
-                Stand the Test of Time
+              <span className="sec1-hero__title-line">{titleLine1}</span>
+              <span className="sec1-hero__title-line" style={{ color: titleLine2Color }}>
+                {titleLine2}
               </span>
             </h1>
-            <p className="sec1-hero__desc">
-              Keentel General Contractors delivers commercial, industrial,
-              institutional, and large-scale residential construction with the
-              planning, coordination, and expertise required for successful
-              project delivery.
-              <br />
-              <span className="sec1-hero__desc-highlight">
-                From concept to completion, we provide one accountable team
-                focused on quality, safety, efficiency, and lasting results.
-              </span>
-            </p>
+            <p className="sec1-hero__desc">{description}</p>
             <div className="sec1-hero__bottom-row">
               <div className="sec1-hero__buttons">
                 <a
-                  href="/contact#contactformsection"
+                  href={primaryCta.href}
                   className="btn btn--primary"
                 >
-                  Request a Consultation
+                  {primaryCta.label}
                 </a>
-                <Link href="/services" className="btn btn--secondary">
-                  <i className="fa-solid fa-building"></i>&nbsp; Explore Our Services
+                <Link href={secondaryCta.href} className="btn btn--secondary">
+                  {secondaryCta.icon && (
+                    <>
+                      <i className={`fa-solid ${secondaryCta.icon}`}></i>&nbsp;
+                    </>
+                  )}
+                  {secondaryCta.label}
                 </Link>
               </div>
               <aside

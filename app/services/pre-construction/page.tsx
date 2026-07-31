@@ -84,37 +84,37 @@ export default function PreConstructionPage() {
       icon: faBuilding,
       title: "Commercial Developments",
       desc: "Office buildings, retail centers, mixed‑use developments, and business facilities.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/38/7f/c9/07/ca/v1_E10/E10AQCWB.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=0c948850b392c0ae2a54badb9913435d46fd281ebfc73bd19b935409b593367e",
+      image: "/images/services/Commercial%20Construction.jpg",
     },
     {
       icon: faIndustry,
       title: "Industrial Projects",
       desc: "Manufacturing plants, warehouses, logistics centers, and operational facilities.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/1a/da/d1/88/c0/v1_E10/E10CXB3Q.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=f444a31362c6942bb657dfee8c6d3150c8173a962660b5401a735b9ac69aafa8",
+      image: "/images/services/construction-workers-building-site.jpg",
     },
     {
       icon: faSchool,
       title: "Institutional Buildings",
       desc: "Schools, healthcare facilities, municipal buildings, and public infrastructure.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/1da902e5-8bb7-4bc2-883f-e253ca487511/a1a5d319-de7c-4538-a255-42a41016f7fa.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=67e91452b6cb3cbf1373feb59b41849d9a27c86d06e45946b0a69adb60daa953",
+      image: "/images/services/Institutional%20Projects.jpg",
     },
     {
       icon: faBuildingColumns,
       title: "Multi‑Family Developments",
       desc: "Apartment communities, condominium projects, and residential developments.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/be/9f/e9/9c/df/v1_E10/E10BW9BS.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=edca7417d1de50a85d3ffc00879c90929aab910d11f397c23b8a79a30d0fa15b",
+      image: "/images/services/Educational%20%26%20Institutional%20Buildings.jpg",
     },
     {
       icon: faHouse,
       title: "Large Residential Projects",
       desc: "Luxury homes, custom residences, additions, and complete property transformations.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/12/b7/a7/70/3d/v1_E11/E117XMXQ.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=82d802a8dd695cb8f143f605732dd6cf900e171af8f4c5aefc07c96e30932185",
+      image: "/images/services/Large%20Residential%20Projects.jpg",
     },
     {
       icon: faMaximize,
       title: "Facility Expansions",
       desc: "Projects that increase capacity while minimizing operational disruption.",
-      image: "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/9a/c3/7a/15/0e/v1_E10/E109TMD4.jpg?w=1600&cf_fit=scale-down&q=85&format=auto&s=3a023dd7818f768211c3022ff35b0b7c46c2b59718bf3860d72efc4496042f44",
+      image: "/images/services/Facility%20Expansions.jpg",
     },
   ];
 
@@ -357,7 +357,6 @@ export default function PreConstructionPage() {
                   <div className="pc-service-item" key={idx}>
                     <span className="pc-service-index">{String(idx + 1).padStart(2, "0")}</span>
                     <span className="pc-service-name">{service}</span>
-                    <span className="pc-service-check" aria-hidden="true">✓</span>
                   </div>
                 ))}
               </div>

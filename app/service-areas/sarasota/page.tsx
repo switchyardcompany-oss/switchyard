@@ -1,555 +1,147 @@
-"use client";
-
-import "./sarasota.css";
-import { useEffect, useRef, useState } from "react";
+import Hero from "@/components/Hero";
+import ServicesSection from "@/components/ServicesSection";
+import LocalAreaSection from "@/components/LocalAreaSection";
+import RecentWorkSection from "@/components/RecentWorkSection";
+import IndustriesCarousel from "@/components/IndustriesCarousel";
+import ProcessSection from "@/components/ProcessSection";
+import ReviewCarousel from "@/components/ReviewCarousel";
+import ServiceAreaMap from "@/components/ServiceAreaMap";
+import CTASection from "@/components/CTASection";
+import WhyKeentel from "@/components/WhyKeentel";
+import FAQSection from "@/components/FAQSection";
 
 export default function SarasotaPage() {
-  // ─── FAQ state ───
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const toggleFaq = (index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
-  };
-
-  // ─── Effect to set max-height whenever openIndex changes ───
-  useEffect(() => {
-    const wrappers = document.querySelectorAll(".tampa-faq-answer-wrapper");
-    wrappers.forEach((wrapper, i) => {
-      const content = contentRefs.current[i];
-      if (i === openIndex && content) {
-        const height = content.scrollHeight;
-        (wrapper as HTMLDivElement).style.maxHeight = height + "px";
-        const item = wrapper.closest(".tampa-faq-item");
-        if (item) item.classList.add("tampa-active");
-      } else {
-        (wrapper as HTMLDivElement).style.maxHeight = "0px";
-        const item = wrapper.closest(".tampa-faq-item");
-        if (item) item.classList.remove("tampa-active");
-      }
-    });
-  }, [openIndex]);
-
-  // ─── Scroll animations, counter, and FAQ initial setup ───
-  useEffect(() => {
-    const animatedElements = document.querySelectorAll(".tampa-animate-on-scroll");
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px 0px -40px 0px",
-      threshold: 0.12,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("tampa-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    animatedElements.forEach((el) => observer.observe(el));
-
-    // Counter animation for 500+ stat
-    const countUpTarget = document.querySelector(
-      ".tampa-count-up-target"
-    ) as HTMLElement | null;
-    let countUpDone = false;
-
-    const counterObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !countUpDone && countUpTarget) {
-            countUpDone = true;
-            const targetElement = countUpTarget;
-            const target = parseInt(targetElement.getAttribute("data-count") || "500");
-            const duration = 1800;
-            const startTime = performance.now();
-            const startVal = 0;
-
-            function updateCounter(currentTime: number) {
-              const elapsed = currentTime - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 3);
-              const current = Math.round(startVal + (target - startVal) * eased);
-              targetElement.textContent = current.toString();
-              if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-              } else {
-                targetElement.textContent = target.toString();
-              }
-            }
-            requestAnimationFrame(updateCounter);
-            counterObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    if (countUpTarget) {
-      const statItem = countUpTarget.closest(".tampa-stat-item");
-      if (statItem) {
-        counterObserver.observe(statItem);
-      }
-    }
-
-    return () => {
-      observer.disconnect();
-      counterObserver.disconnect();
-    };
-  }, []);
-
-  // ─── FAQ list data ───
-  const faqs = [
-    {
-      q: "Q: Are you experienced with Sarasota County's coastal construction requirements?",
-      a: "Yes. We are experienced in coastal construction across Sarasota County — including CCCL compliance, FEMA flood zone construction, barrier island building standards on Siesta Key and Longboat Key, and the coastal setback requirements enforced by the Florida DEP.",
-    },
-    {
-      q: "Q: Can you work within Sarasota's historic districts?",
-      a: "Yes. We have delivered residential and commercial construction projects within Sarasota's historic overlay districts. We are familiar with the design review requirements, material standards, and approval process applicable to historic district construction.",
-    },
-    {
-      q: "Q: How do you manage Sarasota County building permits?",
-      a: "We manage all permit applications, plan reviews, and county inspections through the Sarasota County Building Department for every project we deliver in the county.",
-    },
-    {
-      q: "Q: Do you offer emergency response in Sarasota County?",
-      a: "Yes. Our 24/7 emergency response covers all of Sarasota County. We confirm on-site arrival within 30 to 60 minutes for storm, flood, fire, and structural emergencies.",
-    },
-    {
-      q: "Q: Is your estimate free for Sarasota County projects?",
-      a: "Yes. Our initial estimate is completely free with no obligation. We visit the site and deliver a written fixed-price proposal before any contract is signed.",
-    },
-  ];
-
   return (
     <>
-      {/* Top Label */}
-      <div className="tampa-top-label">
-        <span>General Contractor — Sarasota County</span>
-        <span className="tampa-divider-label">|</span>
-        <span>Residential, Commercial &amp; Industrial Construction — Sarasota County, Florida</span>
-      </div>
+      <Hero
+        badge="GENERAL CONTRACTOR — SARASOTA COUNTY • RESIDENTIAL, COMMERCIAL & INDUSTRIAL CONSTRUCTION — SARASOTA COUNTY, FLORIDA"
+        titleLine1="General Contractor in"
+        titleLine2="Sarasota County, Florida"
+        description={
+          <>
+            We deliver licensed general contracting services across Sarasota
+            County — from the city of Sarasota and Venice to Osprey, North
+            Port, and the barrier island communities of Siesta Key and
+            Longboat Key. Sarasota County demands a higher standard of
+            construction quality than most Florida markets, and we deliver
+            to that standard on every project.
+            <br />
+            <span className="sec1-hero__desc-highlight">
+              We have completed residential builds, commercial fit-outs,
+              remodeling projects, and emergency restoration work throughout
+              Sarasota County. We understand the county&apos;s specific
+              regulatory environment, its architectural design standards in
+              historic districts, and the coastal construction requirements
+              that apply across the county&apos;s extensive Gulf shoreline.
+            </span>
+          </>
+        }
+        primaryCta={{ label: "Request Free Estimate", href: "/contact#contactformsection" }}
+        secondaryCta={{ label: "View Our Work", href: "#services" }}
+      />
 
-      {/* ─── HERO — with background image ─── */}
-      <section
-        className="tampa-hero"
-        aria-labelledby="hero-heading"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1400&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="tampa-hero-overlay"></div>
-        <div className="tampa-hero-inner">
-          <h1 id="hero-heading" className="tampa-hero-heading tampa-animate-on-scroll tampa-fade-in-up">
-            General Contractor in Sarasota County, Florida
-          </h1>
-          <p className="tampa-hero-text tampa-animate-on-scroll tampa-fade-in-up" style={{ transitionDelay: "0.1s" }}>
-            We deliver licensed general contracting services across Sarasota County —
-            from the city of Sarasota and Venice to Osprey, North Port, and the barrier
-            island communities of Siesta Key and Longboat Key. Sarasota County demands
-            a higher standard of construction quality than most Florida markets, and
-            we deliver to that standard on every project.
-          </p>
-          <p className="tampa-hero-text tampa-animate-on-scroll tampa-fade-in-up" style={{ transitionDelay: "0.15s" }}>
-            We have completed residential builds, commercial fit-outs, remodeling
-            projects, and emergency restoration work throughout Sarasota County. We
-            understand the county's specific regulatory environment, its architectural
-            design standards in historic districts, and the coastal construction
-            requirements that apply across the county's extensive Gulf shoreline.
-          </p>
-          <div className="tampa-hero-actions tampa-animate-on-scroll tampa-fade-in-up" style={{ transitionDelay: "0.2s" }}>
-            <a href="/contact#contactformsection" className="tampa-hero-btn tampa-hero-btn--primary">
-              Request Free Estimate
-            </a>
-            <a href="#services" className="tampa-hero-btn tampa-hero-btn--secondary">
-              View Our Work
-            </a>
-          </div>
-        </div>
-      </section>
+      <ServicesSection
+        eyebrow="SERVICES WE DELIVER IN SARASOTA COUNTY"
+        title="What We Build in Sarasota County"
+        subtitle="We deliver the full scope of licensed general contracting services across Sarasota County — the same team, the same licensed standard, and the same 5-year warranty on every project."
+      />
 
-      {/* ─── STATS BAR ─── */}
-      <section className="tampa-stats-bar" aria-label="Key statistics">
-        <div className="tampa-stats-bar-inner">
-          <div className="tampa-stat-item tampa-animate-on-scroll tampa-fade-in-up">
-            <div className="tampa-stat-value">24/7</div>
-            <div className="tampa-stat-label">Emergency Response</div>
-          </div>
-          <div
-            className="tampa-stat-item tampa-animate-on-scroll tampa-fade-in-up"
-            style={{ transitionDelay: "0.1s" }}
-          >
-            <div className="tampa-stat-value">A+</div>
-            <div className="tampa-stat-label">BBB Rated</div>
-          </div>
-          <div
-            className="tampa-stat-item tampa-animate-on-scroll tampa-fade-in-up"
-            style={{ transitionDelay: "0.2s" }}
-          >
-            <div className="tampa-stat-value">
-              <span className="tampa-count-up-target" data-count="500">
-                500
-              </span>
-              +
-            </div>
-            <div className="tampa-stat-label">Projects Delivered</div>
-          </div>
-          <div
-            className="tampa-stat-item tampa-animate-on-scroll tampa-fade-in-up"
-            style={{ transitionDelay: "0.3s" }}
-          >
-            <div className="tampa-stat-value">5-Yr</div>
-            <div className="tampa-stat-label">Written Warranty</div>
-          </div>
-        </div>
-      </section>
+      <LocalAreaSection
+        stats={[
+          { label: "Emergency Response", value: "24/7" },
+          { label: "BBB Rated", value: "A+" },
+          { label: "Projects Delivered", value: "", countTo: 500, suffix: "+" },
+          { label: "Written Warranty", value: "5-Yr" },
+        ]}
+        heading="Why Local Knowledge Matters in Sarasota County"
+        paragraphs={[
+          "Sarasota County's construction environment is shaped by its discerning residential market, its active historic preservation program in downtown Sarasota, and some of Florida's most strictly enforced coastal construction standards on its barrier islands. We understand the Sarasota County Building Department's permit process and review standards, the CCCL and setback requirements along Siesta Key, Longboat Key's Sarasota portion, and Venice Beach, the historic district design review requirements in downtown Sarasota and Osprey, and the high finish quality expectations that Sarasota County's residential market consistently demands.",
+        ]}
+        cities={[
+          "Sarasota",
+          "Venice",
+          "North Port",
+          "Osprey",
+          "Nokomis",
+          "Englewood (Sarasota portion)",
+          "Siesta Key",
+          "Longboat Key (Sarasota portion)",
+          "Casey Key",
+          "Laurel",
+        ]}
+      />
 
-      {/* ─── SERVICES ─── */}
-      <section className="tampa-section tampa-section-alt" id="services" aria-labelledby="services-heading">
-        <div className="tampa-section-inner">
-          <p className="tampa-section-label">SERVICES WE DELIVER IN SARASOTA COUNTY</p>
-          <h2
-            id="services-heading"
-            className="tampa-section-heading tampa-animate-on-scroll tampa-fade-in-up"
-          >
-            What We Build in Sarasota County
-          </h2>
-          <p
-            className="tampa-animate-on-scroll tampa-fade-in"
-            style={{ color: "var(--color-text-light)", marginBottom: "20px", fontSize: "0.95rem" }}
-          >
-            We deliver the full scope of licensed general contracting services across
-            Sarasota County — the same team, the same licensed standard, and the same
-            5-year warranty on every project.
-          </p>
-          <div className="tampa-services-grid">
-            {/* Card 1: Residential Construction */}
-            <div className="tampa-service-card tampa-animate-on-scroll tampa-fade-in-up">
-              <div
-                className="tampa-service-card__image"
-                style={{
-                  backgroundImage:
-                    "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEdXvt0WG5yjHkXEtdyNQlTlgH3gl_ewmyY1H82s-y5eyKfbgDj_2NuWI&s=10')",
-                }}
-              >
-                <span className="tampa-service-card__icon">
-                  <i className="fa-solid fa-house"></i>
-                </span>
-              </div>
-              <div className="tampa-service-card__body">
-                <h3 className="tampa-service-title">Residential Construction</h3>
-                <p className="tampa-service-desc">
-                  Custom homes, additions, and new builds designed and built to Florida
-                  Building Code.
-                </p>
-              </div>
-            </div>
+      <RecentWorkSection />
+      <IndustriesCarousel />
+      <ProcessSection />
+      <ReviewCarousel />
+      <ServiceAreaMap />
 
-            {/* Card 2: Remodeling */}
-            <div
-              className="tampa-service-card tampa-animate-on-scroll tampa-fade-in-up"
-              style={{ transitionDelay: "0.08s" }}
-            >
-              <div
-                className="tampa-service-card__image"
-                style={{
-                  backgroundImage:
-                    "url('https://sqftconstruction.pk/wp-content/uploads/2024/09/home-renovation-img-01.jpg')",
-                }}
-              >
-                <span className="tampa-service-card__icon">
-                  <i className="fa-solid fa-hammer"></i>
-                </span>
-              </div>
-              <div className="tampa-service-card__body">
-                <h3 className="tampa-service-title">Remodeling</h3>
-                <p className="tampa-service-desc">
-                  Kitchen, bathroom, whole-home, and commercial remodels — managed under
-                  one contract.
-                </p>
-              </div>
-            </div>
+      <CTASection
+        title="Start Your Sarasota County Project Today"
+        subtext="Contact us for a free, no‑obligation estimate on your residential, commercial, or industrial project anywhere in Sarasota County."
+        primaryCta={{ label: "Request Free Estimate", href: "/contact#contactformsection" }}
+        perks={[
+          "Florida licensed & fully insured (CGC1524228 • EC13014476)",
+          "Available 7 days a week · 24/7 emergency line",
+          "Serving all of Sarasota County, Florida",
+        ]}
+      />
 
-            {/* Card 3: Commercial Construction */}
-            <div
-              className="tampa-service-card tampa-animate-on-scroll tampa-fade-in-up"
-              style={{ transitionDelay: "0.16s" }}
-            >
-              <div
-                className="tampa-service-card__image"
-                style={{
-                  backgroundImage:
-                    "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRWsSQTRPQQ0LSnTsG8gYKBSlPgKgKSL-tEFG1NI9_o07ufHYM9OqxZB4&s=10')",
-                }}
-              >
-                <span className="tampa-service-card__icon">
-                  <i className="fa-solid fa-building"></i>
-                </span>
-              </div>
-              <div className="tampa-service-card__body">
-                <h3 className="tampa-service-title">Commercial Construction</h3>
-                <p className="tampa-service-desc">
-                  Office builds, tenant improvements, retail, and warehouse construction.
-                </p>
-              </div>
-            </div>
+      <WhyKeentel
+        title="Why Sarasota County Clients Choose"
+        highlight="Keentel"
+        reasons={[
+          {
+            title: "Licensed & Insured in Florida",
+            desc: "We hold active CGC, CPC, and CFC licenses. Every crew member on your Sarasota County project is fully covered — general liability and workers' compensation.",
+          },
+          {
+            title: "Permit-Managed on Every Project",
+            desc: "We manage all permit submissions and county inspections through the Sarasota County Building Department on your behalf. You never have to chase approvals.",
+          },
+          {
+            title: "One Team — Full Accountability",
+            desc: "Design, construction, electrical, and finishing are all managed by our in-house licensed team under one contract. One project manager. One point of contact. No gaps.",
+          },
+          {
+            title: "5-Year Workmanship Warranty",
+            desc: "Every project we complete in Sarasota County is backed by our written 5-year workmanship warranty. If something is not right, we return and fix it at no charge.",
+          },
+        ]}
+      />
 
-            {/* Card 4: Electrical Services */}
-            <div
-              className="tampa-service-card tampa-animate-on-scroll tampa-fade-in-up"
-              style={{ transitionDelay: "0.24s" }}
-            >
-              <div
-                className="tampa-service-card__image"
-                style={{
-                  backgroundImage:
-                    "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6DGdjxCOLVJll2AyKWG38VWni2fCSTkU4eEc0Tjzyrm_nxBjr_UWzXBap&s=10')",
-                }}
-              >
-                <span className="tampa-service-card__icon">
-                  <i className="fa-solid fa-bolt"></i>
-                </span>
-              </div>
-              <div className="tampa-service-card__body">
-                <h3 className="tampa-service-title">Electrical Services</h3>
-                <p className="tampa-service-desc">
-                  Residential, commercial, and industrial electrical — CFC-licensed,
-                  always in-house.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 5: Emergency 24/7 */}
-            <div
-              className="tampa-service-card tampa-animate-on-scroll tampa-fade-in-up"
-              style={{ transitionDelay: "0.32s" }}
-            >
-              <div
-                className="tampa-service-card__image"
-                style={{
-                  backgroundImage:
-                    "url('https://www.brisbane.qld.gov.au/content/dam/brisbanecitycouncil/corpwebsite/Community-support-and-safety/images/gutter-clean-up_2-corpsite.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg')",
-                }}
-              >
-                <span className="tampa-service-card__icon">
-                  <i className="fa-solid fa-phone-volume"></i>
-                </span>
-              </div>
-              <div className="tampa-service-card__body">
-                <h3 className="tampa-service-title">Emergency 24/7</h3>
-                <p className="tampa-service-desc">
-                  Storm, flood, fire, and structural emergencies — on-site within 30 to
-                  60 minutes.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 6: Design Services */}
-            <div
-              className="tampa-service-card tampa-animate-on-scroll tampa-fade-in-up"
-              style={{ transitionDelay: "0.4s" }}
-            >
-              <div
-                className="tampa-service-card__image"
-                style={{
-                  backgroundImage:
-                    "url('https://cdn-ikpnogb.nitrocdn.com/cdPGWyOaMJgCoqiEOEpUSTgMoqloHDjJ/assets/images/optimized/rev-4121016/www.tejjy.com/wp-content/uploads/2022/09/Construction-Management-1.jpg')",
-                }}
-              >
-                <span className="tampa-service-card__icon">
-                  <i className="fa-solid fa-pen-ruler"></i>
-                </span>
-              </div>
-              <div className="tampa-service-card__body">
-                <h3 className="tampa-service-title">Design Services</h3>
-                <p className="tampa-service-desc">
-                  Permit-ready architectural drawings, 3D visualization, and full
-                  design-build scope.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── LOCAL KNOWLEDGE — Split Layout ─── */}
-      <section className="tampa-section" aria-labelledby="local-heading">
-        <div className="tampa-section-inner tampa-local-split">
-          <div className="tampa-local-text tampa-animate-on-scroll tampa-slide-in-left">
-            <p className="tampa-section-label">LOCAL KNOWLEDGE</p>
-            <h2 id="local-heading" className="tampa-section-heading">
-              Why Local Knowledge Matters in Sarasota County
-            </h2>
-            <p className="tampa-local-description">
-              Sarasota County's construction environment is shaped by its discerning
-              residential market, its active historic preservation program in downtown
-              Sarasota, and some of Florida's most strictly enforced coastal construction
-              standards on its barrier islands. We understand the Sarasota County
-              Building Department's permit process and review standards, the CCCL and
-              setback requirements along Siesta Key, Longboat Key's Sarasota portion, and
-              Venice Beach, the historic district design review requirements in downtown
-              Sarasota and Osprey, and the high finish quality expectations that Sarasota
-              County's residential market consistently demands.
-            </p>
-          </div>
-          <div className="tampa-local-cities tampa-animate-on-scroll tampa-slide-in-right">
-            <h3 className="tampa-local-cities-heading">Cities &amp; Communities We Serve</h3>
-            <ul className="tampa-cities-grid">
-              <li>Sarasota</li>
-              <li>Venice</li>
-              <li>North Port</li>
-              <li>Osprey</li>
-              <li>Nokomis</li>
-              <li>Englewood (Sarasota portion)</li>
-              <li>Siesta Key</li>
-              <li>Longboat Key (Sarasota portion)</li>
-              <li>Casey Key</li>
-              <li>Laurel</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── WHY KEENTEL ─── */}
-      <section className="tampa-section tampa-section-alt" aria-labelledby="why-heading">
-        <div className="tampa-section-inner">
-          <p className="tampa-section-label">WHY KEENTEL</p>
-          <h2
-            id="why-heading"
-            className="tampa-section-heading tampa-animate-on-scroll tampa-fade-in-up"
-          >
-            Why Sarasota County Clients Choose Keentel
-          </h2>
-          <div className="tampa-why-grid">
-            <div className="tampa-why-card tampa-animate-on-scroll tampa-slide-in-left">
-              <span className="tampa-why-card-accent"></span>
-              <h3 className="tampa-why-card-title">Licensed &amp; Insured in Florida</h3>
-              <p className="tampa-why-card-desc">
-                We hold active CGC, CPC, and CFC licenses. Every crew member on your
-                Sarasota County project is fully covered — general liability and
-                workers' compensation.
-              </p>
-            </div>
-            <div
-              className="tampa-why-card tampa-animate-on-scroll tampa-slide-in-right"
-              style={{ transitionDelay: "0.1s" }}
-            >
-              <span className="tampa-why-card-accent"></span>
-              <h3 className="tampa-why-card-title">Permit-Managed on Every Project</h3>
-              <p className="tampa-why-card-desc">
-                We manage all permit submissions and county inspections through the
-                Sarasota County Building Department on your behalf. You never have to
-                chase approvals.
-              </p>
-            </div>
-            <div
-              className="tampa-why-card tampa-animate-on-scroll tampa-slide-in-left"
-              style={{ transitionDelay: "0.2s" }}
-            >
-              <span className="tampa-why-card-accent"></span>
-              <h3 className="tampa-why-card-title">One Team — Full Accountability</h3>
-              <p className="tampa-why-card-desc">
-                Design, construction, electrical, and finishing are all managed by our
-                in-house licensed team under one contract. One project manager. One
-                point of contact. No gaps.
-              </p>
-            </div>
-            <div
-              className="tampa-why-card tampa-animate-on-scroll tampa-slide-in-right"
-              style={{ transitionDelay: "0.3s" }}
-            >
-              <span className="tampa-why-card-accent"></span>
-              <h3 className="tampa-why-card-title">5-Year Workmanship Warranty</h3>
-              <p className="tampa-why-card-desc">
-                Every project we complete in Sarasota County is backed by our written
-                5-year workmanship warranty. If something is not right, we return and
-                fix it at no charge.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── FAQ ─── */}
-      <section className="tampa-section" aria-labelledby="faq-heading">
-        <div className="tampa-section-inner">
-          <p className="tampa-section-label">FAQ</p>
-          <h2
-            id="faq-heading"
-            className="tampa-section-heading tampa-animate-on-scroll tampa-fade-in-up"
-          >
-            Frequently Asked Questions — Sarasota County
-          </h2>
-          <div className="tampa-faq-list">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="tampa-faq-item tampa-animate-on-scroll tampa-fade-in-up"
-                style={{ transitionDelay: `${index * 0.08}s` }}
-              >
-                <button
-                  className="tampa-faq-question"
-                  aria-expanded={openIndex === index}
-                  onClick={() => toggleFaq(index)}
-                >
-                  {faq.q}
-                </button>
-                <div className="tampa-faq-answer-wrapper">
-                  <div
-  className="tampa-faq-answer"
-  ref={(el) => {
-    contentRefs.current[index] = el;
-  }}
->
-  {faq.a}
-</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── FINAL CTA — Light Gradient ─── */}
-      <section className="tampa-cta-light" aria-labelledby="cta-heading">
-        <div className="tampa-cta-light-inner">
-          <h2 id="cta-heading" className="tampa-cta-light-heading tampa-animate-on-scroll tampa-fade-in-up">
-            Start Your Sarasota County Project Today
-          </h2>
-          <p className="tampa-cta-light-text tampa-animate-on-scroll tampa-fade-in" style={{ transitionDelay: "0.1s" }}>
-            Contact us for a free, no‑obligation estimate on your residential, commercial,
-            or industrial project anywhere in Sarasota County.
-          </p>
-          <div className="tampa-cta-light-actions">
-            <a
-              href="/contact#contactformsection"
-              className="tampa-cta-light-btn tampa-animate-on-scroll tampa-scale-in"
-              style={{ transitionDelay: "0.2s" }}
-            >
-              Request Free Estimate
-            </a>
-            <a
-              href="tel:+18133950000"
-              className="tampa-cta-light-phone tampa-animate-on-scroll tampa-scale-in"
-              style={{ transitionDelay: "0.3s" }}
-            >
-              <i className="fa-solid fa-phone"></i> (813) 395-0000
-            </a>
-          </div>
-          <p className="tampa-cta-light-sub tampa-animate-on-scroll tampa-fade-in" style={{ transitionDelay: "0.4s" }}>
-            Available 7 days a week · 24/7 emergency line
-          </p>
-          <p className="tampa-cta-light-location tampa-animate-on-scroll tampa-fade-in" style={{ transitionDelay: "0.45s" }}>
-            <i className="fa-solid fa-location-dot"></i> Serving all of Sarasota County, Florida
-          </p>
-        </div>
-      </section>
+      <FAQSection
+        eyebrow="FAQ"
+        titleLines={["Frequently Asked Questions", "— Sarasota County"]}
+        faqs={[
+          {
+            question: "Are you experienced with Sarasota County's coastal construction requirements?",
+            answer:
+              "Yes. We are experienced in coastal construction across Sarasota County — including CCCL compliance, FEMA flood zone construction, barrier island building standards on Siesta Key and Longboat Key, and the coastal setback requirements enforced by the Florida DEP.",
+          },
+          {
+            question: "Can you work within Sarasota's historic districts?",
+            answer:
+              "Yes. We have delivered residential and commercial construction projects within Sarasota's historic overlay districts. We are familiar with the design review requirements, material standards, and approval process applicable to historic district construction.",
+          },
+          {
+            question: "How do you manage Sarasota County building permits?",
+            answer:
+              "We manage all permit applications, plan reviews, and county inspections through the Sarasota County Building Department for every project we deliver in the county.",
+          },
+          {
+            question: "Do you offer emergency response in Sarasota County?",
+            answer:
+              "Yes. Our 24/7 emergency response covers all of Sarasota County. We confirm on-site arrival within 30 to 60 minutes for storm, flood, fire, and structural emergencies.",
+          },
+          {
+            question: "Is your estimate free for Sarasota County projects?",
+            answer:
+              "Yes. Our initial estimate is completely free with no obligation. We visit the site and deliver a written fixed-price proposal before any contract is signed.",
+          },
+        ]}
+      />
     </>
   );
 }

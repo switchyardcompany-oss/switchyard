@@ -1628,3 +1628,16 @@
     text-align: center;
   }
 }
+
+/* Keep the What's Included introduction full-width on every service template. */
+:is(
+  #pc-services, #dbs-services, #gcs-services, #crs-services,
+  #rrs-services, #ecs-services, #ers-services
+) :is(
+  .pc-section-body, .dbs-section-body, .gcs-section-body,
+  .crs-section-body, .rrs-section-body, .ecs-section-body,
+  .ers-section-body
+) {
+  width: 100% !important;
+  max-width: none !important;
+}

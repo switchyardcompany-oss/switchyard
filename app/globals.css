@@ -5895,3 +5895,185 @@ body .ktl-page > .ktl-hero .ktl-hero-coords {
     max-height: none !important;
   }
 }
+
+/* ===== LOCAL AREA SECTION (Service Area / County Pages) ===== */
+.la-section {
+  padding: 80px 20px;
+  background-color: var(--color-off-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.la-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.la-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.la-stat {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.la-stat.la-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.la-stat-value {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--color-magenta);
+  line-height: 1.1;
+}
+
+.la-stat-label {
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.la-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.la-text {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.la-text.la-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.la-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--color-magenta);
+  position: relative;
+}
+.la-eyebrow::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-magenta);
+  margin-top: 8px;
+  margin-bottom: 18px;
+  border-radius: 1px;
+}
+
+.la-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 2.6rem);
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+
+.la-paragraph {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-light);
+  margin: 0 0 16px;
+}
+.la-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.la-cities {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.la-cities.la-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.la-cities-heading {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 18px;
+}
+
+.la-cities-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+}
+
+.la-cities-grid li {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--color-text);
+  padding-left: 16px;
+  position: relative;
+}
+.la-cities-grid li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-magenta);
+}
+
+@media (max-width: 900px) {
+  .la-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 20px;
+  }
+  .la-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .la-section {
+    padding: 56px 16px;
+  }
+  .la-stats {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+  }
+  .la-cities-grid {
+    grid-template-columns: 1fr;
+  }
+}

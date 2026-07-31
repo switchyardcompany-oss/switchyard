@@ -525,37 +525,6 @@ export default function ServiceAreasPage() {
         </div>
       </section>
 
-      {/* ============================== SERVICES ============================== */}
-      <section id="services" className="ktl-section ktl-section--off">
-        <div className="ktl-container">
-          <Reveal className="ktl-section-head ktl-section-head--center" as="div">
-            <span className="ktl-eyebrow" style={{ justifyContent: 'center' }}>What We Build</span>
-            <h2>Construction Services Available</h2>
-            <p>
-              Available for commercial, industrial, institutional, and residential projects
-              throughout Florida — from first sketch to final walkthrough.
-            </p>
-          </Reveal>
-
-          <div className="ktl-grid-services">
-            {SERVICES.map((service, i) => (
-              <Reveal key={service.title} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-                <article className="ktl-service-card">
-                  <div className="ktl-service-media">
-                    <span className="ktl-service-num">{String(i + 1).padStart(2, '0')}</span>
-                    <img src={service.img} alt={service.alt} loading="lazy" />
-                  </div>
-                  <div className="ktl-service-body">
-                    <h3>{service.title}</h3>
-                    <p>{service.blurb}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ============================== SERVICE AREAS / CITIES ============================== */}
       <section id="areas" className="ktl-section ktl-coverage-section">
         <div className="ktl-container">
@@ -617,7 +586,36 @@ export default function ServiceAreasPage() {
 
       </section>
 
-      
+      {/* ============================== SERVICES ============================== */}
+      <section id="services" className="ktl-section ktl-section--off">
+        <div className="ktl-container">
+          <Reveal className="ktl-section-head ktl-section-head--center" as="div">
+            <span className="ktl-eyebrow" style={{ justifyContent: 'center' }}>What We Build</span>
+            <h2>Construction Services Available</h2>
+            <p>
+              Available for commercial, industrial, institutional, and residential projects
+              throughout Florida — from first sketch to final walkthrough.
+            </p>
+          </Reveal>
+
+          <div className="ktl-grid-services">
+            {SERVICES.map((service, i) => (
+              <Reveal key={service.title} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
+                <article className="ktl-service-card">
+                  <div className="ktl-service-media">
+                    <span className="ktl-service-num">{String(i + 1).padStart(2, '0')}</span>
+                    <img src={service.img} alt={service.alt} loading="lazy" />
+                  </div>
+                  <div className="ktl-service-body">
+                    <h3>{service.title}</h3>
+                    <p>{service.blurb}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ============================== WHY CHOOSE US ============================== */}
       <section id="why" className="ktl-section ktl-why-section">

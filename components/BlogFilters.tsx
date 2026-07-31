@@ -15,6 +15,7 @@ interface Blog {
 
 interface BlogFiltersProps {
   blogs: Blog[];
+  initialSearch?: string;
 }
 
 function formatDate(dateStr: string) {
@@ -30,8 +31,8 @@ function formatDate(dateStr: string) {
   }
 }
 
-export default function BlogFilters({ blogs }: BlogFiltersProps) {
-  const [searchQuery, setSearchQuery] = useState('');
+export default function BlogFilters({ blogs, initialSearch = '' }: BlogFiltersProps) {
+  const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   // Get unique categories

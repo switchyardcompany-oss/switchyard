@@ -3,7 +3,17 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 
-export default function ServicesSection() {
+type ServicesSectionProps = {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+};
+
+export default function ServicesSection({
+  eyebrow = "OUR SERVICES",
+  title = "Complete Construction Solutions",
+  subtitle = "Keentel General Contractors provides integrated construction services tailored to the unique needs of every project.",
+}: ServicesSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -84,12 +94,9 @@ export default function ServicesSection() {
     <section className="sec2-services" id="services" ref={sectionRef}>
       <div className="sec2-container">
         <div className="sec2-header">
-          <span className="sec2-eyebrow">OUR SERVICES</span>
-          <h2 className="sec2-title">Complete Construction Solutions</h2>
-          <p className="sec2-subtitle">
-            Keentel General Contractors provides integrated construction services
-            tailored to the unique needs of every project.
-          </p>
+          <span className="sec2-eyebrow">{eyebrow}</span>
+          <h2 className="sec2-title">{title}</h2>
+          <p className="sec2-subtitle">{subtitle}</p>
         </div>
 
         <div className="sec2-grid">
