@@ -866,3 +866,31 @@
     padding: 8px 10px;
   }
 }
+
+.blog-content .urgency-cost-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0 28px;
+}
+
+.blog-content .urgency-cost-item {
+  padding: 14px 18px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 12px);
+  background: var(--color-off-white, #f8fafc);
+  color: var(--color-text-light, #2a3f54);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.blog-content .urgency-cost-item strong {
+  color: var(--color-navy, #0b1a2f);
+}
+
+@media (max-width: 640px) {
+  .blog-content .urgency-cost-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
