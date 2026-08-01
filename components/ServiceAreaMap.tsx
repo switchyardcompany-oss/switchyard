@@ -44,8 +44,7 @@ export default function ServiceAreaMap() {
     <section className="sec3-area" ref={sectionRef}>
       <div className="sec3-area__inner">
         <div className="sec3-area__content" ref={contentRef}>
-          <p className="sec3-area__eyebrow">Florida Service Areas</p>
-          <h2 className="sec3-area__title">General Contracting Across<br />Tampa Bay &amp; Florida</h2>
+          <h2 className="sec3-area__title">Our Service Areas: General Contracting Across<br />Tampa Bay &amp; Florida</h2>
           <p className="sec3-area__desc">
             Based in Tampa, Keentel General Contractors delivers licensed construction services throughout Tampa Bay and all 67 Florida counties. Our team supports commercial, industrial, institutional, multi-family, and large residential projects with coordinated planning, dependable project management, and consistent quality from pre-construction through closeout.
           </p>

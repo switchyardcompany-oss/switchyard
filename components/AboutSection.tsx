@@ -32,9 +32,8 @@ export default function AboutSection() {
         <div className="about-grid">
           {/* LEFT CONTENT */}
           <div className="about-content about-animate">
-            <span className="about-eyebrow">ABOUT KEENTEL GENERAL CONTRACTORS</span>
             <h2 className="about-title">
-              Built on Trust. <br />
+              About Keentel: Built on Trust. <br />
               <span style={{ color: "var(--color-magenta)" }}>Driven by Quality.</span>
             </h2>
             <p className="about-description">

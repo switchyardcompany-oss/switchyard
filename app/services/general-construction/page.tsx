@@ -295,7 +295,7 @@ export default function GeneralConstructionPage() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-hidden="true"
         >
           <source

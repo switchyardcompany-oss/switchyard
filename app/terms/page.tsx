@@ -125,8 +125,8 @@ export default function TermsConditionsPage() {
           className={`${styles["ktc-hero-video"]} ${
             isVideoLoaded ? styles["ktc-hero-video-loaded"] : ""
           }`}
+          preload="auto"
           onLoadedData={() => setIsVideoLoaded(true)}
-          poster="/assets/hero_bg.png"
         >
           <source src="/Video/home-hero.mp4" type="video/mp4" />
         </video>

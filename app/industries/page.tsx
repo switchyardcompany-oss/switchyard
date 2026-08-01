@@ -251,7 +251,7 @@ export default function IndustriesPage() {
             muted
             loop
             playsInline
-            poster="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80&auto=format&fit=crop"
+            preload="auto"
           >
             <source
               src="https://assets.mixkit.co/videos/25270/25270-720.mp4"

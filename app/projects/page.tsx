@@ -567,7 +567,7 @@ export default function ProjectsPage() {
                         muted
                         loop
                         playsInline
-                        poster="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80"
+                        preload="auto"
                     >
                         {/* Replace with your own hero footage at /public/videos/hero-construction.mp4 */}
                         <source src="https://video-previews.elements.envatousercontent.com/06513e02-7f78-45cb-90b5-281996f4001b/watermarked_preview/watermarked_preview.mp4" type="video/mp4" />

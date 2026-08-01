@@ -73,7 +73,7 @@ export default function ElectricalPreConstructionTemplate({
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
             >
               <source src={page.heroVideo} type="video/mp4" />
             </video>

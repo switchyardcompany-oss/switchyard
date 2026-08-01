@@ -169,6 +169,14 @@ export default function Footer() {
                 </span>
               </li>
             </ul>
+            <div className="sec10-footer-business-info">
+              <strong>Licensed Business Information</strong>
+              <p>
+                State of Florida — Registry No. 36853
+                <br />
+                KEENTEL LLC, DBA: KEENTEL ENGINEERING
+              </p>
+            </div>
           </div>
 
           {/* Column 4: Services */}

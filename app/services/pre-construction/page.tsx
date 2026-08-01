@@ -211,7 +211,7 @@ export default function PreConstructionPage() {
             loop
             muted
             playsInline
-            preload="metadata"
+          preload="auto"
           >
             <source
               src="/Video/Successful%20Project%20Begins%20Before%20Construction%20Starts.mp4"

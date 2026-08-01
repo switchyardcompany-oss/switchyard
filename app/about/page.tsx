@@ -79,8 +79,7 @@ export default function AboutPage() {
             loop
             muted
             playsInline
-            preload="metadata"
-            poster="/assets/hero_bg.png"
+            preload="auto"
           >
             <source src="/Video/about-hero.mp4" type="video/mp4" />
           </video>

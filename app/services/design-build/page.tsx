@@ -336,8 +336,7 @@ export default function DesignBuildPage() {
           loop
           muted
           playsInline
-          preload="metadata"
-          poster="/images/services/One%20Team.%20One%20Vision.%20One%20Successful%20Project..jpg"
+          preload="auto"
           aria-hidden="true"
         >
           <source

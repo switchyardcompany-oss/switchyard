@@ -297,7 +297,7 @@ export default function ResidentialRemodelingPage() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-hidden="true"
         >
           <source

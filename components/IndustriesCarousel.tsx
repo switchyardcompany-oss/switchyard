@@ -44,7 +44,6 @@ export default function IndustriesCarousel() {
     <section className="indus-section">
       <div className="indus-container">
         <div className="indus-header">
-          <span className="indus-eyebrow">INDUSTRIES WE SERVE</span>
           <h2 className="indus-title">Construction Experience Across Multiple Industries</h2>
           <p className="indus-subtitle">
             We understand the unique requirements of every sector and deliver solutions

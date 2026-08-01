@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 
 type CTASectionProps = {
-  eyebrow?: string;
   title?: string;
   subtext?: string;
   primaryCta?: { label: string; href: string };
@@ -12,7 +11,6 @@ type CTASectionProps = {
 };
 
 export default function CTASection({
-  eyebrow = "Your next project starts with a conversation.",
   title = "Your Project Deserves the Right Construction Partner",
   subtext = "At Keentel General Contractors, we combine strategic planning, skilled craftsmanship, and dependable project management to deliver construction solutions that create long-term value.\nLet's build your next project with confidence.\n",
   primaryCta = { label: "Book a Consultation", href: "/contact#contactformsection" },
@@ -46,7 +44,6 @@ export default function CTASection({
     <section className="cta-section" ref={sectionRef}>
       <div className="cta-container">
         <div className="cta-left">
-          <p className="cta-eyebrow">{eyebrow}</p>
           <h2 className="cta-title">{title}</h2>
           <p className="cta-subtext">{subtext}</p>
         </div>

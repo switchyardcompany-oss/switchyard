@@ -6,12 +6,10 @@ import ContactSection from "@/components/ContactSection";
 type WhyReason = { title: string; desc: string };
 
 type WhyKeentelProps = {
-  eyebrow?: string;
   title?: string;
   highlight?: string;
   subtitle?: string;
   reasons?: WhyReason[];
-  formEyebrow?: string;
   formTitle?: string;
   formSubtitle?: string;
 };
@@ -44,12 +42,10 @@ const defaultReasons: WhyReason[] = [
 ];
 
 export default function WhyKeentel({
-  eyebrow = "WHY CHOOSE KEENTEL",
-  title = "Built Around",
+  title = "Why Clients Choose Keentel:",
   highlight = "Better Project Delivery",
   subtitle = "Construction success depends on planning, communication, and accountability. That's why every project is managed with a structured process designed to reduce risk, improve efficiency, and deliver exceptional results.",
   reasons = defaultReasons,
-  formEyebrow = "Start a Conversation",
   formTitle = "Let's Discuss Your Next Project",
   formSubtitle = "Share your project details and our construction team will follow up with the right next steps.",
 }: WhyKeentelProps) {
@@ -87,7 +83,6 @@ export default function WhyKeentel({
         <div className="whyk2-split">
           <div className="whyk2-content">
             <div className="whyk2-header">
-              <span className="whyk2-eyebrow">{eyebrow}</span>
               <h2 className="whyk2-title">
                 {title} <span className="whyk2-highlight">{highlight}</span>
               </h2>
@@ -113,7 +108,6 @@ export default function WhyKeentel({
 
           <div className="whyk2-form-panel" id="contactformsection">
             <div className="whyk2-form-intro">
-              <span>{formEyebrow}</span>
               <h2>{formTitle}</h2>
               <p>{formSubtitle}</p>
             </div>

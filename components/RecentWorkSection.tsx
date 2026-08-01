@@ -41,9 +41,8 @@ export default function RecentWorkSection() {
       <div className="recent-container">
         <div className="recent-header">
           <div className="recent-header-left">
-            <p className="recent-eyebrow">Recent work</p>
             <h2 className="recent-title">
-              Projects Built to  <span style={{ color: "#a6238f" }}>last</span>.
+              Featured Construction Projects Built to <span style={{ color: "#a6238f" }}>Last</span>.
             </h2>
           </div>
           <Link href="/projects" className="recent-view-all">

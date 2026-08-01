@@ -43,8 +43,7 @@ export default function ProcessSection() {
     <section className="proc-section" ref={sectionRef}>
       <div className="proc-container">
         <div className="proc-header">
-          <span className="proc-eyebrow">OUR PROCESS</span>
-          <h2 className="proc-title">How We Work</h2>
+          <h2 className="proc-title">Our Construction Process</h2>
           <p className="proc-subtitle">A Proven Process From Start to Finish</p>
         </div>
 

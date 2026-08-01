@@ -32,7 +32,7 @@
             --topbar-height: 40px;
         }
 
-        body {
+body {
             font-family: var(--font-body);
             font-size: 1rem;
             background-color: var(--color-white);
@@ -872,13 +872,16 @@ body :is(
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  background: #0a081f;
 }
+
 
 .sec1-hero__video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 1;
 }
 
 .sec1-hero__overlay {
@@ -6075,5 +6078,127 @@ body .ktl-page > .ktl-hero .ktl-hero-coords {
   }
   .la-cities-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Site-wide heading system: remove decorative short labels and let the
+   descriptive section headings carry the meaning on every page. */
+body :is(
+  [class*="eyebrow"],
+  [class*="section-label"],
+  [class*="section__label"],
+  [class*="overline"],
+  [class*="kicker"],
+  [class*="hero-badge"],
+  [class*="hero__badge"],
+  [class*="hero-eyebrow"],
+  [class*="hero__eyebrow"]
+) {
+  display: none !important;
+}
+
+/* Licensed business information shared by the contact page and global footer. */
+.licensed-business-info {
+  padding: 64px 24px 70px;
+  text-align: center;
+  background: #fff;
+  color: #12106e;
+}
+
+.licensed-business-info__icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: #a51f22;
+  color: #fff;
+}
+
+.licensed-business-info__icon svg {
+  width: 52px;
+  height: 52px;
+}
+
+.licensed-business-info h2 {
+  margin: 0 auto 34px;
+  color: #12106e;
+  font-family: var(--font-heading, inherit);
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+.licensed-business-info p {
+  max-width: 920px;
+  margin: 0 auto;
+  color: #111;
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.sec10-footer .licensed-business-info {
+  padding: 48px 24px 54px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sec10-footer .licensed-business-info h2 {
+  margin-bottom: 20px;
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.sec10-footer .licensed-business-info p {
+  max-width: 760px;
+  font-size: clamp(15px, 1.5vw, 19px);
+}
+
+.sec10-footer-business-info {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.sec10-footer-business-info strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+  font-family: var(--font-heading, inherit);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.sec10-footer-business-info p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .licensed-business-info {
+    padding: 48px 18px 54px;
+  }
+
+  .licensed-business-info__icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 22px;
+    border-radius: 15px;
+  }
+
+  .licensed-business-info__icon svg {
+    width: 44px;
+    height: 44px;
+  }
+
+  .licensed-business-info h2 {
+    margin-bottom: 22px;
+    font-size: 30px;
+  }
+
+  .licensed-business-info p {
+    font-size: 17px;
   }
 }

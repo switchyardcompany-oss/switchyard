@@ -1,3 +1,4 @@
+.pc-about-page .pc-hero-image{background:#0a0930!important;background-image:none!important}
 .electrical-pc-hero-photo{position:absolute;inset:0;background-position:center;background-size:cover}
 .electrical-pc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
 .electrical-pc-process{position:relative;isolation:isolate;background-image:linear-gradient(rgba(16,13,104,.86),rgba(16,13,104,.9)),var(--electrical-process-image);background-position:center;background-size:cover}

@@ -120,8 +120,8 @@ export default function PrivacyPolicyPage() {
           className={`${styles["kpp-hero-video"]} ${
             isVideoLoaded ? styles["kpp-hero-video-loaded"] : ""
           }`}
+          preload="auto"
           onLoadedData={() => setIsVideoLoaded(true)}
-          poster="/assets/hero_bg.png"
         >
           <source src="/Video/home-hero.mp4" type="video/mp4" />
         </video>

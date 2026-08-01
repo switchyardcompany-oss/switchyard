@@ -128,7 +128,7 @@ export default function ContactPage() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-hidden="true"
         >
           <source src="/Video/contact.mp4" type="video/mp4" />
@@ -409,6 +409,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }

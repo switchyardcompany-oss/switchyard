@@ -10,8 +10,8 @@ type ServicesSectionProps = {
 };
 
 export default function ServicesSection({
-  eyebrow = "OUR SERVICES",
-  title = "Complete Construction Solutions",
+  eyebrow,
+  title = "Construction Services for Every Project",
   subtitle = "Keentel General Contractors provides integrated construction services tailored to the unique needs of every project.",
 }: ServicesSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -94,7 +94,7 @@ export default function ServicesSection({
     <section className="sec2-services" id="services" ref={sectionRef}>
       <div className="sec2-container">
         <div className="sec2-header">
-          <span className="sec2-eyebrow">{eyebrow}</span>
+          {eyebrow && <span className="sec2-eyebrow">{eyebrow}</span>}
           <h2 className="sec2-title">{title}</h2>
           <p className="sec2-subtitle">{subtitle}</p>
         </div>

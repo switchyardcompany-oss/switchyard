@@ -31,8 +31,8 @@ const defaultFaqs: FAQItem[] = [
 
 export default function FAQSection({
   faqs = defaultFaqs,
-  eyebrow = "Questions We Hear",
-  titleLines = ["Answers,", "before you ask."],
+  eyebrow,
+  titleLines = ["Construction Questions,", "Answered."],
   subtitle = "Clear answers to the questions clients ask most often before starting a construction project.",
   showAllLink = true,
 }: FAQSectionProps) {
@@ -110,7 +110,7 @@ export default function FAQSection({
       <div className="faq-container">
         <div className="faq-layout">
           <aside className="faq-header">
-            <span className="faq-eyebrow">{eyebrow}</span>
+            {eyebrow && <span className="faq-eyebrow">{eyebrow}</span>}
             <h2 className="faq-title">
               {titleLines[0]}
               <br />

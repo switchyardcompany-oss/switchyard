@@ -245,6 +245,7 @@ export const electricalHubPage: ElectricalServicePage = {
   intro: "Professional electrical contracting services for residential, commercial, industrial, and complex construction environments.",
   overview: "Keentel General Contractors coordinates electrical planning, installation, upgrades, maintenance, troubleshooting, and backup-power work around the needs of each property and project.",
   heroImage: "/images/electrical-services/commercial-construction.jpg",
+  heroVideo: "/Video/electrical-contracting.mp4",
   featureImage: "/images/electrical-services/commercial-maintenance.jpg",
   services: [
     item("Residential Services", "Panel upgrades, rewiring, lighting, smart-home work, EV charging, generators, and residential repairs."),

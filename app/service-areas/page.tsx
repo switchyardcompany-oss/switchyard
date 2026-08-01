@@ -236,6 +236,18 @@ const REGIONS: Region[] = [
   },
 ];
 
+const LOCATION_PAGE_LINKS = [
+  { label: 'Tampa', href: '/service-areas/tampa' },
+  { label: 'Hillsborough', href: '/service-areas/hillsborough' },
+  { label: 'Pinellas', href: '/service-areas/pinellas' },
+  { label: 'Pasco', href: '/service-areas/pasco' },
+  { label: 'Polk', href: '/service-areas/polk' },
+  { label: 'Manatee', href: '/service-areas/manatee' },
+  { label: 'Sarasota', href: '/service-areas/sarasota' },
+  { label: 'Hernando', href: '/service-areas/hernando' },
+  { label: 'Citrus', href: '/service-areas/citrus' },
+];
+
 const COUNTIES = [
   'Alachua', 'Baker', 'Bay', 'Bradford', 'Brevard', 'Broward', 'Calhoun', 'Charlotte', 'Citrus',
   'Clay', 'Collier', 'Columbia', 'DeSoto', 'Dixie', 'Duval', 'Escambia', 'Flagler', 'Franklin',
@@ -279,12 +291,12 @@ const WHY_US: { title: string; blurb: string; img: string; alt: string }[] = [
   {
     title: 'Quality Craftsmanship',
     blurb: 'Disciplined execution and careful quality control create durable, dependable results.',
-    img: '/images/services/Facility Expansions.jpg',
-    alt: 'Construction team completing a major facility expansion',
+    img: '/images/services/Office Renovations.jpg',
+    alt: 'Quality commercial interior renovation work',
   },
   {
-    title: 'Clear, Reliable Communication',
-    blurb: 'Straightforward updates keep owners informed from consultation through completion.',
+    title: 'Clear Updates',
+    blurb: 'Regular updates keep every project aligned from start to completion.',
     img: '/images/services/One Team. One Vision. One Successful Project..jpg',
     alt: 'Project team reviewing construction plans together',
   },
@@ -348,6 +360,7 @@ export default function ServiceAreasPage() {
   const [activeRegion, setActiveRegion] = useState<string>('southeast');
   const [expandedRegions, setExpandedRegions] = useState<Set<string>>(new Set());
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [activeWhy, setActiveWhy] = useState(0);
 
   useEffect(() => {
@@ -368,9 +381,38 @@ export default function ServiceAreasPage() {
 
   const activeRegionData = REGIONS.find((r) => r.id === activeRegion) ?? REGIONS[0];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    setSubmitError(false);
+
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formSource: 'service-areas',
+          firstName: formData.get('fullName'),
+          company: formData.get('company'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          city: formData.get('city'),
+          county: formData.get('county'),
+          serviceNeeded: formData.get('serviceNeeded'),
+          projectType: formData.get('projectType'),
+          message: formData.get('details'),
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok || !data.success) throw new Error('Lead submission failed');
+
+      form.reset();
+      setSubmitted(true);
+    } catch {
+      setSubmitError(true);
+    }
   };
 
   return (
@@ -432,8 +474,7 @@ export default function ServiceAreasPage() {
             muted
             loop
             playsInline
-            preload="metadata"
-            poster="https://images.pexels.com/photos/5505125/pexels-photo-5505125.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            preload="auto"
           >
             <source src="/Video/service-areas.mp4" type="video/mp4" />
           </video>
@@ -552,7 +593,17 @@ export default function ServiceAreasPage() {
                 <Reveal key={region.id} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
                   <div className="ktl-region-card">
                     <div className={`ktl-region-visual${region.img ? '' : ' ktl-region-visual--gradient'}`}>
-                      {region.img && <img src={region.img} alt={region.alt} loading="lazy" />}
+                      {region.img && (
+                        <img
+                          src={region.img}
+                          alt={region.alt}
+                          loading="lazy"
+                          onError={(event) => {
+                            event.currentTarget.onerror = null;
+                            event.currentTarget.src = '/images/services/Commercial Construction.jpg';
+                          }}
+                        />
+                      )}
                       <span className="ktl-region-index">{String(i + 1).padStart(2, '0')}</span>
                       <div className="ktl-region-title">
                         <span className="ktl-region-visual-icon"><Icon name="mapPin" /></span>
@@ -628,14 +679,14 @@ export default function ServiceAreasPage() {
           <div className="ktl-why-accordion" role="list" aria-label="Reasons to choose Keentel">
             {WHY_US.map((item, i) => (
               <article
-                key={item.title}
+                key={item.alt}
                 className={`ktl-why-panel${activeWhy === i ? ' ktl-why-panel--active' : ''}`}
                 role="listitem"
                 tabIndex={0}
                 onMouseEnter={() => setActiveWhy(i)}
                 onFocus={() => setActiveWhy(i)}
                 onClick={() => setActiveWhy(i)}
-                aria-label={`${item.title}. ${item.blurb}`}
+                aria-label={item.title || item.alt}
               >
                 <img src={item.img} alt={item.alt} loading="lazy" />
                 <span className="ktl-why-panel-shade" aria-hidden="true" />
@@ -666,10 +717,6 @@ export default function ServiceAreasPage() {
           <div className="ktl-map-layout">
             <Reveal className="ktl-map-svg-wrap" as="div">
               <div className="ktl-map-card">
-              <div className="ktl-map-card-head">
-                <span>Florida Coverage Network</span>
-                <strong>{REGIONS.length} Active Regions</strong>
-              </div>
               <svg className="ktl-map-svg" viewBox="0 0 340 480" role="img" aria-label="Interactive Florida construction service area map">
                 <path className="ktl-fl-outline" d={FL_OUTLINE_PATH} />
                 <path className="ktl-map-scan" d={FL_OUTLINE_PATH} />
@@ -727,6 +774,14 @@ export default function ServiceAreasPage() {
                   </div>
                   <strong>{activeRegionData.cities.length} cities</strong>
                 </div>
+                <div className="ktl-map-local-links">
+                  <span>Explore location pages</span>
+                  <div>
+                    {LOCATION_PAGE_LINKS.map((location) => (
+                      <a href={location.href} key={location.href}>{location.label}</a>
+                    ))}
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -761,11 +816,11 @@ export default function ServiceAreasPage() {
                   <div className="ktl-contact-points">
                     <div className="ktl-contact-point">
                       <span className="ktl-contact-point-icon"><Icon name="phone" /></span>
-                      <div><strong>Call Us</strong><span>(813) 395-0000</span></div>
+                      <div><strong>Call Us</strong><a href="tel:+18133950000">(813) 395-0000</a></div>
                     </div>
                     <div className="ktl-contact-point">
                       <span className="ktl-contact-point-icon"><Icon name="mail" /></span>
-                      <div><strong>Email Us</strong><span>projects@keentelgc.com</span></div>
+                      <div><strong>Email Us</strong><a href="mailto:contact@keentelgeneralcontractors.com">contact@keentelgeneralcontractors.com</a></div>
                     </div>
                     <div className="ktl-contact-point">
                       <span className="ktl-contact-point-icon"><Icon name="clock" /></span>
@@ -785,35 +840,35 @@ export default function ServiceAreasPage() {
                     </div>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit} aria-label="Request a free construction consultation">
                     <div className="ktl-form-row">
                       <div className="ktl-field">
                         <label htmlFor="fullName">Full Name</label>
-                        <input id="fullName" type="text" required placeholder="Jane Rivera" />
+                        <input id="fullName" name="fullName" autoComplete="name" type="text" required placeholder="Jane Rivera" />
                       </div>
                       <div className="ktl-field">
                         <label htmlFor="company">Company (Optional)</label>
-                        <input id="company" type="text" placeholder="Rivera Retail Group" />
+                        <input id="company" name="company" autoComplete="organization" type="text" placeholder="Rivera Retail Group" />
                       </div>
                     </div>
                     <div className="ktl-form-row">
                       <div className="ktl-field">
                         <label htmlFor="email">Email Address</label>
-                        <input id="email" type="email" required placeholder="jane@email.com" />
+                        <input id="email" name="email" autoComplete="email" type="email" required placeholder="jane@email.com" />
                       </div>
                       <div className="ktl-field">
                         <label htmlFor="phoneNum">Phone Number</label>
-                        <input id="phoneNum" type="tel" required placeholder="(813) 555-1234" />
+                        <input id="phoneNum" name="phone" autoComplete="tel" type="tel" required placeholder="(813) 555-1234" />
                       </div>
                     </div>
                     <div className="ktl-form-row">
                       <div className="ktl-field">
                         <label htmlFor="city">City</label>
-                        <input id="city" type="text" placeholder="e.g. Tampa" />
+                        <input id="city" name="city" autoComplete="address-level2" type="text" placeholder="e.g. Tampa" />
                       </div>
                       <div className="ktl-field">
                         <label htmlFor="county">County</label>
-                        <select id="county" defaultValue="">
+                        <select id="county" name="county" defaultValue="">
                           <option value="" disabled>Select a county</option>
                           {COUNTIES.map((c) => <option key={c} value={c}>{c} County</option>)}
                         </select>
@@ -822,14 +877,14 @@ export default function ServiceAreasPage() {
                     <div className="ktl-form-row">
                       <div className="ktl-field">
                         <label htmlFor="serviceNeeded">Service Needed</label>
-                        <select id="serviceNeeded" defaultValue="">
+                        <select id="serviceNeeded" name="serviceNeeded" defaultValue="">
                           <option value="" disabled>Select a service</option>
                           {SERVICES.map((s) => <option key={s.title} value={s.title}>{s.title}</option>)}
                         </select>
                       </div>
                       <div className="ktl-field">
                         <label htmlFor="projectType">Project Type</label>
-                        <select id="projectType" defaultValue="">
+                        <select id="projectType" name="projectType" defaultValue="">
                           <option value="" disabled>Select project type</option>
                           <option>Commercial</option>
                           <option>Industrial</option>
@@ -840,11 +895,16 @@ export default function ServiceAreasPage() {
                     </div>
                     <div className="ktl-field">
                       <label htmlFor="details">Project Details</label>
-                      <textarea id="details" placeholder="Tell us a bit about your project, timeline, and location..." />
+                      <textarea id="details" name="details" placeholder="Tell us a bit about your project, timeline, and location..." />
                     </div>
                     <button type="submit" className="ktl-btn ktl-btn--primary ktl-btn--block">
                       Request a Free Consultation <Icon name="arrowRight" />
                     </button>
+                    {submitError && (
+                      <p className="ktl-form-error" role="alert">
+                        We couldn&apos;t send your request. Please call (813) 395-0000 or email us directly.
+                      </p>
+                    )}
                   </form>
                 )}
               </div>

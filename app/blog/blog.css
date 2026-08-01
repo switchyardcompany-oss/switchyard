@@ -202,6 +202,8 @@
   background: var(--color-white);
   padding-top: 0px;
   min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .blog-index-header {
@@ -390,6 +392,8 @@
 /* ─── BLOG INDEX FILTERS ─── */
 .blog-index-content {
   max-width: var(--max-width, 1150px);
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 0 24px 60px;
 }
@@ -719,7 +723,7 @@
   }
 
   .blog-index-page .blog-hero-content {
-    width: min(100% - 40px, 760px);
+    width: min(760px, calc(100% - 40px));
     padding: 64px 0 44px;
   }
 
@@ -785,5 +789,53 @@
   .blog-index-page .blog-hero-stats span {
     font-size: 0.72rem;
     line-height: 1.3;
+  }
+}
+
+/* Final responsive safeguards for the index page. */
+@media (max-width: 900px) {
+  .blog-index-page .blog-hero-content {
+    width: calc(100% - 40px);
+  }
+
+  .blog-index-page .blog-hero-action {
+    width: 100%;
+  }
+
+  .blog-index-page .hero-cta {
+    width: min(100%, 360px);
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-index-page .blog-hero {
+    min-height: 650px;
+  }
+
+  .blog-index-page .blog-hero-content {
+    width: calc(100% - 32px);
+    padding-top: 40px;
+  }
+
+  .blog-index-page .hero-title {
+    font-size: clamp(2.25rem, 12vw, 3.35rem);
+  }
+
+  .blog-filters {
+    gap: 14px;
+  }
+
+  .blog-search {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .blog-category-filter {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .blog-category-btn {
+    flex: 1 1 auto;
   }
 }

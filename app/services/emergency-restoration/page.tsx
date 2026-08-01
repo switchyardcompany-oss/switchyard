@@ -303,8 +303,7 @@ export default function EmergencyRestorationPage() {
           loop
           muted
           playsInline
-          preload="metadata"
-          poster="/images/services/emergency-restoration.webp"
+          preload="auto"
           aria-hidden="true"
         >
           <source src="/Video/emergency-restoration.mp4" type="video/mp4" />

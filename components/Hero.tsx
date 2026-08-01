@@ -57,7 +57,7 @@ export default function Hero({
     <>
       {/* ===== HERO ===== */}
       <section className="sec1-hero">
-        {/* Video wrapper – always rendered, no fallback image */}
+        {/* Home hero plays directly without an image/poster transition. */}
         <div className="sec1-hero__video-wrapper">
           <video
             ref={videoRef}
@@ -66,8 +66,7 @@ export default function Hero({
             loop
             muted
             playsInline
-            // Poster is optional – you can remove it if you don't want any image
-            poster="/assets/hero_bg.png"
+            preload="auto"
             onError={() => setVideoError(true)}
           >
             <source src={videoSrc} type="video/mp4" />

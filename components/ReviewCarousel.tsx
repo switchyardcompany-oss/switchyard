@@ -100,8 +100,7 @@ export default function ReviewCarousel() {
     <section className="review-section" ref={sectionRef}>
       <div className="review-container">
         <div className="review-header">
-          <p className="review-eyebrow">What clients say</p>
-          <h2 className="review-title">Don't take our word.<br />Take theirs.</h2>
+          <h2 className="review-title">What Our Construction Clients Say</h2>
         </div>
 
         <div className="review-carousel">
