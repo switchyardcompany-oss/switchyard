@@ -1,0 +1,14 @@
+.city-area-services,
+.city-area-projects { padding: 76px 24px; background: #fff; }
+.city-area-services:nth-of-type(even) { background: #f7f6ff; }
+.city-area-shell { width: min(1180px, 100%); margin: 0 auto; }
+.city-area-heading { max-width: 760px; margin: 0 auto 34px; text-align: center; }
+.city-area-heading .services-eyebrow { display: inline-block; margin-bottom: 12px; color: #b12595; font-size: 12px; font-weight: 800; letter-spacing: .16em; }
+.city-area-heading h2 { margin: 0 0 12px; color: #12106e; font-size: clamp(30px, 4vw, 48px); line-height: 1.08; }
+.city-area-heading p { margin: 0; color: #6f7180; line-height: 1.7; }
+.city-area-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.city-area-card { padding: 24px; border: 1px solid #e2e0f0; border-radius: 18px; background: #fff; box-shadow: 0 12px 30px rgba(18,16,110,.06); }
+.city-area-card h3 { margin: 0 0 10px; color: #12106e; font-size: 20px; }
+.city-area-card p { margin: 0; color: #686a78; line-height: 1.65; }
+.city-area-card a { display: inline-block; margin-top: 15px; color: #ae2398; font-weight: 700; text-decoration: none; }
+@media (max-width: 760px) { .city-area-services, .city-area-projects { padding: 54px 18px; } .city-area-grid { grid-template-columns: 1fr; } }

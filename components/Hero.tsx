@@ -13,6 +13,7 @@ type HeroProps = {
   description?: React.ReactNode;
   primaryCta?: HeroCta;
   secondaryCta?: HeroCta;
+  videoSrc?: string;
 };
 
 const defaultDescription = (
@@ -37,10 +38,12 @@ export default function Hero({
   description = defaultDescription,
   primaryCta = { label: "Request a Consultation", href: "/contact#contactformsection" },
   secondaryCta = { label: "Explore Our Services", href: "/services", icon: "fa-building" },
+  videoSrc = "/Video/home-hero.mp4",
 }: HeroProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoSrc = videoSrc.startsWith("/") ? videoSrc.replace(/\.mp4$/, "-mobile.mp4") : null;
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 300);
@@ -50,8 +53,6 @@ export default function Hero({
     return () => clearTimeout(timer);
   }, []);
 
-
-  const videoSrc = "/Video/home-hero.mp4";
 
   return (
     <>
@@ -66,9 +67,12 @@ export default function Hero({
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             onError={() => setVideoError(true)}
           >
+            {mobileVideoSrc && (
+              <source src={mobileVideoSrc} media="(max-width: 768px)" type="video/mp4" />
+            )}
             <source src={videoSrc} type="video/mp4" />
           </video>
           {/* Gradient overlay on top of video */}
@@ -123,7 +127,7 @@ export default function Hero({
                   </a>
                   <div className="sec1-hero__credential">
                     <img
-                      src="/images/genral%20contratcter.png"
+                      src="/images/genral-contratcter.png"
                       alt="State of Florida Certified General Contractor"
                     />
                   </div>

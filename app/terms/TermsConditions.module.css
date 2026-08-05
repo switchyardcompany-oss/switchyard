@@ -274,6 +274,7 @@
   }
 }
 
+.ktc-card-body h2,
 .ktc-card-body h3 {
   font-family: var(--font-heading);
   font-size: 1.3rem;

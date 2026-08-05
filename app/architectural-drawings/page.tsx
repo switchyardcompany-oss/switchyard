@@ -233,7 +233,7 @@ export default function ArchitecturalDrawingsPage() {
                 className="expertise-card__image"
                 style={{
                   backgroundImage:
-                    "url('https://www.teslaoutsourcingservices.com/images/portfolio/usa-construction-documentation-of-residential-building-floor-plan.webp')",
+                    "url('/images/services/about-our-pre-construction-services.webp')",
                 }}
               ></div>
               <div className="expertise-card__body">
@@ -341,7 +341,7 @@ export default function ArchitecturalDrawingsPage() {
             className="why-choose__image-side reveal"
             style={{
               backgroundImage:
-                "url('https://www.teslaoutsourcingservices.com/images/portfolio/usa-construction-documentation-of-residential-building-floor-plan.webp')",
+                "url('/images/services/about-our-pre-construction-services.webp')",
             }}
           ></div>
           <div className="why-choose__content-side">

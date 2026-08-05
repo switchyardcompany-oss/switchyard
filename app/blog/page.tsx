@@ -61,7 +61,7 @@ export default async function BlogIndexPage({ searchParams }: BlogPageProps) {
       </section>
 
       <div className="blog-index-header" id="blog-grid">
-        <h1>Keentel Blogs</h1>
+        <h2>Keentel Blogs</h2>
         <p>Insights, guides, and technical publications from our construction team.</p>
       </div>
 

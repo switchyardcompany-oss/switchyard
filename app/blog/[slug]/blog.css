@@ -402,6 +402,37 @@
   .blog-featured-image { margin-bottom: 24px; }
 }
 
+@media (max-width: 500px) {
+  .blog-page,
+  .blog-container,
+  .blog-main,
+  .blog-title,
+  .blog-content {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .blog-title {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .blog-content,
+  .blog-content p,
+  .blog-content li,
+  .blog-content h2,
+  .blog-content h3 {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .blog-sidebar-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
 .blog-internal-links {
   margin: 40px 0 32px;
   padding: 24px 28px;
@@ -954,5 +985,37 @@
   .blog-content .urgency-cost-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  .blog-page,
+  .blog-container,
+  .blog-main,
+  .blog-title,
+  .blog-content,
+  .blog-content > * {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .blog-title,
+  .blog-content,
+  .blog-content p,
+  .blog-content li,
+  .blog-content h2,
+  .blog-content h3 {
+    overflow-wrap: anywhere !important;
+    word-break: break-word;
+  }
+
+  .blog-featured-image__img,
+  .blog-content img,
+  .blog-content video,
+  .blog-content iframe {
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
 }

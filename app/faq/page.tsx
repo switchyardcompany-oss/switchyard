@@ -3,7 +3,6 @@
 import "./faq.css";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Script from "next/script";
 
 const faqData = [
   // ── Licensing & Credentials ──
@@ -98,25 +97,6 @@ export default function FAQPage() {
 
   return (
     <>
-      <Script
-        id="faq-jsonld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer.replace(/<[^>]*>/g, '')
-              }
-            }))
-          })
-        }}
-      />
-
       <section className="keentel-faq-hero">
         <div className="keentel-faq-hero__inner">
           <p className="keentel-faq-hero__overline">Help Center</p>

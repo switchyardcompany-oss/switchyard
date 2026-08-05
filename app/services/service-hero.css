@@ -954,6 +954,30 @@
   max-inline-size: none !important;
 }
 
+/* Mobile-first hero fallback: avoid downloading/decoding large video above the fold. */
+@media (max-width: 768px) {
+  :is(
+    .pc-hero-video,
+    .dbs-hero-video,
+    .gcs-hero-video,
+    .crs-hero-video,
+    .rrs-hero-video,
+    .ecs-hero-video,
+    .ers-hero-video,
+    .electrical-pc-hero-video
+  ) {
+    display: none !important;
+  }
+
+  .pc-hero-image { background: url('/images/services/construction-workers-building-site.webp') center / cover no-repeat; }
+  .dbs-hero-section { background: url('/images/services/comprehensive-design-build-services.webp') center / cover no-repeat; }
+  .gcs-hero-section { background: url('/images/services/commercial-construction.webp') center / cover no-repeat; }
+  .crs-hero-section { background: url('/images/services/commercial-remodeling.webp') center / cover no-repeat; }
+  .rrs-hero-section { background: url('/images/services/residential-remodeling.webp') center / cover no-repeat; }
+  .ecs-hero-section { background: url('/images/services/electrical-contracting.webp') center / cover no-repeat; }
+  .ers-hero-section { background: url('/images/services/emergency-restoration.webp') center / cover no-repeat; }
+}
+
 /* Final cascade lock: project capability cards must render identically
    regardless of page-level stylesheet insertion order. */
 :is(#pc-project-types,#dbs-project-types,#gcs-project-types,#crs-project-types,#rrs-project-types,#ecs-project-types,#ers-project-types)
@@ -1553,25 +1577,25 @@
 }
 
 #pc-process {
-  background-image: url("/images/services/About%20Our%20Pre%E2%80%91Construction%20Services.jpg") !important;
+  background-image: url("/images/services/about-our-pre-construction-services.webp") !important;
 }
 #dbs-process {
-  background-image: url("/images/services/One%20Team.%20One%20Vision.%20One%20Successful%20Project..jpg") !important;
+  background-image: url("/images/services/one-team-one-vision-one-successful-project.webp") !important;
 }
 #gcs-process {
-  background-image: url("/images/services/construction-workers-building-site.jpg") !important;
+  background-image: url("/images/services/construction-workers-building-site.webp") !important;
 }
 #crs-process {
-  background-image: url("/images/services/Office%20Renovations.jpg") !important;
+  background-image: url("/images/services/office-renovations.webp") !important;
 }
 #rrs-process {
-  background-image: url("/images/services/Interior%20Renovations.jpg") !important;
+  background-image: url("/images/services/interior-renovations.webp") !important;
 }
 #ecs-process {
-  background-image: url("/images/services/Commercial%20Construction.jpg") !important;
+  background-image: url("/images/services/commercial-construction.webp") !important;
 }
 #ers-process {
-  background-image: url("/images/services/Restore%20Your%20Property%20with%20Confidence.jpg") !important;
+  background-image: url("/images/services/restore-your-property-with-confidence.webp") !important;
 }
 
 :is(
@@ -3610,10 +3634,10 @@
 
 /* Each service now opens with its own relevant real project image. */
 .dbs-hero-image {
-  background-image: url("/images/recent-work/multifamily-aerial.jpeg") !important;
+  background-image: url("/images/recent-work/multifamily-aerial.webp") !important;
 }
 .gcs-hero-image {
-  background-image: url("/images/industries/aerial-view-new-constructions-development-site-with-diverse-team-engineers-architects-discussing-real-estate-projects-heavy-machinery-construction-workers-are-working-area%20(1).jpg") !important;
+  background-image: url("/images/industries/aerial-view-new-constructions-development-site-with-diverse-team-engineers-architects-discussing-real-estate-projects-heavy-machinery-construction-workers-are-working-area-1.webp") !important;
 }
 .crs-hero-image {
   background-image: url("/images/services/commercial-remodeling.webp") !important;
@@ -3671,8 +3695,8 @@
   isolation: isolate;
   box-shadow: 0 24px 55px rgba(16, 18, 35, 0.16);
 }
-.dbs-about-visual { background-image: url("/images/recent-work/multifamily-community.jpeg"); }
-.gcs-about-visual { background-image: url("/images/recent-work/homeward-bound.jpeg"); }
+.dbs-about-visual { background-image: url("/images/recent-work/multifamily-community.webp"); }
+.gcs-about-visual { background-image: url("/images/recent-work/homeward-bound.webp"); }
 .crs-about-visual { background-image: url("/images/services/commercial-remodeling.webp"); }
 .rrs-about-visual { background-image: url("/images/services/residential-remodeling.webp"); }
 .ecs-about-visual { background-image: url("/images/services/electrical-contracting.webp"); }

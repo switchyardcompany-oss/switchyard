@@ -12,7 +12,7 @@ export default function ServiceHeroCredentials() {
       </a>
       <div className="service-hero-credential">
         <img
-          src="/images/genral%20contratcter.png"
+          src="/images/genral-contratcter.png"
           alt="State of Florida Certified General Contractor"
         />
       </div>

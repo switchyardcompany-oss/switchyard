@@ -306,7 +306,7 @@ a.kcontact-quick__item:hover strong {
   border-radius: 8px;
   background:
     linear-gradient(0deg, rgba(13, 12, 63, 0.25), rgba(13, 12, 63, 0.05)),
-    url("/images/home/Construction Partner.jpg") center 38% / cover no-repeat;
+    url("/images/home/construction-partner.webp") center 38% / cover no-repeat;
 }
 
 .kcontact-form-intro__actions {
@@ -660,11 +660,11 @@ a.kcontact-quick__item:hover strong {
 }
 
 .kcontact-support__media--areas {
-  background-image: url("/images/industries/aerial-view-new-constructions-development-site-with-diverse-team-engineers-architects-discussing-real-estate-projects-heavy-machinery-construction-workers-are-working-area%20(1).jpg");
+  background-image: url("/images/industries/aerial-view-new-constructions-development-site-with-diverse-team-engineers-architects-discussing-real-estate-projects-heavy-machinery-construction-workers-are-working-area-1.webp");
 }
 
 .kcontact-support__media--emergency {
-  background-image: url("/images/services/Restore Your Property with Confidence.jpg");
+  background-image: url("/images/services/restore-your-property-with-confidence.webp");
 }
 
 .kcontact-support__media > span {
@@ -956,6 +956,23 @@ a.kcontact-quick__item:hover strong {
     object-fit: contain;
   }
 
+  .kcontact-hero__inner,
+  .kcontact-hero__copy,
+  .kcontact-hero h1,
+  .kcontact-hero__intro,
+  .kcontact-hero .service-hero-credentials,
+  .kcontact-hero .service-hero-credential {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .kcontact-hero h1,
+  .kcontact-hero__intro,
+  .kcontact-hero .kcontact-eyebrow {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
   .kcontact-quick__grid {
     grid-template-columns: 1fr;
   }
@@ -1164,5 +1181,23 @@ a.kcontact-quick__item:hover strong {
 
   .licensed-business-info p {
     font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kcontact-hero h1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 34px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.025em !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .kcontact-hero .service-hero-credentials {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden;
   }
 }

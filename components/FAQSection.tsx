@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 
-type FAQItem = {
+export type FAQItem = {
   question: string;
   answer: string;
 };
@@ -16,7 +16,7 @@ type FAQSectionProps = {
   showAllLink?: boolean;
 };
 
-const defaultFaqs: FAQItem[] = [
+export const defaultFaqs: FAQItem[] = [
   { question: "What types of projects do you specialize in?", answer: "Commercial, industrial, institutional, multi-family, and large residential construction projects." },
   { question: "Do you provide design-build services?", answer: "Yes. We manage planning, design coordination, and construction through one integrated team." },
   { question: "Can you manage the entire construction project?", answer: "Absolutely. We oversee planning, scheduling, coordination, construction, quality control, and project closeout." },

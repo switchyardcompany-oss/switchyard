@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import ServiceHeroCredentials from '@/components/ServiceHeroCredentials';
+import { submitLead } from '@/lib/lead-client';
 import './service-areas.css';
 
 /* ============================================================================
@@ -93,13 +94,6 @@ function Icon({ name, className }: { name: IconName; className?: string }) {
 /* ============================================================================
    DATA
    ============================================================================ */
-const NAV_LINKS = [
-  { label: 'Services', href: '#services' },
-  { label: 'Service Areas', href: '#areas' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Why Keentel', href: '#why' },
-];
-
 const TRUST_ITEMS = [
   'Statewide Florida Coverage',
   'Commercial & Residential',
@@ -279,25 +273,25 @@ const WHY_US: { title: string; blurb: string; img: string; alt: string }[] = [
   {
     title: 'Statewide Florida Coverage',
     blurb: 'One licensed construction partner serving projects across all 67 Florida counties.',
-    img: '/images/services/Commercial Construction.jpg',
+    img: '/images/services/commercial-construction.webp',
     alt: 'Large commercial construction project in progress',
   },
   {
     title: 'Experienced Project Team',
     blurb: 'Professional project managers and skilled construction specialists guide every phase.',
-    img: '/images/services/construction-workers-building-site.jpg',
+    img: '/images/services/construction-workers-building-site.webp',
     alt: 'Construction professionals coordinating work on site',
   },
   {
     title: 'Quality Craftsmanship',
     blurb: 'Disciplined execution and careful quality control create durable, dependable results.',
-    img: '/images/services/Office Renovations.jpg',
+    img: '/images/services/office-renovations.webp',
     alt: 'Quality commercial interior renovation work',
   },
   {
     title: 'Clear Updates',
     blurb: 'Regular updates keep every project aligned from start to completion.',
-    img: '/images/services/One Team. One Vision. One Successful Project..jpg',
+    img: '/images/services/one-team-one-vision-one-successful-project.webp',
     alt: 'Project team reviewing construction plans together',
   },
 ];
@@ -355,20 +349,12 @@ function Reveal({
    MAIN PAGE
    ============================================================================ */
 export default function ServiceAreasPage() {
-  const [navScrolled, setNavScrolled] = useState(false);
-  const [navOpen, setNavOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState<string>('southeast');
   const [expandedRegions, setExpandedRegions] = useState<Set<string>>(new Set());
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [activeWhy, setActiveWhy] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => setNavScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const toggleRegion = (id: string) => {
     setExpandedRegions((prev) => {
@@ -386,14 +372,12 @@ export default function ServiceAreasPage() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     setSubmitError(false);
+    setFieldErrors({});
 
     try {
-      const response = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      const result = await submitLead({
           formSource: 'service-areas',
-          firstName: formData.get('fullName'),
+          fullName: formData.get('fullName'),
           company: formData.get('company'),
           email: formData.get('email'),
           phone: formData.get('phone'),
@@ -402,11 +386,11 @@ export default function ServiceAreasPage() {
           serviceNeeded: formData.get('serviceNeeded'),
           projectType: formData.get('projectType'),
           message: formData.get('details'),
-        }),
       });
-
-      const data = await response.json();
-      if (!response.ok || !data.success) throw new Error('Lead submission failed');
+      if (!result.ok) {
+        setFieldErrors(result.fields);
+        throw new Error(result.error);
+      }
 
       form.reset();
       setSubmitted(true);
@@ -417,54 +401,6 @@ export default function ServiceAreasPage() {
 
   return (
     <div className="ktl-page">
-      {/* ============================== NAV ============================== */}
-      <header className={`ktl-nav${navScrolled ? ' ktl-nav--scrolled' : ''}`}>
-        <div className="ktl-container ktl-nav-inner">
-          <a href="#top" className="ktl-logo">
-            <span className="ktl-logo-mark">KEENTEL</span>
-            <span className="ktl-logo-sub">General Contractors</span>
-          </a>
-          <nav className="ktl-nav-links">
-            {NAV_LINKS.map((link) => (
-              <a key={link.href} href={link.href}>{link.label}</a>
-            ))}
-          </nav>
-          <div className="ktl-nav-cta">
-            <span className="ktl-nav-phone">
-              <Icon name="phone" className="ktl-inline-icon" /> (813) 395-0000
-            </span>
-            <a href="#contact" className="ktl-btn ktl-btn--primary ktl-btn--sm">
-              Get a Quote <Icon name="arrowRight" />
-            </a>
-            <button
-              className={`ktl-nav-toggle${navOpen ? ' ktl-nav-toggle--open' : ''}`}
-              onClick={() => setNavOpen((v) => !v)}
-              aria-label="Toggle menu"
-            >
-              <span /><span /><span />
-            </button>
-          </div>
-        </div>
-        {navOpen && (
-          <div className="ktl-container" style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setNavOpen(false)}
-                style={{
-                  fontFamily: 'var(--font-heading)',
-                  fontWeight: 700,
-                  color: navScrolled ? 'var(--color-navy)' : 'var(--color-white)',
-                }}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
-      </header>
-
       {/* ============================== HERO ============================== */}
       <section id="top" className="ktl-hero">
         <div className="ktl-hero-media">
@@ -474,8 +410,9 @@ export default function ServiceAreasPage() {
             muted
             loop
             playsInline
-            preload="auto"
+          preload="metadata"
           >
+            <source src="/Video/service-areas-mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
             <source src="/Video/service-areas.mp4" type="video/mp4" />
           </video>
           <div className="ktl-hero-overlay" />
@@ -600,7 +537,7 @@ export default function ServiceAreasPage() {
                           loading="lazy"
                           onError={(event) => {
                             event.currentTarget.onerror = null;
-                            event.currentTarget.src = '/images/services/Commercial Construction.jpg';
+                            event.currentTarget.src = '/images/services/commercial-construction.webp';
                           }}
                         />
                       )}
@@ -806,8 +743,8 @@ export default function ServiceAreasPage() {
               <div className="ktl-contact-side">
                 <div className="ktl-contact-side-img">
                   <img
-                    src="https://images.pexels.com/photos/6894105/pexels-photo-6894105.jpeg?auto=compress&cs=tinysrgb&w=900"
-                    alt=""
+                    src="/images/services/construction-workers-building-site.webp"
+                    alt="Construction team reviewing project details with a client"
                   />
                 </div>
                 <div className="ktl-contact-side-content">
@@ -858,7 +795,7 @@ export default function ServiceAreasPage() {
                       </div>
                       <div className="ktl-field">
                         <label htmlFor="phoneNum">Phone Number</label>
-                        <input id="phoneNum" name="phone" autoComplete="tel" type="tel" required placeholder="(813) 555-1234" />
+                        <input id="phoneNum" name="phone" autoComplete="tel" type="tel" pattern="[0-9()+.\-\s]{10,}" required placeholder="(813) 555-1234" />
                       </div>
                     </div>
                     <div className="ktl-form-row">
@@ -884,7 +821,7 @@ export default function ServiceAreasPage() {
                       </div>
                       <div className="ktl-field">
                         <label htmlFor="projectType">Project Type</label>
-                        <select id="projectType" name="projectType" defaultValue="">
+                        <select id="projectType" name="projectType" defaultValue="" required>
                           <option value="" disabled>Select project type</option>
                           <option>Commercial</option>
                           <option>Industrial</option>
@@ -901,9 +838,10 @@ export default function ServiceAreasPage() {
                       Request a Free Consultation <Icon name="arrowRight" />
                     </button>
                     {submitError && (
-                      <p className="ktl-form-error" role="alert">
-                        We couldn&apos;t send your request. Please call (813) 395-0000 or email us directly.
-                      </p>
+                      <>
+                        <p className="ktl-form-error" role="alert">We couldn&apos;t send your request. Please correct the highlighted fields or call (813) 395-0000.</p>
+                        {Object.entries(fieldErrors).map(([field, message]) => <p key={field} className="ktl-form-error" role="alert">{message}</p>)}
+                      </>
                     )}
                   </form>
                 )}

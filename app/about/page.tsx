@@ -79,8 +79,9 @@ export default function AboutPage() {
             loop
             muted
             playsInline
-            preload="auto"
+preload="metadata"
           >
+            <source src="/Video/about-hero-mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
             <source src="/Video/about-hero.mp4" type="video/mp4" />
           </video>
         </div>
@@ -128,7 +129,7 @@ export default function AboutPage() {
         <div className="about-who-container">
           <div className="about-who-image-wrap">
             <img
-              src="/images/home/Construction%20Partner.jpg"
+              src="/images/home/construction-partner.webp"
               alt="Construction professional reviewing project plans on site"
             />
             <div className="about-who-badge">

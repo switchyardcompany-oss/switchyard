@@ -2663,6 +2663,26 @@
   .ktl-hero-actions .ktl-btn { width: 100%; }
   .ktl-eyebrow{font-size: 7.5px;}
   .ktl-about-badge {right: -12px;}
+
+  .ktl-hero-inner,
+  .ktl-hero h1,
+  .ktl-hero h1 span,
+  .ktl-hero h1 span b,
+  .ktl-hero-sub,
+  .ktl-hero-actions,
+  .ktl-hero-coords {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .ktl-hero h1,
+  .ktl-hero h1 span,
+  .ktl-hero h1 span b,
+  .ktl-hero-sub {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -2773,4 +2793,29 @@
   .ktl-map-copy { display: block; }
   .ktl-map-card,
   .ktl-map-feature { height: auto; }
+}
+
+@media (max-width: 480px) {
+  .ktl-hero-inner,
+  .ktl-hero h1,
+  .ktl-hero h1 span,
+  .ktl-hero h1 span b,
+  .ktl-hero-sub {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .ktl-hero h1 {
+    font-size: 32px !important;
+    line-height: 1.1 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .ktl-hero h1 span,
+  .ktl-hero h1 span b,
+  .ktl-hero-sub {
+    overflow-wrap: anywhere !important;
+    word-break: break-word;
+  }
 }

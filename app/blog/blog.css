@@ -573,7 +573,7 @@
   position: absolute;
   inset: 0;
   z-index: -3;
-  background-image: url("/images/electrical-services/commercial-maintenance.jpg");
+  background-image: url("/images/electrical-services/commercial-maintenance.webp");
   background-position: center 42%;
   background-size: cover;
   transform: scale(1.01);
@@ -837,5 +837,63 @@
 
   .blog-category-btn {
     flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-index-page .blog-hero-content,
+  .blog-index-page .hero-title,
+  .blog-index-page .hero-subtitle,
+  .blog-index-page .blog-hero-action,
+  .blog-index-page .blog-hero-stats {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .blog-index-page .hero-badge {
+    width: auto;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .blog-index-page .hero-title {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+    overflow-wrap: anywhere;
+  }
+
+  .blog-index-page .blog-hero-action {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .blog-index-page .blog-hero-action p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .blog-index-page .hero-cta {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 18px;
+  }
+
+  .blog-index-page .blog-hero-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .blog-index-page .blog-hero-stats div,
+  .blog-index-page .blog-hero-stats span {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .blog-index-page .hero-title,
+  .blog-index-page .hero-gradient-text {
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word;
   }
 }

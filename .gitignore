@@ -34,6 +34,10 @@ yarn-error.log*
 /.chrome-phase7/
 /.lh-chrome/
 /.claude/
+/.hero-qa-chrome/
+*.tmp
+/commercial-remodeling-reverted.png
+/screencapture-localhost-*.png
 /test.json
 /home2.html
 /service2.html

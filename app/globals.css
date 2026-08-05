@@ -41,6 +41,64 @@ body {
             min-height: 100vh;
         }
 
+html,
+body {
+            max-width: 100%;
+            overflow-x: hidden;
+}
+
+/* Mobile overflow guard: keeps flex/grid children and media inside the
+   viewport without changing desktop sizing or layout. */
+@media (max-width: 760px) {
+  html,
+  body,
+  #__next,
+  main,
+  section,
+  footer,
+  header {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  *,
+  *::before,
+  *::after {
+    min-width: 0;
+  }
+
+  img,
+  video,
+  iframe,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  a,
+  button,
+  label,
+  span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    max-width: 100%;
+  }
+}
+
         h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-heading);
         }
@@ -882,6 +940,25 @@ body :is(
   object-fit: cover;
   display: block;
   opacity: 1;
+  background-color: #060f3c;
+}
+
+body :is(
+  .about-hero-video,
+  .kcontact-hero__media,
+  .kgc-hero__video,
+  .ktl-hero-video,
+  .ktc-hero-video,
+  .kpp-hero-video,
+  .pc-hero-video,
+  .electrical-pc-hero-video,
+  .dbs-hero-video,
+  .gcs-hero-video,
+  .crs-hero-video,
+  .rrs-hero-video,
+  .ers-hero-video
+) {
+  background-color: #060f3c;
 }
 
 .sec1-hero__overlay {
@@ -1306,9 +1383,38 @@ body :is(
     height: 58px;
   }
 }
-@media (max-width: 768px) {
-  .sec1-hero {
-    background-image: none !important;
+@media (max-width: 480px) {
+  .sec1-hero__inner,
+  .sec1-hero__content,
+  .sec1-hero__title,
+  .sec1-hero__desc,
+  .sec1-hero__bottom-row {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .sec1-hero__title-line {
+    width: auto;
+    max-width: 100%;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+  .sec1-hero__desc-highlight {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .sec1-hero__credentials-row {
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .sec1-hero__credential,
+  .sec1-hero__credential img {
+    min-width: 0;
+    max-width: 100%;
   }
 }
 
@@ -4686,7 +4792,7 @@ body :is(
 /* ========== CTA SECTION (REFINED SPLIT LAYOUT) ========== */
 .cta-section {
     background-color: #080a12;
-    background-image: url("/images/home/Construction%20Partner.jpg");
+    background-image: url("/images/home/construction-partner.webp");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6200,5 +6306,28 @@ body :is(
 
   .licensed-business-info p {
     font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  .sec1-hero__title-line {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word;
+  }
+
+  .sec1-hero__title {
+    font-size: 2rem !important;
+    line-height: 1.1 !important;
   }
 }

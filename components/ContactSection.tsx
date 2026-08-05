@@ -1,9 +1,26 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { submitLead } from "@/lib/lead-client";
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("sending");
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const result = await submitLead({
+      formSource: "contact-section",
+      fullName: data.get("fullName"), email: data.get("email"), phone: data.get("phone"),
+      projectType: data.get("projectType"), location: data.get("projectLocation"),
+      budget: data.get("budget"), message: data.get("details"),
+    });
+    if (result.ok) { form.reset(); setStatus("success"); }
+    else setStatus("error");
+  }
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -50,27 +67,27 @@ export default function ContactSection() {
 
           {/* RIGHT FORM – all 8 fields */}
           <div className="contact-right">
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleSubmit}>
               <div className="contact-form-row">
                 <div className="contact-form-group">
                   <label htmlFor="fullName">Full Name</label>
-                  <input type="text" id="fullName" placeholder="John Doe" />
+                  <input type="text" id="fullName" name="fullName" placeholder="John Doe" required />
                 </div>
               </div>
               <div className="contact-form-row">
                 <div className="contact-form-group">
                   <label htmlFor="email">Email Address</label>
-                  <input type="email" id="email" placeholder="john@example.com" />
+                  <input type="email" id="email" name="email" placeholder="john@example.com" required />
                 </div>
                 <div className="contact-form-group">
                   <label htmlFor="phone">Phone Number</label>
-                  <input type="tel" id="phone" placeholder="(813) 555-0000" />
+                  <input type="tel" id="phone" name="phone" pattern="[0-9()+.\-\s]{10,}" placeholder="(813) 555-0000" required />
                 </div>
               </div>
               <div className="contact-form-row">
                 <div className="contact-form-group">
                   <label htmlFor="projectType">Project Type</label>
-                  <select id="projectType">
+                    <select id="projectType" name="projectType" required>
                     <option value="">Select Type</option>
                     <option value="commercial">Commercial</option>
                     <option value="industrial">Industrial</option>
@@ -83,13 +100,13 @@ export default function ContactSection() {
                 </div>
                 <div className="contact-form-group">
                   <label htmlFor="projectLocation">Project Location</label>
-                  <input type="text" id="projectLocation" placeholder="City, State" />
+                  <input type="text" id="projectLocation" name="projectLocation" placeholder="City, State" />
                 </div>
               </div>
               <div className="contact-form-row">
                 <div className="contact-form-group">
                   <label htmlFor="budget">Estimated Budget</label>
-                  <select id="budget">
+                    <select id="budget" name="budget">
                     <option value="">Select Budget</option>
                     <option value="under50k">Under $50,000</option>
                     <option value="50k-100k">$50k – $100k</option>
@@ -107,6 +124,7 @@ export default function ContactSection() {
                 <label htmlFor="details">Project Details</label>
                 <textarea
                   id="details"
+                  name="details"
                   rows={3}
                   placeholder="Tell us about your project..."
                 ></textarea>
@@ -126,6 +144,8 @@ export default function ContactSection() {
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </button>
+              {status === "success" && <p role="status">Thank you. Your inquiry has been received.</p>}
+              {status === "error" && <p role="alert">Please check the required fields or try again.</p>}
             </form>
           </div>
         </div>

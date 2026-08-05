@@ -114,7 +114,7 @@ export default function ResidentialDesignPage() {
           ></div>
           <div
             className="hero__slide"
-            style={{ backgroundImage: "url('/assets/iStock-1425142611.jpg')" }}
+            style={{ backgroundImage: "url('/images/services/construction-workers-building-site.webp')" }}
           ></div>
         </div>
         <div className="hero__overlay"></div>
@@ -169,7 +169,7 @@ export default function ResidentialDesignPage() {
         <div className="intro__inner">
           <div
             className="intro__image reveal"
-            style={{ backgroundImage: "url('/assets/iStock-1488302260.jpg')" }}
+            style={{ backgroundImage: "url('/images/services/commercial-construction.webp')" }}
           ></div>
           <div className="intro__text reveal reveal-delay-1">
             <h2>Every Home Should Be as Unique as the People Who Live in It.</h2>
@@ -193,7 +193,7 @@ export default function ResidentialDesignPage() {
             <div className="expertise-card reveal reveal-delay-1">
               <div
                 className="expertise-card__image"
-                style={{ backgroundImage: "url('/assets/iStock-2149088667.jpg')" }}
+                style={{ backgroundImage: "url('/images/services/interior-renovations.webp')" }}
               ></div>
               <div className="expertise-card__body">
                 <h3 className="expertise-card__title">1. Custom Home Design</h3>
@@ -210,7 +210,7 @@ export default function ResidentialDesignPage() {
             <div className="expertise-card reveal reveal-delay-2">
               <div
                 className="expertise-card__image"
-                style={{ backgroundImage: "url('/assets/iStock-1425142611.jpg')" }}
+                style={{ backgroundImage: "url('/images/services/construction-workers-building-site.webp')" }}
               ></div>
               <div className="expertise-card__body">
                 <h3 className="expertise-card__title">2. Renovation &amp; Remodeling Design</h3>
@@ -227,7 +227,7 @@ export default function ResidentialDesignPage() {
             <div className="expertise-card reveal reveal-delay-3">
               <div
                 className="expertise-card__image"
-                style={{ backgroundImage: "url('/assets/iStock-2203032223.jpg')" }}
+                style={{ backgroundImage: "url('/images/services/office-renovations.webp')" }}
               ></div>
               <div className="expertise-card__body">
                 <h3 className="expertise-card__title">3. Interior Design &amp; Space Planning</h3>
@@ -244,7 +244,7 @@ export default function ResidentialDesignPage() {
             <div className="expertise-card reveal reveal-delay-4">
               <div
                 className="expertise-card__image"
-                style={{ backgroundImage: "url('/assets/iStock-91482218.jpg')" }}
+                style={{ backgroundImage: "url('/images/services/large-residential-projects.webp')" }}
               ></div>
               <div className="expertise-card__body">
                 <h3 className="expertise-card__title">4. Landscaping &amp; Outdoor Living Integration</h3>

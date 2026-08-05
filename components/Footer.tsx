@@ -38,7 +38,7 @@ export default function Footer() {
                 />
               </a>
               <img
-                src="/images/genral%20contratcter.png"
+                src="/images/genral-contratcter.png"
                 alt="State of Florida Certified General Contractor"
                 className="sec10-footer-contractor-badge__img"
                 loading="lazy"

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import {
+import { 
   ArrowRight,
   CheckCircle2,
   Building2,
@@ -16,12 +16,10 @@ import {
   GraduationCap,
   Landmark,
   Home as HomeIcon,
-  Mail,
-  Phone,
-  MapPin,
   Sparkles,
 } from 'lucide-react';
 import ServiceHeroCredentials from '@/components/ServiceHeroCredentials';
+import { submitLead } from '@/lib/lead-client';
 import './industries.css';
 
 /* ==========================================================================
@@ -155,25 +153,25 @@ const WHY_ITEMS = [
   {
     title: 'Diverse Industry Experience',
     desc: 'Commercial, industrial, institutional, and residential expertise helps our team understand the operational demands behind every project.',
-    image: '/images/services/Commercial Construction.jpg',
+    image: '/images/services/commercial-construction.webp',
     alt: 'Large commercial construction project managed by an experienced contractor',
   },
   {
     title: 'Professional Project Management',
     desc: 'Disciplined planning, scheduling, trade coordination, and quality control keep complex construction projects moving forward.',
-    image: '/images/services/One Team. One Vision. One Successful Project..jpg',
+    image: '/images/services/one-team-one-vision-one-successful-project.webp',
     alt: 'Construction project team reviewing plans and coordinating project delivery',
   },
   {
     title: 'Quality & Safety in Every Phase',
     desc: 'Careful workmanship and responsible site practices support durable results without compromising the people working around the project.',
-    image: '/images/services/construction-workers-building-site.jpg',
+    image: '/images/services/construction-workers-building-site.webp',
     alt: 'Construction professionals working safely on an active building site',
   },
   {
     title: 'Built for Long-Term Value',
     desc: 'We focus on dependable facilities, transparent communication, and relationships that continue beyond project completion.',
-    image: '/images/services/Facility Expansions.jpg',
+    image: '/images/services/facility-expansions.webp',
     alt: 'Completed facility expansion designed for long-term operational value',
   },
 ];
@@ -192,6 +190,15 @@ const SUPPORT_TAGS = [
   'Multi-Family Developers',
   'Residential Communities',
 ];
+
+const CONTACT_BENEFITS = [
+  ['One accountable team', 'One trusted partner coordinating every stage of construction.'],
+  ['Clear communication', 'Regular updates, transparent timelines, and proactive problem-solving.'],
+  ['Quality workmanship', 'Attention to detail throughout every phase of your project.'],
+  ['Safety-first execution', 'Responsible site practices that protect people, schedules, and budgets.'],
+  ['Reliable scheduling', 'Careful planning that keeps your project moving forward.'],
+  ['Long-term value', 'Dependable results and a relationship built beyond completion.'],
+] as const;
 
 /* ==========================================================================
    Reveal-on-scroll hook
@@ -231,9 +238,17 @@ export default function IndustriesPage() {
   const [submitted, setSubmitted] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const result = await submitLead({
+      formSource: 'industries',
+      fullName: data.get('name'), email: data.get('email'), phone: data.get('phone'),
+      projectType: data.get('projectType'), company: data.get('company'), industry: data.get('industry'),
+      location: data.get('location'), budget: data.get('budget'), message: data.get('details'),
+    });
+    if (result.ok) setSubmitted(true);
   };
 
   const scrollToId = (id: string) => {
@@ -248,15 +263,14 @@ export default function IndustriesPage() {
           <video
             className="kgc-hero__video"
             autoPlay
-            muted
             loop
+            muted
             playsInline
-            preload="auto"
+            preload="metadata"
+            aria-label="Construction teams working across commercial and industrial projects"
           >
-            <source
-              src="https://assets.mixkit.co/videos/25270/25270-720.mp4"
-              type="video/mp4"
-            />
+            <source src="/Video/industrial-services-mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
+            <source src="/Video/industrial-services.mp4" type="video/mp4" />
           </video>
         </div>
         <div className="kgc-hero__overlay" />
@@ -324,7 +338,7 @@ export default function IndustriesPage() {
               <div className="kgc-about__frame" />
               <img
                 className="kgc-about__image"
-                src="/images/industries/aerial-view-new-constructions-development-site-with-diverse-team-engineers-architects-discussing-real-estate-projects-heavy-machinery-construction-workers-are-working-area%20(1).jpg"
+                src="/images/industries/aerial-view-new-constructions-development-site-with-diverse-team-engineers-architects-discussing-real-estate-projects-heavy-machinery-construction-workers-are-working-area-1.webp"
                 alt="Aerial view of engineers and architects discussing an active construction development"
                 loading="lazy"
               />
@@ -510,32 +524,34 @@ export default function IndustriesPage() {
         <div className="kgc-container">
           <div className="kgc-contact__grid">
             <div className="kgc-reveal">
-              <div className="kgc-eyebrow" style={{ color: '#ff9de8' }}>
-                Let&apos;s Build for Your Industry
-              </div>
+              <div className="kgc-eyebrow">Why Clients Choose Keentel</div>
               <h2 className="kgc-contact__title">
-                Tell Us About Your Project
+                Better Project Delivery
               </h2>
               <p className="kgc-contact__desc">
-                Whether you&apos;re planning a commercial office, manufacturing facility, healthcare
-                renovation, retail expansion, or residential community project, Keentel General
-                Contractors is ready to help.
+                Construction success depends on planning, communication, and accountability. Our
+                team manages every project with a structured process designed to reduce risk,
+                improve efficiency, and deliver dependable results.
               </p>
-              <div className="kgc-contact__points">
-                <div className="kgc-contact__point">
-                  <Mail size={18} /> A dedicated team reviews every submission
-                </div>
-                <div className="kgc-contact__point">
-                  <Phone size={18} /> We follow up to schedule your consultation
-                </div>
-                <div className="kgc-contact__point">
-                  <MapPin size={18} /> Serving commercial, industrial &amp; public projects
-                </div>
+              <div className="kgc-contact__benefits">
+                {CONTACT_BENEFITS.map(([title, desc]) => (
+                  <div className="kgc-contact__benefit" key={title}>
+                    <CheckCircle2 size={19} />
+                    <div>
+                      <strong>{title}</strong>
+                      <span>{desc}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="kgc-reveal" style={{ transitionDelay: '0.1s' }}>
               <form className="kgc-form" onSubmit={handleSubmit}>
+                <div className="kgc-form__intro">
+                  <h2>Tell Us About Your Project</h2>
+                  <p>Share your project details and our construction team will follow up with the right next steps.</p>
+                </div>
                 <div className="kgc-form__grid">
                   <div className="kgc-form__group">
                     <label className="kgc-form__label" htmlFor="kgc-name">Full Name</label>
@@ -551,7 +567,7 @@ export default function IndustriesPage() {
                   </div>
                   <div className="kgc-form__group">
                     <label className="kgc-form__label" htmlFor="kgc-phone">Phone Number</label>
-                    <input className="kgc-form__input" id="kgc-phone" name="phone" type="tel" placeholder="(555) 000-0000" />
+                    <input className="kgc-form__input" id="kgc-phone" name="phone" type="tel" pattern="[0-9()+.\-\s]{10,}" placeholder="(555) 000-0000" required />
                   </div>
                   <div className="kgc-form__group">
                     <label className="kgc-form__label" htmlFor="kgc-industry">Industry</label>
@@ -564,7 +580,7 @@ export default function IndustriesPage() {
                   </div>
                   <div className="kgc-form__group">
                     <label className="kgc-form__label" htmlFor="kgc-project-type">Project Type</label>
-                    <input className="kgc-form__input" id="kgc-project-type" name="projectType" type="text" placeholder="New build, renovation..." />
+                    <input className="kgc-form__input" id="kgc-project-type" name="projectType" type="text" placeholder="New build, renovation..." required />
                   </div>
                   <div className="kgc-form__group">
                     <label className="kgc-form__label" htmlFor="kgc-location">Project Location</label>
@@ -591,6 +607,25 @@ export default function IndustriesPage() {
                   </div>
                 )}
               </form>
+            </div>
+          </div>
+
+          <div className="kgc-contact__cta kgc-reveal">
+            <div>
+              <span className="kgc-contact__cta-eyebrow">Ready to plan with confidence?</span>
+              <h3>Build your next Florida project with Keentel.</h3>
+              <p>
+                Explore our construction services or speak with a licensed team about your
+                commercial, industrial, institutional, or residential project.
+              </p>
+            </div>
+            <div className="kgc-contact__cta-actions">
+              <a className="kgc-btn kgc-btn--primary" href="/services">
+                Explore Our Services <ArrowRight size={17} />
+              </a>
+              <a className="kgc-btn kgc-btn--outline" href="tel:8133950000">
+                Call (813) 395-0000
+              </a>
             </div>
           </div>
         </div>

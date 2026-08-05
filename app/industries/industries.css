@@ -1361,7 +1361,7 @@
    ========================================================================== */
 
 .kgc-contact {
-  background: var(--color-navy);
+  background: linear-gradient(135deg, #faf8ff 0%, #f1effb 100%);
   position: relative;
   overflow: hidden;
 }
@@ -1372,7 +1372,7 @@
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(166, 35, 143, 0.35), transparent 70%);
+  background: radial-gradient(circle, rgba(166, 35, 143, 0.12), transparent 70%);
   top: -180px;
   right: -140px;
   animation: kgc-float 9s ease-in-out infinite;
@@ -1393,49 +1393,91 @@
 }
 
 .kgc-contact__title {
-  color: var(--color-white);
+  color: var(--color-navy);
   font-size: clamp(28px, 3.4vw, 38px);
   font-weight: 800;
+  line-height: 1.12;
 }
 
 .kgc-contact__desc {
   margin-top: 18px;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--color-text-light);
   font-size: 15.5px;
-  max-width: 420px;
+  max-width: 520px;
+  line-height: 1.65;
 }
 
-.kgc-contact__points {
-  margin-top: 32px;
+.kgc-contact__benefits {
+  margin-top: 30px;
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
-.kgc-contact__point {
+.kgc-contact__benefit {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 14px;
+  align-items: flex-start;
+  gap: 13px;
+  color: var(--color-navy);
 }
 
-.kgc-contact__point svg {
-  color: #ff9de8;
+.kgc-contact__benefit svg {
+  color: var(--color-magenta);
   flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.kgc-contact__benefit strong,
+.kgc-contact__benefit span {
+  display: block;
+}
+
+.kgc-contact__benefit strong {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.kgc-contact__benefit span {
+  margin-top: 4px;
+  color: var(--color-text-light);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .kgc-form {
   background: var(--color-white);
   border-radius: var(--kgc-radius);
-  padding: 40px;
+  padding: 34px;
   box-shadow: var(--kgc-shadow-lg);
+}
+
+.kgc-form__intro {
+  margin-bottom: 24px;
+}
+
+.kgc-form__intro h2 {
+  color: var(--color-navy);
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1.12;
+  font-weight: 800;
+}
+
+.kgc-form__intro p {
+  margin-top: 10px;
+  color: var(--color-text-light);
+  font-size: 14px;
+  line-height: 1.55;
+  max-width: 430px;
 }
 
 @media (max-width: 520px) {
   .kgc-form {
     padding: 26px;
+  }
+
+  .kgc-contact__benefits {
+    gap: 15px;
   }
 }
 
@@ -1516,6 +1558,72 @@
 .kgc-form__success svg {
   color: var(--color-magenta);
   flex-shrink: 0;
+}
+
+.kgc-contact__cta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 58px;
+  padding: 28px 32px;
+  border: 1px solid rgba(18, 16, 110, 0.12);
+  border-radius: var(--kgc-radius);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 14px 35px rgba(18, 16, 110, 0.08);
+}
+
+.kgc-contact__cta-eyebrow {
+  display: block;
+  color: var(--color-magenta);
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.kgc-contact__cta h3 {
+  margin-top: 7px;
+  color: var(--color-navy);
+  font-size: clamp(21px, 2.4vw, 29px);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.kgc-contact__cta p {
+  margin-top: 7px;
+  max-width: 620px;
+  color: var(--color-text-light);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.kgc-contact__cta-actions {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.kgc-contact__cta-actions .kgc-btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .kgc-contact__cta {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 42px;
+    padding: 24px;
+  }
+
+  .kgc-contact__cta-actions {
+    justify-content: flex-start;
+  }
 }
 
 /* ==========================================================================

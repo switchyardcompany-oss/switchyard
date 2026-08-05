@@ -274,6 +274,7 @@
   }
 }
 
+.kpp-card-body h2,
 .kpp-card-body h3 {
   font-family: var(--font-heading);
   font-size: 1.3rem; /* slightly reduced */

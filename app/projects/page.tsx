@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import "./projects.css";
 import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
+import { submitLead } from "@/lib/lead-client";
 
 type IconName =
     | "compass"
@@ -337,7 +338,7 @@ const CATEGORIES: Category[] = [
             "Infrastructure Improvements",
         ],
         cta: "View Institutional Projects",
-        image: "/images/services/Institutional%20Projects.jpg",
+        image: "/images/services/institutional-projects.webp",
         icon: "layers",
     },
 ];
@@ -348,28 +349,28 @@ const PROCESS = [
         title: "Discover",
         description:
             "Understanding project goals, budget, timeline, and operational requirements.",
-        image: "/images/services/Comprehensive%20Design-Build%20Services.jpg",
+        image: "/images/services/comprehensive-design-build-services.webp",
     },
     {
         num: "02",
         title: "Plan",
         description:
             "Developing construction strategies, schedules, budgets, and project coordination plans.",
-        image: "/images/services/About%20Our%20Pre%E2%80%91Construction%20Services.jpg",
+        image: "/images/services/about-our-pre-construction-services.webp",
     },
     {
         num: "03",
         title: "Build",
         description:
             "Executing construction with experienced leadership and attention to quality.",
-        image: "/images/services/construction-workers-building-site.jpg",
+        image: "/images/services/construction-workers-building-site.webp",
     },
     {
         num: "04",
         title: "Deliver",
         description:
             "Completing inspections, closeout documentation, and final project handover with confidence.",
-        image: "/images/recent-work/homeward-bound.jpeg",
+        image: "/images/recent-work/homeward-bound.webp",
     },
 ];
 
@@ -464,7 +465,7 @@ const GALLERY = [
     {
         title: "Mixed-Use Development",
         category: "Commercial",
-        image: "/images/industries/retail-mixed-use.jpg",
+        image: "/images/industries/retail-mixed-use.webp",
     },
 ];
 
@@ -478,19 +479,19 @@ const GALLERY_FILTERS = [
 ];
 
 const PROJECT_TYPES_ROW_1 = [
-    { title: "Commercial Offices", image: "/images/services/Office%20Renovations.jpg" },
-    { title: "Industrial & Manufacturing", image: "/images/services/Commercial%20Construction.jpg" },
-    { title: "Warehousing & Distribution", image: "/images/services/Facility%20Expansions.jpg" },
-    { title: "Retail", image: "/images/services/Retail%20Spaces.jpg" },
-    { title: "Restaurants & Hospitality", image: "/images/services/Restaurants%20%26%20Hospitality.jpg" },
+    { title: "Commercial Offices", image: "/images/services/office-renovations.webp" },
+    { title: "Industrial & Manufacturing", image: "/images/services/commercial-construction.webp" },
+    { title: "Warehousing & Distribution", image: "/images/services/facility-expansions.webp" },
+    { title: "Retail", image: "/images/services/retail-spaces.webp" },
+    { title: "Restaurants & Hospitality", image: "/images/services/restaurants-hospitality.jpg" },
 ];
 
 const PROJECT_TYPES_ROW_2 = [
-    { title: "Healthcare", image: "/images/services/Healthcare%20Facilities.jpg" },
-    { title: "Educational Facilities", image: "/images/services/Educational%20%26%20Institutional%20Buildings.jpg" },
-    { title: "Government Buildings", image: "/images/services/Institutional%20Projects.jpg" },
-    { title: "Multi-Family Developments", image: "/images/recent-work/multifamily-community.jpeg" },
-    { title: "Large Residential Projects", image: "/images/services/Large%20Residential%20Projects.jpg" },
+    { title: "Healthcare", image: "/images/services/healthcare-facilities.webp" },
+    { title: "Educational Facilities", image: "/images/services/educational-institutional-buildings.jpg" },
+    { title: "Government Buildings", image: "/images/services/institutional-projects.webp" },
+    { title: "Multi-Family Developments", image: "/images/recent-work/multifamily-community.webp" },
+    { title: "Large Residential Projects", image: "/images/services/large-residential-projects.webp" },
 ];
 
 /* -------------------------------------------------------------------------
@@ -551,9 +552,16 @@ export default function ProjectsPage() {
             ? GALLERY
             : GALLERY.filter((g) => g.category === galleryFilter);
 
-    function handleSubmit(e: React.FormEvent) {
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        setSubmitted(true);
+        const data = new FormData(e.currentTarget);
+        const result = await submitLead({
+            formSource: "projects", fullName: data.get("name"), email: data.get("email"),
+            phone: data.get("phone"), projectType: data.get("projectType"),
+            company: data.get("company"), location: data.get("location"), budget: data.get("budget"),
+            timeline: data.get("timeline"), message: data.get("details"),
+        });
+        if (result.ok) setSubmitted(true);
     }
 
     return (
@@ -561,17 +569,11 @@ export default function ProjectsPage() {
             {/* ================= HERO ================= */}
             <section className="ktlp-hero">
                 <div className="ktlp-hero-media">
-                    <video
-                        className="ktlp-hero-video"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="auto"
-                    >
-                        {/* Replace with your own hero footage at /public/videos/hero-construction.mp4 */}
-                        <source src="https://video-previews.elements.envatousercontent.com/06513e02-7f78-45cb-90b5-281996f4001b/watermarked_preview/watermarked_preview.mp4" type="video/mp4" />
-                    </video>
+                    <img
+                        className="ktlp-hero-poster"
+                        src="/images/services/construction-workers-building-site.webp"
+                        alt="Construction workers reviewing a building project on site"
+                    />
                     <div className="ktlp-hero-overlay" />
                     <div className="ktlp-hero-grid" />
                     <div className="ktlp-hero-shape ktlp-hero-shape-1" />
@@ -873,7 +875,7 @@ export default function ProjectsPage() {
                             <div className="ktlp-marquee-group" key={group} aria-hidden={group === 1}>
                                 {PROJECT_TYPES_ROW_1.map((item) => (
                                     <article className="ktlp-marquee-chip" key={`${group}-${item.title}`}>
-                                        <img src={item.image} alt="" loading="lazy" />
+                                        <img src={item.image} alt={`${item.title} construction project`} loading="lazy" />
                                         <span>{item.title}</span>
                                     </article>
                                 ))}
@@ -887,7 +889,7 @@ export default function ProjectsPage() {
                             <div className="ktlp-marquee-group" key={group} aria-hidden={group === 1}>
                                 {PROJECT_TYPES_ROW_2.map((item) => (
                                     <article className="ktlp-marquee-chip" key={`${group}-${item.title}`}>
-                                        <img src={item.image} alt="" loading="lazy" />
+                                        <img src={item.image} alt={`${item.title} construction project`} loading="lazy" />
                                         <span>{item.title}</span>
                                     </article>
                                 ))}
@@ -966,13 +968,13 @@ export default function ProjectsPage() {
                                     </div>
                                     <div className="ktlp-field">
                                         <label htmlFor="ktlp-phone">Phone Number</label>
-                                        <input id="ktlp-phone" name="phone" type="tel" />
+                                    <input id="ktlp-phone" name="phone" type="tel" pattern="[0-9()+.\-\s]{10,}" required />
                                     </div>
                                 </div>
                                 <div className="ktlp-form-row">
                                     <div className="ktlp-field">
                                         <label htmlFor="ktlp-type">Project Type</label>
-                                        <select id="ktlp-type" name="projectType" defaultValue="">
+                                        <select id="ktlp-type" name="projectType" defaultValue="" required>
                                             <option value="" disabled>
                                                 Select a project type
                                             </option>

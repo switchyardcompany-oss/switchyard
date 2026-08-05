@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
+import { submitLead } from "@/lib/lead-client";
 import "./contact.css";
 
 const contactDetails = [
@@ -85,6 +86,7 @@ export default function ContactPage() {
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -92,25 +94,24 @@ export default function ContactPage() {
     const formData = new FormData(form);
 
     setStatus("sending");
+    setFieldErrors({});
 
     try {
-      const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          formSource: "contact",
-          firstName: formData.get("firstName"),
-          lastName: formData.get("lastName"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          message: formData.get("message"),
-          projectType: formData.get("projectType"),
-          location: formData.get("location"),
-        }),
+      const result = await submitLead({
+        formSource: "contact",
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        message: formData.get("message"),
+        projectType: formData.get("projectType"),
+        location: formData.get("location"),
       });
-      const data = await response.json();
 
-      if (!response.ok || !data.success) throw new Error("Submission failed");
+      if (!result.ok) {
+        setFieldErrors(result.fields);
+        throw new Error(result.error);
+      }
 
       form.reset();
       setStatus("success");
@@ -128,9 +129,10 @@ export default function ContactPage() {
           muted
           loop
           playsInline
-          preload="auto"
+            preload="metadata"
           aria-hidden="true"
         >
+          <source src="/Video/contact-mobile.mp4" media="(max-width: 768px)" type="video/mp4" />
           <source src="/Video/contact.mp4" type="video/mp4" />
         </video>
         <div className="kcontact-hero__overlay" />
@@ -241,7 +243,7 @@ export default function ContactPage() {
                 </label>
                 <label>
                   Phone Number *
-                  <input name="phone" type="tel" autoComplete="tel" required />
+                  <input name="phone" type="tel" autoComplete="tel" pattern="[0-9()+.\-\s]{10,}" required />
                 </label>
                 <label>
                   Project Type *
@@ -270,6 +272,10 @@ export default function ContactPage() {
                   />
                 </label>
               </div>
+
+              {Object.entries(fieldErrors).map(([field, message]) => (
+                <p key={field} className="kcontact-form-status--error" role="alert">{message}</p>
+              ))}
 
               <button
                 className="kcontact-submit"

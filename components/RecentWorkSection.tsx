@@ -54,7 +54,7 @@ export default function RecentWorkSection() {
           {/* Project 1 */}
           <div className="recent-card">
             <div className="recent-card-image">
-              <img src="/images/recent-work/homeward-bound.jpeg" alt="Multi-family housing development under construction" loading="lazy" />
+              <img src="/images/recent-work/homeward-bound.webp" alt="Multi-family housing development under construction" loading="lazy" />
               <div className="recent-card-overlay">
                 <span className="recent-card-category">Multi-Family</span>
                 <h3 className="recent-card-title">Housing Development</h3>
@@ -74,7 +74,7 @@ export default function RecentWorkSection() {
           {/* Project 3 */}
           <div className="recent-card">
             <div className="recent-card-image">
-              <img src="/images/recent-work/multifamily-community.jpeg" alt="Multi-family housing foundation construction" loading="lazy" />
+              <img src="/images/recent-work/multifamily-community.webp" alt="Multi-family housing foundation construction" loading="lazy" />
               <div className="recent-card-overlay">
                 <span className="recent-card-category">Multi-Family</span>
                 <h3 className="recent-card-title">Community Expansion</h3>
@@ -84,7 +84,7 @@ export default function RecentWorkSection() {
           {/* Project 4 */}
           <div className="recent-card">
             <div className="recent-card-image">
-              <img src="https://www.belvanconstruction.com/wp-content/themes/belvan-construction/img/inner-commercial-services/Retail%20Store-1.png" alt="Commercial renovation" loading="lazy" />
+              <img src="/images/services/retail-spaces.webp" alt="Commercial retail space renovation" loading="lazy" />
               <div className="recent-card-overlay">
                 <span className="recent-card-category">Renovation</span>
                 <h3 className="recent-card-title">Retail Storefront</h3>
@@ -94,7 +94,7 @@ export default function RecentWorkSection() {
           {/* Project 5 */}
           <div className="recent-card">
             <div className="recent-card-image">
-              <img src="/images/recent-work/multifamily-aerial.jpeg" alt="Completed multi-family residential community" loading="lazy" />
+              <img src="/images/recent-work/multifamily-aerial.webp" alt="Completed multi-family residential community" loading="lazy" />
               <div className="recent-card-overlay">
                 <span className="recent-card-category">Multi-Family</span>
                 <h3 className="recent-card-title">Residential Community</h3>
@@ -104,7 +104,7 @@ export default function RecentWorkSection() {
           {/* Project 6 */}
           <div className="recent-card">
             <div className="recent-card-image">
-              <img src="https://cdn.prod.website-files.com/67b63dcbadb8f1376005d51f/68111103651e4854a9fba6e3_m50%20storm%20damage.jpg" alt="Emergency restoration" loading="lazy" />
+              <img src="/images/services/storm-damage.webp" alt="Storm damage restoration work" loading="lazy" />
               <div className="recent-card-overlay">
                 <span className="recent-card-category">Emergency</span>
                 <h3 className="recent-card-title">Storm Recovery</h3>

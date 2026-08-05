@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { OrganizationSchema } from "@/components/StructuredData";
 
 const montserrat = localFont({
   src: "./fonts/Montserrat-Latin-Variable.woff2",
@@ -31,11 +32,21 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID;
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 
 export const metadata: Metadata = {
-  title: "Keentel General Contractors | Open 24/7",
-  description: "Residential, Commercial & Industrial Experts",
+  title: {
+    default: "General Contractors Tampa FL | Commercial Construction | Keentel",
+    template: "%s | Keentel General Contractors",
+  },
+  description: "Licensed general contractors serving Tampa Bay and all Florida counties. Commercial, industrial, and multi-family construction from pre-construction through closeout. Call 813-395-0000.",
   metadataBase: new URL("https://keentelgeneralcontractors.com"),
   alternates: {
     canonical: "/",
+  },
+  openGraph: {
+    title: "General Contractors Tampa FL | Commercial Construction | Keentel",
+    description: "Licensed general contractors serving Tampa Bay and all Florida counties. Commercial, industrial, and multi-family construction from pre-construction through closeout.",
+    url: "https://keentelgeneralcontractors.com/",
+    siteName: "Keentel General Contractors",
+    type: "website",
   },
   robots: {
     index: true,
@@ -50,8 +61,13 @@ export const metadata: Metadata = {
       },
     ],
     shortcut: "/images/Favicon/kgc-sharp.svg?v=9",
-    apple: "/images/Favicon/FAV%20icon.png?v=8",
+    apple: "/images/Favicon/fav-icon.png?v=8",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -71,6 +87,7 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning>
+        <OrganizationSchema />
         <TopBar />
         <Header />
         <main className="main">{children}</main>

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import WhyKeentel from "@/components/WhyKeentel";
 import ServiceHeroCredentials from "@/components/ServiceHeroCredentials";
 import FAQSection from "@/components/FAQSection";
@@ -19,12 +20,12 @@ import {
 import type { ElectricalServicePage } from "./electrical-service-data";
 
 const projectImages = [
-  "/images/electrical-services/commercial-construction.jpg",
-  "/images/electrical-services/industrial-equipment-wiring.jpg",
-  "/images/electrical-services/commercial-lighting.jpg",
-  "/images/electrical-services/emergency-power.jpg",
-  "/images/electrical-services/project-office.jpg",
-  "/images/electrical-services/residential-inspections.jpg",
+  "/images/electrical-services/commercial-construction.webp",
+  "/images/electrical-services/industrial-equipment-wiring.webp",
+  "/images/electrical-services/commercial-lighting.webp",
+  "/images/electrical-services/emergency-power.webp",
+  "/images/electrical-services/project-office.webp",
+  "/images/electrical-services/residential-inspections.webp",
 ];
 
 const audiences = [
@@ -73,8 +74,15 @@ export default function ElectricalPreConstructionTemplate({
               muted
               loop
               playsInline
-              preload="auto"
+              preload="metadata"
             >
+                {page.heroVideo?.startsWith("/") && (
+                  <source
+                    src={page.heroVideo.replace(/\.mp4$/, "-mobile.mp4")}
+                    media="(max-width: 768px)"
+                    type="video/mp4"
+                  />
+                )}
               <source src={page.heroVideo} type="video/mp4" />
             </video>
           ) : (
@@ -123,7 +131,7 @@ export default function ElectricalPreConstructionTemplate({
               <p className="pc-section-body">Florida Licenses: CGC1524228 • EC13014476</p>
             </div>
             <div className="pc-about-visual pc-reveal pc-reveal-delay-2">
-              <img className="pc-about-image" src={page.featureImage} alt={`Professional ${page.eyebrow.toLowerCase()}`} loading="lazy" />
+              <Image className="pc-about-image" src={page.featureImage} alt={`Professional ${page.eyebrow.toLowerCase()}`} width={1000} height={700} loading="lazy" />
             </div>
           </div>
         </div>
@@ -166,7 +174,7 @@ export default function ElectricalPreConstructionTemplate({
           <div className="pc-services-layout">
             <div className="pc-services-left pc-reveal">
               <div className="pc-services-image-wrapper">
-                <img src={page.featureImage} alt="Electrical contracting services" className="pc-services-image" loading="lazy" />
+                  <Image src={page.featureImage} alt="Electrical contracting services" className="pc-services-image" width={1000} height={700} loading="lazy" />
               </div>
             </div>
             <div className="pc-services-right pc-reveal pc-reveal-delay-2">
@@ -193,7 +201,7 @@ export default function ElectricalPreConstructionTemplate({
             {projectTypes.map((type, index) => (
               <div className={`pc-project-type-card pc-reveal pc-reveal-delay-${index + 2}`} key={type.title}>
                 <div className="pc-project-type-image">
-                  <img src={type.image} alt="" loading="lazy" />
+                  <Image src={type.image} alt={`${type.title} electrical project`} width={800} height={500} loading="lazy" />
                 </div>
                 <div className="pc-project-type-content"><h4>{type.title}</h4><p>{type.description}</p></div>
               </div>

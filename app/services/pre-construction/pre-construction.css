@@ -99,7 +99,7 @@
 .pc-hero-image {
   position: absolute;
   inset: 0;
-  background-image: url('/images/services/construction-workers-building-site.jpg');
+  background-image: url('/images/services/construction-workers-building-site.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1518,7 +1518,7 @@
 /* ── Final CTA ── */
 .pc-final-cta-section {
   background-color: #080a12;
-  background-image: url("/images/services/About%20Our%20Pre%E2%80%91Construction%20Services.jpg");
+  background-image: url("/images/services/about-our-pre-construction-services.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

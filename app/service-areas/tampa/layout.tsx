@@ -1,17 +1,6 @@
-import type { Metadata } from "next";
-import { seoMetadata } from "@/lib/seo-metadata";
+import { seoMetadata } from "@/lib/phase3-metadata";
 
-export const metadata: Metadata = {
-  title: seoMetadata["service-areas/tampa"].title,
-  description: seoMetadata["service-areas/tampa"].description,
-  alternates: {
-    canonical: "/service-areas/tampa",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export const metadata = seoMetadata("service-areas/tampa");
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

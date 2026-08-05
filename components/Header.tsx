@@ -151,6 +151,7 @@ export default function Header() {
     Services <span className="dropdown-chevron">⌵</span>
   </Link>
   <ul className={`dropdown-menu ${openDropdown === "services" ? "show-mobile" : ""}`}>
+    <li><Link href="/services" className="dropdown-link dropdown-link--main" onClick={closeMobileMenu}>All Services</Link></li>
     <li><Link href="/services/pre-construction" className="dropdown-link" onClick={closeMobileMenu}>Pre-Construction</Link></li>
     <li><Link href="/services/design-build" className="dropdown-link" onClick={closeMobileMenu}>Design-Build</Link></li>
     <li><Link href="/services/general-construction" className="dropdown-link" onClick={closeMobileMenu}>General Construction</Link></li>

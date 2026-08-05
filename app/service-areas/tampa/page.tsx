@@ -9,10 +9,14 @@ import ServiceAreaMap from "@/components/ServiceAreaMap";
 import CTASection from "@/components/CTASection";
 import WhyKeentel from "@/components/WhyKeentel";
 import FAQSection from "@/components/FAQSection";
+import { LocalBusinessSchema } from "@/components/StructuredData";
+import Link from "next/link";
+import "../city-area.css";
 
 export default function TampaPage() {
   return (
     <>
+      <LocalBusinessSchema city="Tampa" description="Licensed Tampa general contractor for commercial, industrial, residential, remodeling, and emergency construction." url="/service-areas/tampa" />
       <Hero
         badge="GENERAL CONTRACTOR — TAMPA COUNTY • RESIDENTIAL, COMMERCIAL & INDUSTRIAL CONSTRUCTION — TAMPA, FLORIDA"
         titleLine1="General Contractor in"
@@ -70,6 +74,17 @@ export default function TampaPage() {
           "Hyde Park",
         ]}
       />
+
+      <section className="city-area-projects" id="tampa-project-examples">
+        <div className="city-area-shell">
+          <div className="city-area-heading"><span className="services-eyebrow">TAMPA PROJECT EXPERIENCE</span><h2>Local Projects We Help Deliver</h2><p>From South Tampa homes to Port-area commercial work, our Tampa team coordinates the details that keep projects moving.</p></div>
+          <div className="city-area-grid">
+            <article className="city-area-card"><h3>South Tampa home renovations</h3><p>Whole-home remodeling, additions, and structural improvements planned around established neighborhoods and occupied properties.</p><Link href="/services/residential-remodeling">Residential remodeling →</Link></article>
+            <article className="city-area-card"><h3>Downtown commercial build-outs</h3><p>Office, retail, and tenant improvements coordinated around access, inspections, building operations, and opening schedules.</p><Link href="/services/commercial-remodeling">Commercial remodeling →</Link></article>
+            <article className="city-area-card"><h3>Port and industrial improvements</h3><p>Pre-construction, general construction, and electrical scopes for facilities that depend on reliable planning and safe execution.</p><Link href="/services/general-construction">General construction →</Link></article>
+          </div>
+        </div>
+      </section>
 
       <RecentWorkSection />
       <IndustriesCarousel />
