@@ -25,10 +25,19 @@
 *.pem
 
 # debug
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+.lighthouse-*.json
+/.chrome-phase7/
+/.lh-chrome/
+/.claude/
+/test.json
+/home2.html
+/service2.html
+/v.html
 
 # env files (can opt-in for committing if needed)
 .env*
