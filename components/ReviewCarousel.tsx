@@ -7,6 +7,8 @@ export default function ReviewCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
+  const [canGoPrev, setCanGoPrev] = useState(false);
+  const [canGoNext, setCanGoNext] = useState(false);
   const gap = 28;
 
   useEffect(() => {
@@ -30,33 +32,64 @@ export default function ReviewCarousel() {
 
     // Carousel measurements
     const updateDimensions = () => {
-      const firstCard = document.querySelector(".review-card") as HTMLElement;
+      const firstCard = document.querySelector(".review-card") as HTMLElement | null;
       if (firstCard) {
-        setCardWidth(firstCard.offsetWidth);
+        setCardWidth(firstCard.getBoundingClientRect().width);
+      } else {
+        setCardWidth(0);
       }
     };
+
     updateDimensions();
+    const frame = window.requestAnimationFrame(updateDimensions);
+    const resizeObserver = new ResizeObserver(updateDimensions);
+    const container = trackRef.current?.parentElement;
+    if (container) {
+      resizeObserver.observe(container);
+    }
     window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", updateDimensions);
+      resizeObserver.disconnect();
+    };
   }, []);
 
   const moveAmount = cardWidth + gap;
 
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+  const getVisibleCards = () => {
+    const container = trackRef.current?.parentElement;
+    if (!container || cardWidth <= 0) {
+      return 1;
     }
+
+    return Math.max(1, Math.floor(container.clientWidth / (cardWidth + gap)) || 1);
+  };
+
+  const getMaxIndex = () => {
+    const totalCards = document.querySelectorAll(".review-card").length;
+    const visibleCards = getVisibleCards();
+    return Math.max(0, totalCards - visibleCards);
+  };
+
+  useEffect(() => {
+    const maxIndex = getMaxIndex();
+    setCanGoPrev(currentIndex > 0);
+    setCanGoNext(currentIndex < maxIndex);
+
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(maxIndex);
+    }
+  }, [cardWidth, currentIndex]);
+
+  const handlePrev = () => {
+    setCurrentIndex((previousIndex) => Math.max(previousIndex - 1, 0));
   };
 
   const handleNext = () => {
-    const totalCards = document.querySelectorAll(".review-card").length;
-    const container = trackRef.current?.parentElement;
-    if (!container) return;
-    const visibleCards = Math.floor(container.clientWidth / (cardWidth + gap));
-    const maxIndex = totalCards - visibleCards;
-    if (currentIndex < maxIndex) {
-      setCurrentIndex(currentIndex + 1);
-    }
+    const maxIndex = getMaxIndex();
+    setCurrentIndex((previousIndex) => Math.min(previousIndex + 1, maxIndex));
   };
 
   useEffect(() => {
@@ -104,7 +137,12 @@ export default function ReviewCarousel() {
         </div>
 
         <div className="review-carousel">
-          <button className="review-arrow review-arrow--left" onClick={handlePrev} aria-label="Previous reviews">
+          <button
+            className="review-arrow review-arrow--left"
+            onClick={handlePrev}
+            aria-label="Previous reviews"
+            disabled={!canGoPrev}
+          >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
@@ -192,7 +230,12 @@ export default function ReviewCarousel() {
             </div>
           </div>
 
-          <button className="review-arrow review-arrow--right" onClick={handleNext} aria-label="Next reviews">
+          <button
+            className="review-arrow review-arrow--right"
+            onClick={handleNext}
+            aria-label="Next reviews"
+            disabled={!canGoNext}
+          >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>

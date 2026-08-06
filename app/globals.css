@@ -3734,6 +3734,18 @@ body :is(
     color: #fff;
     box-shadow: 0 8px 20px rgba(166,35,143,0.25);
 }
+.review-arrow:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: var(--shadow-sm);
+    transform: none;
+}
+.review-arrow:disabled:hover {
+    background: var(--color-white);
+    border-color: var(--color-border);
+    color: var(--color-navy);
+    box-shadow: var(--shadow-sm);
+}
 .review-arrow svg {
     width: 20px;
     height: 20px;
