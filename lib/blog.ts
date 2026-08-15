@@ -1,6 +1,6 @@
 import { sanityClient, sanityImageUrl } from '@/lib/sanity';
 
-type InternalLink = { href: string; label: string };
+export type InternalLink = { href: string; label: string };
 
 const internalLinksBySlug: Record<string, InternalLink[]> = {
   'commercial-construction-costs-florida': [
@@ -45,30 +45,23 @@ const internalLinksBySlug: Record<string, InternalLink[]> = {
   ],
 };
 
-function addInternalLinks<T extends { content?: string; featuredImage?: unknown; authorImage?: unknown; ctaImage?: unknown }>(data: T, slug: string): T {
-  const normalized = {
+const defaultInternalLinks: InternalLink[] = [
+  { href: '/services/pre-construction', label: 'Explore pre-construction planning' },
+  { href: '/services/general-construction', label: 'Explore general construction services' },
+  { href: '/contact#contactformsection', label: 'Schedule a project consultation' },
+];
+
+export function getInternalLinks(slug: string): InternalLink[] {
+  return internalLinksBySlug[slug] ?? defaultInternalLinks;
+}
+
+function normalizeBlogData<T extends { featuredImage?: unknown; authorImage?: unknown; ctaImage?: unknown }>(data: T): T {
+  return {
     ...data,
     featuredImage: sanityImageUrl(data.featuredImage),
     authorImage: sanityImageUrl(data.authorImage),
     ctaImage: sanityImageUrl(data.ctaImage),
   };
-
-  if (!normalized.content || normalized.content.includes('blog-internal-links')) return normalized as T;
-
-  const links = internalLinksBySlug[slug] ?? [
-    { href: '/services/pre-construction', label: 'Explore pre-construction planning' },
-    { href: '/services/general-construction', label: 'Explore general construction services' },
-    { href: '/contact#contactformsection', label: 'Schedule a project consultation' },
-  ];
-
-  const internalLinks = links
-    .map(({ href, label }) => `<li><a href="${href}">${label}</a></li>`)
-    .join('');
-
-  return {
-    ...normalized,
-    content: `${normalized.content}<section class="blog-internal-links"><h2>Continue with Keentel</h2><p>Explore these related resources for your project:</p><ul>${internalLinks}</ul></section>`,
-  } as T;
 }
 
 const BLOG_FIELDS = `{
@@ -78,18 +71,14 @@ const BLOG_FIELDS = `{
   ctaButton1Text, ctaButton1Link, ctaButton2Text, ctaButton2Link
 }`;
 
-async function getSanityBlogData(slug: string) {
+export async function getBlogData(slug: string) {
   try {
     const data = await sanityClient.fetch(`*[_type == "blogPost" && slug.current == $slug][0]${BLOG_FIELDS}`, { slug });
-    return data ? addInternalLinks(data, slug) : null;
+    return data ? normalizeBlogData(data) : null;
   } catch (error) {
     console.error('Sanity blog read failed:', error);
     return null;
   }
-}
-
-export async function getBlogData(slug: string) {
-  return getSanityBlogData(slug);
 }
 
 export async function getAllBlogSlugs() {

@@ -21,7 +21,7 @@ const components: PortableTextComponents = {
   },
 }
 
-export default function PortableContent({ value }: { value?: unknown[] }) {
+export default function PortableContent({ value, className = 'publication-content' }: { value?: unknown[]; className?: string }) {
   if (!value?.length) return null
-  return <div className="publication-content"><PortableText value={value as never} components={components} /></div>
+  return <div className={className}><PortableText value={value as never} components={components} /></div>
 }

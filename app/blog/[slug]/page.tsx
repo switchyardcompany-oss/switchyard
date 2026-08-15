@@ -1,7 +1,8 @@
 import './blog.css';
 
-import { getBlogData, getAllBlogSlugs } from '@/lib/blog';
+import { getBlogData, getAllBlogSlugs, getInternalLinks } from '@/lib/blog';
 import BlogFAQ from '@/components/BlogFAQ';
+import PortableContent from '@/components/PortableContent';
 import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
@@ -9,8 +10,6 @@ export const dynamic = 'force-dynamic';
 interface BlogPageProps {
   params: Promise<{ slug: string }>;
 }
-
-const html = (value: string) => ({ __html: value });
 
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
@@ -22,26 +21,42 @@ export default async function BlogPage({ params }: BlogPageProps) {
   const data = await getBlogData(slug);
   if (!data) return notFound();
 
+  const internalLinks = data.content?.length ? getInternalLinks(slug) : [];
+
   return (
     <div className="blog-page">
       <div className="blog-container">
         <main className="blog-main">
           <article>
-            <h1 className="blog-title" dangerouslySetInnerHTML={html(data.title)} />
+            <h1 className="blog-title">{data.title}</h1>
 
             <div className="blog-meta">
-              <time dangerouslySetInnerHTML={html(data.date)} />
+              <time>{data.date}</time>
               <span className="blog-meta-divider">|</span>
-              <span dangerouslySetInnerHTML={html(data.category)} />
+              <span>{data.category}</span>
             </div>
 
-            <div className="blog-subtitle" dangerouslySetInnerHTML={html(data.subtitle)} />
+            <div className="blog-subtitle">{data.subtitle}</div>
 
             <div className="blog-featured-image">
               <img src={data.featuredImage} alt={data.title} className="blog-featured-image__img" />
             </div>
 
-            <div className="blog-content" dangerouslySetInnerHTML={html(data.content)} />
+            <PortableContent value={data.content} className="blog-content" />
+
+            {internalLinks.length > 0 && (
+              <section className="blog-internal-links">
+                <h2>Continue with Keentel</h2>
+                <p>Explore these related resources for your project:</p>
+                <ul>
+                  {internalLinks.map((link) => (
+                    <li key={link.href}>
+                      <a href={link.href}>{link.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             {data.faqs && data.faqs.length > 0 && (
               <>
@@ -61,9 +76,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 className="blog-author-avatar__img"
               />
             </div>
-            <h3 className="blog-author-name" dangerouslySetInnerHTML={html(data.authorName || 'John Keentel')} />
-            <p className="blog-author-title" dangerouslySetInnerHTML={html(data.authorTitle || 'Senior Engineer & General Contractor')} />
-            <p className="blog-author-bio" dangerouslySetInnerHTML={html(data.authorBio || 'With over 20 years of experience...')} />
+            <h3 className="blog-author-name">{data.authorName || 'John Keentel'}</h3>
+            <p className="blog-author-title">{data.authorTitle || 'Senior Engineer & General Contractor'}</p>
+            <p className="blog-author-bio">{data.authorBio || 'With over 20 years of experience...'}</p>
           </div>
 
           <div className="blog-sidebar-card blog-cta-card">
@@ -74,19 +89,21 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 className="blog-cta-image__img"
               />
             </div>
-            <h3 dangerouslySetInnerHTML={html(data.ctaTitle || "Let's Discuss Your Project")} />
-            <p dangerouslySetInnerHTML={html(data.ctaText || "Let's book a call...")} />
+            <h3>{data.ctaTitle || "Let's Discuss Your Project"}</h3>
+            <p>{data.ctaText || "Let's book a call..."}</p>
             <div className="blog-cta-buttons">
               <a
                 className="blog-cta-btn blog-cta-primary"
                 href={data.ctaButton1Link || '/contact#contactformsection'}
-                dangerouslySetInnerHTML={html(data.ctaButton1Text || 'Schedule A Consultation')}
-              />
+              >
+                {data.ctaButton1Text || 'Schedule A Consultation'}
+              </a>
               <a
                 className="blog-cta-btn blog-cta-secondary"
                 href={data.ctaButton2Link || '#'}
-                dangerouslySetInnerHTML={html(data.ctaButton2Text || 'Download Company Profile Flyer')}
-              />
+              >
+                {data.ctaButton2Text || 'Download Company Profile Flyer'}
+              </a>
             </div>
           </div>
         </aside>
