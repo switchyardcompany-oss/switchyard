@@ -1,4 +1,8 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { caseStudy } from './caseStudy'
+import { category } from './category'
+import { newsletter } from './newsletter'
+import { whitePaper } from './whitePaper'
 
 const faq = defineType({
   name: 'faq',
@@ -39,4 +43,4 @@ export const blogPost = defineType({
   preview: { select: { title: 'title', subtitle: 'category', media: 'featuredImage' } },
 })
 
-export const schemaTypes = [blogPost, faq]
+export const schemaTypes = [blogPost, caseStudy, whitePaper, newsletter, category, faq]

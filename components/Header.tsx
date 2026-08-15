@@ -210,7 +210,26 @@ export default function Header() {
               </li> */}
 
               
-              <li><Link href="/blog" className="nav__link" onClick={closeMobileMenu}>Blogs</Link></li>
+              <li className={`nav-item-has-dropdown ${suppressDesktopDropdown ? "dropdown-suppressed" : ""}`} onMouseEnter={() => setSuppressDesktopDropdown(false)} onMouseLeave={() => setSuppressDesktopDropdown(false)}>
+                <Link
+                  href="/blog"
+                  className={`nav__link dropdown-toggle ${openDropdown === "resources" ? "rotate-chevron" : ""}`}
+                  onClick={(e) => {
+                    if (isMobileMenuOpen) {
+                      e.preventDefault();
+                      toggleDropdown("resources");
+                    }
+                  }}
+                >
+                  Resources <span className="dropdown-chevron">âŒµ</span>
+                </Link>
+                <ul className={`dropdown-menu ${openDropdown === "resources" ? "show-mobile" : ""}`}>
+                  <li><Link href="/blog" className="dropdown-link" onClick={closeMobileMenu}>Blog Posts</Link></li>
+                  <li><Link href="/case-studies" className="dropdown-link" onClick={closeMobileMenu}>Case Studies</Link></li>
+                  <li><Link href="/white-papers" className="dropdown-link" onClick={closeMobileMenu}>White Papers</Link></li>
+                  <li><Link href="/newsletters" className="dropdown-link" onClick={closeMobileMenu}>Newsletters</Link></li>
+                </ul>
+              </li>
               <li><Link href="/contact" className="nav__link" onClick={closeMobileMenu}>Contact</Link></li>
             </ul>
           </nav>

@@ -1,11 +1,12 @@
-import { MetadataRoute } from "next";
-import fs from "fs";
-import path from "path";
+import type { MetadataRoute } from "next";
+import { getAllBlogSlugs } from "@/lib/blog";
+import { getPublications } from "@/lib/publications";
 
-const BASE_URL = "https://keentelgeneralcontractors.com";
+const BASE_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://switchyard-puce.vercel.app").replace(/\/$/, "");
 
 const staticRoutes = [
   "", "/about", "/contact", "/faq", "/projects", "/industries", "/privacy", "/terms", "/blog",
+  "/case-studies", "/white-papers", "/newsletters",
   "/3d-modeling", "/ada-compliance", "/additions-expansions", "/architectural-drawings",
   "/commercial-construction", "/commercial-design", "/commercial-electrical", "/commercial-remodeling",
   "/electrical-structural-repairs", "/fire-storm-flood-restoration", "/green-smart-remodeling",
@@ -24,22 +25,16 @@ const staticRoutes = [
   "/services/electrical-contracting/troubleshooting-repairs",
   "/services/electrical-contracting/projects-capabilities",
   "/services/emergency-restoration", "/services/general-construction", "/services/pre-construction",
-  "/services/residential-remodeling",
-  "/legal",
-  "/services",
+  "/services/residential-remodeling", "/legal", "/services",
 ];
 
-function getBlogSlugs(): string[] {
-  try {
-    const dir = path.join(process.cwd(), "content/blog");
-    return fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
-  } catch {
-    return [];
-  }
-}
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  const blogSlugs = getBlogSlugs();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [blogSlugs, caseStudies, whitePapers, newsletters] = await Promise.all([
+    getAllBlogSlugs(),
+    getPublications("caseStudy"),
+    getPublications("whitePaper"),
+    getPublications("newsletter"),
+  ]);
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${BASE_URL}${route}`,
@@ -48,12 +43,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === "" ? 1 : 0.7,
   }));
 
-  const blogEntries: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
-    url: `${BASE_URL}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.6,
+  const contentSources: Array<{ url: string; lastModified?: string }> = [
+    ...blogSlugs.map((slug) => ({ url: `${BASE_URL}/blog/${slug}`, priority: 0.6 })),
+    ...caseStudies.map((item) => ({ url: `${BASE_URL}/case-studies/${item.slug}`, lastModified: item.publishedDate, priority: 0.6 })),
+    ...whitePapers.map((item) => ({ url: `${BASE_URL}/white-papers/${item.slug}`, lastModified: item.publishedDate, priority: 0.6 })),
+    ...newsletters.map((item) => ({ url: `${BASE_URL}/newsletters/${item.slug}`, lastModified: item.publishedDate, priority: 0.6 })),
+  ];
+
+  const contentEntries: MetadataRoute.Sitemap = contentSources.map((entry) => ({
+    ...entry,
+    changeFrequency: "monthly" as const,
+    lastModified: entry.lastModified ? new Date(entry.lastModified) : new Date(),
   }));
 
-  return [...staticEntries, ...blogEntries];
+  return [...staticEntries, ...contentEntries];
 }
