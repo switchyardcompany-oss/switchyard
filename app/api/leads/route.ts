@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validateLead } from "@/lib/lead-validation";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,12 +22,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Connect this validated payload to the new database/backend setup.
-    // The validation and form UI remain active while the replacement integration is configured.
-    return NextResponse.json(
-      { success: false, error: "Lead submission is temporarily unavailable. Please call 813-395-0000." },
-      { status: 503 },
-    );
+    let supabase;
+    try {
+      supabase = createSupabaseServerClient();
+    } catch {
+      console.error("Lead submission is unavailable: Supabase is not configured.");
+      return NextResponse.json({ success: false, error: "Lead submission is temporarily unavailable." }, { status: 503 });
+    }
+
+    const cleaned = validation.cleaned;
+    const fullName = cleaned.fullName || cleaned.name || [cleaned.firstName, cleaned.lastName].filter(Boolean).join(" ") || null;
+    const { error } = await supabase.from("leads").insert({
+      name: fullName,
+      email: cleaned.email || null,
+      phone: cleaned.phone || null,
+      project_type: cleaned.projectType || null,
+      company: cleaned.company || null,
+      location: cleaned.location || cleaned.projectLocation || null,
+      budget: cleaned.budget || null,
+      timeline: cleaned.timeline || null,
+      message: cleaned.message || cleaned.details || null,
+      form_source: cleaned.formSource || null,
+    });
+
+    if (error) {
+      console.error("Lead insert failed:", { code: error.code, message: error.message });
+      return NextResponse.json({ success: false, error: "We could not save your inquiry right now. Please call 813-395-0000." }, { status: 503 });
+    }
+
+    return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {
     console.error("Lead submission error:", error);
     return NextResponse.json({ success: false, error: "We could not process your inquiry right now. Please try again or call 813-395-0000." }, { status: 500 });

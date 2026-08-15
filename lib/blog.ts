@@ -1,6 +1,7 @@
 // src/lib/blog.ts
 import fs from 'fs/promises';
 import path from 'path';
+import { sanityClient } from '@/lib/sanity';
 
 const contentDir = path.join(process.cwd(), 'content/blog');
 
@@ -71,7 +72,27 @@ function addInternalLinks<T extends { content?: string }>(data: T, slug: string)
 // ─── Check if we're on Vercel (has Blob token) ───
 const hasBlobToken = process.env.BLOB_READ_WRITE_TOKEN;
 
+const BLOG_FIELDS = `{
+  "slug": slug.current,
+  title, date, category, subtitle, metaDescription, featuredImage, content, faqs,
+  authorName, authorTitle, authorBio, authorImage, ctaTitle, ctaText, ctaImage,
+  ctaButton1Text, ctaButton1Link, ctaButton2Text, ctaButton2Link
+}`;
+
+async function getSanityBlogData(slug: string) {
+  try {
+    const data = await sanityClient.fetch(`*[_type == "blogPost" && slug.current == $slug][0]${BLOG_FIELDS}`, { slug });
+    return data ? addInternalLinks(data, slug) : null;
+  } catch (error) {
+    console.error('Sanity blog read failed:', error);
+    return null;
+  }
+}
+
 export async function getBlogData(slug: string) {
+  const sanityData = await getSanityBlogData(slug);
+  if (sanityData) return sanityData;
+
   // ✅ If on Vercel → use Blob
   if (hasBlobToken) {
     try {
@@ -105,6 +126,13 @@ export async function getBlogData(slug: string) {
 }
 
 export async function getAllBlogSlugs() {
+  try {
+    const sanitySlugs = await sanityClient.fetch<string[]>(`*[_type == "blogPost" && defined(slug.current)].slug.current`);
+    if (sanitySlugs.length) return sanitySlugs;
+  } catch (error) {
+    console.error('Sanity blog slug read failed:', error);
+  }
+
   // ✅ If on Vercel → use Blob
   if (hasBlobToken) {
     try {
