@@ -55,6 +55,16 @@ export default function BlogFilters({ blogs, initialSearch = '' }: BlogFiltersPr
     });
   }, [blogs, searchQuery, selectedCategory]);
 
+  if (blogs.length === 0) {
+    return (
+      <div className="blog-index-content">
+        <div className="blog-no-results">
+          <p>No blog articles are currently published.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="blog-index-content">
       {/* Filters */}

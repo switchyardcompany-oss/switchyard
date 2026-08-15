@@ -1,9 +1,4 @@
-// src/lib/blog.ts
-import fs from 'fs/promises';
-import path from 'path';
-import { sanityClient } from '@/lib/sanity';
-
-const contentDir = path.join(process.cwd(), 'content/blog');
+import { sanityClient, sanityImageUrl } from '@/lib/sanity';
 
 type InternalLink = { href: string; label: string };
 
@@ -50,8 +45,15 @@ const internalLinksBySlug: Record<string, InternalLink[]> = {
   ],
 };
 
-function addInternalLinks<T extends { content?: string }>(data: T, slug: string): T {
-  if (!data.content || data.content.includes('blog-internal-links')) return data;
+function addInternalLinks<T extends { content?: string; featuredImage?: unknown; authorImage?: unknown; ctaImage?: unknown }>(data: T, slug: string): T {
+  const normalized = {
+    ...data,
+    featuredImage: sanityImageUrl(data.featuredImage),
+    authorImage: sanityImageUrl(data.authorImage),
+    ctaImage: sanityImageUrl(data.ctaImage),
+  };
+
+  if (!normalized.content || normalized.content.includes('blog-internal-links')) return normalized as T;
 
   const links = internalLinksBySlug[slug] ?? [
     { href: '/services/pre-construction', label: 'Explore pre-construction planning' },
@@ -64,13 +66,10 @@ function addInternalLinks<T extends { content?: string }>(data: T, slug: string)
     .join('');
 
   return {
-    ...data,
-    content: `${data.content}<section class="blog-internal-links"><h2>Continue with Keentel</h2><p>Explore these related resources for your project:</p><ul>${internalLinks}</ul></section>`,
+    ...normalized,
+    content: `${normalized.content}<section class="blog-internal-links"><h2>Continue with Keentel</h2><p>Explore these related resources for your project:</p><ul>${internalLinks}</ul></section>`,
   } as T;
 }
-
-// ─── Check if we're on Vercel (has Blob token) ───
-const hasBlobToken = process.env.BLOB_READ_WRITE_TOKEN;
 
 const BLOG_FIELDS = `{
   "slug": slug.current,
@@ -90,77 +89,15 @@ async function getSanityBlogData(slug: string) {
 }
 
 export async function getBlogData(slug: string) {
-  const sanityData = await getSanityBlogData(slug);
-  if (sanityData) return sanityData;
-
-  // ✅ If on Vercel → use Blob
-  if (hasBlobToken) {
-    try {
-      const { head } = await import('@vercel/blob');
-      const blobKey = `blog/${slug}.json`;
-      const headResult = await head(blobKey);
-      if (!headResult) return null;
-
-      const url = new URL(headResult.url);
-      url.searchParams.set('_t', Date.now().toString());
-
-      const response = await fetch(url.toString(), {
-        cache: 'no-store',
-      });
-      const content = await response.text();
-      return addInternalLinks(JSON.parse(content), slug);
-    } catch (error) {
-      console.error('❌ Blob read failed:', error);
-      return null;
-    }
-  }
-
-  // ✅ If on localhost → read from filesystem
-  try {
-    const filePath = path.join(contentDir, `${slug}.json`);
-    const content = await fs.readFile(filePath, 'utf-8');
-    return addInternalLinks(JSON.parse(content), slug);
-  } catch {
-    return null;
-  }
+  return getSanityBlogData(slug);
 }
 
 export async function getAllBlogSlugs() {
   try {
     const sanitySlugs = await sanityClient.fetch<string[]>(`*[_type == "blogPost" && defined(slug.current)].slug.current`);
-    if (sanitySlugs.length) return sanitySlugs;
+    return Array.isArray(sanitySlugs) ? sanitySlugs : [];
   } catch (error) {
     console.error('Sanity blog slug read failed:', error);
+    return [];
   }
-
-  // ✅ If on Vercel → use Blob
-  if (hasBlobToken) {
-    try {
-      const { list } = await import('@vercel/blob');
-      const { blobs } = await list({ prefix: 'blog/' });
-      return blobs
-        .filter((blob: any) => blob.pathname.endsWith('.json'))
-        .map((blob: any) => blob.pathname.replace('blog/', '').replace('.json', ''));
-    } catch {
-      return fallbackSlugs();
-    }
-  }
-
-  // ✅ If on localhost → read from filesystem
-  try {
-    const files = await fs.readdir(contentDir);
-    return files
-      .filter((file) => file.endsWith('.json'))
-      .map((file) => file.replace('.json', ''));
-  } catch {
-    return fallbackSlugs();
-  }
-}
-
-function fallbackSlugs() {
-  return [
-    'florida-building-permits-guide-2026',
-    'general-contractor-cost-florida-2026',
-    'tampa-general-contractor-guide-2026',
-  ];
 }
