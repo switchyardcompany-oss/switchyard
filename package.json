@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",
-    "postbuild": "ts-node scripts/upload-blogs.ts",
     "start": "next start",
     "lint": "eslint"
   },
